@@ -1,228 +1,171 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta name="description" content="Portfolio" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+        rel="stylesheet"
+      />
+      <script
+        src="https://kit.fontawesome.com/fa62c117c7.js"
+        crossorigin="anonymous"
+      ></script>
+      <link rel="stylesheet" href="styles/styles.css" />
+      <title>Portfolio - NM</title>
+    </head>
+    <body class="light" id="top">
+      <header class="header center">
+        <h3>
+          <a href="https://marili-mn.github.io/frontend-portfolio/" class="link"
+            >NM.</a
+          >
+        </h3>
 
-<html lang="en">
+        <nav class="nav center">
+          <ul class="nav__list center">
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#projects">Projectos</a>
+            </li>
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#skills">Skills</a>
+            </li>
+            <li class="nav__list-item">
+              <a class="link link--nav" href="#contact">Contacto</a>
+            </li>
+          </ul>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-    <!-- Incluimos la parte responsive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Enlazamos la parte de bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <title>Portfolio terminal</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles/styles.css" />
-</head>
+          <button type="button" aria-label="toggle theme" class="btn btn--icon">
+            <i aria-hidden="true" id="btn-theme" class="fas fa-moon"></i>
+          </button>
 
-<body>
+          <button
+            type="button"
+            aria-label="toggle navigation"
+            class="btn btn--icon nav__hamburger"
+          >
+            <i aria-hidden="true" class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </header>
 
-    <main>
-        
-        <!-- Enlace a JS  -->
-        <script src="js/script.js"  defer></script> -->
+      <main>
+        <!-- About -->
+        <div class="about center">
+          <h1><span class="about__name">Nahuel Marcilli</span></h1>
+          <h2 class="about__role">Backend Developer.</h2>
+          <p class="about__desc">
+            ¡Hola! Soy un estudiante de programación con un talento especial para resolver problemas y trabajar en equipo de manera colaborativa. Me encanta aprender constantemente sobre el apasionante mundo IT. Estoy listo para sumergirme en nuevos desafíos y seguir creciendo en el fascinante universo de la tecnología.
 
-        <!-- Enlace de la parte funcional CDN Bootstrap-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-        
-        <div class="terminal" id="terminalWindow">
-        <div class="header"> bash - Nahuel Marcilli Portfolio</div>
-            <section id="terminal">
+          </p>
 
-                <!-- se reemplaza la estruccuta anterior por una alerta de bootstrap -->
+          <div class="about__contact center">
+            <a href="https://example.com">
+              <span class="btn btn--outline">Resume</span>
+            </a>
 
-                <!-- <div class="command">Successful login - <span class="error" id="date"></span></div> -->
+            <a
+              href="https://github.com/marili-mn"
+              aria-label="github"
+              class="link link--icon"
+            >
+              <i aria-hidden="true" class="fab fa-github"></i>
+            </a>
 
-                <div class="command">
-                    <div class="alert alert-success" role="alert">
-                        Successful login - <span class="error" id="date"></span>
-                    </div>
-                </div>
-
-                <div class="title">Mi Portfolio</div>
-                Hola! Bienvenidos a mi portfolio, para ver la lista de commandos ingresá <span class="command">help</span>
-            </section>
-            <div class="prompt">
-                <span class="command">$</span> <span class="title">gestuser</span> <input id="promtInput" />
-            </div>
-
+            <a
+              href="https://www.linkedin.com/in/nahuel-marcilli-6018b71a2/"
+              aria-label="linkedin"
+              class="link link--icon"
+            >
+              <i aria-hidden="true" class="fab fa-linkedin"></i>
+            </a>
+          </div>
         </div>
 
-    </main>
+        <!-- Projects -->
+        <section id="projects" class="section projects">
+          <h2 class="section__title">Projects</h2>
 
-    <div class="hidden" id="promptClone">
-        <span class="command">$</span> <span class="title">gestuser</span> <span class="promtCloneInput"></span>
-        <div class="promtCloneContent"></div>
-    </div>
+          <div class="projects__grid">
+            <div class="project">
+              <h3>Console emulation</h3>
+              <p class="project__description">
+                Una pequeña version de mi Portfolio en forma de terminal de Unix.
+              </p>
+              <ul class="project__stack">
+                <li class="project__stack-item">HTML</li>
+                <li class="project__stack-item">CSS</li>
+                <li class="project__stack-item">JavaScript</li>
+                <li class="project__stack-item">Bootstrap</li>
+              </ul>
 
-    <div class="hidden" id="help">
-        <div class="sectionTitle">Podes ingresar cualquiera de estos comandos: </div>
-        <div class="indent">
-            <div>
-                <span class="command">about</span>:
-                <div class="indent">Sobre mi</div>
+              <a
+                href="https://github.com/marili-mn/frontend-portfolio"
+                aria-label="source code"
+                class="link link--icon"
+              >
+                <i aria-hidden="true" class="fab fa-github"></i>
+              </a>
+              <a
+                href="console.html"
+                target="_blank"
+                aria-label="live preview"
+                class="link link--icon"
+              >
+                <i aria-hidden="true" class="fas fa-external-link-alt"></i>
+              </a>
             </div>
-            <div>
-                <span class="command">social</span>:
-                <div class="indent">Listado de mis redes sociales</div>
-            </div>
-            <div>
-                <span class="command">skills</span>:
-                <div class="indent">Las herramientas con las que trabajo</div>
-            </div>
-            <div>
-                <span class="command">education</span>:
-                <div class="indent">Todo sobre mi formación</div>
-            </div>
-            <div>
-                <span class="command">experience</span>:
-                <div class="indent">Donde trabajé hasta ahora</div>
-            </div>
-            <div>
-                <span class="command">projects</span>:
-                <div class="indent">Un listado de mis proyectos</div>
-            </div>
-            <div>
-                <span class="command">clear</span>:
-                <div class="indent">Borrar el historial de la terminal</div>
-            </div>
-        </div>
-    </div>
 
-    <!-- <div class="hidden" id="projects">
-        
-        <div class="sectionTitle">Proyectos: </div>
-        <div class="indent">
-            <span class="title">Proyecto 1 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
-        </div>
-        <div class="indent">
-            <span class="title">Proyecto 2 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
-        </div>
-        <div class="indent">
-            <span class="title">Proyecto 3 </span> - <a href="https://github.com/user/proyecto" target="_blank"><span class="command">Link a github</span> </a>
-        </div>
-    </div> -->
+          </div>
+        </section>
 
-    <!-- Se reemplaza el apartado de proyecetos por un list group numerado de bootstrap -->
+        <!-- Skills -->
+        <section class="section skills" id="skills">
+          <h2 class="section__title">Skills</h2>
+          <ul class="skills__list">
+            <li class="skills__list-item btn btn--plain">HTML</li>
+            <li class="skills__list-item btn btn--plain">CSS</li>
+            <li class="skills__list-item btn btn--plain">SCSS</li>
+            <li class="skills__list-item btn btn--plain">JavaScript</li>
+            <li class="skills__list-item btn btn--plain">Java</li>
+            <li class="skills__list-item btn btn--plain">Linux</li>
+            <li class="skills__list-item btn btn--plain">SQL</li>
+            <li class="skills__list-item btn btn--plain">Git</li>
+            <li class="skills__list-item btn btn--plain">Typescript</li>
+            <li class="skills__list-item btn btn--plain">Angular</li>
+            <li class="skills__list-item btn btn--plain">PHP</li>
+          </ul>
+        </section>
 
-    <div class="hidden" id="projects">
-        <div class="sectionTitle">Proyectos:</div>
-        <div class="indent">
-            <div class="list-group">
-                <a href="https://github.com/user/proyecto1" class="list-group-item list-group-item-action" target="_blank">
-                    1. Proyecto 1
-                </a>
-                <a href="https://github.com/user/proyecto2" class="list-group-item list-group-item-action" target="_blank">
-                    2. Proyecto 2
-                </a>
-                <a href="https://github.com/user/proyecto3" class="list-group-item list-group-item-action" target="_blank">
-                    3. Proyecto 3
-                </a>
-            </div>
-        </div>
-    </div>
-    
+        <!-- Contact -->
+        <section class="section contact center" id="contact">
+          <h2 class="section__title">Contacto</h2>
+          <a href="mailto:nahuemarcilli@gmail.com">
+            <span class="btn btn--outline">Email me</span>
+          </a>
+        </section>
+      </main>
 
-    <div class="hidden" id="skills">
-        <div class="sectionTitle">Skills: </div>
-        <div class="indent">
-            <div>
-                <span class="command">Programacion</span>:
-                <div class="indent">
-                    <span class="title">Javascript</span>
-                    <span class="title">CSS</span>
-                    <span class="title">HTML</span>
-                    <span class="title">GIT</span>
-                    <span class="title">Java</span>
-                    <span class="title">SQL</span>
-                </div>
-            </div>
-            <div>
-                <span class="command">Diseño</span>:
-                <div class="indent">
-                    <span class="title">Photoshop</span>
-                    <span class="title">Canva</span>
-                    <span class="title">Figma</span>
-                </div>
-            </div>
-            <div>
-                <span class="command">Idiomas</span>:
-                <div class="indent">
-                    <span class="title">English (Intermediate)</span>
-                </div>
-            </div>
-        </div>
-    </div>
+      <footer class="footer">
+        <a
+          href="https://github.com/marili-mn"
+          class="link footer__link"
+        >
+          Created By mariDev
+        </a>
+      </footer>
 
-    <div class="hidden" id="about">
-        <div class="sectionTitle">Sobre mi: </div>
-        <div class="indent">
-            Hola! mi nombre es <span class="command">Nahuel Marcilli.</span>
-            Soy estudiante de programación. Tengo gran capacidad para la resolución de problemas y participación colaborativa en equipo, con alta curva de aprendizaje y constante capacitación en el mundo IT
-        </div>
-    </div>
+      <div class="scroll-container">
+      <div class="scroll-top">
+        <a aria-label="Scroll up" href="#top">
+          <i aria-hidden="true" class="fas fa-arrow-up"></i>
+        </a>
+      </div>
+      </div>
 
-    <div class="hidden" id="experience">
-        <div class="sectionTitle">Experiencia: </div>
-        <div class="indent">
-            <span class="title">Soporte tecnico y mantenimiento de redes</span> - <span class="command">Julio 2020 - Actualidad</span>
-            <div class="indent">
-            </div>
-        </div>
-        <div class="indent">
-            <span class="title">Backend DEV - </span> - <span class="command">Marzo 2022 - Actualidad</span>
-            <div class="indent">
-            </div>
-        </div>
-    </div>
-    <div class="hidden" id="social">
-        <div class="sectionTitle">Redes sociales: </div>
-        <div class="indent">
-            <div class="list-group">
-                <a href="https://github.com/marili-mn" class="list-group-item list-group-item-action" target="_blank">
-                    1. Github
-                </a>
-                <a href="https://www.linkedin.com/in/nahuel-marcilli-6018b71a2/" class="list-group-item list-group-item-action" target="_blank">
-                    2. LinkedIn
-                </a>
-                <a href="https://twitter.com/marili_mn" class="list-group-item list-group-item-action" target="_blank">
-                    3. Twitter
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Se reemplaza el apartado de Sociales por un list group numerado de bootstrap -->
-    <!-- <div class="hidden" id="social">
-        <div class="sectionTitle">Redes sociales: </div>
-        <div class="indent">
-            <span class="title">Github</span> - <span class="command">https://github.com/marili-mn</span>
-        </div>
-        <div class="indent">
-            <span class="title">LinkedIn</span> - <span class="command">https://www.linkedin.com/in/nahuel-marcilli-6018b71a2/</span>
-        </div>
-        <div class="indent">
-            <span class="title">X</span> - <span class="command">https://twitter.com/marili_mn</span>
-        </div>
-    </div> -->
-
-    <div class="education hidden" id="education">
-        <div class="sectionTitle">Formación: </div>
-        <div class="indent">
-            <span class="title">UTN Facultad Regional Concordia</span> <span class="command">En curso 2021</span>
-            <div class="indent">
-                Tecnico superior en programacion.
-            </div>
-        </div>
-        <div class="indent">
-            <span class="title">Frontend DEV- Online</span> <span class="command">En curso</span>
-            <div class="indent">
-                
-            </div>
-        </div>
-    </div>
-
-</body>
-
-</html>
+      <script src="/js/script.js"></script>
+    </body>
+  </html>

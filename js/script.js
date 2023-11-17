@@ -1,65 +1,63 @@
-const promtInput = document.getElementById('promtInput');
-const terminal = document.getElementById('terminal');
-const terminalWindow = document.getElementById('terminalWindow');
-const date = document.getElementById('date');
+const body = document.body
 
-promtInput.focus();
-date.innerText = new Date().toDateString()
-terminalWindow.addEventListener('click', () => promtInput.focus());
+const btnTheme = document.querySelector('.fa-moon')
+const btnHamburger = document.querySelector('.fa-bars')
 
-
-promtInput.addEventListener('keydown', (event) => {
-  if (event.key === "Enter") {
-    enterCommand(event);
-  }
-})
-
-const enterCommand = (event) => {
-  const promtElement = document.getElementById('promptClone').cloneNode(true);
-  promtElement.classList.remove('hidden');
-  promtElement.getElementsByClassName('promtCloneInput')[0].innerHTML = event.target.value;
-  promtElement.setAttribute('id', null);
-  promtElement.getElementsByClassName('promtCloneContent')[0].appendChild(selectCommandBlock(event.target.value));
-  terminal.appendChild(promtElement);
-  promtInput.value = '';
-  promtInput.scrollIntoView({block: 'start'});
+const addThemeClass = (bodyClass, btnClass) => {
+  body.classList.add(bodyClass)
+  btnTheme.classList.add(btnClass)
 }
 
+const getBodyTheme = localStorage.getItem('portfolio-theme')
+const getBtnTheme = localStorage.getItem('portfolio-btn-theme')
 
-const selectCommandBlock = (command) => {
-  const lowerCommand = command.toLowerCase()
-  switch (lowerCommand) {
-    case 'help':
-    case 'about':
-    case 'social':
-    case 'skills':
-    case 'education':
-    case 'experience':
-    case 'projects':
-      return getCommandTemplate(lowerCommand);
-    case 'clear':
-      return clearCommand();
-    default:
-      return notFoundCommand(command);
-  }
+addThemeClass(getBodyTheme, getBtnTheme)
+
+const isDark = () => body.classList.contains('dark')
+
+const setTheme = (bodyClass, btnClass) => {
+
+	body.classList.remove(localStorage.getItem('portfolio-theme'))
+	btnTheme.classList.remove(localStorage.getItem('portfolio-btn-theme'))
+
+  addThemeClass(bodyClass, btnClass)
+
+	localStorage.setItem('portfolio-theme', bodyClass)
+	localStorage.setItem('portfolio-btn-theme', btnClass)
 }
 
-const getCommandTemplate = (command) => {
-  const element = document.getElementById(command).cloneNode(true);
-  element.classList.remove('hidden');
-  element.setAttribute('id', null);
-  return element;
+const toggleTheme = () =>
+	isDark() ? setTheme('light', 'fa-moon') : setTheme('dark', 'fa-sun')
+
+btnTheme.addEventListener('click', toggleTheme)
+
+const displayList = () => {
+	const navUl = document.querySelector('.nav__list')
+
+	if (btnHamburger.classList.contains('fa-bars')) {
+		btnHamburger.classList.remove('fa-bars')
+		btnHamburger.classList.add('fa-times')
+		navUl.classList.add('display-nav-list')
+	} else {
+		btnHamburger.classList.remove('fa-times')
+		btnHamburger.classList.add('fa-bars')
+		navUl.classList.remove('display-nav-list')
+	}
 }
 
-const clearCommand = () => {
-  terminal.innerHTML = '';
-  const element = document.createElement('span');
-  return element;
+btnHamburger.addEventListener('click', displayList)
+
+const scrollUp = () => {
+	const btnScrollTop = document.querySelector('.scroll-top')
+
+	if (
+		body.scrollTop > 500 ||
+		document.documentElement.scrollTop > 500
+	) {
+		btnScrollTop.style.display = 'block'
+	} else {
+		btnScrollTop.style.display = 'none'
+	}
 }
 
-const notFoundCommand = (command) => {
-  const element = document.createElement('span');
-  element.innerText = `-bash: ${command}: command not found`;
-  element.classList.add('error');
-  return element;
-}
+document.addEventListener('scroll', scrollUp)
