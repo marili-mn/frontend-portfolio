@@ -10,4 +10,4 @@ El objetivo principal de este proyecto es crear un portfolio personal simple y e
 
 1. Clona este repositorio en tu máquina local.
    ```bash
-   git clone https://github.com/tu-usuario/portfolio-personal.git
+   git clone https://github.com/marili-mn/frontend-portfolio
