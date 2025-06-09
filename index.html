@@ -62,7 +62,7 @@
 
       <p class="about__desc">
         Trabajo como freelance especializado en Backend, aunque disfruto
-        abordar proyectos Full-Stack que integran diseño gráfico, UX/UI,
+        abordar proyectos Full-Stack que integran diseño gráfico,
         arquitectura de software y ciberseguridad.
       </p>
 
@@ -87,32 +87,6 @@
         <a href="https://www.instagram.com/marili.dev/" class="link link--icon" aria-label="LinkedIn">
           <i class="fab fa-instagram"></i>
         </a>
-      </div>
-    </section>
-
-    <!-- Proyects -->
-    <section id="projects" class="section projects" data-animate>
-      <h2 class="section__title">Proyectos</h2>
-
-      <div class="projects__grid">
-        <div class="project" data-animate>
-          <h3>Console Emulation</h3>
-          <p class="project__description">
-            Versión de mi portfolio en forma de terminal de Unix.
-          </p>
-          <ul class="project__stack">
-            <li class="project__stack-item">HTML</li>
-            <li class="project__stack-item">CSS</li>
-            <li class="project__stack-item">JavaScript</li>
-            <li class="project__stack-item">Bootstrap</li>
-          </ul>
-          <div class="project__links">
-            <a href="https://github.com/marili-mn/frontend-portfolio" aria-label="Código fuente"
-              class="link link--icon"><i class="fab fa-github"></i></a>
-            <a href="console.html" target="_blank" aria-label="Vista previa" class="link link--icon"><i
-                class="fas fa-external-link-alt"></i></a>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -146,6 +120,9 @@
           <button class="skills__list-item">
             <img src="https://skillicons.dev/icons?i=ps" alt="Photoshop icon" class="skill-icon"> Photoshop
           </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=ai" alt="Ilustrator icon" class="skill-icon"> Ilustrator
+          </button>
         </nav>
       </section>
 
@@ -172,6 +149,9 @@
           </button>
           <button class="skills__list-item">
             <img src="https://skillicons.dev/icons?i=spring" alt="Spring icon" class="skill-icon"> Springboot
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=hibernate" alt="Hibernate icon" class="skill-icon"> Hibernate
           </button>
           <button class="skills__list-item">
             <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL icon" class="skill-icon"> MySQL
@@ -221,6 +201,33 @@
           </button>
         </nav>
       </section>
+    </section>
+
+    <!-- Proyects -->
+    <!-- Proyecto con vista previa como fondo -->
+        <div class="project with-preview" data-animate>
+          <div class="project-content">
+            <h3>n1Human E-Commerce</h3>
+            <p class="project__description">
+              Primeras practicas de frontend aplicadas en un negocio real.
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://n1human.netlify.app/" aria-label="Código fuente" class="link link--icon"><i
+                  class="fab fa-github"></i></a>
+              <a href="https://n1human.netlify.app/" target="_blank" aria-label="Vista previa" class="link link--icon"
+                data-preview="https://n1human.netlify.app/"><i class="fas fa-external-link-alt"></i></a>
+            </div>
+          </div>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+          </div>
+        </div>
     </section>
 
     <!-- Invoke contact -->

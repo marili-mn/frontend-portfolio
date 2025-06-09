@@ -102,4 +102,31 @@ const Portfolio = {
   },
 };
 
+document.querySelectorAll('.project.with-preview').forEach(project => {
+  const previewLink = project.querySelector('.project__links a[data-preview]');
+  const previewIframe = project.querySelector('.preview-iframe');
+
+  if (previewLink) {
+    project.addEventListener('mouseenter', () => {
+      const previewUrl = previewLink.getAttribute('data-preview');
+      previewIframe.src = previewUrl;
+    });
+
+    project.addEventListener('mouseleave', () => {
+      previewIframe.src = ''; // Limpia el iframe al salir
+    });
+
+    // Limita interacción del iframe: evita clics, permite scroll solo dentro de la card
+    previewIframe.addEventListener('click', (e) => {
+      e.stopPropagation(); // Evita que los clics lleguen al iframe
+    });
+
+    // Permite scroll dentro de la card, pero no captura el evento del iframe
+    project.addEventListener('wheel', (e) => {
+      e.stopPropagation(); // Limita el scroll al contenedor de la card
+      project.scrollTop += e.deltaY; // Permite scroll vertical dentro de la card
+    });
+  }
+});
+
 Portfolio.init();
