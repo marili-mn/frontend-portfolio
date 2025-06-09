@@ -1,240 +1,270 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Portfolio personal de Nahuel Marcilli" />
-    <title>Portfolio - NM</title>
 
-    <!-- Fuentes y estilos -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/fa62c117c7.js"
-      crossorigin="anonymous"
-    ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="styles/styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Portfolio personal de Nahuel Marcilli" />
+  <title>Portfolio - NM</title>
 
-  <body class="light" id="top">
-    <header class="header center">
-      <h3><a href="#" class="link logo">NM.</a></h3>
+  <!-- Fonts & styles -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/fa62c117c7.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="styles/styles.css" />
+</head>
 
-      <nav class="nav center">
-        <ul class="nav__list center">
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#projects">Proyectos</a>
-          </li>
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#skills">Skills</a>
-          </li>
-          <li class="nav__list-item">
-            <a class="link link--nav" href="#contact">Contacto</a>
-          </li>
-        </ul>
+<body class="light" id="top">
+  <header class="header center">
+    <h3><a href="#" class="link logo">NM.</a></h3>
 
-        <button type="button" aria-label="Alternar tema" class="btn btn--icon">
-          <i id="btn-theme" class="fas fa-moon" aria-hidden="true"></i>
-        </button>
+    <nav class="nav center">
+      <ul class="nav__list center">
+        <li class="nav__list-item">
+          <a class="link link--nav" href="#projects">Proyectos</a>
+        </li>
+        <li class="nav__list-item">
+          <a class="link link--nav" href="#skills">Skills</a>
+        </li>
+        <li class="nav__list-item">
+          <a class="link link--nav" href="#contact">Contacto</a>
+        </li>
+      </ul>
 
-        <button
-          type="button"
-          aria-label="Menú"
-          class="btn btn--icon nav__hamburger"
-        >
-          <i class="fas fa-bars" aria-hidden="true"></i>
-        </button>
-      </nav>
-    </header>
+      <button type="button" aria-label="Alternar tema" class="btn btn--icon">
+        <i id="btn-theme" class="fas fa-moon" aria-hidden="true"></i>
+      </button>
 
-    <main>
-      <!-- Presenting Wizard -->
-      <section class="about center" data-animate>
-        <h1>
-          <span class="about__name">Nahuel Marcilli</span>
-        </h1>
-        <h2 class="about__role">Web Developer</h2>
+      <button type="button" aria-label="Menú" class="btn btn--icon nav__hamburger">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </button>
+    </nav>
+  </header>
 
-        <p class="about__desc">
-          Soy Argentino y me formé como Técnico Universitario en Desarrollo Web
-          en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio
-          Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional
-          (FADENA), donde me especializo en hacking ético y seguridad
-          informática.
-        </p>
+  <main>
+    <!-- Presenting Wizard -->
+    <section class="about center" data-animate>
+      <h1>
+        <span class="about__name">Nahuel Marcilli</span>
+      </h1>
+      <h2 class="about__role">Web Developer</h2>
 
-        <p class="about__desc">
-          Trabajo como freelance especializado en Backend, aunque disfruto
-          abordar proyectos Full-Stack que integran diseño gráfico, UX/UI,
-          arquitectura de software y ciberseguridad.
-        </p>
+      <p class="about__desc">
+        Soy Argentino y me formé como Técnico Universitario en Desarrollo Web
+        en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio
+        Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional
+        (FADENA), donde me especializo en hacking ético y seguridad
+        informática.
+      </p>
 
-        <p class="about__desc">
-          Me gusta pensar la tecnología desde una mirada multidisciplinaria:
-          uniendo creatividad, análisis y técnica para crear soluciones sólidas
-          y adaptables. Estoy siempre en búsqueda de nuevos retos que me
-          permitan crecer y aportar valor real, colaborando en equipos y
-          proyectos que crucen diferentes disciplinas.
-        </p>
+      <p class="about__desc">
+        Trabajo como freelance especializado en Backend, aunque disfruto
+        abordar proyectos Full-Stack que integran diseño gráfico, UX/UI,
+        arquitectura de software y ciberseguridad.
+      </p>
 
-        <div class="about__contact center">
-          <a
-            href="https://example.com"
-            target="_blank"
-            class="btn btn--outline"
-          >
-            CV
-          </a>
-          <a
-            href="https://github.com/marili-mn"
-            class="link link--icon"
-            aria-label="GitHub"
-          >
-            <i class="fab fa-github"></i>
-          </a>
-          <a
-            href="https://www.linkedin.com/in/nahuel-marcilli"
-            class="link link--icon"
-            aria-label="LinkedIn"
-          >
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a
-            href="https://www.instagram.com/marili.dev/"
-            class="link link--icon"
-            aria-label="LinkedIn"
-          >
-            <i class="fab fa-instagram"></i>
-          </a>
-        </div>
-      </section>
+      <p class="about__desc">
+        Me gusta pensar la tecnología desde una mirada multidisciplinaria:
+        uniendo creatividad, análisis y técnica para crear soluciones sólidas
+        y adaptables. Estoy siempre en búsqueda de nuevos retos que me
+        permitan crecer y aportar valor real, colaborando en equipos y
+        proyectos que crucen diferentes disciplinas.
+      </p>
 
-      <!-- Proyects -->
-      <section id="projects" class="section projects" data-animate>
-        <h2 class="section__title">Proyectos</h2>
+      <div class="about__contact center">
+        <a href="https://example.com" target="_blank" class="btn btn--outline">
+          CV
+        </a>
+        <a href="https://github.com/marili-mn" class="link link--icon" aria-label="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/nahuel-marcilli" class="link link--icon" aria-label="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://www.instagram.com/marili.dev/" class="link link--icon" aria-label="LinkedIn">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+    </section>
 
-        <div class="projects__grid">
-          <div class="project" data-animate>
-            <h3>Console Emulation</h3>
-            <p class="project__description">
-              Versión de mi portfolio en forma de terminal de Unix.
-            </p>
-            <ul class="project__stack">
-              <li class="project__stack-item">HTML</li>
-              <li class="project__stack-item">CSS</li>
-              <li class="project__stack-item">JavaScript</li>
-              <li class="project__stack-item">Bootstrap</li>
-            </ul>
-            <div class="project__links">
-              <a
-                href="https://github.com/marili-mn/frontend-portfolio"
-                aria-label="Código fuente"
-                class="link link--icon"
-                ><i class="fab fa-github"></i
-              ></a>
-              <a
-                href="console.html"
-                target="_blank"
-                aria-label="Vista previa"
-                class="link link--icon"
-                ><i class="fas fa-external-link-alt"></i
-              ></a>
-            </div>
-          </div>
-        </div>
-      </section>
+    <!-- Proyects -->
+    <section id="projects" class="section projects" data-animate>
+      <h2 class="section__title">Proyectos</h2>
 
-      <!-- Skills -->
-      <section class="section skills" id="skills" data-animate>
-        <h2 class="section__title">Skills</h2>
-        <ul class="skills__list">
-          <li class="skills__list-item btn btn--plain">HTML</li>
-          <li class="skills__list-item btn btn--plain">CSS</li>
-          <li class="skills__list-item btn btn--plain">Bootstrap</li>
-          <li class="skills__list-item btn btn--plain">JavaScript</li>
-          <li class="skills__list-item btn btn--plain">Node.js</li>
-          <li class="skills__list-item btn btn--plain">React</li>
-          <li class="skills__list-item btn btn--plain">Next.js</li>
-          <li class="skills__list-item btn btn--plain">Python</li>
-          <li class="skills__list-item btn btn--plain">Flask</li>
-          <li class="skills__list-item btn btn--plain">FastAPI</li>
-          <li class="skills__list-item btn btn--plain">Django</li>
-          <li class="skills__list-item btn btn--plain">Java</li>
-          <li class="skills__list-item btn btn--plain">Springboot</li>  
-          <li class="skills__list-item btn btn--plain">MySQL</li>
-          <li class="skills__list-item btn btn--plain">PostgresSQL</li>
-          <li class="skills__list-item btn btn--plain">Docker</li>
-          <li class="skills__list-item btn btn--plain">Git</li>
-          <li class="skills__list-item btn btn--plain">Powershell</li>
-          <li class="skills__list-item btn btn--plain">Bash</li>
-          <li class="skills__list-item btn btn--plain">Assembler</li>
-          <li class="skills__list-item btn btn--plain">C</li>
-        </ul>
-      </section>
-
-      <!-- Invoke contact -->
-      <section class="section contact center" id="contact" data-animate>
-        <h2 class="section__title">Contacto</h2>
-        <a href="mailto:maridev5@hotmail.com"
-          ><span class="btn btn--outline">Escribime</span></a
-        >
-      </section>
-    </main>
-
-          <!-- Ending footer -->
-
-    <footer class="footer" data-animate>
-      <div class="footer__content">
-        <div class="footer__section footer__branding">
-          <h4 class="footer__title">Nahuel Marcilli</h4>
-          <p class="footer__desc">
-            Multidisciplinario por esencia: desarrollo, seguridad y diseño al servicio de soluciones creativas y precisas.
+      <div class="projects__grid">
+        <div class="project" data-animate>
+          <h3>Console Emulation</h3>
+          <p class="project__description">
+            Versión de mi portfolio en forma de terminal de Unix.
           </p>
-        </div>
-        <div class="footer__section footer__social">
-          <h4 class="footer__title">Conectemos</h4>
-          <p class="footer__desc">
-            maridev5@hotmail.com
-          </p>    
-          <div class="footer__links">
-            <a
-              href="https://github.com/marili-mn"
-              class="link link--icon"
-              aria-label="GitHub"
-              ><i class="fab fa-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/nahuel-marcilli"
-              class="link link--icon"
-              aria-label="LinkedIn"
-              ><i class="fab fa-linkedin"></i
-            ></a>
-            <a
-              href="mailto:maridev5@hotmail.com"
-              class="link link--icon"
-              aria-label="Email"
-              ><i class="fas fa-envelope"></i
-            ></a>
+          <ul class="project__stack">
+            <li class="project__stack-item">HTML</li>
+            <li class="project__stack-item">CSS</li>
+            <li class="project__stack-item">JavaScript</li>
+            <li class="project__stack-item">Bootstrap</li>
+          </ul>
+          <div class="project__links">
+            <a href="https://github.com/marili-mn/frontend-portfolio" aria-label="Código fuente"
+              class="link link--icon"><i class="fab fa-github"></i></a>
+            <a href="console.html" target="_blank" aria-label="Vista previa" class="link link--icon"><i
+                class="fas fa-external-link-alt"></i></a>
           </div>
-        </div>
-        <div class="footer__section footer__copyright">
-          <p>&copy; 2025 mariDev. Todos los derechos reservados.</p>
         </div>
       </div>
-    </footer>
+    </section>
 
-    <div class="scroll-top">
-      <a href="#top" aria-label="Volver arriba"
-        ><i class="fas fa-arrow-up"></i
-      ></a>
+    <!-- Skills -->
+    <section class="section skills" id="skills" data-animate>
+      <h2 class="section__title">Skills</h2>
+      <section class="skills-category">
+        <h3>Frontend</h3>
+        <nav class="skills__list" role="navigation" aria-label="Frontend Skills">
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="skill-icon"> HTML
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="skill-icon"> CSS
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="skill-icon"> Bootstrap
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="skill-icon"> JavaScript
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=react" alt="React icon" class="skill-icon"> React
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=nextjs" alt="Next.js icon" class="skill-icon"> Next.js
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=figma" alt="Figma icon" class="skill-icon"> Figma
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=ps" alt="Photoshop icon" class="skill-icon"> Photoshop
+          </button>
+        </nav>
+      </section>
+
+      <section class="skills-category">
+        <h3>Backend</h3>
+        <nav class="skills__list" role="navigation" aria-label="Backend Skills">
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=py" alt="Python icon" class="skill-icon"> Python
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=flask" alt="Flask icon" class="skill-icon"> Flask
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=fastapi" alt="FastAPI icon" class="skill-icon"> FastAPI
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=django" alt="Django icon" class="skill-icon"> Django
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=nodejs" alt="Node.js icon" class="skill-icon"> Node.js
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=java" alt="Java icon" class="skill-icon"> Java
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=spring" alt="Spring icon" class="skill-icon"> Springboot
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=mysql" alt="MySQL icon" class="skill-icon"> MySQL
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=postgres" alt="PostgreSQL icon" class="skill-icon"> PostgresSQL
+          </button>
+        </nav>
+      </section>
+
+      <section class="skills-category">
+        <h3>Other Technologies</h3>
+        <nav class="skills__list" role="navigation" aria-label="Other Technologies">
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=docker" alt="Docker icon" class="skill-icon"> Docker
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=git" alt="Git icon" class="skill-icon"> Git
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=powershell" alt="Powershell icon" class="skill-icon"> Powershell
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=bash" alt="Bash icon" class="skill-icon"> Bash
+          </button>
+          <button class="skills__list-item">
+            <img src="https://img.shields.io/badge/Assembler-8086-orange?style=flat-square" alt="Assembler icon"
+              class="skill-icon"> Assembler
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=c" alt="C icon" class="skill-icon"> C
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=haskell" alt="haskell icon" class="skill-icon"> Haskell
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=postman" alt="Postman icon" class="skill-icon"> Postman
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=vscode" alt="Vscode icon" class="skill-icon"> VS Code
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=windows" alt="Windows icon" class="skill-icon"> Windows
+          </button>
+          <button class="skills__list-item">
+            <img src="https://skillicons.dev/icons?i=linux" alt="Linux icon" class="skill-icon"> Linux
+          </button>
+        </nav>
+      </section>
+    </section>
+
+    <!-- Invoke contact -->
+    <section class="section contact center" id="contact" data-animate>
+      <h2 class="section__title">Contacto</h2>
+      <a href="mailto:maridev5@hotmail.com"><span class="btn btn--outline">Escribime</span></a>
+    </section>
+  </main>
+
+  <!-- Ending footer -->
+
+  <footer class="footer" data-animate>
+    <div class="footer__content">
+      <div class="footer__section footer__branding">
+        <h4 class="footer__title">Nahuel Marcilli</h4>
+        <p class="footer__desc">
+          Multidisciplinario por esencia: desarrollo, seguridad y diseño al servicio de soluciones creativas y precisas.
+        </p>
+      </div>
+      <div class="footer__section footer__social">
+        <h4 class="footer__title">Conectemos</h4>
+        <p class="footer__desc">
+          maridev5@hotmail.com
+        </p>
+        <div class="footer__links">
+          <a href="https://github.com/marili-mn" class="link link--icon" aria-label="GitHub"><i
+              class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nahuel-marcilli" class="link link--icon" aria-label="LinkedIn"><i
+              class="fab fa-linkedin"></i></a>
+          <a href="mailto:maridev5@hotmail.com" class="link link--icon" aria-label="Email"><i
+              class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+      <div class="footer__section footer__copyright">
+        <p>&copy; 2025 mariDev. Todos los derechos reservados.</p>
+      </div>
     </div>
+  </footer>
 
-    <script src="js/script.js"></script>
-  </body>
+  <div class="scroll-top">
+    <a href="#top" aria-label="Volver arriba"><i class="fas fa-arrow-up"></i></a>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+
 </html>

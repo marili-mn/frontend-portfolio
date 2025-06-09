@@ -448,6 +448,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   gap: 16px;
+  margin-bottom: 20px;
 }
 
 .skills__list-item {
@@ -458,11 +459,34 @@ main {
   padding: 10px 20px;
   border-radius: 9999px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
 }
 
 .skills__list-item:hover {
   background-color: var(--clr-accent-hover);
   transform: scale(1.1);
+}
+
+.skill-icon {
+  height: 20px;
+  width: auto;
+  vertical-align: middle;
+}
+
+.skills-category {
+  margin-bottom: 40px;
+}
+
+.skills-category h3 {
+  text-align: center;
+  color: var(--clr-fg);
+  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 600;
 }
 
 .contact {
