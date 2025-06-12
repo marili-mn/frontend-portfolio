@@ -5,8 +5,8 @@ const translations = {
   about_role: { es: 'Desarrollador Web', en: 'Web Developer', pt: 'Desenvolvedor Web', de: 'Webentwickler' },
   about_desc_1: { 
     es: 'Soy Argentino y me formé como Técnico Universitario en Desarrollo Web en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional (FADENA), donde me especializo en hacking ético y seguridad informática.',
-    en: "I'm from Argentina and I graduated as a University Technician in Web Development from the National University of Entre Ríos (UNER). Currently, I'm studying for a Bachelor's Degree in Cyberdefense at the National Defense Faculty (FADENA), where I specialize in ethical hacking and cybersecurity.",
-    pt: 'Sou argentino e me formei como Técnico Universitário em Desenvolvimento Web na Universidade Nacional de Entre Ríos (UNER). Atualmente, estudo a Licenciatura em Ciberdefesa na Faculdade de Defesa Nacional (FADENA), onde me especializo em hacking ético e segurança da informação.',
+    en: "I'm from Argentina and graduated as a University Technician in Web Development from the National University of Entre Ríos (UNER). Currently, I'm studying a Bachelor's Degree in Cyberdefense at the National Defense Faculty (FADENA), specializing in ethical hacking and cybersecurity.",
+    pt: 'Sou argentino e me formei como Técnico Universitário em Desenvolvimento Web na Universidade Nacional de Entre Ríos (UNER). Atualmente, estudo Licenciatura em Ciberdefesa na Faculdade de Defesa Nacional (FADENA), onde me especializo em hacking ético e segurança da informação.',
     de: 'Ich komme aus Argentinien und habe einen Abschluss als Universitätstechniker in Webentwicklung von der Nationalen Universität Entre Ríos (UNER). Derzeit studiere ich einen Bachelor in Cyberverteidigung an der Nationalen Verteidigungsfakultät (FADENA), wo ich mich auf ethisches Hacken und Cybersicherheit spezialisiere.'
   },
   about_desc_2: {
@@ -28,10 +28,16 @@ const translations = {
   other_tech_title: { es: 'Otras Tecnologías', en: 'Other Technologies', pt: 'Outras Tecnologias', de: 'Andere Technologien' },
   projects_title: { es: 'Proyectos', en: 'Projects', pt: 'Projetos', de: 'Projekte' },
   project1_desc: {
-    es: 'Primeras practicas de frontend aplicadas en un negocio real.',
-    en: 'First frontend practices applied to a real business.',
+    es: 'Primeras prácticas de frontend aplicadas en un negocio real.',
+    en: 'Initial frontend practices applied to a real business.',
     pt: 'Primeiras práticas de frontend aplicadas a um negócio real.',
-    de: 'Erste Frontend-Praktiken, die auf ein reales Unternehmen angewendet wurden.'
+    de: 'Erste Frontend-Übungen, die auf ein reales Geschäft angewendet wurden.'
+  },
+  project2_desc: {
+    es: 'Fundamentos de frontend aprendidos en la universidad.',
+    en: 'Frontend fundamentals learned at university.',
+    pt: 'Fundamentos de frontend aprendidos na universidade.',
+    de: 'Grundlagen des Frontends, die an der Universität erlernt wurden.'
   },
   source_code: { es: 'Código fuente', en: 'Source code', pt: 'Código fonte', de: 'Quellcode' },
   live_demo: { es: 'Demo', en: 'Demo', pt: 'Demo', de: 'Demo' },
@@ -48,6 +54,7 @@ const translations = {
   back_to_top_aria: { es: 'Volver arriba', en: 'Back to top', pt: 'Voltar ao topo', de: 'Nach oben' },
 };
 
+// Portfolio management
 const Portfolio = {
   elements: {
     body: document.body,
@@ -69,7 +76,7 @@ const Portfolio = {
     isLangMenuOpen: false,
   },
 
-  // --- Theme Management ---
+  // Theme Management
   setTheme(theme = 'light', icon = 'fa-sun') {
     this.elements.body.className = theme;
     if (this.elements.themeButton) {
@@ -84,7 +91,7 @@ const Portfolio = {
     this.setTheme(isDark ? 'light' : 'dark', isDark ? 'fa-sun' : 'fa-moon');
   },
 
-  // --- Navigation Management ---
+  // Navigation Management
   toggleNav() {
     const icon = this.elements.hamburgerButton.querySelector('i');
     const isOpen = this.elements.navList.classList.contains('display-nav-list');
@@ -101,7 +108,7 @@ const Portfolio = {
     }
   },
 
-  // --- Language Menu Management ---
+  // Language Menu Management
   toggleLangMenu() {
     this.state.isLangMenuOpen = !this.state.isLangMenuOpen;
     this.elements.langMenu.classList.toggle('active', this.state.isLangMenuOpen);
@@ -117,14 +124,14 @@ const Portfolio = {
     }
   },
 
-  // --- Scroll-based UI Updates ---
+  // Scroll-based UI Updates
   handleScroll() {
     const scrollY = window.scrollY;
     this.elements.scrollTopButton.classList.toggle('visible', scrollY > 500);
     this.elements.header.classList.toggle('scrolled', scrollY > 50);
   },
 
-  // --- Interactive Elements ---
+  // Smooth Scroll
   initSmoothScroll() {
     this.elements.navLinks.forEach(link => {
       link.addEventListener('click', (e) => {
@@ -142,7 +149,7 @@ const Portfolio = {
     });
   },
 
-  // --- Keyboard Navigation ---
+  // Keyboard Navigation
   initKeyboardNav() {
     this.elements.navList.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') {
@@ -157,17 +164,13 @@ const Portfolio = {
     });
   },
 
-  // --- Translation Management ---
+  // Translation Management
   translatePage(lang) {
     if (!translations) return;
     this.elements.translatableElements.forEach(element => {
       const key = element.getAttribute('data-translate');
       if (translations[key] && translations[key][lang]) {
-        if (element.tagName === 'A' && element.hasAttribute('aria-label')) {
-          element.setAttribute('aria-label', translations[key][lang]);
-        } else {
-          element.textContent = translations[key][lang];
-        }
+        element.textContent = translations[key][lang];
       }
     });
   },
@@ -189,44 +192,32 @@ const Portfolio = {
     });
   },
 
-  // --- Animations ---
+  // Animations
   initAnimations() {
     if (!window.gsap || !window.ScrollTrigger) return;
     gsap.registerPlugin(ScrollTrigger);
-    document.querySelectorAll('[data-animate]').forEach(element => {
-      gsap.fromTo(element, 
-        { opacity: 0, y: 30 }, 
-        { 
-          opacity: 1, 
-          y: 0, 
-          duration: 0.8, 
+
+    // Animate sections and projects
+    gsap.utils.toArray('[data-animate]').forEach(element => {
+      gsap.fromTo(
+        element,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
           ease: 'power2.out',
-          scrollTrigger: { 
-            trigger: element, 
-            start: 'top 85%', 
-            toggleActions: 'play none none none' 
-          }
-        }
-      );
-    });
-    document.querySelectorAll('.project').forEach(project => {
-      gsap.fromTo(project, 
-        { scale: 0.95, opacity: 0 }, 
-        { 
-          scale: 1, 
-          opacity: 1, 
-          duration: 0.6, 
-          ease: 'power2.out',
-          scrollTrigger: { 
-            trigger: project, 
-            start: 'top 85%' 
-          }
+          scrollTrigger: {
+            trigger: element,
+            start: 'top 85%',
+            toggleActions: 'play none none none',
+          },
         }
       );
     });
   },
 
-  // --- Event Listeners ---
+  // Event Listeners
   initEventListeners() {
     this.elements.themeButton?.parentElement.addEventListener('click', () => this.toggleTheme());
     this.elements.hamburgerButton?.addEventListener('click', () => this.toggleNav());
@@ -241,7 +232,7 @@ const Portfolio = {
     this.initKeyboardNav();
   },
 
-  // --- Main Initializer ---
+  // Initialize
   init() {
     const theme = localStorage.getItem('portfolio-theme') || 'light';
     const icon = localStorage.getItem('portfolio-icon') || 'fa-sun';
@@ -253,6 +244,7 @@ const Portfolio = {
   },
 };
 
+// Iframe Preview Management
 const IframePreview = {
   init() {
     document.querySelectorAll('.project.with-preview').forEach(project => {
@@ -270,10 +262,12 @@ const IframePreview = {
       });
       project.addEventListener('mouseleave', () => {
         clearTimeout(timeoutId);
+        previewIframe.src = ''; // Reset iframe to avoid performance issues
       });
     });
   },
 };
 
+// Initialize
 Portfolio.init();
 IframePreview.init();

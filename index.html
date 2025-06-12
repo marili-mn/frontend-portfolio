@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -14,8 +13,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <link rel="stylesheet" href="styles/styles.css" />
 </head>
-
 <body class="light" id="top">
+  <!-- Header -->
   <header class="header center">
     <h3><a href="#" class="link logo">NM.</a></h3>
     <nav class="nav center">
@@ -47,32 +46,20 @@
       </button>
     </nav>
   </header>
+
   <main>
-
-        <!-- Presenting Wizard -->
-
-
+    <!-- About Section -->
     <section class="about center" data-animate>
       <h1><span class="about__name">Nahuel Marcilli</span></h1>
       <h2 class="about__role" data-translate="about_role">Web Developer</h2>
       <p class="about__desc" data-translate="about_desc_1">
-        Soy Argentino y me formé como Técnico Universitario en Desarrollo Web
-        en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio
-        Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional
-        (FADENA), donde me especializo en hacking ético y seguridad
-        informática.
+        Soy Argentino y me formé como Técnico Universitario en Desarrollo Web en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional (FADENA), donde me especializo en hacking ético y seguridad informática.
       </p>
       <p class="about__desc" data-translate="about_desc_2">
-        Trabajo como freelance especializado en Backend, aunque disfruto
-        abordar proyectos Full-Stack que integran diseño gráfico,
-        arquitectura de software y ciberseguridad.
+        Trabajo como freelance especializado en Backend, aunque disfruto abordar proyectos Full-Stack que integran diseño gráfico, arquitectura de software y ciberseguridad.
       </p>
       <p class="about__desc" data-translate="about_desc_3">
-        Me gusta pensar la tecnología desde una mirada multidisciplinaria:
-        uniendo creatividad, análisis y técnica para crear soluciones sólidas
-        y adaptables. Estoy siempre en búsqueda de nuevos retos que me
-        permitan crecer y aportar valor real, colaborando en equipos y
-        proyectos que crucen diferentes disciplinas.
+        Me gusta pensar la tecnología desde una mirada multidisciplinaria: uniendo creatividad, análisis y técnica para crear soluciones sólidas y adaptables. Estoy siempre en búsqueda de nuevos retos que me permitan crecer y aportar valor real, colaborando en equipos y proyectos que crucen diferentes disciplinas.
       </p>
       <div class="about__contact center">
         <a href="https://example.com" target="_blank" class="btn btn--outline" data-translate="cv_button">CV</a>
@@ -88,8 +75,7 @@
       </div>
     </section>
 
-        <!-- Skills -->
-
+    <!-- Skills Section -->
     <section class="section skills" id="skills" data-animate>
       <h2 class="section__title" data-translate="skills_title">Skills</h2>
       <section class="skills-category">
@@ -175,8 +161,7 @@
             <img src="https://skillicons.dev/icons?i=bash" alt="Bash icon" class="skill-icon"> Bash
           </button>
           <button class="skills__list-item">
-            <img src="https://img.shields.io/badge/Assembler-8086-orange?style=flat-square" alt="Assembler icon"
-              class="skill-icon"> Assembler
+            <img src="https://img.shields.io/badge/Assembler-8086-orange?style=flat-square" alt="Assembler icon" class="skill-icon"> Assembler
           </button>
           <button class="skills__list-item">
             <img src="https://skillicons.dev/icons?i=c" alt="C icon" class="skill-icon"> C
@@ -200,53 +185,179 @@
       </section>
     </section>
 
-        <!-- Proyects -->
-
+    <!-- Projects Section -->
     <section class="section projects" id="projects" data-animate>
       <h2 class="section__title" data-translate="projects_title">Proyectos</h2>
-      <div class="project with-preview" data-animate>
-        <div class="project-content">
-          <h3>n1Human E-Commerce</h3>
-          <p class="project__description" data-translate="project1_desc">
-            Primeras practicas de frontend aplicadas en un negocio real.
-          </p>
-          <div class="project__stack">
-            <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
-            <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
-            <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
-            <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+      <div class="projects__grid">
+
+      <!-- start copy structure from here -->
+
+        <div class="project with-preview" data-animate>
+          <div class="project-content">
+            <h3>n1Human E-Commerce</h3>
+                  <!-- increment projectX and modificate  -->
+
+            <p class="project__description" data-translate="project1_desc">
+              Primeras prácticas de frontend aplicadas en un negocio real.
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/marili-mn/n1human-eCommerce" class="btn btn--outline" data-translate="source_code">
+                <i class="fab fa-github"></i> <span>Código fuente</span>
+              </a>
+              <a href="https://n1human.netlify.app/" target="_blank" class="btn btn--outline" data-preview="https://n1human.netlify.app/" data-translate="live_demo">
+                <i class="fas fa-external-link-alt"></i> <span>Demo</span>
+              </a>
+            </div>
           </div>
-          <div class="project__links">
-            <a href="https://github.com/marili-mn/n1human-eCommerce" aria-label="Código fuente" class="link link--icon"
-              data-translate="source_code"><i class="fab fa-github"></i>
-              <div>
-                <p>Código fuente</p>
-              </div>
-            </a>
-            <a href="https://n1human.netlify.app/" target="_blank" aria-label="Vista previa" class="link link--icon"
-              data-preview="https://n1human.netlify.app/" data-translate="live_demo"><i
-                class="fas fa-external-link-alt"></i>
-              <div>Demo</div>
-            </a>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
           </div>
         </div>
-        <div class="project-preview">
-          <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+
+        <!-- to there -->
+
+        <div class="project with-preview" data-animate>
+          <div class="project-content">
+
+            <h3>UNER E-Commerce</h3>
+            <p class="project__description" data-translate="project2_desc">
+              Fundamentos de frontend aprendidos en la universidad.
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=react" alt="React icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/marili-mn/introDevWebUNER" class="btn btn--outline" data-translate="source_code">
+                <i class="fab fa-github"></i> <span>Código fuente</span>
+              </a>
+              <a href="https://marili-mn.github.io/introDevWebUNER/" target="_blank" class="btn btn--outline" data-preview="https://marili-mn.github.io/introDevWebUNER/" data-translate="live_demo">
+                <i class="fas fa-external-link-alt"></i> <span>Demo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+          </div>
         </div>
       </div>
+
+
+       <div class="project with-preview" data-animate>
+          <div class="project-content">
+
+            <h3>Skill-up E-Learning web</h3>
+            <p class="project__description" data-translate="project3_desc">
+              Primer proyecto colaborativo en equipo y puesta en practica en el rol de backend.
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=react" alt="React icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=python" alt="Python icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=django" alt="Django icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/No-Country-simulation/c20-14-m-python-react" class="btn btn--outline" data-translate="source_code">
+                <i class="fab fa-github"></i> <span>Código fuente</span>
+              </a>
+              <a href="https://skillup-client.vercel.app/" target="_blank" class="btn btn--outline" data-preview="https://skillup-client.vercel.app/" data-translate="live_demo">
+                <i class="fas fa-external-link-alt"></i> <span>Demo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="project with-preview" data-animate>
+          <div class="project-content">
+
+            <h3>Guau & Miau ONG web</h3>
+            <p class="project__description" data-translate="project4_desc">
+              Segundo proyecto colaborativo en equipo y puesta en practica en el rol de backend.
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=react" alt="React icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=python" alt="Python icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=django" alt="Django icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=postgres" alt="Postgres icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/No-Country-simulation/c24-22-m-webapp" class="btn btn--outline" data-translate="source_code">
+                <i class="fab fa-github"></i> <span>Código fuente</span>
+              </a>
+              <a href="https://astonishing-hamster-6268c8.netlify.app/" target="_blank" class="btn btn--outline" data-preview="https://astonishing-hamster-6268c8.netlify.app/" data-translate="live_demo">
+                <i class="fas fa-external-link-alt"></i> <span>Demo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="project with-preview" data-animate>
+          <div class="project-content">
+
+            <h3>Wizard Solutions Marketing IA web</h3>
+            <p class="project__description" data-translate="project4_desc">
+              Tercer proyecto colaborativo en equipo y puesta en practica en el rol de Full-Stack
+            </p>
+            <div class="project__stack">
+              <img src="https://skillicons.dev/icons?i=html" alt="HTML icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=css" alt="CSS icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=js" alt="JavaScript icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=bootstrap" alt="Bootstrap icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=react" alt="React icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=python" alt="Python icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=fastapi" alt="Fastapi icon" class="stack-icon">
+              <img src="https://skillicons.dev/icons?i=nodejs" alt="Nodejs icon" class="stack-icon">
+            </div>
+            <div class="project__links">
+              <a href="https://github.com/joseorteha/ClickMail" class="btn btn--outline" data-translate="source_code">
+                <i class="fab fa-github"></i> <span>Código fuente</span>
+              </a>
+              <a href="https://click-mail.netlify.app/" target="_blank" class="btn btn--outline" data-preview="https://click-mail.netlify.app/" data-translate="live_demo">
+                <i class="fas fa-external-link-alt"></i> <span>Demo</span>
+              </a>
+            </div>
+          </div>
+          <div class="project-preview">
+            <iframe src="" frameborder="0" allowfullscreen class="preview-iframe"></iframe>
+          </div>
+        </div>
+      </div>
+
     </section>
 
-        <!-- Invoke contact -->
-
+    <!-- Contact Section -->
     <section class="section contact center" id="contact" data-animate>
       <h2 class="section__title" data-translate="contact_title">Contacto</h2>
-      <a href="mailto:maridev5@hotmail.com"><span class="btn btn--outline"
-          data-translate="contact_button">Escribíme</span></a>
+      <a href="mailto:maridev5@hotmail.com" class="btn btn--outline" data-translate="contact_button">Escribíme</a>
     </section>
   </main>
 
-    <!-- Ending footer -->
-
+  <!-- Footer -->
   <footer class="footer" data-animate>
     <div class="footer__content">
       <div class="footer__section footer__branding">
@@ -259,12 +370,9 @@
         <h4 class="footer__title" data-translate="footer_connect">Conectemos</h4>
         <p class="footer__desc">maridev5@hotmail.com</p>
         <div class="footer__links">
-          <a href="https://github.com/marili-mn" class="link link--icon" aria-label="GitHub"><i
-              class="fab fa-github"></i></a>
-          <a href="https://www.linkedin.com/in/nahuel-marcilli" class="link link--icon" aria-label="LinkedIn"><i
-              class="fab fa-linkedin"></i></a>
-          <a href="mailto:maridev5@hotmail.com" class="link link--icon" aria-label="Email"><i
-              class="fas fa-envelope"></i></a>
+          <a href="https://github.com/marili-mn" class="link link--icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.linkedin.com/in/nahuel-marcilli" class="link link--icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="mailto:maridev5@hotmail.com" class="link link--icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
         </div>
       </div>
       <div class="footer__section footer__copyright">
@@ -272,10 +380,10 @@
       </div>
     </div>
   </footer>
+
   <div class="scroll-top">
     <a href="#top" aria-label="Volver arriba" data-translate="back_to_top_aria"><i class="fas fa-arrow-up"></i></a>
   </div>
   <script src="js/script.js"></script>
 </body>
-
 </html>
