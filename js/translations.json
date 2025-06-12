@@ -1,0 +1,84 @@
+{
+  "nav_projects": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
+  "nav_skills": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
+  "nav_contact": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
+  "about_role": { "es": "Desarrollador Web", "en": "Web Developer", "pt": "Desenvolvedor Web", "de": "Webentwickler" },
+  "about_desc_1": {
+    "es": "Soy Argentino y me formé como Técnico Universitario en Desarrollo Web en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional (FADENA), donde me especializo en hacking ético y seguridad informática.",
+    "en": "I'm from Argentina and I graduated as a University Technician in Web Development from the National University of Entre Ríos (UNER). Currently, I'm studying for a Bachelor's Degree in Cyberdefense at the National Defense Faculty (FADENA), where I specialize in ethical hacking and cybersecurity.",
+    "pt": "Sou argentino e me formei como Técnico Universitário em Desenvolvimento Web na Universidade Nacional de Entre Ríos (UNER). Atualmente, estudo a Licenciatura em Ciberdefesa na Faculdade de Defesa Nacional (FADENA), onde me especializo em hacking ético e segurança da informação.",
+    "de": "Ich komme aus Argentinien und habe einen Abschluss als Universitätstechniker in Webentwicklung von der Nationalen Universität Entre Ríos (UNER). Derzeit studiere ich einen Bachelor in Cyberverteidigung an der Nationalen Verteidigungsfakultät (FADENA), wo ich mich auf ethisches Hacken und Cybersicherheit spezialisiere."
+  },
+  "about_desc_2": {
+    "es": "Trabajo como freelance especializado en Backend, aunque disfruto abordar proyectos Full-Stack que integran diseño gráfico, arquitectura de software y ciberseguridad.",
+    "en": "I work as a freelance developer specializing in Backend, although I enjoy taking on Full-Stack projects that integrate graphic design, software architecture, and cybersecurity.",
+    "pt": "Trabalho como freelancer especializado em Backend, embora goste de assumir projetos Full-Stack que integram design gráfico, arquitetura de software e cibersegurança.",
+    "de": "Ich arbeite als freiberuflicher Entwickler mit Spezialisierung auf Backend, obwohl ich gerne Full-Stack-Projekte übernehme, die Grafikdesign, Softwarearchitektur und Cybersicherheit integrieren."
+  },
+  "about_desc_3": {
+    "es": "Me gusta pensar la tecnología desde una mirada multidisciplinaria: uniendo creatividad, análisis y técnica para crear soluciones sólidas y adaptables. Estoy siempre en búsqueda de nuevos retos que me permitan crecer y aportar valor real, colaborando en equipos y proyectos que crucen diferentes disciplinas.",
+    "en": "I like to think about technology from a multidisciplinary perspective: combining creativity, analysis, and technique to create solid and adaptable solutions. I am always looking for new challenges that allow me to grow and provide real value, collaborating in teams and projects that cross different disciplines.",
+    "pt": "Gosto de pensar a tecnologia a partir de uma perspectiva multidisciplinar: unindo criatividade, análise e técnica para criar soluções sólidas e adaptáveis. Estou sempre em busca de novos desafios que me permitam crescer e agregar valor real, colaborando em equipes e projetos que cruzam diferentes disciplinas.",
+    "de": "Ich betrachte Technologie gerne aus einer multidisziplinären Perspektive: Kreativität, Analyse und Technik zu verbinden, um solide und anpassungsfähige Lösungen zu schaffen. Ich bin immer auf der Suche nach neuen Herausforderungen, die es mir ermöglichen, zu wachsen und echten Mehrwert zu schaffen, indem ich in Teams und Projekten zusammenarbeite, die verschiedene Disziplinen überschreiten."
+  },
+  "cv_button": { "es": "CV", "en": "Resume", "pt": "Currículo", "de": "Lebenslauf" },
+  "skills_title": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
+  "frontend_title": { "es": "Frontend", "en": "Frontend", "pt": "Frontend", "de": "Frontend" },
+  "backend_title": { "es": "Backend", "en": "Backend", "pt": "Backend", "de": "Backend" },
+  "other_tech_title": { "es": "Otras Tecnologías", "en": "Other Technologies", "pt": "Outras Tecnologias", "de": "Andere Technologien" },
+  "projects_title": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
+  "project1_desc": {
+    "es": "Primeras prácticas de Frontend aplicadas en un negocio real.",
+    "en": "First frontend practices applied in a real business.",
+    "pt": "Primeiras práticas de frontend aplicadas em um negócio real.",
+    "de": "Erste Frontend-Praxis in einem realen Geschäftsumfeld."
+  },
+  "project2_desc": {
+    "es": "Fundamentos de Frontend aprendidos en la universidad.",
+    "en": "Frontend fundamentals learned at university.",
+    "pt": "Fundamentos de frontend aprendidos na universidade.",
+    "de": "Frontend-Grundlagen an der Universität gelernt."
+  },
+  "project3_desc": {
+    "es": "Primer proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.",
+    "en": "First team collaborative project practicing the Backend role.",
+    "pt": "Primeiro projeto colaborativo em equipe com prática no papel de Backend.",
+    "de": "Erstes gemeinschaftliches Projekt im Team mit Backend-Verantwortung."
+  },
+  "project4_desc": {
+    "es": "Segundo proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.",
+    "en": "Second team collaborative project practicing the Backend role.",
+    "pt": "Segundo projeto colaborativo em equipe com prática no papel de Backend.",
+    "de": "Zweites gemeinschaftliches Projekt im Team mit Backend-Verantwortung."
+  },
+  "project5_desc": {
+    "es": "Tercer proyecto colaborativo en equipo y puesta en práctica en el rol de Full-Stack.",
+    "en": "Third team collaborative project practicing the Full-Stack role.",
+    "pt": "Terceiro projeto colaborativo em equipe com prática no papel de Full-Stack.",
+    "de": "Drittes gemeinschaftliches Projekt im Team mit Full-Stack-Verantwortung."
+  },
+  "project6_desc": {
+    "es": "Practica frontend autodidacta en la creacion del portafolio personal",
+    "en": "Self-taught frontend practice in creating the personal portfolio.",
+    "pt": "Prática de frontend autodidata na criação do portfólio pessoal.",
+    "de": "Autodidaktische Frontend-Praxis beim Erstellen des persönlichen Portfolios."
+  },
+  "source_code": { "es": "Código fuente", "en": "Source code", "pt": "Código fonte", "de": "Quellcode" },
+  "live_demo": { "es": "Demo", "en": "Demo", "pt": "Demo", "de": "Demo" },
+  "contact_title": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
+  "contact_button": { "es": "Escribíme", "en": "Email Me", "pt": "Envie um e-mail", "de": "E-Mail an mich" },
+  "footer_desc": {
+    "es": "Multidisciplinario por esencia: desarrollo, seguridad y diseño al servicio de soluciones creativas y precisas.",
+    "en": "Multidisciplinary by essence: development, security, and design at the service of creative and precise solutions.",
+    "pt": "Multidisciplinar por essência: desenvolvimento, segurança e design a serviço de soluções criativas e precisas.",
+    "de": "Im Wesentlichen multidisziplinär: Entwicklung, Sicherheit und Design im Dienste kreativer und präziser Lösungen."
+  },
+  "footer_connect": { "es": "Conectemos", "en": "Let's Connect", "pt": "Vamos conectar-nos", "de": "Verbinden wir uns" },
+  "footer_copyright": {
+    "es": "© 2025 mariDev. Todos los derechos reservados.",
+    "en": "© 2025 mariDev. All rights reserved.",
+    "pt": "© 2025 mariDev. Todos os direitos reservados.",
+    "de": "© 2025 mariDev. Alle Rechte vorbehalten."
+  },
+  "back_to_top_aria": { "es": "Volver arriba", "en": "Back to top", "pt": "Voltar ao topo", "de": "Nach oben" }
+}
