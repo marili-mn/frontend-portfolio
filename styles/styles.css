@@ -3,7 +3,7 @@
 ===============*/
 
 * {
-  padding: 3px;
+  padding: 0;
   margin: 0;
   border: 0;
   outline: 0;
@@ -308,13 +308,14 @@ button {
 }
 
 .nav {
-  gap: 40px;
+  gap: 20px;
+  position: relative;
 }
 
 .nav__list {
   display: flex;
   gap: 40px;
-  margin-right: 60px;
+  margin-right: 20px;
 }
 
 .nav__list-item {
@@ -331,9 +332,59 @@ button {
   padding: 8px;
 }
 
+.nav__lang-toggle {
+  display: flex;
+  background: none;
+  border: none;
+  color: var(--clr-fg);
+  cursor: pointer;
+  font-size: 26px;
+  padding: 8px;
+}
+
+.lang-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 10px;
+  background-color: var(--clr-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 10px 0;
+  min-width: 120px;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.lang-menu.active {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: block;
+  width: 100%;
+  padding: 8px 20px;
+  font-size: 15px;
+  color: var(--clr-fg);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.lang-option:hover,
+.lang-option:focus {
+  background-color: var(--clr-accent);
+  color: var(--clr-bg);
+}
+
 main {
   max-width: 1280px;
-  width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -682,6 +733,11 @@ main {
 
   .nav__hamburger {
     display: flex;
+  }
+
+  .lang-menu {
+    top: 60px;
+    right: 20px;
   }
   
   .header {
