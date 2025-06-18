@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nahuel Marcilli - CV</title>
+    <style>
+        :root {
+            --clr-bg: #e8ecef; /* Soft gray background */
+            --clr-fg: #2d3436; /* Dark gray for text */
+            --clr-accent: #00b894; /* Grayscale-friendly green */
+            --clr-fg-alt: #636e72; /* Lighter gray for secondary text */
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: var(--clr-fg);
+            background: var(--clr-bg);
+            padding: 0;
+            font-size: 14.5px;
+            font-weight: 600; /* Bolder text */
+        }
+
+        .cv-container {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            background: var(--clr-bg);
+            display: flex;
+            box-shadow: 0 0 10px rgba(0, 184, 148, 0.2);
+            border-radius: 8px;
+        }
+
+        /* Columna izquierda */
+        .left-column {
+            background: linear-gradient(135deg, #dfe6e9 0%, #b2bec3 50%, #95a5a6 100%);
+            color: var(--clr-fg);
+            width: 36%;
+            padding: 18px 14px;
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid var(--clr-accent);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 18px;
+        }
+
+        .name {
+            font-size: 1.95em;
+            font-weight: 700; /* Bolder */
+            margin-bottom: 8px;
+            color: var(--clr-accent);
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .title {
+            font-size: 1em;
+            color: var(--clr-fg-alt);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin-bottom: 18px;
+        }
+
+        .section-title {
+            font-size: 1.1em;
+            font-weight: 700; /* Bolder */
+            color: var(--clr-accent);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 2px solid var(--clr-accent);
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.25);
+        }
+
+        .contact-info {
+            list-style: none;
+        }
+
+        .contact-info li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            word-break: break-word;
+            color: var(--clr-fg-alt);
+            background: rgba(0, 184, 148, 0.05);
+            padding: 5px 8px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info li::before {
+            content: '';
+            font-size: 1.1em;
+            margin-right: 6px;
+            color: var(--clr-accent);
+        }
+
+        .contact-info li:nth-child(1)::before { content: '🌐'; }
+        .contact-info li:nth-child(2)::before { content: '📧'; }
+        .contact-info li:nth-child(3)::before { content: '📧'; }
+        .contact-info li:nth-child(4)::before { content: '💼'; }
+        .contact-info li:nth-child(5)::before { content: '📱'; }
+        .contact-info li:nth-child(6)::before { content: '📱'; }
+
+        .contact-info a {
+            color: var(--clr-accent);
+            text-decoration: none;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .contact-info a:hover {
+            color: #008c6a;
+            transform: scale(1.02);
+        }
+
+        .skills-list {
+            list-style: none;
+        }
+
+        .skills-list li {
+            margin-bottom: 6px;
+            font-size: 0.88em;
+            color: var(--clr-fg-alt);
+        }
+
+        .skill-category {
+            font-weight: 700; /* Bolder */
+            color: var(--clr-accent);
+            display: inline-block;
+            margin-right: 5px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .languages p {
+            margin-bottom: 6px;
+            font-size: 0.88em;
+            color: var(--clr-fg-alt);
+        }
+
+        .language-name {
+            font-weight: 700; /* Bolder */
+            color: var(--clr-accent);
+            display: inline-block;
+            min-width: 75px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Columna derecha */
+        .right-column {
+            width: 64%;
+            padding: 18px 18px;
+            background: var(--clr-bg);
+        }
+
+        .profile {
+            margin-bottom: 18px;
+        }
+
+        .profile h2 {
+            color: var(--clr-accent);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--clr-accent);
+            padding-bottom: 5px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.25);
+            font-weight: 700; /* Bolder */
+        }
+
+        .profile p {
+            text-align: justify;
+            line-height: 1.6;
+            color: var(--clr-fg-alt);
+            font-size: 0.9em;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .experience {
+            margin-bottom: 18px;
+        }
+
+        .experience h2 {
+            color: var(--clr-accent);
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--clr-accent);
+            padding-bottom: 5px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.25);
+            font-weight: 700; /* Bolder */
+        }
+
+        .job {
+            margin-bottom: 14px;
+            background: rgba(0, 184, 148, 0.05);
+            padding: 10px;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--clr-accent);
+        }
+
+        .job-header {
+            margin-bottom: 8px;
+        }
+
+        .job-title {
+            font-size: 0.98em;
+            font-weight: 700; /* Bolder */
+            color: var(--clr-fg);
+            margin-bottom: 3px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .company-date {
+            color: var(--clr-fg-alt);
+            font-size: 0.85em;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .job-description {
+            color: var(--clr-fg-alt);
+            margin-bottom: 8px;
+            line-height: 1.5;
+            font-size: 0.9em;
+            font-weight: 600; /* Bolder */
+        }
+
+        .stack-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .tech-badge {
+            background: var(--clr-accent);
+            color: var(--clr-bg);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.78em;
+            font-weight: 700; /* Bolder */
+            text-decoration: none;
+        }
+
+        .tech-badge.link {
+            background: var(--clr-fg-alt);
+            color: var(--clr-bg);
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .tech-badge.link:hover {
+            background: #008c6a;
+            color: var(--clr-bg);
+            transform: scale(1.02);
+        }
+
+        .education h2 {
+            color: var(--clr-accent);
+            font-size: 1.2em;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--clr-accent);
+            padding-bottom: 5px;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.25);
+            font-weight: 700; /* Bolder */
+        }
+
+        .education-item {
+            margin-bottom: 12px;
+            background: rgba(0, 184, 148, 0.05);
+            padding: 10px 14px;
+            border-radius: var(--radius);
+            border-left: 3px solid var(--clr-accent);
+        }
+
+        .degree {
+            font-weight: 700; /* Bolder */
+            color: var(--clr-fg);
+            font-size: 0.92em;
+            text-shadow: 0.4px 0.4px 1px rgba(0, 0, 0, 0.2);
+        }
+
+        .institution a {
+            color: var(--clr-accent);
+            text-decoration: none;
+            font-size: 0.85em;
+            font-style: italic;
+            font-weight: 600;
+            transition: color 0.2s, transform 0.2s;
+        }
+
+        .institution a:hover {
+            color: #008c6a;
+            transform: scale(1.02);
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 12px;
+            overflow: hidden;
+            border-radius: 0%;
+            border: 1.5px solid var(--clr-accent);
+            box-shadow: 0 0 8px rgba(0, 184, 148, 0.3);
+        }
+
+        .profile-pic img {
+            width: 200px;
+            height: auto;
+            object-fit: cover;
+            object-position: center top;
+            display: block;
+        }
+
+        /* Estilos para impresión */
+        @media print {
+            body {
+                background: var(--clr-bg);
+                padding: 0;
+                font-size: 13.5px;
+            }
+            
+            .cv-container {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .left-column {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+                padding: 14px 12px;
+            }
+            
+            .right-column {
+                padding: 14px;
+            }
+            
+            .job, .education-item {
+                padding: 8px;
+                margin-bottom: 10px;
+            }
+            
+            .job-description {
+                font-size: 0.88em;
+            }
+
+            .contact-info li {
+                background: none; /* Remove background for print */
+            }
+
+            .contact-info a, .institution a, .tech-badge.link {
+                text-decoration: none;
+                color: var(--clr-accent);
+            }
+
+            .name, .section-title, .profile h2, .experience h2, .job-title, .degree, .skill-category, .language-name {
+                text-shadow: none;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Columna Izquierda -->
+        <div class="left-column">
+            <div class="header">
+                <h1 class="name">NAHUEL MARCILLI</h1>
+                <p class="title">DESARROLLADOR WEB</p>
+                <div class="profile-pic">
+                    <img src="5.jpg" alt="Foto de perfil">
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Contacto</h3>
+                <ul class="contact-info">
+                    <li><a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io/frontend-portfolio/</a></li>
+                    <li><a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a></li>
+                    <li><a href="mailto:maridev5@hotmail.com">maridev5@hotmail.com</a></li>
+                    <li><a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a></li>
+                    <li><a href="tel:+543775402361">+543775402361</a></li>
+                    <li><a href="https://wa.me/+543775402361" target="_blank">+543775402361</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Skills</h3>
+                <ul class="skills-list">
+                    <li><span class="skill-category">Frontend:</span> HTML5, CSS3, JavaScript, React, Next.js, Bootstrap</li>
+                    <li><span class="skill-category">Backend:</span> Python, Flask, FastAPI, Django, Node.js, Java, Spring Boot</li>
+                    <li><span class="skill-category">Bases de Datos:</span> MySQL, PostgreSQL, Hibernate</li>
+                    <li><span class="skill-category">Herramientas:</span> Git, Docker, Postman, VS Code</li>
+                    <li><span class="skill-category">Diseño:</span> Figma, Photoshop, Illustrator</li>
+                    <li><span class="skill-category">Sistemas:</span> Windows, Linux, Bash, PowerShell</li>
+                    <li><span class="skill-category">Otros:</span> C, Haskell, Assembler</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Idiomas</h3>
+                <div class="languages">
+                    <p><span class="language-name">Español:</span> Nativo</p>
+                    <p><span class="language-name">Inglés:</span> Intermedio/Avanzado</p>
+                    <p><span class="language-name">Portugués:</span> Básico</p>
+                    <p><span class="language-name">Alemán:</span> Básico</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna Derecha -->
+        <div class="right-column">
+            <div class="profile">
+                <h2>Perfil</h2>
+                <p>Técnico Universitario en Desarrollo Web. Actualmente estudio Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional (FADENA).</p>
+                <p>Trabajo como freelance especializado en Backend, aunque disfruto abordar proyectos Full-Stack que integran diseño gráfico, arquitectura de software y ciberseguridad.</p>
+            </div>
+
+            <div class="education">
+                <h2>Educación</h2>
+                <div class="education-item">
+                    <div class="degree">Licenciatura en Ciberdefensa</div>
+                    <div class="institution"><a href="https://www.undef.edu.ar/" target="_blank">Facultad de Defensa Nacional (FADENA)</a> - En curso</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Técnico Universitario en Desarrollo Web</div>
+                    <div class="institution"><a href="https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/" target="_blank">Universidad Nacional de Entre Ríos (UNER)</a> - Completado</div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <h2>Experiencia</h2>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">UNER E-Commerce</div>
+                        <div class="company-date">Fundamentos de frontend | Abr 4, 2025 - Actualidad</div>
+                    </div>
+                    <p class="job-description">Primeras prácticas de Frontend aprendidas en la universidad</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <a href="https://github.com/marili-mn/introDevWebUNER" target="_blank" class="tech-badge link">Código</a>
+                        <a href="https://marili-mn.github.io/introDevWebUNER/" target="_blank" class="tech-badge link">Deploy</a>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Wizard Solutions IA Web-App</div>
+                        <div class="company-date">Proyecto Full-Stack Colaborativo | May 23, 2025 - Actualidad</div>
+                    </div>
+                    <p class="job-description">Tercer proyecto colaborativo en equipo y puesta en práctica en el rol de Full-Stack.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Node.js</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <a href="https://github.com/joseorteha/ClickMail" target="_blank" class="tech-badge link">Código</a>
+                        <a href="https://click-mail.netlify.app/" target="_blank" class="tech-badge link">Deploy</a>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Guau & Miau ONG Web</div>
+                        <div class="company-date">Proyecto Backend Colaborativo | Feb 18, 2025 - Mar 14, 2025</div>
+                    </div>
+                    <p class="job-description">Segundo proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <a href="https://github.com/No-Country-simulation/c24-22-m-webapp" target="_blank" class="tech-badge link">Código</a>
+                        <a href="https://astonishing-hamster-6268c8.netlify.app/" target="_blank" class="tech-badge link">Deploy</a>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Skill-up E-Learning</div>
+                        <div class="company-date">Primer Proyecto Backend Colaborativo | Ago 24, 2024 - Sep 24, 2024</div>
+                    </div>
+                    <p class="job-description">Primer proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <a href="https://github.com/No-Country-simulation/c20-14-m-python-react" target="_blank" class="tech-badge link">Código</a>
+                        <a href="https://skillup-client.vercel.app/" target="_blank" class="tech-badge link">Deploy</a>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">n1Human E-Commerce</div>
+                        <div class="company-date">Proyecto Frontend - Negocio Real | Abr 26, 2024 - Jul 16, 2024</div>
+                    </div>
+                    <p class="job-description">Primeras prácticas de Frontend aplicadas en un negocio real.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <a href="https://github.com/marili-mn/n1human-eCommerce" target="_blank" class="tech-badge link">Código</a>
+                        <a href="https://n1human.netlify.app/" target="_blank" class="tech-badge link">Deploy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
