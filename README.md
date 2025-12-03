@@ -4,8 +4,6 @@ Un portfolio web moderno, escalable y de alto rendimiento, diseñado con una arq
 
 Este proyecto demuestra cómo construir una aplicación modular, reactiva e internacionalizada sin depender de frameworks pesados (como React o Angular), utilizando los estándares web modernos al máximo potencial.
 
-![Portfolio Preview](assets/preview-card.jpg)
-
 ## 🚀 Tecnologías y Herramientas
 
 *   **Core:** HTML5 Semántico, CSS3 (Variables & Flexbox/Grid), JavaScript (ES Modules).
