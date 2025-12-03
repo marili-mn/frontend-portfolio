@@ -35,9 +35,9 @@ export class AboutSection extends HTMLElement {
     // Note: Ensure filenames match exactly what's in your assets folder
     if (currentLang === 'es') {
       // Use the corrected Spanish CV
-      cvBtn.setAttribute('href', 'assets/Nahuel Marcilli - Desarrollador Full-Stack CV.pdf');
+      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Desarrollador Full-Stack CV.pdf');
     } else {
-      cvBtn.setAttribute('href', 'assets/Nahuel Marcilli - Web Developer Resume ENG.pdf');
+      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Web Developer Resume ENG.pdf');
     }
   }
 
