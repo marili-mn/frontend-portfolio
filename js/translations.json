@@ -1,5 +1,6 @@
 {
   "nav_projects": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
+  "nav_about": { "es": "Sobre mí", "en": "About", "pt": "Sobre mim", "de": "Über mich" },
   "nav_skills": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
   "nav_contact": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
   "about_role": { "es": "Desarrollador Web", "en": "Web Developer", "pt": "Desenvolvedor Web", "de": "Webentwickler" },
@@ -21,7 +22,7 @@
     "pt": "Gosto de pensar a tecnologia a partir de uma perspectiva multidisciplinar: unindo criatividade, análise e técnica para criar soluções sólidas e adaptáveis. Estou sempre em busca de novos desafios que me permitam crescer e agregar valor real, colaborando em equipes e projetos que cruzam diferentes disciplinas.",
     "de": "Ich betrachte Technologie gerne aus einer multidisziplinären Perspektive: Kreativität, Analyse und Technik zu verbinden, um solide und anpassungsfähige Lösungen zu schaffen. Ich bin immer auf der Suche nach neuen Herausforderungen, die es mir ermöglichen, zu wachsen und echten Mehrwert zu schaffen, indem ich in Teams und Projekten zusammenarbeite, die verschiedene Disziplinen überschreiten."
   },
-  "cv_button": { "es": "CV", "en": "Resume", "pt": "Currículo", "de": "Lebenslauf" },
+  "cv_button": { "es": "Currículum", "en": "Resume", "pt": "Currículo", "de": "Lebenslauf" },
   "skills_title": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
   "frontend_title": { "es": "Frontend", "en": "Frontend", "pt": "Frontend", "de": "Frontend" },
   "backend_title": { "es": "Backend", "en": "Backend", "pt": "Backend", "de": "Backend" },
