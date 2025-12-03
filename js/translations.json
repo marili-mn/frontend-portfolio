@@ -3,24 +3,24 @@
   "nav_about": { "es": "Sobre mí", "en": "About", "pt": "Sobre mim", "de": "Über mich" },
   "nav_skills": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
   "nav_contact": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
-  "about_role": { "es": "Desarrollador Web", "en": "Web Developer", "pt": "Desenvolvedor Web", "de": "Webentwickler" },
+  "about_role": { "es": "Desarrollador Web & Ciberseguridad", "en": "Web Developer & Cybersecurity", "pt": "Desenvolvedor Web e Cibersegurança", "de": "Webentwickler & Cybersicherheit" },
   "about_desc_1": {
-    "es": "Soy Argentino y me formé como Técnico Universitario en Desarrollo Web en la Universidad Nacional de Entre Ríos (UNER). Actualmente, estudio Licenciatura en Ciberdefensa en la Facultad de Defensa Nacional (FADENA), donde me especializo en hacking ético y seguridad informática.",
-    "en": "I'm from Argentina and I graduated as a University Technician in Web Development from the National University of Entre Ríos (UNER). Currently, I'm studying for a Bachelor's Degree in Cyberdefense at the National Defense Faculty (FADENA), where I specialize in ethical hacking and cybersecurity.",
-    "pt": "Sou argentino e me formei como Técnico Universitário em Desenvolvimento Web na Universidade Nacional de Entre Ríos (UNER). Atualmente, estudo a Licenciatura em Ciberdefesa na Faculdade de Defesa Nacional (FADENA), onde me especializo em hacking ético e segurança da informação.",
-    "de": "Ich komme aus Argentinien und habe einen Abschluss als Universitätstechniker in Webentwicklung von der Nationalen Universität Entre Ríos (UNER). Derzeit studiere ich einen Bachelor in Cyberverteidigung an der Nationalen Verteidigungsfakultät (FADENA), wo ich mich auf ethisches Hacken und Cybersicherheit spezialisiere."
+    "es": "Desarrollador Full-Stack formado en Ingeniería Web (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) y Ciberdefensa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Fusiono <strong>arquitectura</strong> segura y <strong>creatividad</strong> funcional para construir soluciones que protegen el negocio y cautivan al usuario.",
+    "en": "Full-Stack Developer trained in Web Engineering (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) and Cyberdefense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). I merge secure <strong>architecture</strong> and functional <strong>creativity</strong> to build solutions that protect businesses and captivate users.",
+    "pt": "Desenvolvedor Full-Stack formado em Engenharia Web (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) e Ciberdefesa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Eu combino <strong>arquitetura</strong> segura e <strong>criatividade</strong> funcional para construir soluções que protegem o negócio e cativam o usuário.",
+    "de": "Full-Stack-Entwickler mit Ausbildung in Web-Engineering (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) und Cyber-Defense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Ich verschmelze sichere <strong>Architektur</strong> und funktionale <strong>Kreativität</strong>, um Lösungen zu entwickeln, die das Geschäft schützen und Benutzer fesseln."
   },
   "about_desc_2": {
-    "es": "Trabajo como freelance especializado en Backend, aunque disfruto abordar proyectos Full-Stack que integran diseño gráfico, arquitectura de software y ciberseguridad.",
-    "en": "I work as a freelance developer specializing in Backend, although I enjoy taking on Full-Stack projects that integrate graphic design, software architecture, and cybersecurity.",
-    "pt": "Trabalho como freelancer especializado em Backend, embora goste de assumir projetos Full-Stack que integram design gráfico, arquitetura de software e cibersegurança.",
-    "de": "Ich arbeite als freiberuflicher Entwickler mit Spezialisierung auf Backend, obwohl ich gerne Full-Stack-Projekte übernehme, die Grafikdesign, Softwarearchitektur und Cybersicherheit integrieren."
+    "es": "Aplico <strong>ingeniería</strong> robusta en cada capa. Integro la <strong>seguridad</strong> informática con el <strong>diseño</strong> de interfaces, logrando aplicaciones blindadas por dentro e intuitivas por fuera.",
+    "en": "I apply robust <strong>engineering</strong> at every layer. I integrate IT <strong>security</strong> with interface <strong>design</strong>, creating applications that are armored inside and intuitive outside.",
+    "pt": "Aplico <strong>engenharia</strong> robusta em cada camada. Integro a <strong>segurança</strong> informática com o <strong>design</strong> de interfaces, criando aplicações que são blindadas por dentro e intuitivas por fora.",
+    "de": "Ich wende robuste <strong>Ingenieurkunst</strong> auf jeder Ebene an. Ich integriere IT-<strong>Sicherheit</strong> mit <strong>Interface-Design</strong> und schaffe Anwendungen, die innen gepanzert und außen intuitiv sind."
   },
   "about_desc_3": {
-    "es": "Me gusta pensar la tecnología desde una mirada multidisciplinaria: uniendo creatividad, análisis y técnica para crear soluciones sólidas y adaptables. Estoy siempre en búsqueda de nuevos retos que me permitan crecer y aportar valor real, colaborando en equipos y proyectos que crucen diferentes disciplinas.",
-    "en": "I like to think about technology from a multidisciplinary perspective: combining creativity, analysis, and technique to create solid and adaptable solutions. I am always looking for new challenges that allow me to grow and provide real value, collaborating in teams and projects that cross different disciplines.",
-    "pt": "Gosto de pensar a tecnologia a partir de uma perspectiva multidisciplinar: unindo criatividade, análise e técnica para criar soluções sólidas e adaptáveis. Estou sempre em busca de novos desafios que me permitam crescer e agregar valor real, colaborando em equipes e projetos que cruzam diferentes disciplinas.",
-    "de": "Ich betrachte Technologie gerne aus einer multidisziplinären Perspektive: Kreativität, Analyse und Technik zu verbinden, um solide und anpassungsfähige Lösungen zu schaffen. Ich bin immer auf der Suche nach neuen Herausforderungen, die es mir ermöglichen, zu wachsen und echten Mehrwert zu schaffen, indem ich in Teams und Projekten zusammenarbeite, die verschiedene Disziplinen überschreiten."
+    "es": "Creo que la verdadera innovación surge al cruzar disciplinas. Busco proyectos que desafíen el estándar, donde pueda aplicar esta dualidad técnica y creativa para entregar productos escalables, estéticamente pulidos y técnicamente blindados.",
+    "en": "I believe true innovation emerges at the intersection of disciplines. I seek projects that challenge the standard, where I can apply this technical and creative duality to deliver scalable, aesthetically polished, and technically armored products.",
+    "pt": "Acredito que a verdadeira inovação surge no cruzamento de disciplinas. Busco projetos que desafiem o padrão, onde possa aplicar essa dualidade técnica e criativa para entregar produtos escaláveis, esteticamente polidos e tecnicamente blindados.",
+    "de": "Ich glaube, dass wahre Innovation an der Schnittstelle von Disziplinen entsteht. Ich suche Projekte, die den Standard herausfordern, wo ich diese technische und kreative Dualität anwenden kann, um skalierbare, ästhetisch ansprechende und technisch gehärtete Produkte zu liefern."
   },
   "cv_button": { "es": "Currículum", "en": "Resume", "pt": "Currículo", "de": "Lebenslauf" },
   "skills_title": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
@@ -29,40 +29,40 @@
   "other_tech_title": { "es": "Otras Tecnologías", "en": "Other Technologies", "pt": "Outras Tecnologias", "de": "Andere Technologien" },
   "projects_title": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
   "project1_desc": {
-    "es": "Primeras prácticas de Frontend aplicadas en un negocio real.",
-    "en": "First frontend practices applied in a real business.",
-    "pt": "Primeiras práticas de frontend aplicadas em um negócio real.",
-    "de": "Erste Frontend-Praxis in einem realen Geschäftsumfeld."
+    "es": "Plataforma comercial optimizada para conversión. Estrategia de SEO semántico y <strong>diseño</strong> responsive centrada en maximizar la visibilidad y retención del cliente.",
+    "en": "Commercial platform optimized for conversion. Semantic SEO strategy and responsive <strong>design</strong> focused on maximizing customer visibility and retention.",
+    "pt": "Plataforma comercial otimizada para conversão. Estratégia de SEO semântico e <strong>design</strong> responsivo focado em maximizar a visibilidade e retenção do cliente.",
+    "de": "Kommerzielle Plattform zur Konversionsoptimierung. Semantische SEO-Strategie und responsives <strong>Design</strong> zur Maximierung der Kundensichtbarkeit und -bindung."
   },
   "project2_desc": {
-    "es": "Fundamentos de Frontend aprendidos en la universidad.",
-    "en": "Frontend fundamentals learned at university.",
-    "pt": "Fundamentos de frontend aprendidos na universidade.",
-    "de": "Frontend-Grundlagen an der Universität gelernt."
+    "es": "<strong>Ingeniería</strong> de componentes modulares con JavaScript nativo. Patrones de <strong>diseño</strong> avanzados y gestión de estado eficiente sin dependencia de frameworks.",
+    "en": "Modular component <strong>engineering</strong> with native JavaScript. Advanced <strong>design</strong> patterns and efficient state management without framework dependence.",
+    "pt": "<strong>Engenharia</strong> de componentes modulares com JavaScript nativo. Padrões de <strong>design</strong> avançados e gerenciamento de estado eficiente sem dependência de frameworks.",
+    "de": "Modulare Komponenten-<strong>Ingenieurkunst</strong> mit nativem JavaScript. Fortgeschrittene <strong>Designmuster</strong> und effizientes Zustandsmanagement ohne Framework-Abhängigkeit."
   },
   "project3_desc": {
-    "es": "Primer proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.",
-    "en": "First team collaborative project practicing the Backend role.",
-    "pt": "Primeiro projeto colaborativo em equipe com prática no papel de Backend.",
-    "de": "Erstes gemeinschaftliches Projekt im Team mit Backend-Verantwortung."
+    "es": "Sistema LMS Full-Stack. <strong>Arquitectura</strong> de base de datos relacional y API RESTful diseñada para la gestión escalable de contenidos educativos.",
+    "en": "Full-Stack LMS System. Relational database <strong>architecture</strong> and RESTful API designed for scalable management of educational content.",
+    "pt": "Sistema LMS Full-Stack. <strong>Arquitetura</strong> de banco de dados relacional e API RESTful projetada para a gestão escalável de conteúdos educativos.",
+    "de": "Full-Stack LMS-System. Relationale Datenbank-<strong>Architektur</strong> und RESTful API für die skalierbare Verwaltung von Bildungsinhalten."
   },
   "project4_desc": {
-    "es": "Segundo proyecto colaborativo en equipo y puesta en práctica en el rol de Backend.",
-    "en": "Second team collaborative project practicing the Backend role.",
-    "pt": "Segundo projeto colaborativo em equipe com prática no papel de Backend.",
-    "de": "Zweites gemeinschaftliches Projekt im Team mit Backend-Verantwortung."
+    "es": "Plataforma de gestión de recursos. Núcleo robusto enfocado en la integridad de datos y la eficiencia administrativa en tiempo real.",
+    "en": "Resource management platform. Robust core focused on data integrity and real-time administrative efficiency.",
+    "pt": "Plataforma de gestão de recursos. Núcleo robusto focado na integridade de dados e eficiência administrativa em tempo real.",
+    "de": "Ressourcenverwaltungsplattform. Robustes Kernstück mit Fokus auf Datenintegrität und Echtzeit-Verwaltungseffizienz."
   },
   "project5_desc": {
-    "es": "Tercer proyecto colaborativo en equipo y puesta en práctica en el rol de Full-Stack.",
-    "en": "Third team collaborative project practicing the Full-Stack role.",
-    "pt": "Terceiro projeto colaborativo em equipe com prática no papel de Full-Stack.",
-    "de": "Drittes gemeinschaftliches Projekt im Team mit Full-Stack-Verantwortung."
+    "es": "Web App de alto rendimiento con IA. <strong>Arquitectura</strong> de microservicios diseñada para procesar datos complejos con máxima velocidad.",
+    "en": "High-performance Web App with AI. Microservices <strong>architecture</strong> designed to process complex data at maximum speed.",
+    "pt": "Web App de alto desempenho com IA. <strong>Arquitetura</strong> de microsserviços projetada para processar dados complexos com máxima velocidade.",
+    "de": "Hochleistungsfähige Web-App mit KI. Microservices-<strong>Architektur</strong> zur Verarbeitung komplexer Daten mit maximaler Geschwindigkeit."
   },
   "project6_desc": {
-    "es": "Practica frontend autodidacta en la creacion del portafolio personal",
-    "en": "Self-taught frontend practice in creating the personal portfolio.",
-    "pt": "Prática de frontend autodidata na criação do portfólio pessoal.",
-    "de": "Autodidaktische Frontend-Praxis beim Erstellen des persönlichen Portfolios."
+    "es": "Desarrollo basado en estándares web modernos (Web Components). Implementación limpia de internacionalización y temas, demostrando dominio del lenguaje sin librerías.",
+    "en": "Development based on modern web standards (Web Components). Clean implementation of internationalization and themes, demonstrating language proficiency without external libraries.",
+    "pt": "Desenvolvimento baseado em padrões web modernos (Web Components). Implementação limpa de internacionalização e temas, demonstrando domínio do idioma sem bibliotecas.",
+    "de": "Entwicklung basierend auf modernen Webstandards (Web Components). Saubere Implementierung von Internationalisierung und Themes, die Sprachkenntnisse ohne externe Bibliotheken demonstriert."
   },
   "source_code": { "es": "Código fuente", "en": "Source code", "pt": "Código fonte", "de": "Quellcode" },
   "live_demo": { "es": "Demo", "en": "Demo", "pt": "Demo", "de": "Demo" },
@@ -74,7 +74,7 @@
     "pt": "Multidisciplinar por essência: desenvolvimento, segurança e design a serviço de soluções criativas e precisas.",
     "de": "Im Wesentlichen multidisziplinär: Entwicklung, Sicherheit und Design im Dienste kreativer und präziser Lösungen."
   },
-  "footer_connect": { "es": "Conectemos", "en": "Let's Connect", "pt": "Vamos conectar-nos", "de": "Verbinden wir uns" },
+  "footer_connect": { "es": "Conectemos", "en": "Let's Connect", "pt": "Vamos conectar-nos", "de": "Verbinden wir nos" },
   "footer_copyright": {
     "es": "© 2025 mariDev. Todos los derechos reservados.",
     "en": "© 2025 mariDev. All rights reserved.",

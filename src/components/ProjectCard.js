@@ -31,7 +31,7 @@ export class ProjectCard extends HTMLElement {
     const sourceBtn = this.shadowRoot.querySelector('[data-key="source_code"] span');
     const demoBtn = this.shadowRoot.querySelector('[data-key="live_demo"] span');
     
-    if (descEl) descEl.textContent = translationService.t(this.projectData.descriptionKey);
+    if (descEl) descEl.innerHTML = translationService.t(this.projectData.descriptionKey);
     if (sourceBtn) sourceBtn.textContent = translationService.t('source_code');
     if (demoBtn) demoBtn.textContent = translationService.t('live_demo');
   }

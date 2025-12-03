@@ -21,7 +21,7 @@ export class AboutSection extends HTMLElement {
     const elements = this.querySelectorAll('[data-translate]');
     elements.forEach(el => {
       const key = el.getAttribute('data-translate');
-      el.textContent = translationService.t(key);
+      el.innerHTML = translationService.t(key);
     });
   }
 
