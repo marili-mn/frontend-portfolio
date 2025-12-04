@@ -38,7 +38,7 @@ export class ProjectCard extends HTMLElement {
 
   getTechIcons(stack) {
     return stack.map(tech => 
-      `<img src="https://skillicons.dev/icons?i=${tech}" alt="${tech} icon" class="stack-icon" title="${tech}">`
+      `<img src="https://skillicons.dev/icons?i=${tech}" alt="${tech} icon" class="stack-icon" title="${tech}" loading="lazy" width="24" height="24">`
     ).join('');
   }
 

@@ -19,6 +19,10 @@
   <meta property="twitter:description" content="Desarrollador Web Fullstack especializado en JavaScript, React y Python.">
   <meta property="twitter:image" content="https://marili-mn.github.io/frontend-portfolio/assets/preview-card.jpg">
 
+  <!-- Mobile Theme Color -->
+  <meta name="theme-color" content="#1a1a1a" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#cfd8dc" media="(prefers-color-scheme: light)">
+
   <title>Portfolio - NM</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,7 +59,7 @@
     <!-- Contact Section -->
     <section class="section contact center" id="contact" data-animate>
       <h2 class="section__title" data-translate="contact_title">Contacto</h2>
-      <a href="mailto:maridev5@hotmail.com" class="btn btn--outline" data-translate="contact_button">Escribíme</a>
+      <contact-button class-name="btn--outline" data-translate-key="contact_button"></contact-button>
     </section>
   </main>
 
@@ -65,6 +69,9 @@
   <!-- Scroll Top Component -->
   <scroll-top-btn></scroll-top-btn>
   
+  <!-- Toast Notification -->
+  <toast-notification></toast-notification>
+
   <script type="module" src="src/main.js"></script>
 </body>
 </html>

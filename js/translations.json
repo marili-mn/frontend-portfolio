@@ -5,10 +5,10 @@
   "nav_contact": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
   "about_role": { "es": "Desarrollador Web & Ciberseguridad", "en": "Web Developer & Cybersecurity", "pt": "Desenvolvedor Web e Cibersegurança", "de": "Webentwickler & Cybersicherheit" },
   "about_desc_1": {
-    "es": "Desarrollador Full-Stack formado en Ingeniería Web (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) y Ciberdefensa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Fusiono <strong>arquitectura</strong> segura y <strong>creatividad</strong> funcional para construir soluciones que protegen el negocio y cautivan al usuario.",
-    "en": "Full-Stack Developer trained in Web Engineering (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) and Cyberdefense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). I merge secure <strong>architecture</strong> and functional <strong>creativity</strong> to build solutions that protect businesses and captivate users.",
-    "pt": "Desenvolvedor Full-Stack formado em Engenharia Web (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) e Ciberdefesa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Eu combino <strong>arquitetura</strong> segura e <strong>criatividade</strong> funcional para construir soluções que protegem o negócio e cativam o usuário.",
-    "de": "Full-Stack-Entwickler mit Ausbildung in Web-Engineering (<a href=\"https://www.fcad.uner.edu.ar/academica/tecnicatura-universitaria-en-computacion/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) und Cyber-Defense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Ich verschmelze sichere <strong>Architektur</strong> und funktionale <strong>Kreativität</strong>, um Lösungen zu entwickeln, die das Geschäft schützen und Benutzer fesseln."
+    "es": "Desarrollador Full-Stack formado en Ingeniería Web (<a href=\"https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) y Ciberdefensa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Fusiono <strong>arquitectura</strong> segura y <strong>creatividad</strong> funcional para construir soluciones que protegen el negocio y cautivan al usuario.",
+    "en": "Full-Stack Developer trained in Web Engineering (<a href=\"https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) and Cyberdefense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). I merge secure <strong>architecture</strong> and functional <strong>creativity</strong> to build solutions that protect businesses and captivate users.",
+    "pt": "Desenvolvedor Full-Stack formado em Engenharia Web (<a href=\"https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desenvolvimento-web/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) e Ciberdefesa (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Eu combino <strong>arquitetura</strong> segura e <strong>criatividade</strong> funcional para construir soluções que protegem o negócio e cativam o usuário.",
+    "de": "Full-Stack-Entwickler mit Ausbildung in Web-Engineering (<a href=\"https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/\" target=\"_blank\" rel=\"noopener noreferrer\">UNER</a>) und Cyber-Defense (<a href=\"https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/\" target=\"_blank\" rel=\"noopener noreferrer\">FADENA</a>). Ich verschmelze sichere <strong>Architektur</strong> und funktionale <strong>Kreativität</strong>, um Lösungen zu entwickeln, die das Geschäft schützen und Benutzer fesseln."
   },
   "about_desc_2": {
     "es": "Aplico <strong>ingeniería</strong> robusta en cada capa. Integro la <strong>seguridad</strong> informática con el <strong>diseño</strong> de interfaces, logrando aplicaciones blindadas por dentro e intuitivas por fuera.",
@@ -56,7 +56,7 @@
     "es": "Web App de alto rendimiento con IA. <strong>Arquitectura</strong> de microservicios diseñada para procesar datos complejos con máxima velocidad.",
     "en": "High-performance Web App with AI. Microservices <strong>architecture</strong> designed to process complex data at maximum speed.",
     "pt": "Web App de alto desempenho com IA. <strong>Arquitetura</strong> de microsserviços projetada para processar dados complexos com máxima velocidade.",
-    "de": "Hochleistungsfähige Web-App mit KI. Microservices-<strong>Architektur</strong> zur Verarbeitung komplexer Daten mit maximaler Geschwindigkeit."
+    "de": "Hochleistungsfähige Web-App con KI. Microservices-<strong>Architektur</strong> zur Verarbeitung komplexer Daten mit maximaler Geschwindigkeit."
   },
   "project6_desc": {
     "es": "Desarrollo basado en estándares web modernos (Web Components). Implementación limpia de internacionalización y temas, demostrando dominio del lenguaje sin librerías.",
@@ -69,10 +69,10 @@
   "contact_title": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
   "contact_button": { "es": "Escribíme", "en": "Email Me", "pt": "Envie um e-mail", "de": "E-Mail an mich" },
   "footer_desc": {
-    "es": "Multidisciplinario por esencia: desarrollo, seguridad y diseño al servicio de soluciones creativas y precisas.",
-    "en": "Multidisciplinary by essence: development, security, and design at the service of creative and precise solutions.",
-    "pt": "Multidisciplinar por essência: desenvolvimento, segurança e design a serviço de soluções criativas e precisas.",
-    "de": "Im Wesentlichen multidisziplinär: Entwicklung, Sicherheit und Design im Dienste kreativer und präziser Lösungen."
+    "es": "Ingeniería de precisión. Soluciones seguras, elegantes y eficientes.",
+    "en": "Precision Engineering. Secure, Elegant, and Efficient Solutions.",
+    "pt": "Engenharia de Precisão. Soluções Seguras, Elegantes e Eficientes.",
+    "de": "Präzisionsingenieurwesen. Sichere, elegante und effiziente Lösungen."
   },
   "footer_connect": { "es": "Conectemos", "en": "Let's Connect", "pt": "Vamos conectar-nos", "de": "Verbinden wir nos" },
   "footer_copyright": {

@@ -12,7 +12,7 @@ export const projects = [
     id: 2,
     title: "UNER E-Commerce",
     descriptionKey: "project2_desc",
-    techStack: ["html", "css", "js", "bootstrap", "react"],
+    techStack: ["html", "css", "js", "bootstrap"],
     repoUrl: "https://github.com/marili-mn/introDevWebUNER",
     demoUrl: "https://marili-mn.github.io/introDevWebUNER/",
     hasPreview: true

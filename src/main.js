@@ -7,7 +7,9 @@ import './components/AboutSection.js'; // New
 import './components/SkillsSection.js';
 import './components/ProjectCard.js';
 import './components/AppFooter.js'; // New
+import './components/ContactButton.js'; // New Contact Button Logic
 import './components/ScrollTopBtn.js'; // New component
+import './components/ToastNotification.js'; // New Toast Component
 
 import { projects } from './data/projectsData.js';
 
