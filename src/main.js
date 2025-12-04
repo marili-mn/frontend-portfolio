@@ -39,6 +39,9 @@ class App {
         gsap.registerPlugin(ScrollToPlugin);
     }
 
+    // Robust Environment Check
+    const isMobile = () => window.innerWidth <= 768 || window.matchMedia('(hover: none)').matches;
+
     // Global Smooth Scroll for all anchor links
     document.addEventListener('click', (e) => {
         const link = e.target.closest('a[href^="#"]');
@@ -53,14 +56,28 @@ class App {
             if (targetElement) {
                 e.preventDefault();
                 
-                // Smooth scroll with GSAP
-                if (window.gsap) {
+                // Adaptive Scroll Logic
+                if (isMobile()) {
+                     // NATIVE SCROLL FOR MOBILE (Robust, hardware accelerated, no conflicts)
+                     // We account for header offset manually since scrollIntoView doesn't support it natively well across all browsers
+                     // or we use the simple version. Let's use window.scrollTo for offset control.
+                     const headerOffset = 100;
+                     const elementPosition = targetElement.getBoundingClientRect().top;
+                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                 
+                     window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
+                     });
+                } else if (window.gsap) {
+                    // GSAP FOR DESKTOP (Fancy, inertia-based, killable by mouse wheel)
                     gsap.to(window, {
                         duration: 1.5,
                         scrollTo: { y: targetElement, offsetY: 100, autoKill: true }, 
                         ease: "power4.out"
                     });
                 } else {
+                    // Fallback
                     targetElement.scrollIntoView({ behavior: 'smooth' });
                 }
 

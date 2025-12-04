@@ -12,6 +12,18 @@ export class ScrollTopBtn extends HTMLElement {
     this.btn.addEventListener('click', (e) => {
       e.preventDefault();
       
+      // Robust Environment Check
+      const isMobile = window.innerWidth <= 768 || window.matchMedia('(hover: none)').matches;
+      
+      if (isMobile) {
+          // Mobile: Native Scroll (Best UX/Performance)
+          window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+          });
+          return;
+      }
+
       // Check if GSAP and ScrollToPlugin are available
       if (window.gsap && window.ScrollToPlugin) {
         
