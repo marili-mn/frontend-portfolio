@@ -10,9 +10,25 @@ export class AppFooter extends HTMLElement {
     this.render();
     this.updateTexts();
     window.addEventListener('language-changed', () => this.updateTexts());
-    
-    // Listen for the global email copy event
     window.addEventListener('email-copied', () => this.highlightEmail());
+
+    // DevSec Toggle Logic
+    const devSecSwitch = this.querySelector('#devsec-toggle');
+    devSecSwitch?.addEventListener('change', (e) => {
+        const consoleComponent = document.querySelector('devsec-console');
+        if (consoleComponent) {
+            // If checked, open; if unchecked, close (though closing happens inside console usually)
+            // Better: Just toggle. But for a switch, sync state is good.
+            if (devSecSwitch.checked) {
+                consoleComponent.open();
+            } else {
+                consoleComponent.close();
+            }
+        }
+        // Reset switch after a delay to simulate "activation" rather than permanent state, 
+        // or keep it on? Let's reset it so it can be clicked again if closed via other means.
+        setTimeout(() => { devSecSwitch.checked = false; }, 500);
+    });
   }
 
   highlightEmail() {
@@ -64,6 +80,16 @@ export class AppFooter extends HTMLElement {
           </div>
           <div class="footer__section footer__copyright">
             <p data-translate="footer_copyright">© 2025 mariDev. Todos los derechos reservados.</p>
+            
+            <!-- DevSec Access Hint -->
+            <div class="devsec-access">
+                <span class="blink-text"><i class="fas fa-terminal"></i> DevSec Mode:</span>
+                <span><kbd class="keycap">Ctrl</kbd> + <kbd class="keycap">Z</kbd></span>
+                <label class="switch" aria-label="Activar consola">
+                  <input type="checkbox" id="devsec-toggle">
+                  <span class="slider"></span>
+                </label>
+            </div>
           </div>
         </div>
       </footer>

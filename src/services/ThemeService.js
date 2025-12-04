@@ -1,50 +1,34 @@
-// Theme Service Singleton
+// Theme Service Singleton (Refactored: Pure State & Events)
 class ThemeService {
     constructor() {
       if (ThemeService.instance) {
         return ThemeService.instance;
       }
       
+      // State initialization from storage or default
       this.theme = localStorage.getItem('portfolio-theme') || 'light';
       this.icon = localStorage.getItem('portfolio-icon') || 'fa-sun';
       
-      // Explicitly set light mode as default for concentration if no preference is stored
+      // Enforce default if clean slate
       if (!localStorage.getItem('portfolio-theme')) {
-        this.theme = 'light';
-        this.icon = 'fa-sun';
-        localStorage.setItem('portfolio-theme', this.theme);
-        localStorage.setItem('portfolio-icon', this.icon);
+        this.saveState(this.theme, this.icon);
       }
 
-      this.init();
-      
       ThemeService.instance = this;
     }
   
     init() {
-      this.applyTheme(this.theme, this.icon);
-      this.initListeners();
+      // Broadcast initial state so listeners can update the UI
+      this.emitChange();
     }
+
+    // Getters for sync access if needed
+    getTheme() { return this.theme; }
+    getIcon() { return this.icon; }
   
-    initListeners() {
-      const btn = document.querySelector('#btn-theme');
-      if (btn) {
-        // We attach event to the parent button
-        btn.parentElement.addEventListener('click', () => this.toggleTheme());
-      }
-    }
-  
-    applyTheme(theme, icon) {
-      document.body.className = theme;
-      const btnIcon = document.querySelector('#btn-theme');
-      if (btnIcon) {
-        btnIcon.className = `fas ${icon}`;
-      }
-      
-      // Save state
+    saveState(theme, icon) {
       localStorage.setItem('portfolio-theme', theme);
       localStorage.setItem('portfolio-icon', icon);
-      
       this.theme = theme;
       this.icon = icon;
     }
@@ -52,7 +36,18 @@ class ThemeService {
     toggleTheme() {
       const newTheme = this.theme === 'light' ? 'dark' : 'light';
       const newIcon = this.theme === 'light' ? 'fa-moon' : 'fa-sun';
-      this.applyTheme(newTheme, newIcon);
+      
+      this.saveState(newTheme, newIcon);
+      this.emitChange();
+    }
+
+    emitChange() {
+        window.dispatchEvent(new CustomEvent('theme-changed', {
+            detail: {
+                theme: this.theme,
+                icon: this.icon
+            }
+        }));
     }
   }
   

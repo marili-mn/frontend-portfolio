@@ -51,17 +51,24 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
 
 3. HOJA DE RUTA (PRÓXIMOS PASOS INMEDIATOS)
 --------------------------------------------------------------------------------
-[ ] FASE 2: REFACTORIZACIÓN ARQUITECTÓNICA (Prioridad Alta)
+[x] FASE 2: REFACTORIZACIÓN ARQUITECTÓNICA (Completada)
     - Objetivo: Desacoplar ThemeService del DOM.
-    - Acción: Implementar patrón de eventos (CustomEvent 'theme-changed') similar
-      al TranslationService.
-    - Beneficio: Código más limpio, testearble y alineado con la promesa de 
-      "arquitectura robusta".
+    - Acción: Implementado patrón de eventos (CustomEvent 'theme-changed') similar
+      al TranslationService. `ThemeService` ahora es un gestor de estado puro.
+    - Beneficio: Código más limpio, sin manipulación directa del DOM desde el servicio.
+      Mejora la testabilidad y alineación con una "arquitectura robusta".
+      (Resolvió un bug de doble toggle silencioso).
 
-[ ] FASE 3: INTEGRACIÓN "DEVSEC" (La Consola)
+[x] FASE 3: INTEGRACIÓN "DEVSEC" (La Consola) (Completada)
     - Objetivo: Conectar la terminal oculta (console.html) con la experiencia principal.
-    - Ideas: Botón de "Modo Hacker" o atajo de teclado (Konami code / Ctrl+~).
-    - Meta: Demostrar habilidades de Ciberseguridad de forma interactiva.
+    - Acciones:
+        - Creación de componente `<devsec-console>` encapsulado con Shadow DOM.
+        - Refactorización de lógica a OOP dentro del componente.
+        - **Internacionalización Total:** Comandos, ayuda, bienvenida y outputs traducidos dinámicamente.
+        - **Theme-Aware:** La terminal responde al tema Claro/Oscuro global.
+        - **Mobile-First:** Layout optimizado, botones táctiles grandes, scroll nativo y teclado virtual safe.
+        - Atajos (`Ctrl+Z`) y Switch visual en footer.
+    - Meta Lograda: Experiencia de "Hacker Mode" pulida y profesional.
 
 [ ] FASE 4: EVOLUCIÓN VISUAL (Timeline de Proyectos)
     - Concepto: Transformar la grilla de proyectos actual en una Línea de Tiempo vertical.

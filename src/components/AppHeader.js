@@ -17,9 +17,14 @@ export class AppHeader extends HTMLElement {
     // Listen for language changes to update own text
     window.addEventListener('language-changed', () => this.updateTexts());
     
-    // Update initial state
+    // Reactive Theme Icon Update
+    window.addEventListener('theme-changed', (e) => {
+        const icon = this.querySelector('#btn-theme');
+        if (icon) icon.className = `fas ${e.detail.icon}`;
+    });
+    
+    // Update initial state (Text only, icon handled by event)
     this.updateTexts();
-    this.updateThemeIcon();
   }
 
   updateTexts() {
@@ -28,14 +33,6 @@ export class AppHeader extends HTMLElement {
       const key = el.getAttribute('data-translate');
       el.textContent = translationService.t(key);
     });
-  }
-
-  updateThemeIcon() {
-    const icon = this.querySelector('#btn-theme');
-    if (icon) {
-      // Assuming themeService stores 'fa-sun' or 'fa-moon'
-      icon.className = `fas ${localStorage.getItem('portfolio-icon') || 'fa-sun'}`;
-    }
   }
 
   initListeners() {

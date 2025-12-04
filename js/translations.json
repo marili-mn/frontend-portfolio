@@ -56,7 +56,7 @@
     "es": "Web App de alto rendimiento con IA. <strong>Arquitectura</strong> de microservicios diseñada para procesar datos complejos con máxima velocidad.",
     "en": "High-performance Web App with AI. Microservices <strong>architecture</strong> designed to process complex data at maximum speed.",
     "pt": "Web App de alto desempenho com IA. <strong>Arquitetura</strong> de microsserviços projetada para processar dados complexos com máxima velocidade.",
-    "de": "Hochleistungsfähige Web-App con KI. Microservices-<strong>Architektur</strong> zur Verarbeitung komplexer Daten mit maximaler Geschwindigkeit."
+    "de": "Hochleistungsfähige Web-App mit KI. Microservices-<strong>Architektur</strong> zur Verarbeitung komplexer Daten mit maximaler Geschwindigkeit."
   },
   "project6_desc": {
     "es": "Desarrollo basado en estándares web modernos (Web Components). Implementación limpia de internacionalización y temas, demostrando dominio del lenguaje sin librerías.",
@@ -81,5 +81,97 @@
     "pt": "© 2025 mariDev. Todos os direitos reservados.",
     "de": "© 2025 mariDev. Alle Rechte vorbehalten."
   },
-  "back_to_top_aria": { "es": "Volver arriba", "en": "Back to top", "pt": "Voltar ao topo", "de": "Nach oben" }
+  "back_to_top_aria": { "es": "Volver arriba", "en": "Back to top", "pt": "Voltar ao topo", "de": "Nach oben" },
+  "console_login": {
+    "es": "Inicio de sesión exitoso",
+    "en": "Successful login",
+    "pt": "Login bem-sucedido",
+    "de": "Erfolgreiche Anmeldung"
+  },
+  "console_welcome_title": {
+    "es": "Mi Portfolio",
+    "en": "My Portfolio",
+    "pt": "Meu Portfólio",
+    "de": "Mein Portfolio"
+  },
+  "console_welcome_text": {
+    "es": "Hola! Bienvenido a mi terminal interactiva. Para ver la lista de comandos ingresá",
+    "en": "Hello! Welcome to my interactive terminal. To see the command list type",
+    "pt": "Olá! Bem-vindo ao meu terminal interativo. Para ver a lista de comandos digite",
+    "de": "Hallo! Willkommen in meinem interaktiven Terminal. Um die Befehlsliste zu sehen, geben Sie ein"
+  },
+  "console_hint": {
+    "es": "Tip: Escribe <span class='command'>exit</span> o presiona <span class='command'>Ctrl+Z</span> para volver.",
+    "en": "Tip: Type <span class='command'>exit</span> or press <span class='command'>Ctrl+Z</span> to return.",
+    "pt": "Dica: Digite <span class='command'>exit</span> ou pressione <span class='command'>Ctrl+Z</span> para voltar.",
+    "de": "Tipp: Geben Sie <span class='command'>exit</span> ein oder drücken Sie <span class='command'>Ctrl+Z</span>, um zurückzukehren."
+  },
+  "console_user": { "es": "invitado", "en": "guest", "pt": "convidado", "de": "gast" },
+  "console_help_title": {
+    "es": "Podes ingresar cualquiera de estos comandos:",
+    "en": "You can enter any of these commands:",
+    "pt": "Você pode inserir qualquer um destes comandos:",
+    "de": "Sie können einen dieser Befehle eingeben:"
+  },
+  "console_cmd_about": {
+    "es": "Sobre mi (Perfil profesional)",
+    "en": "About me (Professional profile)",
+    "pt": "Sobre mim (Perfil profissional)",
+    "de": "Über mich (Berufsprofil)"
+  },
+  "console_cmd_social": {
+    "es": "Listado de mis redes sociales",
+    "en": "List of my social networks",
+    "pt": "Lista das minhas redes sociais",
+    "de": "Liste meiner sozialen Netzwerke"
+  },
+  "console_cmd_skills": {
+    "es": "Las herramientas con las que trabajo",
+    "en": "The tools I work with",
+    "pt": "As ferramentas com que trabalho",
+    "de": "Die Werkzeuge, mit denen ich arbeite"
+  },
+  "console_cmd_education": {
+    "es": "Todo sobre mi formación académica",
+    "en": "All about my academic background",
+    "pt": "Tudo sobre minha formação acadêmica",
+    "de": "Alles über meinen akademischen Hintergrund"
+  },
+  "console_cmd_experience": {
+    "es": "Mi trayectoria profesional",
+    "en": "My professional trajectory",
+    "pt": "Minha trajetória profissional",
+    "de": "Mein beruflicher Werdegang"
+  },
+  "console_cmd_projects": {
+    "es": "Un listado de mis proyectos destacados",
+    "en": "A list of my featured projects",
+    "pt": "Uma lista dos meus projetos em destaque",
+    "de": "Eine Liste meiner ausgewählten Projekte"
+  },
+  "console_cmd_clear": {
+    "es": "Borrar el historial de la terminal",
+    "en": "Clear terminal history",
+    "pt": "Limpar histórico do terminal",
+    "de": "Terminalverlauf löschen"
+  },
+  "console_about_title": { "es": "Sobre mí:", "en": "About me:", "pt": "Sobre mim:", "de": "Über mich:" },
+  "console_about_text": {
+    "es": "Soy Nahuel Marcilli, un Ingeniero Full-Stack y Ciberseguridad. Fusiono arquitectura robusta con diseño intuitivo para crear soluciones digitales que protegen y cautivan.",
+    "en": "I am Nahuel Marcilli, a Full-Stack Engineer and Cybersecurity specialist. I merge robust architecture with intuitive design to create digital solutions that protect and captivate.",
+    "pt": "Sou Nahuel Marcilli, Engenheiro Full-Stack e Cibersegurança. Fundo arquitetura robusta com design intuitivo para criar soluções digitais que protegem e cativam.",
+    "de": "Ich bin Nahuel Marcilli, ein Full-Stack-Ingenieur und Cybersicherheitsspezialist. Ich verbinde robuste Architektur mit intuitivem Design, um digitale Lösungen zu schaffen, die schützen und fesseln."
+  },
+  "console_edu_title": { "es": "Formación:", "en": "Education:", "pt": "Formação:", "de": "Ausbildung:" },
+  "console_edu_degree1_title": { "es": "Licenciatura en Ciberdefensa", "en": "Bachelor in Cyberdefense", "pt": "Bacharelado em Ciberdefesa", "de": "Bachelor in Cyber-Defense" },
+  "console_edu_degree1_desc": { "es": "Especialización en Hacking Ético y Seguridad Informática.", "en": "Specialization in Ethical Hacking and IT Security.", "pt": "Especialização em Hacking Ético e Segurança da Informação.", "de": "Spezialisierung auf Ethical Hacking und IT-Sicherheit." },
+  "console_edu_degree2_title": { "es": "Técnico Universitario en Desarrollo Web", "en": "University Technician in Web Development", "pt": "Técnico Universitário em Desenvolvimento Web", "de": "Universitärstechniker in Webentwicklung" },
+  "console_edu_degree2_desc": { "es": "Ingeniería web, desarrollo frontend y backend.", "en": "Web engineering, frontend and backend development.", "pt": "Engenharia web, desenvolvimento frontend e backend.", "de": "Web-Engineering, Frontend- und Backend-Entwicklung." },
+  "console_exp_title": { "es": "Experiencia:", "en": "Experience:", "pt": "Experiência:", "de": "Erfahrung:" },
+  "console_exp_job1_title": { "es": "Ingeniero Full-Stack (Freelance)", "en": "Full-Stack Engineer (Freelance)", "pt": "Engenheiro Full-Stack (Freelance)", "de": "Full-Stack-Ingenieur (Freiberuflich)" },
+  "console_exp_job1_desc": { "es": "Desarrollo y optimización de soluciones web.", "en": "Development and optimization of web solutions.", "pt": "Desenvolvimento e otimização de soluções web.", "de": "Entwicklung und Optimierung von Web-Lösungen." },
+  "console_exp_job2_title": { "es": "Soporte Técnico y Redes", "en": "Technical Support and Networking", "pt": "Suporte Técnico e Redes", "de": "Technischer Support und Netzwerke" },
+  "console_exp_job2_desc": { "es": "Administración y seguridad de infraestructura.", "en": "Administration and security of infrastructure.", "pt": "Administração e segurança de infraestrutura.", "de": "Verwaltung und Sicherheit der Infrastruktur." },
+  "console_status_ongoing": { "es": "En curso", "en": "Ongoing", "pt": "Em curso", "de": "Laufend" },
+  "console_status_finished": { "es": "Finalizado", "en": "Finished", "pt": "Finalizado", "de": "Abgeschlossen" }
 }

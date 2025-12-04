@@ -1,4 +1,5 @@
 @import 'animations.css';
+@import 'devsec-switch.css';
 
 /*===============
   Global Styles
@@ -22,6 +23,11 @@
 /* Mobile Touch Optimization: Remove 300ms delay on clickable elements */
 a, button, .btn, .nav__hamburger, .scroll-top, input, label {
   touch-action: manipulation;
+}
+
+/* Prevent FOUC for Custom Elements */
+devsec-console:not(:defined) {
+  display: none;
 }
 
 html {

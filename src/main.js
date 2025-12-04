@@ -3,13 +3,14 @@ import { themeService } from './services/ThemeService.js';
 
 // Import components to register them
 import './components/AppHeader.js';
-import './components/AboutSection.js'; // New
+import './components/AboutSection.js';
 import './components/SkillsSection.js';
 import './components/ProjectCard.js';
-import './components/AppFooter.js'; // New
-import './components/ContactButton.js'; // New Contact Button Logic
-import './components/ScrollTopBtn.js'; // New component
-import './components/ToastNotification.js'; // New Toast Component
+import './components/AppFooter.js';
+import './components/ContactButton.js';
+import './components/ScrollTopBtn.js';
+import './components/ToastNotification.js';
+import './components/DevSecConsole.js';
 
 import { projects } from './data/projectsData.js';
 
@@ -19,80 +20,28 @@ class App {
     
     // 1. Load Translations
     await translationService.init();
+
+    // 2. Theme Initialization (Global Listener)
+    window.addEventListener('theme-changed', (e) => {
+        document.body.className = e.detail.theme;
+    });
+    themeService.init(); // Trigger initial application
     
-    // 2. Render Projects (This part is still imperative because we loop data to create elements)
-    // Alternatively, we could make a <project-list> component.
+    // 3. Render Projects
     this.renderProjects();
     
-    // 3. Initialize Anims (GSAP)
+    // 4. Initialize Anims (GSAP)
     this.initAnimations();
 
-    // 4. Global Events (Smooth Scroll)
+    // 5. Global Events (Smooth Scroll, DevSec Console Trigger)
     this.setupGlobalEvents();
 
     console.log('App initialized!');
   }
 
-  setupGlobalEvents() {
-    // Register GSAP Plugin if available
-    if (window.gsap && window.ScrollToPlugin) {
-        gsap.registerPlugin(ScrollToPlugin);
-    }
-
-    // Robust Environment Check
-    const isMobile = () => window.innerWidth <= 768 || window.matchMedia('(hover: none)').matches;
-
-    // Global Smooth Scroll for all anchor links
-    document.addEventListener('click', (e) => {
-        const link = e.target.closest('a[href^="#"]');
-        
-        if (link) {
-            const targetId = link.getAttribute('href');
-            
-            // Ignore empty links or pure '#'
-            if (targetId === '#' || !targetId.startsWith('#')) return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                e.preventDefault();
-                
-                // Adaptive Scroll Logic
-                if (isMobile()) {
-                     // NATIVE SCROLL FOR MOBILE (Robust, hardware accelerated, no conflicts)
-                     // We account for header offset manually since scrollIntoView doesn't support it natively well across all browsers
-                     // or we use the simple version. Let's use window.scrollTo for offset control.
-                     const headerOffset = 100;
-                     const elementPosition = targetElement.getBoundingClientRect().top;
-                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                 
-                     window.scrollTo({
-                         top: offsetPosition,
-                         behavior: "smooth"
-                     });
-                } else if (window.gsap) {
-                    // GSAP FOR DESKTOP (Fancy, inertia-based, killable by mouse wheel)
-                    gsap.to(window, {
-                        duration: 1.5,
-                        scrollTo: { y: targetElement, offsetY: 100, autoKill: true }, 
-                        ease: "power4.out"
-                    });
-                } else {
-                    // Fallback
-                    targetElement.scrollIntoView({ behavior: 'smooth' });
-                }
-
-                // Close Mobile Menu if open (Logic centralized here)
-                const hamburger = document.querySelector('.nav__hamburger');
-                const navList = document.querySelector('.nav__list');
-                const icon = hamburger?.querySelector('i');
-                
-                if (navList && navList.classList.contains('display-nav-list')) {
-                    navList.classList.remove('display-nav-list');
-                    if(icon) icon.className = 'fas fa-bars';
-                }
-            }
-        }
-    });
+  // Utility to check for mobile environment
+  isMobile() {
+    return window.innerWidth <= 768 || window.matchMedia('(hover: none)').matches;
   }
 
   renderProjects() {
@@ -133,6 +82,74 @@ class App {
             );
         });
     }, 100);
+  }
+
+  setupGlobalEvents() {
+    // Register GSAP Plugin if available
+    if (window.gsap && window.ScrollToPlugin) {
+        gsap.registerPlugin(ScrollToPlugin);
+    }
+
+    // Global Smooth Scroll for all anchor links
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href^="#"]');
+        
+        if (link) {
+            const targetId = link.getAttribute('href');
+            
+            // Ignore empty links or pure '#'
+            if (targetId === '#' || !targetId.startsWith('#')) return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                e.preventDefault();
+                
+                // Adaptive Scroll Logic
+                if (this.isMobile()) {
+                     // NATIVE SCROLL FOR MOBILE (Robust, hardware accelerated, no conflicts)
+                     const headerOffset = 100;
+                     const elementPosition = targetElement.getBoundingClientRect().top;
+                     const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                 
+                     window.scrollTo({
+                         top: offsetPosition,
+                         behavior: "smooth"
+                     });
+                } else if (window.gsap) {
+                    // GSAP FOR DESKTOP
+                    gsap.to(window, {
+                        duration: 1.5,
+                        scrollTo: { y: targetElement, offsetY: 100, autoKill: true }, 
+                        ease: "power4.out"
+                    });
+                } else {
+                    // Fallback
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+
+                // Close Mobile Menu if open
+                const hamburger = document.querySelector('.nav__hamburger');
+                const navList = document.querySelector('.nav__list');
+                const icon = hamburger?.querySelector('i');
+                
+                if (navList && navList.classList.contains('display-nav-list')) {
+                    navList.classList.remove('display-nav-list');
+                    if(icon) icon.className = 'fas fa-bars';
+                }
+            }
+        }
+    });
+
+    // DevSec Console Keyboard Trigger (Ctrl + Z)
+    document.addEventListener('keydown', (e) => {
+        if (e.ctrlKey && e.key.toLowerCase() === 'z') {
+            e.preventDefault();
+            const devSecConsole = document.querySelector('devsec-console');
+            if (devSecConsole) {
+                devSecConsole.toggle();
+            }
+        }
+    });
   }
 }
 
