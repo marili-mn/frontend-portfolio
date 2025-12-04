@@ -39,6 +39,11 @@ export class AppHeader extends HTMLElement {
   }
 
   initListeners() {
+    // Variable Declarations for Hamburger Menu (moved here for scope)
+    const hamburger = this.querySelector('.nav__hamburger');
+    const navList = this.querySelector('.nav__list');
+    const hamburgerIcon = hamburger?.querySelector('i');
+
     // Theme Toggle
     const themeBtn = this.querySelector('.btn--theme-toggle');
     themeBtn?.addEventListener('click', () => {
@@ -71,20 +76,13 @@ export class AppHeader extends HTMLElement {
         });
     });
 
-    // Hamburger Menu - Logic for both Click (Desktop) and Touch (Mobile)
-    const toggleMenu = (e) => {
-        // Prevent default to avoid double-firing (ghost clicks) on some devices
-        // but we must be careful not to block scrolling if the user missed the button slightly
-        if (e.type === 'touchstart') e.preventDefault(); 
-        
+    // Hamburger Menu - Standard Click Event (Optimized via CSS touch-action)
+    hamburger?.addEventListener('click', () => {
         navList.classList.toggle('display-nav-list');
         if (hamburgerIcon) {
             hamburgerIcon.className = navList.classList.contains('display-nav-list') ? 'fas fa-times' : 'fas fa-bars';
         }
-    };
-
-    hamburger?.addEventListener('click', toggleMenu);
-    hamburger?.addEventListener('touchstart', toggleMenu, { passive: false });
+    });
 
     // Close nav on link click (mobile UX)
     const navLinks = this.querySelectorAll('.link--nav');

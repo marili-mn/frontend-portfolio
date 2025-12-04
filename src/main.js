@@ -55,38 +55,10 @@ class App {
                 
                 // Smooth scroll with GSAP
                 if (window.gsap) {
-                    // Function to stop scrolling if user interacts
-                    const killScroll = (e) => {
-                        // Don't kill scroll if user is tapping a UI control (Hamburger or ScrollTop)
-                        // This prevents the "kill" logic from eating the click event of the buttons
-                        if (e.type === 'touchstart') {
-                           const target = e.target;
-                           if (target.closest('.nav__hamburger') || target.closest('scroll-top-btn')) {
-                               return; 
-                           }
-                        }
-
-                        gsap.killTweensOf(window);
-                        window.removeEventListener('wheel', killScroll);
-                        window.removeEventListener('touchmove', killScroll);
-                        window.removeEventListener('touchstart', killScroll);
-                    };
-
-                    // Add listeners to detect user interaction
-                    window.addEventListener('wheel', killScroll, { passive: true });
-                    window.addEventListener('touchmove', killScroll, { passive: true });
-                    window.addEventListener('touchstart', killScroll, { passive: true });
-
                     gsap.to(window, {
                         duration: 1.5,
                         scrollTo: { y: targetElement, offsetY: 100, autoKill: true }, 
-                        ease: "power4.out",
-                        onComplete: () => {
-                            // Cleanup listeners when animation finishes naturally
-                            window.removeEventListener('wheel', killScroll);
-                            window.removeEventListener('touchmove', killScroll);
-                            window.removeEventListener('touchstart', killScroll);
-                        }
+                        ease: "power4.out"
                     });
                 } else {
                     targetElement.scrollIntoView({ behavior: 'smooth' });

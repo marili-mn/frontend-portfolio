@@ -9,9 +9,8 @@ export class ScrollTopBtn extends HTMLElement {
     
     window.addEventListener('scroll', () => this.handleScroll());
 
-    const scrollToTop = (e) => {
-      // Prevent default on touch to avoid ghost clicks/delays
-      if (e.cancelable) e.preventDefault();
+    this.btn.addEventListener('click', (e) => {
+      e.preventDefault();
       
       // Check if GSAP and ScrollToPlugin are available
       if (window.gsap && window.ScrollToPlugin) {
@@ -46,10 +45,7 @@ export class ScrollTopBtn extends HTMLElement {
           behavior: 'smooth'
         });
       }
-    };
-
-    this.btn.addEventListener('click', scrollToTop);
-    this.btn.addEventListener('touchstart', scrollToTop, { passive: false });
+    });
   }
 
   handleScroll() {
