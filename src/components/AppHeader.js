@@ -71,17 +71,20 @@ export class AppHeader extends HTMLElement {
         });
     });
 
-    // Hamburger Menu
-    const hamburger = this.querySelector('.nav__hamburger');
-    const navList = this.querySelector('.nav__list');
-    const hamburgerIcon = hamburger?.querySelector('i');
-
-    hamburger?.addEventListener('click', () => {
+    // Hamburger Menu - Logic for both Click (Desktop) and Touch (Mobile)
+    const toggleMenu = (e) => {
+        // Prevent default to avoid double-firing (ghost clicks) on some devices
+        // but we must be careful not to block scrolling if the user missed the button slightly
+        if (e.type === 'touchstart') e.preventDefault(); 
+        
         navList.classList.toggle('display-nav-list');
         if (hamburgerIcon) {
             hamburgerIcon.className = navList.classList.contains('display-nav-list') ? 'fas fa-times' : 'fas fa-bars';
         }
-    });
+    };
+
+    hamburger?.addEventListener('click', toggleMenu);
+    hamburger?.addEventListener('touchstart', toggleMenu, { passive: false });
 
     // Close nav on link click (mobile UX)
     const navLinks = this.querySelectorAll('.link--nav');

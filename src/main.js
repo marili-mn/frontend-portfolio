@@ -56,7 +56,16 @@ class App {
                 // Smooth scroll with GSAP
                 if (window.gsap) {
                     // Function to stop scrolling if user interacts
-                    const killScroll = () => {
+                    const killScroll = (e) => {
+                        // Don't kill scroll if user is tapping a UI control (Hamburger or ScrollTop)
+                        // This prevents the "kill" logic from eating the click event of the buttons
+                        if (e.type === 'touchstart') {
+                           const target = e.target;
+                           if (target.closest('.nav__hamburger') || target.closest('scroll-top-btn')) {
+                               return; 
+                           }
+                        }
+
                         gsap.killTweensOf(window);
                         window.removeEventListener('wheel', killScroll);
                         window.removeEventListener('touchmove', killScroll);
