@@ -173,5 +173,11 @@
   "console_exp_job2_title": { "es": "Soporte Técnico y Redes", "en": "Technical Support and Networking", "pt": "Suporte Técnico e Redes", "de": "Technischer Support und Netzwerke" },
   "console_exp_job2_desc": { "es": "Administración y seguridad de infraestructura.", "en": "Administration and security of infrastructure.", "pt": "Administração e segurança de infraestrutura.", "de": "Verwaltung und Sicherheit der Infrastruktur." },
   "console_status_ongoing": { "es": "En curso", "en": "Ongoing", "pt": "Em curso", "de": "Laufend" },
-  "console_status_finished": { "es": "Finalizado", "en": "Finished", "pt": "Finalizado", "de": "Abgeschlossen" }
+  "console_status_finished": { "es": "Finalizado", "en": "Finished", "pt": "Finalizado", "de": "Abgeschlossen" },
+  "contact_form_intro_note": {
+    "es": "Esta terminal asegura tu comunicación. Puedes optar por tu cliente de correo habitual o utilizar este formulario encriptado.",
+    "en": "This terminal secures your communication. You may use your preferred email client or this encrypted form.",
+    "pt": "Este terminal garante a sua comunicação. Você pode usar seu cliente de e-mail habitual ou este formulário criptografado.",
+    "de": "Dieses Terminal sichert Ihre Kommunikation. Sie können Ihren bevorzugten E-Mail-Client verwenden oder dieses verschlüsselte Formular."
+  }
 }

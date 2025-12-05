@@ -8,6 +8,7 @@ import './components/SkillsSection.js';
 import './components/ProjectCard.js';
 import './components/AppFooter.js';
 import './components/ContactButton.js';
+import './components/ContactForm.js';
 import './components/ScrollTopBtn.js';
 import './components/ToastNotification.js';
 import './components/DevSecConsole.js';

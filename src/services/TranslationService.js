@@ -1,3 +1,5 @@
+import { fallbackTranslations } from '../data/fallbackTranslations.js';
+
 // Singleton pattern for Translation Service
 class TranslationService {
   constructor() {
@@ -8,31 +10,53 @@ class TranslationService {
     this.currentLang = localStorage.getItem('portfolio-lang') || 'es';
     this.translations = {};
     this.loaded = false;
-    this.observers = new Set(); // Pattern Observer for components
     TranslationService.instance = this;
   }
 
   async init() {
     try {
-      const response = await fetch('./js/translations.json');
-      if (!response.ok) throw new Error('Failed to load translations');
+      // Attempt to fetch fresh JSON with cache busting
+      const response = await fetch(`./js/translations.json?v=${Date.now()}`);
+      if (!response.ok) throw new Error('Failed to load translations JSON');
       this.translations = await response.json();
+      console.log('TranslationService: JSON loaded successfully');
+    } catch (error) {
+      console.warn('TranslationService: JSON load failed, using fallbacks.', error);
+      // We don't set this.translations to fallbackTranslations directly to allow mixed usage
+      // (e.g. partial JSON load + fallbacks)
+    } finally {
       this.loaded = true;
       this.setLanguage(this.currentLang);
-    } catch (error) {
-      console.error('TranslationService Error:', error);
-      // Fallback could be implemented here
+      window.dispatchEvent(new CustomEvent('translations-loaded'));
     }
   }
 
   /**
    * Returns the translation for a given key in the current language
-   * @param {string} key - The translation key (e.g., "nav_projects")
+   * Robust Waterfall: JSON -> Fallback(Current Lang) -> Fallback(EN) -> Key
+   * @param {string} key - The translation key
    * @returns {string} - The translated text
    */
   t(key) {
-    if (!this.translations[key]) return key;
-    return this.translations[key][this.currentLang] || key;
+    const lang = this.currentLang;
+
+    // 1. Try loaded JSON
+    if (this.translations[key] && this.translations[key][lang]) {
+        return this.translations[key][lang];
+    }
+
+    // 2. Try Fallback Dictionary (Current Language)
+    if (fallbackTranslations[key] && fallbackTranslations[key][lang]) {
+        return fallbackTranslations[key][lang];
+    }
+
+    // 3. Try Fallback Dictionary (English - Ultimate Safety)
+    if (fallbackTranslations[key] && fallbackTranslations[key]['en']) {
+        return fallbackTranslations[key]['en'];
+    }
+
+    // 4. Give up and return key (Should rarely happen now)
+    return key;
   }
 
   setLanguage(lang) {

@@ -86,6 +86,24 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - Layout limpio y accesible sin bloquear el scroll.
     - Detalle: Implementación de icono de texto "ASM" para Assembler, manteniendo consistencia visual.
 
+[x] FASE 3.9: SISTEMA DE CONTACTO "SECURE TERMINAL" (Completada)
+    - Objetivo: Eliminar mailto simple y ofrecer una experiencia inmersiva "DevSec".
+    - **Coreografía UX:** Clic -> Copia Clipboard -> Toast Feedback -> Highlight Email (Footer) -> Pausa Dramática -> Apertura de Terminal.
+    - **Componente `<contact-form>`:** 
+        - Ventana modal estilo Sistema Operativo/Terminal.
+        - Botones de control reales (Minimizar, Maximizar, Cerrar).
+        - Inputs estilizados como consola de comandos.
+        - Integración con **Formspree** para backend serverless.
+    - **Traducción Resiliente:** Mensajes de sistema en 4 idiomas con fallback automático.
+
+[x] INFRAESTRUCTURA: RESILIENCIA EN TRADUCCIONES (Completada)
+    - Problema: Fallos en carga de JSON o caché agresivo causaban textos rotos (`lbl_name`).
+    - **Solución Híbrida (Dirty-Robust):** 
+        - Capa 1: `translations.json` con cache-busting (`?v=timestamp`).
+        - Capa 2: `fallbackTranslations.js` embebido en código con el 100% de los textos críticos.
+        - Lógica Waterfall: Si JSON falla -> Usa JS Local -> Usa Inglés.
+    - Resultado: Cero "FOUC" (Flash of Unstyled Content) de textos.
+
 [ ] FASE 4: EVOLUCIÓN VISUAL (Timeline de Proyectos)
     - Concepto: Transformar la grilla de proyectos actual en una Línea de Tiempo vertical.
     - Objetivo: Narrar visualmente la evolución técnica ("El Camino del Ingeniero").

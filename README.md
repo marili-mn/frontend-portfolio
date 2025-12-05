@@ -23,11 +23,15 @@ La UI está encapsulada en componentes reutilizables y autónomos ubicados en `s
 *   `<app-header>`: Maneja la navegación y controles de estado.
 *   `<skills-section>`: Genera la grilla de habilidades desde datos estructurados.
 *   `<contact-button>`: Botón inteligente con feedback visual y copiado al portapapeles.
+*   `<contact-form>`: **[Nuevo]** Ventana modal estilo "Terminal Segura" que orquesta el envío de mensajes vía Formspree con una UX inmersiva.
 *   `<toast-notification>`: Sistema de notificaciones no intrusivas.
 
-### 2. Gestión de Estado (Servicios Singleton)
-La lógica de negocio y el estado global están desacoplados de la vista mediante servicios en `src/services/`.
-*   **`TranslationService`:** Maneja la internacionalización (i18n). Carga archivos JSON y notifica cambios de idioma a través de `CustomEvents`.
+### 2. Gestión de Estado & Resiliencia
+La lógica de negocio y el estado global están desacoplados mediante servicios en `src/services/`.
+*   **`TranslationService`:** Sistema de internacionalización híbrido y resiliente.
+    *   **Capa 1:** Intenta cargar `translations.json` (Live update).
+    *   **Capa 2:** Si falla la red o el caché, activa `fallbackTranslations.js` (Hardcoded backup).
+    *   Garantiza que la UI nunca muestre claves de error (`lbl_name`) incluso offline.
 *   **`ThemeService`:** Gestiona el tema (Claro/Oscuro) de forma reactiva mediante eventos.
 *   **`ContactService`:** Centraliza la lógica de contacto (email, mailto, clipboard) para consistencia en toda la app.
 
@@ -63,10 +67,10 @@ frontend-portfolio/
 ## ✨ Características Clave
 
 1.  **DevSec Terminal Integration:** Una consola de comandos completa y oculta (`Ctrl + Z` o UI Toggle) que permite explorar el perfil mediante comandos tipo bash (`help`, `projects`, `skills`), totalmente traducida y con temas dinámicos.
-2.  **Sistema de Traducción Dinámico:** Cambio de idioma en tiempo real (Español, Inglés, Portugués, Alemán) afectando textos, consola y atributos ARIA.
-3.  **Mobile-First Optimization:** Navegación nativa en móviles, menú overlay optimizado, áreas de toque ampliadas y scroll híbrido (Nativo en móvil, GSAP en escritorio) para máximo rendimiento.
-4.  **Theming Avanzado:** Sistema de colores semánticos que adapta toda la interfaz, incluida la terminal, al modo Claro/Oscuro.
-5.  **UX/Micro-interacciones:** Feedback inmediato en acciones (copiado de email, toasts, animaciones de footer).
+2.  **Secure Contact Workflow:** Sistema de contacto "Sin Fricción". Orquesta una coreografía de UX: Copia al portapapeles -> Feedback Visual -> Pausa -> Apertura de una **Terminal de Contacto Modal** (sin salir de la web).
+3.  **Sistema de Traducción Resiliente:** Cambio de idioma en tiempo real (Español, Inglés, Portugués, Alemán) con arquitectura de "Doble Capa" (JSON + JS Fallback) para asegurar 100% de disponibilidad de textos.
+4.  **Mobile-First Optimization:** Navegación nativa en móviles, menú overlay optimizado, áreas de toque ampliadas y scroll híbrido (Nativo en móvil, GSAP en escritorio) para máximo rendimiento.
+5.  **Theming Avanzado:** Sistema de colores semánticos que adapta toda la interfaz, incluida la terminal y los formularios, al modo Claro/Oscuro.
 
 ## 🛠️ Instalación y Uso
 

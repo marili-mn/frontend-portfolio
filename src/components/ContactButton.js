@@ -20,40 +20,41 @@ export class ContactButton extends HTMLElement {
 
   async handleClick(e) {
     const target = e.target.closest('.btn');
-    if (target) {
-       e.preventDefault();
-       
-       // Helper for delays
-       const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+    if (!target) return;
+    
+    e.preventDefault();
 
-       // 1. Immediate Feedback: Copy & Change Button State
-       await ContactService.copyToClipboard();
-       
-       // Trigger Toast
-       window.dispatchEvent(new CustomEvent('show-toast', { 
-         detail: { message: '¡Email copiado al portapapeles!' } 
-       }));
-       
-       // Give toast time to appear before button changes
-       await delay(400);
+    // Helper para pausas
+    const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-       // Visual feedback on button (color only, no text change to keep it clean)
-       this.classList.add('btn--success');
+    // 1. Copiar al portapapeles (Acción inmediata)
+    await ContactService.copyToClipboard();
 
-       // 2. Short Delay before animating footer (allows user to register button change)
-       await delay(300);
-       
-       // Trigger Footer Animation
-       window.dispatchEvent(new CustomEvent('email-copied'));
+    // 2. Feedback Visual: Toast
+    window.dispatchEvent(new CustomEvent('show-toast', { 
+        detail: { message: translationService.t('email_copied') || 'Email copiado' } 
+    }));
 
-       // 3. Longer Delay before opening mail client (so animation is seen)
-       await delay(800);
+    // 3. Feedback Visual: Highlight en Footer (Coreografía visual)
+    // Disparamos el evento para que el texto del email en el footer haga el efecto "pulse"
+    window.dispatchEvent(new CustomEvent('email-copied'));
+    
+    // Cambiamos el estado del botón temporalmente
+    this.classList.add('btn--success');
 
-       // Restore Button State
-       this.classList.remove('btn--success');
+    // 4. Pausa Dramática (para que el usuario vea el highlight y el toast)
+    await wait(1000);
 
-       // Open Client
-       window.location.href = ContactService.getMailtoLink();
+    // Restaurar botón
+    this.classList.remove('btn--success');
+
+    // 5. Abrir el Formulario Terminal
+    const contactForm = document.querySelector('contact-form');
+    if (contactForm) {
+        contactForm.open();
+    } else {
+        // Fallback
+        window.location.href = ContactService.getMailtoLink();
     }
   }
 
