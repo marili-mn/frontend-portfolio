@@ -70,6 +70,22 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - Atajos (`Ctrl+Z`) y Switch visual en footer.
     - Meta Lograda: Experiencia de "Hacker Mode" pulida y profesional.
 
+[x] FASE 3.5: REFINAMIENTO VISUAL (Skills 2.0 - Math Engineering)
+    - Concepto: "Ingeniería de Precisión". Transformar la lista de skills en un plano técnico interactivo.
+    - Estética: Fondo de papel milimetrado (Grid Paper), tipografía Monospace pura, iconos desaturados.
+    - **Interacción Desktop High-End:**
+        - Cursor Crosshair Global (Ejes X/Y infinitos) siguiendo al mouse.
+        - Tarjetas con sistemas de coordenadas locales y ticks de regla.
+        - Feedback en tiempo real de posición (X:120 Y:45) con transición suave desde "READY".
+    - **Optimización (Performance):**
+        - Uso de `requestAnimationFrame` para sincronizar las animaciones con el refresco de pantalla (60fps).
+        - Eliminación de lag mediante segregación de lógica pesada.
+    - **Mobile-First Real:**
+        - Desactivación condicional de efectos de mouse (`@media (hover: none)`).
+        - Feedback Táctil: Las tarjetas reaccionan al toque (`:active`) mostrando sus datos técnicos.
+        - Layout limpio y accesible sin bloquear el scroll.
+    - Detalle: Implementación de icono de texto "ASM" para Assembler, manteniendo consistencia visual.
+
 [ ] FASE 4: EVOLUCIÓN VISUAL (Timeline de Proyectos)
     - Concepto: Transformar la grilla de proyectos actual en una Línea de Tiempo vertical.
     - Objetivo: Narrar visualmente la evolución técnica ("El Camino del Ingeniero").
@@ -88,6 +104,18 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
     - Mensaje Subliminal: "El programador con criterio de diseñador".
     - Contenido: Shaders, simulaciones físicas, visualizadores de datos, herramientas CLI web.
     - Requisito: Componentes interactivos in-situ (no links externos).
+
+[ ] FASE 6: EL CENTRO DE CONTROL (DevSec Admin Panel)
+    - Concepto: CMS Headless "Self-Hosted" con Arquitectura Híbrida.
+    - Stack: Supabase (Postgres + Auth) + Cliente JS Inteligente (Cache-First).
+    - Resiliencia: Estrategia "Fail-Safe". Si el backend cae, el sitio carga desde caché local/backup estático.
+    - Gestión de Assets: Modelo Híbrido.
+        - Metadatos y textos: En Supabase DB.
+        - Assets pesados (Imágenes/Zips/Demos): Referenciados vía URL desde fuentes externas (GitHub/Netlify/CDNs) o Supabase Storage para archivos ligeros.
+    - Funcionalidad:
+        - Área Home: Edición en caliente de textos, links y bio.
+        - Área Artefactos: CRUD con campo dual (Upload o URL Externa) para máxima flexibilidad.
+        - Seguridad: Ruta oculta, Login real y RLS (Row Level Security).
 
 [ ] OPTIMIZACIONES TÉCNICAS
     - Lazy Loading avanzado de imágenes.

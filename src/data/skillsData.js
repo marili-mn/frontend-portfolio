@@ -21,7 +21,7 @@ export const skills = {
     ],
     other: [
       // Lenguajes Estrictos / Bajo Nivel
-      { name: "Assembler", icon: null, customImg: "https://img.shields.io/badge/Assembler-8086-orange?style=flat-square" }, 
+      { name: "Assembler", icon: null, textIcon: "ASM" }, 
       { name: "C", icon: "c" },
       { name: "C++", icon: "cpp" },
       
