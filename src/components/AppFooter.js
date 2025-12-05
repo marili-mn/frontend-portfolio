@@ -75,7 +75,6 @@ export class AppFooter extends HTMLElement {
             <div class="footer__links">
               <a href="https://github.com/marili-mn" target="_blank" rel="noopener noreferrer" class="link link--icon" aria-label="GitHub"><i class="fab fa-github"></i></a>
               <a href="https://www.linkedin.com/in/nahuel-marcilli" target="_blank" rel="noopener noreferrer" class="link link--icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
-              <a href="${mailto}" class="link link--icon" aria-label="Email"><i class="fas fa-envelope"></i></a>
             </div>
           </div>
           <div class="footer__section footer__copyright">

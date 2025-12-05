@@ -104,25 +104,48 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - Lógica Waterfall: Si JSON falla -> Usa JS Local -> Usa Inglés.
     - Resultado: Cero "FOUC" (Flash of Unstyled Content) de textos.
 
-[ ] FASE 4: EVOLUCIÓN VISUAL (Timeline de Proyectos)
-    - Concepto: Transformar la grilla de proyectos actual en una Línea de Tiempo vertical.
-    - Objetivo: Narrar visualmente la evolución técnica ("El Camino del Ingeniero").
-    - UX: Permitir ver el crecimiento desde proyectos básicos hasta arquitecturas complejas.
-    - Implementación: CSS Grid/Flex con conectores visuales (líneas/puntos) y orden cronológico inverso.
+[x] FASE 4: EVOLUCIÓN VISUAL (BitStream Stack Timeline) (Completada)
+    - Concepto: Transformar la grilla de proyectos en una "Pila de Ejecución" visual, manteniendo la consistencia del `grid` responsive.
+    - **Metáfora Técnica:** La trayectoria profesional como un stack LIFO (Last In, First Out).
+    - **Nodos Intuitivos:**
+        - Nodo Superior: **"ACTUALIDAD"** (marca el punto más reciente).
+        - Nodo Inferior: **"ORÍGENES"** (marca el inicio de la pila).
+    - **Conexión Visual (BitStream):** Una sutil línea vertical que atraviesa la grilla de proyectos, conectando visualmente "ACTUALIDAD" con "ORÍGENES". En móvil, la línea se adapta a una disposición lateral.
+    - **Detalle en Tarjetas:** Cada `<project-card>` incluye un `dateRange` (ej. "2025 - Present") con tipografía técnica para reforzar el flujo temporal.
+    - **UX:** Espaciado mejorado entre tarjetas para una "respiración" óptima y mayor legibilidad, eliminando cualquier superposición o sensación de aglomeración.
+    - **Implementación:** `ProjectsTimeline` Web Component orquestando la presentación, `ProjectCard` adaptado para fechas, y CSS (`timeline.css`) para la estética del stack y la responsividad.
+
+[ ] FASE 4.5: CRYPTO-PUZZLE & WASM CORE (Ingeniería Avanzada)
+    - Concepto: Elevar la barra de seguridad mediante "Criptografía en el Cliente" y "Proof of Work (PoW)".
+    - **Arquitectura de Seguridad (Backend-less):**
+        - El email no existe en texto plano. Está cifrado con **AES-GCM**.
+        - La llave de desencriptación no está en el código. Es el resultado de un hash que el navegador debe "minar".
+        - Estrategia: Aumentar el "Costo Económico del Ataque" para bots mediante gasto de CPU local.
+    - **Tecnología (El "Hardcore"):**
+        - Módulo **WebAssembly (Wasm)** escrito en **C++ o Rust**.
+        - Responsabilidad del Wasm: Ejecutar la minería (PoW) y la desencriptación en un entorno binario aislado y de alto rendimiento.
+        - Uso de Web Workers para no congelar la UI principal.
+    - **UX/UI: "Slide-to-Decrypt":**
+        - Reemplazo del checkbox por un **Slider Mecánico**.
+        - Metáfora: "Desbloquear una bóveda física".
+        - Feedback: Mientras el usuario desliza (intención humana), el Wasm mina el hash en segundo plano.
+        - Visual: Efecto de "fuerza bruta" visual en el texto censurado hasta que se revela.
 
 4. FUTURAS EXPANSIONES (BACKLOG)
 --------------------------------------------------------------------------------
-[ ] FASE 5: ARTEFACTOS (Artifacts / The Sandbox)
-    - Concepto: "Galería de Ingeniería Visual" - El laboratorio experimental.
-    - Definición: Colección de prototipos experimentales donde la lógica algorítmica 
-      se encuentra con la estética.
-    - UX/UI Strategy: "Context Switching" -> Al entrar a esta sección, la interfaz 
-      muta a un estilo Industrial-Brutalista (Variables CSS: radius 0, tipografía mono, 
-      sombras duras, grids visibles) para evocar un "panel de control de maquinaria".
-    - Mensaje Subliminal: "El programador con criterio de diseñador".
-    - Contenido: Shaders, simulaciones físicas, visualizadores de datos, herramientas CLI web.
-    - Requisito: Componentes interactivos in-situ (no links externos).
+[x] FASE 5: REINGENIERÍA DE IDENTIDAD (Cipher-Text Blocks) (Completada)
+    - Concepto: Transformar el "Sobre Mí" en una impactante Portada Editorial que revela capas de información de forma interactiva y legible.
+    - **Estética: Academic Noir / Ciber-Editorial Minimalista.**
+    - **Estilo Editorial High-Tech:**
+        - **Tipografía Display Gigante:** El título de fondo ("PROFILE" o "SOBRE MÍ") actúa como un elemento gráfico prominente y legible en todos los idiomas y modos (claro/oscuro).
+        - **Layout Asimétrico:** Texto descriptivo en una columna estrecha, elegante, con amplio "aire" alrededor.
+        - **Legibilidad:** El texto principal siempre es claro y legible.
+    - **UX/UI: "Decodificación de Palabras Clave" (Cipher-Text Blocks):**
+        - **Mecanismo:** Palabras clave específicas (marcadas con `<strong>`) dentro de la biografía aparecen inicialmente legibles.
+        - **Interacción:** Al hacer scroll y la sección entra en el viewport, o al pasar el mouse sobre la palabra/bloque, esta se "desencripta" visualmente (efecto glitch), revelando la palabra legible con una animación.
+        - **Metáfora:** La información clasificada se revela bajo escrutinio, reforzando la narrativa "DevSec" sin sacrificar la legibilidad.
 
+4. FUTURAS EXPANSIONES (BACKLOG)
 [ ] FASE 6: EL CENTRO DE CONTROL (DevSec Admin Panel)
     - Concepto: CMS Headless "Self-Hosted" con Arquitectura Híbrida.
     - Stack: Supabase (Postgres + Auth) + Cliente JS Inteligente (Cache-First).
@@ -138,10 +161,6 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
 [ ] OPTIMIZACIONES TÉCNICAS
     - Lazy Loading avanzado de imágenes.
     - Tests unitarios para los servicios core (Translation/Theme).
-
-[ ] CONTACTO SEGURO
-    - Implementar formulario funcional (actualmente es mailto).
-    - Añadir validación y quizás un pequeño "captcha" propio (guiño a seguridad).
 
 ================================================================================
 NOTAS DE DISEÑO

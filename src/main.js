@@ -6,6 +6,7 @@ import './components/AppHeader.js';
 import './components/AboutSection.js';
 import './components/SkillsSection.js';
 import './components/ProjectCard.js';
+import './components/ProjectsTimeline.js';
 import './components/AppFooter.js';
 import './components/ContactButton.js';
 import './components/ContactForm.js';

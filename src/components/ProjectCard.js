@@ -63,7 +63,7 @@ export class ProjectCard extends HTMLElement {
   }
 
   render() {
-    const { title, descriptionKey, techStack, repoUrl, demoUrl } = this.projectData;
+    const { title, descriptionKey, techStack, repoUrl, demoUrl, dateRange } = this.projectData;
     
     // We import FontAwesome logic into shadow DOM or use external stylesheet link
     const styles = `
@@ -163,6 +163,25 @@ export class ProjectCard extends HTMLElement {
           font-weight: 700;
           letter-spacing: -0.02em;
         }
+
+        .project__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .project__date {
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: var(--clr-accent);
+            background: rgba(0,0,0,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+            border: 1px solid var(--clr-border-light);
+            white-space: nowrap;
+            margin-left: 10px;
+        }
         
         .project__description {
             color: var(--clr-text-secondary);
@@ -241,7 +260,10 @@ export class ProjectCard extends HTMLElement {
       ${styles}
       <article class="project with-preview">
         <div class="project-content">
-          <h3>${title}</h3>
+          <div class="project__header">
+              <h3>${title}</h3>
+              <span class="project__date">${dateRange || '2024'}</span>
+          </div>
           <p class="project__description">${translationService.t(descriptionKey)}</p>
           <div class="project__stack">
             ${this.getTechIcons(techStack)}

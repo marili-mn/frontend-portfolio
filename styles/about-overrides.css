@@ -1,0 +1,10 @@
+/* About Section Overrides/Global Tweaks if needed */
+/* Most styles are encapsulated in Shadow DOM of AboutSection.js */
+
+/* Ensure the section container itself doesn't restrict the full-width component */
+.about {
+    padding: 0 !important;
+    margin-top: 80px !important; /* Keep vertical rhythm */
+    width: 100%;
+    max-width: 100% !important; /* Break out of main container constraint for this section */
+}

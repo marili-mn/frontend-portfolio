@@ -1,39 +1,13 @@
 export const projects = [
   {
-    id: 1,
-    title: "n1Human E-Commerce",
-    descriptionKey: "project1_desc", // Key for translation
+    id: 6,
+    title: "Personal portfolio",
+    descriptionKey: "project6_desc",
     techStack: ["html", "css", "js", "bootstrap"],
-    repoUrl: "https://github.com/marili-mn/n1human-eCommerce",
-    demoUrl: "https://n1human.netlify.app/",
-    hasPreview: true
-  },
-  {
-    id: 2,
-    title: "UNER E-Commerce",
-    descriptionKey: "project2_desc",
-    techStack: ["html", "css", "js", "bootstrap"],
-    repoUrl: "https://github.com/marili-mn/introDevWebUNER",
-    demoUrl: "https://marili-mn.github.io/introDevWebUNER/",
-    hasPreview: true
-  },
-  {
-    id: 3,
-    title: "Skill-up E-Learning",
-    descriptionKey: "project3_desc",
-    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
-    repoUrl: "https://github.com/No-Country-simulation/c20-14-m-python-react",
-    demoUrl: "https://skillup-client.vercel.app/",
-    hasPreview: true
-  },
-  {
-    id: 4,
-    title: "Guau & Miau ONG Web",
-    descriptionKey: "project4_desc",
-    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
-    repoUrl: "https://github.com/No-Country-simulation/c24-22-m-webapp",
-    demoUrl: "https://astonishing-hamster-6268c8.netlify.app/",
-    hasPreview: true
+    repoUrl: "https://github.com/marili-mn/frontend-portfolio",
+    demoUrl: "https://marili-mn.github.io/frontend-portfolio/",
+    hasPreview: true,
+    dateRange: "2025 - Present"
   },
   {
     id: 5,
@@ -42,15 +16,47 @@ export const projects = [
     techStack: ["html", "css", "js", "bootstrap", "react", "python", "fastapi", "nodejs"],
     repoUrl: "https://github.com/joseorteha/ClickMail",
     demoUrl: "https://click-mail.netlify.app/",
-    hasPreview: true
+    hasPreview: true,
+    dateRange: "Oct 2024 - Dic 2024"
   },
   {
-    id: 6,
-    title: "Personal portfolio",
-    descriptionKey: "project6_desc",
+    id: 4,
+    title: "Guau & Miau ONG Web",
+    descriptionKey: "project4_desc",
+    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
+    repoUrl: "https://github.com/No-Country-simulation/c24-22-m-webapp",
+    demoUrl: "https://astonishing-hamster-6268c8.netlify.app/",
+    hasPreview: true,
+    dateRange: "Jun 2024 - Ago 2024"
+  },
+  {
+    id: 3,
+    title: "Skill-up E-Learning",
+    descriptionKey: "project3_desc",
+    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
+    repoUrl: "https://github.com/No-Country-simulation/c20-14-m-python-react",
+    demoUrl: "https://skillup-client.vercel.app/",
+    hasPreview: true,
+    dateRange: "Feb 2024 - May 2024"
+  },
+  {
+    id: 2,
+    title: "UNER E-Commerce",
+    descriptionKey: "project2_desc",
     techStack: ["html", "css", "js", "bootstrap"],
-    repoUrl: "https://github.com/marili-mn/frontend-portfolio",
-    demoUrl: "https://marili-mn.github.io/frontend-portfolio/",
-    hasPreview: true
+    repoUrl: "https://github.com/marili-mn/introDevWebUNER",
+    demoUrl: "https://marili-mn.github.io/introDevWebUNER/",
+    hasPreview: true,
+    dateRange: "2023 - 2024"
+  },
+  {
+    id: 1,
+    title: "n1Human E-Commerce",
+    descriptionKey: "project1_desc", // Key for translation
+    techStack: ["html", "css", "js", "bootstrap"],
+    repoUrl: "https://github.com/marili-mn/n1human-eCommerce",
+    demoUrl: "https://n1human.netlify.app/",
+    hasPreview: true,
+    dateRange: "2022 - 2023"
   }
 ];

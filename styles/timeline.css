@@ -1,0 +1,148 @@
+/* Timeline Container */
+.timeline-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Nodes (Head & Root) */
+.timeline-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  z-index: 2;
+}
+
+.node-label {
+  font-family: 'Consolas', 'Monaco', monospace;
+  font-size: 0.9rem;
+  color: var(--clr-accent);
+  letter-spacing: 1px;
+  font-weight: bold;
+  background: var(--clr-bg);
+  padding: 5px 10px;
+  border: 1px solid var(--clr-accent);
+  border-radius: 4px;
+}
+
+.node-indicator {
+  width: 12px;
+  height: 12px;
+  background-color: var(--clr-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 10px var(--clr-accent);
+}
+
+.head-node .node-indicator {
+  animation: pulse-node 2s infinite;
+}
+
+@keyframes pulse-node {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0.7); }
+  70% { box-shadow: 0 0 0 10px rgba(0, 255, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 153, 0); }
+}
+
+/* The Stack (Body) */
+.timeline-stack {
+  position: relative;
+  width: 100%;
+  padding: 40px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
+  gap: 80px; /* Increased gap for more breathing room */
+}
+
+/* The Central Line (Background Guide) */
+.timeline-line {
+  position: absolute;
+  top: -10px; /* Connect to head */
+  bottom: -10px; /* Connect to root */
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, 
+    var(--clr-accent) 0%, 
+    var(--clr-border-light) 15%, 
+    var(--clr-border-light) 85%, 
+    var(--clr-accent) 100%
+  );
+  transform: translateX(-50%);
+  z-index: 0;
+  opacity: 0.3;
+}
+
+/* Timeline Items */
+.timeline-item {
+  position: relative;
+  z-index: 1;
+}
+
+/* Connector (Small line from card to center spine - Optional, maybe for single column) */
+/* For grid layout, the "spine" is conceptual mostly, or acts as a background wire */
+
+/* Responsive Logic */
+@media (max-width: 768px) {
+  /* On mobile, the line goes to the left */
+  .timeline-line {
+    left: 20px;
+  }
+  
+  .timeline-stack {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px; /* Space for line */
+    gap: 80px; /* Increased mobile gap */
+  }
+
+  .timeline-node {
+    align-items: flex-start;
+    padding-left: 7px; /* Align center of indicator with line at 20px */
+  }
+  
+  /* Adjust indicators to align with line */
+  .node-indicator {
+    margin-left: 6px; 
+  }
+  
+  .timeline-item::before {
+    /* Horizontal connector from line to card */
+    content: '';
+    position: absolute;
+    top: 30px;
+    left: -30px;
+    width: 30px;
+    height: 2px;
+    background: var(--clr-border-light);
+  }
+  
+  .timeline-item::after {
+    /* Dot on the line */
+    content: '';
+    position: absolute;
+    top: 26px;
+    left: -35px; /* -30px line - 5px half dot */
+    width: 10px;
+    height: 10px;
+    background: var(--clr-bg);
+    border: 2px solid var(--clr-accent);
+    border-radius: 50%;
+    z-index: 2;
+  }
+}
+
+@media (min-width: 769px) {
+    /* Desktop Grid tweaks if we want to keep the center line visible */
+    /* If grid fills space, line might be covered. */
+    /* Let's make the line subtle background or just decorative spine */
+    
+    .timeline-line {
+        /* In grid mode, maybe the line isn't physically connecting everything 
+           but stands as a central pillar behind the grid */
+        opacity: 0.1; 
+    }
+}
