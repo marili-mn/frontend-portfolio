@@ -10,8 +10,50 @@ export class ContactButton extends HTMLElement {
     this.render();
     this.addEventListener('click', this.handleClick);
     
-    // Escuchar cambios de idioma para actualizar el texto del botón
+    // Escuchar cambios de idioma
     window.addEventListener('language-changed', () => this.updateText());
+    
+    // Init Glitch Effect
+    const btn = this.querySelector('.btn');
+    const span = this.querySelector('span');
+    
+    if (btn && span) {
+        btn.addEventListener('mouseenter', () => {
+            // Ensure we have the latest text before glitching
+            if(!span.getAttribute('data-original')) {
+                span.setAttribute('data-original', span.textContent);
+            }
+            this.glitchEffect(span);
+        });
+    }
+  }
+
+  glitchEffect(element) {
+    // Si no tiene texto original guardado (o ha cambiado), úsalo
+    let originalText = element.getAttribute('data-original') || element.textContent;
+    const chars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+    let iterations = 0;
+    
+    if(element.interval) clearInterval(element.interval);
+
+    element.interval = setInterval(() => {
+        element.innerText = originalText
+            .split("")
+            .map((letter, index) => {
+                if (index < iterations) {
+                    return originalText[index];
+                }
+                return chars[Math.floor(Math.random() * chars.length)];
+            })
+            .join("");
+
+        if (iterations >= originalText.length) {
+            clearInterval(element.interval);
+            element.innerText = originalText; 
+        }
+
+        iterations += 1 / 2; // Speed of resolution
+    }, 30);
   }
 
   disconnectedCallback() {
@@ -61,20 +103,21 @@ export class ContactButton extends HTMLElement {
   updateText() {
     const btnText = this.querySelector('[data-translate]');
     if (btnText) {
-        // Asumimos que el atributo data-translate está en un span o en el mismo botón
         const key = btnText.getAttribute('data-translate');
-        btnText.textContent = translationService.t(key);
+        const newText = translationService.t(key);
+        btnText.textContent = newText;
+        // Update the source of truth for the glitch
+        btnText.setAttribute('data-original', newText);
     }
   }
 
   render() {
-    // Leemos clases opcionales pasadas al componente para estilizado (ej: "btn--outline")
-    const extraClasses = this.getAttribute('class-name') || 'btn--outline';
+    // Leemos clases opcionales pasadas al componente para estilizado (ej: "btn--editorial")
+    const extraClasses = this.getAttribute('class-name') || 'btn--editorial';
     const translateKey = this.getAttribute('data-translate-key') || 'contact_button';
 
     this.innerHTML = `
       <a href="${ContactService.getMailtoLink()}" class="btn ${extraClasses}" role="button">
-        <i class="fas fa-envelope"></i>
         <span data-translate="${translateKey}">${translationService.t(translateKey)}</span>
       </a>
     `;

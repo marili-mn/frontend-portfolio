@@ -45,6 +45,9 @@ export class ProjectCard extends HTMLElement {
   setupPreviewListeners() {
     if (!this.projectData.hasPreview) return;
     
+    // Disable hover preview on devices that do not support hover (e.g., touchscreens)
+    if (!window.matchMedia('(hover: hover)').matches) return;
+
     const container = this.shadowRoot.querySelector('.project');
     const iframe = this.shadowRoot.querySelector('.preview-iframe');
     let timeoutId;
@@ -76,7 +79,7 @@ export class ProjectCard extends HTMLElement {
         .project {
             background: var(--clr-card-bg);
             padding: 1.8rem;
-            border-radius: 20px;
+            border-radius: 0;
             transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
             border: 1px solid var(--clr-border-light); /* Subtle border for definition */
             height: 100%;
@@ -169,6 +172,7 @@ export class ProjectCard extends HTMLElement {
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 0.5rem;
+            flex-wrap: wrap; /* Allow wrapping for mobile */
         }
 
         .project__date {
@@ -181,6 +185,27 @@ export class ProjectCard extends HTMLElement {
             border: 1px solid var(--clr-border-light);
             white-space: nowrap;
             margin-left: 10px;
+        }
+
+        @media (max-width: 576px) {
+            .project__date {
+                margin-left: 0;
+                margin-top: 0.5rem;
+                display: inline-block; /* Ensure it behaves nicely */
+            }
+            
+            .project__links {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                white-space: nowrap; /* Prevent text wrapping */
+                font-size: 0.7rem; /* Even smaller font for mobile */
+                padding: 0.2em 0.4em; /* Even more compact padding for mobile */
+            }
         }
         
         .project__description {
@@ -222,28 +247,52 @@ export class ProjectCard extends HTMLElement {
             margin-top: auto;
         }
         
+        /* Laser Draw Animation for Buttons */
+        @keyframes laser-draw {
+            0% { background-size: 0% 1px, 1px 0%, 0% 1px, 1px 0%; }
+            25% { background-size: 100% 1px, 1px 0%, 0% 1px, 1px 0%; }
+            50% { background-size: 100% 1px, 1px 100%, 0% 1px, 1px 0%; }
+            75% { background-size: 100% 1px, 1px 100%, 100% 1px, 1px 0%; }
+            100% { background-size: 100% 1px, 1px 100%, 100% 1px, 1px 100%; }
+        }
+
         .btn {
             text-decoration: none;
-            padding: 0.5em 1.2em;
-            border: 1px solid var(--clr-border-btn);
+            padding: 0.3em 0.6em; /* Even smaller padding for desktop */
             color: var(--clr-text-secondary);
-            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.3s ease;
+            font-family: 'Consolas', monospace;
             font-size: 0.85rem;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            background: var(--clr-btn-bg);
             cursor: pointer;
+            
+            /* Reset Box Style */
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            position: relative;
+            
+            /* Laser Setup */
+            background-image: 
+                linear-gradient(var(--clr-accent), var(--clr-accent)), 
+                linear-gradient(var(--clr-accent), var(--clr-accent)), 
+                linear-gradient(var(--clr-accent), var(--clr-accent)), 
+                linear-gradient(var(--clr-accent), var(--clr-accent)); 
+            background-repeat: no-repeat;
+            background-position: top left, top right, bottom right, bottom left;
+            /* Start invisible (0 size) */
+            background-size: 0% 1px, 1px 0%, 0% 1px, 1px 0%;
+            
+            transition: color 0.3s ease;
         }
         
         .btn:hover {
-            background: var(--clr-accent);
-            border-color: var(--clr-accent);
-            color: #fff; /* Always white text on hover for contrast against green */
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            color: var(--clr-accent);
+            animation: laser-draw 0.4s linear forwards;
+            background-color: rgba(0, 255, 153, 0.05); /* Subtle tech fill */
         }
         
         /* Icon fix for alignment */

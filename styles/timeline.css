@@ -89,24 +89,25 @@
 @media (max-width: 768px) {
   /* On mobile, the line goes to the left */
   .timeline-line {
-    left: 20px;
+    left: 8px; /* Consistent line position relative to viewport */
   }
   
   .timeline-stack {
     display: flex;
     flex-direction: column;
-    padding-left: 50px; /* Space for line */
-    gap: 80px; /* Increased mobile gap */
+    padding-left: 15px; /* Further reduced space for line to give more width to card */
+    padding-right: 5px; /* Further reduced right padding */
+    gap: 60px; /* Optimized mobile gap */
   }
 
   .timeline-node {
     align-items: flex-start;
-    padding-left: 7px; /* Align center of indicator with line at 20px */
+    padding-left: 2px; 
   }
   
   /* Adjust indicators to align with line */
   .node-indicator {
-    margin-left: 6px; 
+    margin-left: 2px;
   }
   
   .timeline-item::before {
@@ -114,8 +115,8 @@
     content: '';
     position: absolute;
     top: 30px;
-    left: -30px;
-    width: 30px;
+    left: -7px; /* Distance to line */
+    width: 7px;
     height: 2px;
     background: var(--clr-border-light);
   }
@@ -125,7 +126,7 @@
     content: '';
     position: absolute;
     top: 26px;
-    left: -35px; /* -30px line - 5px half dot */
+    left: -12px; /* Centered on the end of connector/line */
     width: 10px;
     height: 10px;
     background: var(--clr-bg);

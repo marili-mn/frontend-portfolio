@@ -87,12 +87,28 @@ export class AboutSection extends HTMLElement {
     }, 30);
   }
 
+  typeText(element, text) {
+    element.textContent = '';
+    let i = 0;
+    
+    if (element.typingInterval) clearInterval(element.typingInterval);
+    
+    element.typingInterval = setInterval(() => {
+        if (i < text.length) {
+            element.textContent += text.charAt(i);
+            i++;
+        } else {
+            clearInterval(element.typingInterval);
+        }
+    }, 50);
+  }
+
   updateTexts() {
     const t = (k) => translationService.t(k);
     const s = this.shadowRoot;
     
     s.querySelector('.editorial-title').textContent = t('nav_about').toUpperCase(); 
-    s.querySelector('.role').textContent = t('about_role');
+    this.typeText(s.querySelector('.role'), t('about_role'));
     
     const descContainer = s.querySelector('.desc-container');
     const rawDescriptions = [t('about_desc_1'), t('about_desc_2'), t('about_desc_3')];
@@ -113,6 +129,7 @@ export class AboutSection extends HTMLElement {
     const ciphers = s.querySelectorAll('.cipher-text');
     ciphers.forEach(el => {
         el.addEventListener('mouseenter', () => this.glitchEffect(el));
+        el.addEventListener('click', () => this.glitchEffect(el));
     });
   }
 
@@ -200,9 +217,11 @@ export class AboutSection extends HTMLElement {
             line-height: 1;
             margin: 0 0 1.5rem 0;
             letter-spacing: -2px; /* Tight editorial style */
+            word-spacing: 5px; /* Added spacing between words */
             background: linear-gradient(to right, var(--accent), var(--text-color));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
         }
 
         .role {
@@ -210,9 +229,18 @@ export class AboutSection extends HTMLElement {
             font-size: 1.1rem;
             color: var(--accent);
             margin-bottom: 3rem;
-            display: block;
+            display: inline-block;
             letter-spacing: 2px; /* Tech style */
             text-transform: uppercase;
+            border-right: 2px solid var(--accent);
+            padding-right: 5px;
+            animation: blink 0.75s step-end infinite;
+            min-height: 1.5em;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--accent) }
         }
 
         .social-links {
@@ -237,10 +265,12 @@ export class AboutSection extends HTMLElement {
             fill: currentColor;
         }
 
-        .social-link:hover {
-            opacity: 1;
-            color: var(--accent);
-            transform: translateY(-3px);
+        @media (hover: hover) {
+          .social-link:hover {
+              opacity: 1;
+              color: var(--accent);
+              transform: translateY(-3px);
+          }
         }
 
         /* Right Column (Manifesto) */
@@ -271,8 +301,10 @@ export class AboutSection extends HTMLElement {
             transition: background 0.3s;
         }
         
-        .cipher-text:hover {
-            background: rgba(0, 255, 153, 0.2);
+        @media (hover: hover) {
+          .cipher-text:hover {
+              background: rgba(0, 255, 153, 0.2);
+          }
         }
 
         /* Links inside text */
@@ -307,11 +339,25 @@ export class AboutSection extends HTMLElement {
             z-index: -1;
         }
 
-        .cv-btn:hover {
-            color: var(--bg-color); /* Invert text color on hover */
+        @media (hover: hover) {
+            .cv-btn:hover {
+                color: var(--bg-color); /* Invert text color on hover */
+                animation: glitch-text 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
+            }
         }
-        .cv-btn:hover::before {
-            width: 100%;
+
+        @keyframes glitch-text {
+            0% { text-shadow: none; }
+            20% { text-shadow: 2px 0 #ff00de, -2px 0 #00ff00; }
+            40% { text-shadow: 2px 0 #ff00de, -2px 0 #00ff00; }
+            60% { text-shadow: 2px 0 #ff00de, -2px 0 #00ff00; }
+            80% { text-shadow: 2px 0 #ff00de, -2px 0 #00ff00; }
+            100% { text-shadow: none; }
+        }
+        @media (hover: hover) {
+            .cv-btn:hover::before {
+                width: 100%;
+            }
         }
 
         /* RESPONSIVE */
@@ -342,7 +388,7 @@ export class AboutSection extends HTMLElement {
             }
             
             .editorial-title {
-                font-size: 18vw; /* Large but fitting for mobile */
+                font-size: 13vw; /* Large but fitting for mobile */
                 top: 2%; 
                 left: 50%; /* Center horizontally */
                 transform: translateX(-50%); /* Maintain centering */

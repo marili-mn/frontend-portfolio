@@ -1,6 +1,6 @@
 ================================================================================
 ESTADO DEL PROYECTO: PORTFOLIO PROFESIONAL (MARI-DEV)
-FECHA: 03/12/2025
+FECHA: 06/12/2025
 ================================================================================
 
 1. RESUMEN DE SITUACIÓN ACTUAL
@@ -49,8 +49,6 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
     - Limpieza de Datos: Eliminación de tecnologías legadas/no deseadas (Hibernate, Haskell)
       y adición de competencias clave (Express.js, MongoDB).
 
-3. HOJA DE RUTA (PRÓXIMOS PASOS INMEDIATOS)
---------------------------------------------------------------------------------
 [x] FASE 2: REFACTORIZACIÓN ARQUITECTÓNICA (Completada)
     - Objetivo: Desacoplar ThemeService del DOM.
     - Acción: Implementado patrón de eventos (CustomEvent 'theme-changed') similar
@@ -115,6 +113,15 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
     - **UX:** Espaciado mejorado entre tarjetas para una "respiración" óptima y mayor legibilidad, eliminando cualquier superposición o sensación de aglomeración.
     - **Implementación:** `ProjectsTimeline` Web Component orquestando la presentación, `ProjectCard` adaptado para fechas, y CSS (`timeline.css`) para la estética del stack y la responsividad.
 
+[x] **RESPONSIVE ENHANCEMENTS & EFFECTS (Refinado y Completado)**
+    - **Objetivo:** Perfeccionamiento obsesivo de la experiencia móvil y la consistencia visual.
+    - **Acciones y Mejoras:**
+        - **Auditoría de Interacciones (Touch vs. Hover):** Se eliminaron los "hovers pegajosos" en móviles envolviendo efectos visuales en `@media (hover: hover)`. La desencriptación de texto ahora responde al `click` en pantallas táctiles.
+        - **Botón "Volver Arriba" (Safe Zone):** Se ajustó la posición del botón a `bottom: 80px` y `right: 30px` en móviles para evitar que quede cubierto por barras de navegación dinámicas (iOS Safari/Chrome) o se corte en los bordes. Se implementó lógica para que solo desaparezca al llegar al `scrollY: 0`.
+        - **Timeline & Cards (Maximización de Espacio):** Se redujo drásticamente el padding del timeline en móvil (de 50px a 15px) para maximizar el ancho disponible de las tarjetas.
+        - **Rediseño de Botones de Proyecto (Laser Style):** Se eliminó la caja sólida, implementando un estilo transparente con bordes animados ("laser-draw") consistente con el menú. Se compactó el tamaño (fuente 0.7rem, padding mínimo) para evitar cortes de texto en dispositivos estrechos.
+        - **Tipografía y Efectos:** Implementación de "Typing Effect" en el rol, nombre en mayúsculas con espaciado, y efecto glitch estático en el botón de CV.
+
 [ ] FASE 4.5: CRYPTO-PUZZLE & WASM CORE (Ingeniería Avanzada)
     - Concepto: Elevar la barra de seguridad mediante "Criptografía en el Cliente" y "Proof of Work (PoW)".
     - **Arquitectura de Seguridad (Backend-less):**
@@ -145,7 +152,6 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - **Interacción:** Al hacer scroll y la sección entra en el viewport, o al pasar el mouse sobre la palabra/bloque, esta se "desencripta" visualmente (efecto glitch), revelando la palabra legible con una animación.
         - **Metáfora:** La información clasificada se revela bajo escrutinio, reforzando la narrativa "DevSec" sin sacrificar la legibilidad.
 
-4. FUTURAS EXPANSIONES (BACKLOG)
 [ ] FASE 6: EL CENTRO DE CONTROL (DevSec Admin Panel)
     - Concepto: CMS Headless "Self-Hosted" con Arquitectura Híbrida.
     - Stack: Supabase (Postgres + Auth) + Cliente JS Inteligente (Cache-First).

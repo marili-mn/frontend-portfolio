@@ -12,18 +12,6 @@ export class ScrollTopBtn extends HTMLElement {
     this.btn.addEventListener('click', (e) => {
       e.preventDefault();
       
-      // Robust Environment Check
-      const isMobile = window.innerWidth <= 768 || window.matchMedia('(hover: none)').matches;
-      
-      if (isMobile) {
-          // Mobile: Native Scroll (Best UX/Performance)
-          window.scrollTo({
-              top: 0,
-              behavior: 'smooth'
-          });
-          return;
-      }
-
       // Check if GSAP and ScrollToPlugin are available
       if (window.gsap && window.ScrollToPlugin) {
         
@@ -61,11 +49,12 @@ export class ScrollTopBtn extends HTMLElement {
   }
 
   handleScroll() {
-    if (window.scrollY > 300) {
-      this.btn.classList.add('visible');
-    } else {
+    if (window.scrollY === 0) {
       this.btn.classList.remove('visible');
+    } else if (window.scrollY > 100) { // Appear if scrolled past 100px
+      this.btn.classList.add('visible');
     }
+    // The button will remain visible if scrollY is between 1 and 100 once it has appeared.
   }
 
   render() {
