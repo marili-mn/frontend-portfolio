@@ -20,12 +20,17 @@ export class AppHeader extends HTMLElement {
     });
     
     // Init states
-    this.updateTexts(translationService.currentLang);
+    // Ensure translations are loaded before attempting to update texts initially.
+    if (translationService.loaded) {
+        this.updateTexts();
+    } else {
+        window.addEventListener('translations-loaded', () => this.updateTexts());
+    }
     this.updateThemeIndicator(themeService.getTheme());
     this.updateLangIndicator(translationService.currentLang);
   }
 
-  updateTexts(lang) {
+  updateTexts() { // Removed lang parameter, as currentLang is accessed directly
     const links = this.querySelectorAll('[data-translate]');
     links.forEach(el => {
       const key = el.getAttribute('data-translate');
@@ -300,6 +305,11 @@ export class AppHeader extends HTMLElement {
                 <span id="theme-indicator" class="hover-brackets">SYS:LGT</span>
             </button>
 
+            <!-- Lab Zone Button (Industrial Access) -->
+            <button class="btn--tech" aria-label="Access Lab Zone" id="artifacts-btn">
+                <span class="hover-brackets">LAB_ZONE</span>
+            </button>
+
             <!-- Language -->
             <div class="nav__lang-container">
                 <button class="btn--tech nav__lang-toggle" aria-label="Cambiar idioma" id="lang-btn">
@@ -330,6 +340,12 @@ export class AppHeader extends HTMLElement {
         // Theme
         this.querySelector('#theme-toggle-btn')?.addEventListener('click', () => themeService.toggleTheme());
         
+        // Lab Zone Access
+        this.querySelector('#artifacts-btn')?.addEventListener('click', () => {
+            const zone = document.querySelector('artifacts-zone');
+            if(zone) zone.open();
+        });
+
         // --- DIRTY SOLUTION FOR LANG MENU (Re-applying) ---
         const langBtn = this.querySelector('#lang-btn');
         const langMenu = this.querySelector('#lang-menu');

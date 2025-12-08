@@ -15,7 +15,25 @@ export class DevSecConsole extends HTMLElement {
 
     async connectedCallback() {
         const consoleHtml = await this.fetchConsoleHtml();
-        this.shadowRoot.innerHTML = `<style>${devsecConsoleStyles}</style>${consoleHtml}`;
+        // INLINED CRITICAL STYLES to prevent FOUC
+        const criticalStyles = `
+            :host {
+                display: block;
+                position: fixed;
+                top: 0; 
+                left: 0;
+                width: 100vw; 
+                height: 100vh;
+                z-index: 99999;
+                pointer-events: none;
+                visibility: hidden; 
+            }
+            :host(.visible) {
+                pointer-events: auto;
+                visibility: visible;
+            }
+        `;
+        this.shadowRoot.innerHTML = `<style>${criticalStyles} ${devsecConsoleStyles}</style>${consoleHtml}`;
         
         this.elements = {
             terminalWindow: this.shadowRoot.getElementById('terminalWindow'),

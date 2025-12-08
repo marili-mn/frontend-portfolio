@@ -107,5 +107,33 @@ export const fallbackTranslations = {
     "console_cmd_social": { "es": "Redes sociales", "en": "Social networks", "pt": "Redes sociais", "de": "Soziale Netzwerke" },
     "console_cmd_skills": { "es": "Habilidades", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
     "console_cmd_projects": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
-    "console_cmd_clear": { "es": "Limpiar", "en": "Clear", "pt": "Limpar", "de": "Löschen" }
+    "console_cmd_clear": { "es": "Limpiar", "en": "Clear", "pt": "Limpar", "de": "Löschen" },
+
+    // --- LAB ZONE (R&D ARCHIVE) ---
+    "lab_title": { "es": "ARCHIVO_I+D", "en": "R&D_ARCHIVE", "pt": "ARQUIVO_P&D", "de": "F&E_ARCHIV" },
+    "lab_sec_level": { "es": "NIVEL_SEG: MAX", "en": "SEC_LEVEL: MAX", "pt": "NÍVEL_SEG: MAX", "de": "SICH_LEVEL: MAX" },
+    "lab_btn_exit": { "es": "[ TERMINAR_SESIÓN ]", "en": "[ TERMINATE_SESSION ]", "pt": "[ ENCERRAR_SESSÃO ]", "de": "[ SITZUNG_BEENDEN ]" },
+    
+    "lab_manifesto_title": { "es": "INGENIERÍA PRIMERO", "en": "ENGINEERING FIRST", "pt": "ENGENHARIA PRIMEIRO", "de": "INGENIEURWESEN ZUERST" },
+    "lab_manifesto_desc": { 
+        "es": "Esta zona está designada para experimentos arquitectónicos puros. Sin pulido. Sin marketing. Solo estructura de código y flujos lógicos.", 
+        "en": "This zone is designated for raw architectural experiments. No polish. No marketing. Just code structure and logic flows.",
+        "pt": "Esta zona é designada para experimentos arquitetônicos puros. Sem polimento. Sem marketing. Apenas estrutura de código e fluxos lógicos.",
+        "de": "Dieser Bereich ist für reine architektonische Experimente vorgesehen. Kein Glanz. Kein Marketing. Nur Codestruktur und logische Abläufe."
+    },
+    "lab_status": { "es": "ESTADO:", "en": "STATUS:", "pt": "ESTADO:", "de": "STATUS:" },
+    "lab_status_val": { "es": "ACTIVO", "en": "LIVE", "pt": "ATIVO", "de": "AKTIV" },
+    
+    "lab_algo_title": { "es": "ALGORITMO", "en": "ALGORITHM", "pt": "ALGORITMO", "de": "ALGORITHMUS" },
+    "lab_metrics_title": { "es": "MÉTRICAS", "en": "METRICS", "pt": "MÉTRICAS", "de": "METRIKEN" },
+    "lab_proto_title": { "es": "PROTOTIPO", "en": "PROTOTYPE", "pt": "PROTÓTIPO", "de": "PROTOTYP" },
+    "lab_next_gen": { "es": "UI_PRÓXIMA_GEN", "en": "NEXT_GEN_UI", "pt": "IU_PRÓXIMA_GER", "de": "NÄCHSTE_GEN_UI" },
+    "lab_next_gen_desc": { 
+        "es": "Explorando integración WebGL para futuros dashboards.", 
+        "en": "Exploring WebGL integration for future dashboards.",
+        "pt": "Explorando a integração WebGL para futuros painéis.",
+        "de": "Untersuchung der WebGL-Integration für zukünftige Dashboards."
+    },
+    "lab_awaiting": { "es": "ESPERANDO_INPUT...", "en": "AWAITING_INPUT...", "pt": "AGUARDANDO_ENTRADA...", "de": "WARTE_AUF_EINGABE..." },
+    "lab_classified": { "es": "CLASIFICADO", "en": "CLASSIFIED", "pt": "CLASSIFICADO", "de": "GEHEIM" }
 };

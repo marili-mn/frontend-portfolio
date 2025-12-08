@@ -15,8 +15,8 @@ class TranslationService {
 
   async init() {
     try {
-      // Attempt to fetch fresh JSON with cache busting
-      const response = await fetch(`./js/translations.json?v=${Date.now()}`);
+      // Attempt to fetch fresh JSON with aggressive cache busting
+      const response = await fetch(`./js/translations.json?v=${Date.now()}-${Math.random()}`);
       if (!response.ok) throw new Error('Failed to load translations JSON');
       this.translations = await response.json();
       console.log('TranslationService: JSON loaded successfully');

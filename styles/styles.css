@@ -12,7 +12,7 @@
   margin: 0;
   border: 0;
   outline: 0;
-  background-color: inherit;
+  /* background-color: inherit; <-- REMOVED: Caused layout breakage on overlays */
   color: inherit;
   font-family: inherit;
   font-size: inherit;
@@ -28,8 +28,17 @@ a, button, .btn, .nav__hamburger, .scroll-top, input, label {
 }
 
 /* Prevent FOUC for Custom Elements */
-devsec-console:not(:defined) {
+devsec-console:not(:defined),
+contact-form:not(:defined),
+artifacts-zone:not(:defined) {
   display: none;
+}
+
+/* Ensure these overlays are hidden by default globally */
+devsec-console,
+contact-form,
+artifacts-zone {
+  display: block; /* Custom Elements default to inline */
 }
 
 html {

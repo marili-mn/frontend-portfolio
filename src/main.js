@@ -11,8 +11,10 @@ import './components/AppFooter.js';
 import './components/ContactButton.js';
 import './components/ContactForm.js';
 import './components/ScrollTopBtn.js';
-import './components/ToastNotification.js';
 import './components/DevSecConsole.js';
+import './components/ArtifactsZone.js';
+
+// --- Initialization ---
 
 import { projects } from './data/projectsData.js';
 
@@ -37,8 +39,24 @@ class App {
 
     // 5. Global Events (Smooth Scroll, DevSec Console Trigger)
     this.setupGlobalEvents();
+    
+    // 6. Initial Global Translation (For static elements like H2)
+    this.updateGlobalTexts();
+    window.addEventListener('language-changed', () => this.updateGlobalTexts());
 
     console.log('App initialized!');
+  }
+
+  updateGlobalTexts() {
+      // Updates static elements outside of Web Components (like section titles in index.html)
+      document.querySelectorAll('[data-translate]').forEach(el => {
+          // Skip elements inside web components if possible, though mostly harmless
+          if (el.tagName.includes('-')) return; 
+          
+          const key = el.getAttribute('data-translate');
+          const text = translationService.t(key);
+          if (text) el.textContent = text;
+      });
   }
 
   // Utility to check for mobile environment

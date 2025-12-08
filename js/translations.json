@@ -1,6 +1,6 @@
 {
   "nav_projects": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
-  "nav_about": { "es": "Sobre mí", "en": "About", "pt": "Sobre mim", "de": "Über mich" },
+  "nav_about": { "es": "Sobre mí", "en": "About me", "pt": "Sobre mim", "de": "Über mich" },
   "nav_skills": { "es": "Skills", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
   "nav_contact": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
   "about_role": { "es": "Desarrollador Web & Ciberseguridad", "en": "Web Developer & Cybersecurity", "pt": "Desenvolvedor Web e Cibersegurança", "de": "Webentwickler & Cybersicherheit" },
