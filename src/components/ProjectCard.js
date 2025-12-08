@@ -97,6 +97,24 @@ export class ProjectCard extends HTMLElement {
             border-color: var(--clr-accent);
         }
 
+        /* Light Mode Specifics for Definition */
+        :host-context(body.light) .project {
+            border-color: rgba(0, 0, 0, 0.2); /* Stronger border for visibility */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+            background: #ffffff; /* Ensure pure white */
+        }
+
+        :host-context(body.light) .project__description {
+            text-shadow: none; /* Remove dark shadow in light mode for cleaner text */
+            color: #4b5563; /* Slate 600 for readability */
+        }
+
+        :host-context(body.light) .project__date {
+            background: rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.1);
+            color: var(--clr-heading);
+        }
+
         /* Preview Styles */
         .project-content {
             position: relative;

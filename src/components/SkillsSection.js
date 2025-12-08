@@ -111,19 +111,44 @@ export class SkillsSection extends HTMLElement {
         :host {
           display: block;
           
-          /* GLOBAL VARS */
-          --bg-paper: var(--clr-bg, #0a192f); 
-          --grid-line-color: var(--clr-border-light, rgba(100, 255, 218, 0.07));
-          --text-main: var(--clr-heading, #e6f1ff);
-          --text-dim: var(--clr-text-secondary, #8892b0);
-          --accent-color: var(--clr-accent, #64ffda);
-          --card-bg: var(--clr-card-bg, rgba(17, 34, 64, 0.7));
+          /* GLOBAL VARS from root */
+          --bg-main: var(--clr-bg); 
+          --grid-line-color-dark: rgba(255, 255, 255, 0.25); /* Increased for better prominence */
+          --grid-line-color-light: rgba(0, 0, 0, 0.25);   /* Increased for better prominence */
           
-          --crosshair-color: var(--clr-accent, #64ffda); 
-          --crosshair-width: 1.5px;
-          --crosshair-opacity: 0.6; /* Increased for visibility */
+          /* Determine actual grid line color based on body class */
+          --grid-actual-color: var(--grid-line-color-dark);
+          
+          /* Card backgrounds for skills */
+          --card-bg-dark: #1e293b; 
+          --card-bg-light: #ffffff; 
+          --card-bg-actual: var(--card-bg-dark);
 
-          --font-tech: 'Fira Code', 'Consolas', monospace;
+          /* Text colors */
+          --text-main: var(--clr-fg);
+          --text-dim: var(--clr-text-secondary);
+          --accent-color: var(--clr-accent);
+          
+          --crosshair-color: var(--clr-accent); 
+          --crosshair-width: 1.5px;
+          --crosshair-opacity: 0.6; 
+
+          --font-tech: var(--font-mono); 
+        }
+
+        /* Adjust colors based on body theme via CSS cascade if host context doesn't catch it 
+           Using :host-context to robustly detect theme on parent */
+        :host-context(body.light) {
+            --grid-actual-color: var(--grid-line-color-light);
+            --card-bg-actual: var(--card-bg-light);
+            --text-main: #1c1917; /* Ensure dark text */
+            --text-dim: #57534e;
+        }
+
+        /* Fallback if :host-context isn't supported or working as expected with the specific setup */
+        body.light skills-section {
+            --grid-actual-color: var(--grid-line-color-light);
+            --card-bg-actual: var(--card-bg-light);
         }
 
         .skills-wrapper {
@@ -134,13 +159,59 @@ export class SkillsSection extends HTMLElement {
           overflow: hidden;
           
           /* GRID BACKGROUND */
-          background-color: var(--bg-paper);
+          background-color: var(--bg-main);
           background-image: 
-            linear-gradient(var(--grid-line-color) 1px, transparent 1px),
-            linear-gradient(90deg, var(--grid-line-color) 1px, transparent 1px);
+            linear-gradient(var(--grid-actual-color) 1px, transparent 1px),
+            linear-gradient(90deg, var(--grid-actual-color) 1px, transparent 1px);
           background-size: 40px 40px;
-          border-top: 1px solid var(--grid-line-color);
-          border-bottom: 1px solid var(--grid-line-color);
+          border-top: 1px solid var(--grid-actual-color);
+          border-bottom: 1px solid var(--grid-actual-color);
+        }
+
+        /* ... [Rest of Styles] ... */
+
+        .skill-card { 
+          background: var(--card-bg-actual); 
+          /* Permanent subtle border for differentiation in both modes */
+          border: 1px solid var(--grid-actual-color); 
+          position: relative; height: 130px; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: all 0.2s ease; z-index: 2; overflow: hidden; --local-x: 50%; --local-y: 50%; 
+          color: var(--text-main); 
+        }
+        
+        /* Dark Mode Specific: Enhance border visibility slightly if grid color is too subtle */
+        :host-context(body:not(.light)) .skill-card {
+            border-color: rgba(255, 255, 255, 0.15); /* Slightly clearer border than the grid */
+        }
+        
+        /* Specific Light Mode Card Overrides */
+        :host-context(body.light) .skill-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); 
+        }
+        
+        :host-context(body.light) .tech-name {
+            color: var(--text-main);
+            font-weight: 600;
+        }
+        
+        /* Light Mode: Icon Tint/Illumination in resting state (Optional, keeps it clean but distinct) */
+        :host-context(body.light) .tech-icon {
+            /* Give icons a slight presence even without hover */
+            opacity: 0.8; 
+            filter: grayscale(100%); 
+        }
+
+        /* Light Mode Hover Effect - "Illuminated" */
+        :host-context(body.light) .skill-card:hover {
+            background: #ffffff;
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 0 0 1px var(--accent-color);
+        }
+
+        /* Dark Mode Hover Effect */
+        :host-context(body:not(.light)) .skill-card:hover {
+            background: var(--card-bg-dark);
+            box-shadow: 0 0 20px rgba(167, 139, 250, 0.15); /* Violet glow */
+            outline: 1px solid var(--accent-color);
         }
 
         /* ============================================================
@@ -157,11 +228,12 @@ export class SkillsSection extends HTMLElement {
                 content: '';
                 position: absolute;
                 background: var(--crosshair-color);
-                z-index: 1;
+                z-index: 5; /* Ensured visibility over grid */
                 pointer-events: none;
-                opacity: 0; /* Hidden by default */
+                opacity: 0; 
                 transition: opacity 0.1s;
-                box-shadow: 0 0 4px var(--crosshair-color);
+                /* Optional glow for crosshair */
+                box-shadow: 0 0 2px var(--crosshair-color);
             }
             
             /* Vertical Line */
@@ -177,15 +249,40 @@ export class SkillsSection extends HTMLElement {
             /* Show Crosshair when interacting class is added via JS */
             .skills-wrapper.interacting::before,
             .skills-wrapper.interacting::after { 
-                opacity: var(--crosshair-opacity); 
+                opacity: 0.4; /* Reduced from 0.8 for subtler effect globally */
+            }
+            
+            /* Light Mode specific crosshair adjustments if needed */
+            :host-context(body.light) .skills-wrapper.interacting::before,
+            :host-context(body.light) .skills-wrapper.interacting::after {
+                opacity: 0.2; /* Even subtler on white background */
             }
 
             /* Card Hover Effects on Desktop */
             .skill-card:hover {
-                background: var(--bg-paper);
-                box-shadow: 0 0 20px rgba(0,0,0,0.2);
+                background: var(--card-bg-actual);
                 z-index: 10;
                 outline: 1px solid var(--accent-color); 
+            }
+
+            /* Light Mode Specific Hover Styling for "Illuminated" feel */
+            :host-context(body.light) .skill-card:hover {
+                background: #ffffff;
+                /* Stronger, more colored shadow for illumination */
+                box-shadow: 0 15px 35px -5px rgba(0, 0, 0, 0.15), 0 0 0 1px var(--accent-color);
+                outline: none; 
+                border-color: var(--accent-color);
+            }
+            
+            /* Ensure icons get full color on hover in light mode */
+            :host-context(body.light) .skill-card:hover .tech-icon {
+                filter: grayscale(0%) opacity(1) !important; 
+                transform: scale(1.15);
+            }
+            
+            /* Dark Mode Specific Hover Styling */
+            :host-context(body:not(.light)) .skill-card:hover {
+                box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
             }
 
             /* Show internal axis on hover */
@@ -194,9 +291,20 @@ export class SkillsSection extends HTMLElement {
             
             .skill-card:hover .local-intersection { opacity: 1; }
             
-            /* Icon Scale */
+        /* Icon Scale (Common for both light/dark hover) */
             .skill-card:hover .tech-icon { filter: grayscale(0%) opacity(1); transform: scale(1.15); }
-            .skill-card:hover .tech-icon-text { transform: scale(1.15); color: var(--text-main); text-shadow: 0 0 8px var(--accent-color); }
+            /* Text Color for Hover */
+            :host-context(body:not(.light)) .skill-card:hover .tech-icon-text { transform: scale(1.15); color: var(--accent-color); text-shadow: 0 0 8px var(--accent-color); }
+            /* Light Mode Specific Hover for Text Icons: Invert and "illuminate" */
+            :host-context(body.light) .skill-card:hover .tech-icon-text { 
+                transform: scale(1.15); 
+                color: var(--clr-bg); /* Use paper color for text */
+                background-color: var(--accent-color); /* Use black ink color for background */
+                box-shadow: 0 0 5px rgba(0,0,0,0.2); /* Subtle glow for the pill */
+                border-radius: 3px; /* Slightly rounded corners for the pill effect */
+                padding: 0 4px; /* Some padding for the pill */
+                transition: all 0.2s ease; /* Smooth transition */
+            }
         }
 
         /* ============================================================
@@ -212,14 +320,14 @@ export class SkillsSection extends HTMLElement {
             .skills-grid { gap: 1rem; }
 
             .skill-card {
-                border: 1px solid var(--grid-line-color);
+                border: 1px solid var(--grid-actual-color); /* Use grid color for mobile card border */
                 height: 115px;
                 -webkit-tap-highlight-color: transparent;
             }
 
             /* Active State for Touch */
             .skill-card:active {
-                background: var(--bg-paper);
+                background: var(--card-bg-actual);
                 outline: 1px solid var(--accent-color);
                 z-index: 5;
             }
@@ -249,7 +357,7 @@ export class SkillsSection extends HTMLElement {
            COMMON STYLES
            ============================================================ */
         .section-header { text-align: center; margin-bottom: 3rem; z-index: 2; }
-        .section-title { font-family: var(--font-tech); font-size: clamp(2rem, 5vw, 2.5rem); color: var(--text-main); margin: 0; text-transform: uppercase; letter-spacing: 5px; background: var(--bg-paper); padding: 0 15px; line-height: 1; display: inline-block; }
+        .section-title { font-family: var(--font-tech); font-size: clamp(2rem, 5vw, 2.5rem); color: var(--text-main); margin: 0; text-transform: uppercase; letter-spacing: 5px; background: var(--bg-main); padding: 0 15px; line-height: 1; display: inline-block; }
 
         .categories-container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 4rem; }
         .category-title-wrapper { display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; gap: 1rem; }
@@ -258,7 +366,11 @@ export class SkillsSection extends HTMLElement {
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 2px; justify-content: center; }
 
-        .skill-card { background: var(--card-bg); position: relative; height: 130px; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: all 0.2s ease; z-index: 2; overflow: hidden; --local-x: 50%; --local-y: 50%; }
+        .skill-card { 
+          background: var(--card-bg-actual); 
+          border: 1px solid var(--grid-actual-color); /* Added explicit border for separation */
+          position: relative; height: 130px; padding: 1rem; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: all 0.2s ease; z-index: 2; overflow: hidden; --local-x: 50%; --local-y: 50%; 
+        }
 
         /* Internal Axis Lines */
         .local-axis-x, .local-axis-y { position: absolute; background: var(--accent-color); pointer-events: none; transition: opacity 0.2s; opacity: 0; }

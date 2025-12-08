@@ -154,6 +154,10 @@ export class AboutSection extends HTMLElement {
             --bg-color: var(--clr-bg);
             --text-color: var(--clr-fg);
             --accent: var(--clr-accent);
+            --clr-accent-rgb-value: 167, 139, 250; /* Default RGB for #a78bfa (Violet 400) */
+        }
+        body.light about-section {
+            --clr-accent-rgb-value: 28, 25, 23; /* RGB for #1c1917 (Stone 900) */
         }
 
         .editorial-container {
@@ -168,7 +172,6 @@ export class AboutSection extends HTMLElement {
             justify-content: center;
         }
 
-        /* Background Giant Title */
         .editorial-title {
             position: absolute;
             top: 5%; /* Keep it at the top */
@@ -180,7 +183,7 @@ export class AboutSection extends HTMLElement {
             font-size: 12vw; /* Balanced size for desktop */
             font-weight: 900;
             line-height: 0.8;
-            opacity: 0.15; 
+            opacity: 0.25; /* Increased opacity for better visibility */
             pointer-events: none;
             white-space: nowrap;
             font-family: 'Poppins', sans-serif;
@@ -225,7 +228,7 @@ export class AboutSection extends HTMLElement {
         }
 
         .role {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono); /* Consistent mono font */
             font-size: 1.1rem;
             color: var(--accent);
             margin-bottom: 3rem;
@@ -259,12 +262,6 @@ export class AboutSection extends HTMLElement {
             transition: all 0.3s;
         }
 
-        .social-icon {
-            width: 28px;
-            height: 28px;
-            fill: currentColor;
-        }
-
         @media (hover: hover) {
           .social-link:hover {
               opacity: 1;
@@ -290,10 +287,10 @@ export class AboutSection extends HTMLElement {
 
         /* CIPHER TEXT STYLES */
         .cipher-text {
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono); /* Consistent mono font */
             color: var(--accent);
             font-weight: bold;
-            background: rgba(0, 255, 153, 0.1); 
+            background: var(--clr-accent-transparent); /* Use new accent transparent color */
             padding: 0 4px;
             border-radius: 2px;
             cursor: default;
@@ -303,7 +300,8 @@ export class AboutSection extends HTMLElement {
         
         @media (hover: hover) {
           .cipher-text:hover {
-              background: rgba(0, 255, 153, 0.2);
+              /* For hover, use a slightly more opaque version of the accent */
+              background: rgba(var(--clr-accent-rgb-value), 0.25); /* Need to derive rgb for direct use */
           }
         }
 
@@ -322,7 +320,7 @@ export class AboutSection extends HTMLElement {
             border: 1px solid var(--accent);
             color: var(--accent);
             text-decoration: none;
-            font-family: 'Space Mono', monospace;
+            font-family: var(--font-mono); /* Consistent mono font */
             font-weight: bold;
             letter-spacing: 1px;
             transition: all 0.3s;

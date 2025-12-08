@@ -1,6 +1,6 @@
 ================================================================================
 ESTADO DEL PROYECTO: PORTFOLIO PROFESIONAL (MARI-DEV)
-FECHA: 06/12/2025
+FECHA: 08/12/2025
 ================================================================================
 
 1. RESUMEN DE SITUACIÓN ACTUAL
@@ -108,19 +108,36 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
     - **Nodos Intuitivos:**
         - Nodo Superior: **"ACTUALIDAD"** (marca el punto más reciente).
         - Nodo Inferior: **"ORÍGENES"** (marca el inicio de la pila).
-    - **Conexión Visual (BitStream):** Una sutil línea vertical que atraviesa la grilla de proyectos, conectando visualmente "ACTUALIDAD" con "ORÍGENES". En móvil, la línea se adapta a una disposición lateral.
-    - **Detalle en Tarjetas:** Cada `<project-card>` incluye un `dateRange` (ej. "2025 - Present") con tipografía técnica para reforzar el flujo temporal.
-    - **UX:** Espaciado mejorado entre tarjetas para una "respiración" óptima y mayor legibilidad, eliminando cualquier superposición o sensación de aglomeración.
-    - **Implementación:** `ProjectsTimeline` Web Component orquestando la presentación, `ProjectCard` adaptado para fechas, y CSS (`timeline.css`) para la estética del stack y la responsividad.
+    - **Implementación:** `ProjectsTimeline` Web Component orquestando la presentación, `ProjectCard` adaptado para fechas, y CSS (`timeline.css`).
+    - **Últimos Ajustes:** Eliminación de todas las líneas de conexión visual del timeline en móvil y desktop para una estética más limpia y enfocada en los nodos y las tarjetas.
 
-[x] **RESPONSIVE ENHANCEMENTS & EFFECTS (Refinado y Completado)**
-    - **Objetivo:** Perfeccionamiento obsesivo de la experiencia móvil y la consistencia visual.
-    - **Acciones y Mejoras:**
-        - **Auditoría de Interacciones (Touch vs. Hover):** Se eliminaron los "hovers pegajosos" en móviles envolviendo efectos visuales en `@media (hover: hover)`. La desencriptación de texto ahora responde al `click` en pantallas táctiles.
-        - **Botón "Volver Arriba" (Safe Zone):** Se ajustó la posición del botón a `bottom: 80px` y `right: 30px` en móviles para evitar que quede cubierto por barras de navegación dinámicas (iOS Safari/Chrome) o se corte en los bordes. Se implementó lógica para que solo desaparezca al llegar al `scrollY: 0`.
-        - **Timeline & Cards (Maximización de Espacio):** Se redujo drásticamente el padding del timeline en móvil (de 50px a 15px) para maximizar el ancho disponible de las tarjetas.
-        - **Rediseño de Botones de Proyecto (Laser Style):** Se eliminó la caja sólida, implementando un estilo transparente con bordes animados ("laser-draw") consistente con el menú. Se compactó el tamaño (fuente 0.7rem, padding mínimo) para evitar cortes de texto en dispositivos estrechos.
-        - **Tipografía y Efectos:** Implementación de "Typing Effect" en el rol, nombre en mayúsculas con espaciado, y efecto glitch estático en el botón de CV.
+[x] FASE 4.1: RENOVACIÓN CROMÁTICA (Arcane & Focus)
+    - Concepto: Romper con el cliché "Matrix Green" y adoptar una identidad más madura y mística/técnica.
+    - **Dark Mode (Arcane OS):**
+        - Base: Deep Midnight Blue (#0B0E14) con acento Electric Arcane Violet (#8b5cf6, ahora #a78bfa para mayor legibilidad).
+        - **Refinamiento:** Violeta más claro para el `accent` y sombreado con color del `accent` para un efecto de "glow" sutil.
+    - **Light Mode (Paper & Liquid Ink):**
+        - Base: Papel japonés cálido (#fafaf9) con tinta líquida (#1c1917).
+        - **Refinamiento:** Todos los elementos monocromáticos con contrastes grises, negros y blancos cálidos para máxima legibilidad y estética editorial.
+
+[x] FASE 4.2: REFINAMIENTO TIPOGRÁFICO (Humanista & Técnico)
+    - Concepto: Mezclar tipografías para crear una jerarquía semántica y reforzar la identidad "Ingeniero".
+    - **Acción:** Integración de `JetBrains Mono` (Google Fonts).
+    - **Aplicación:** Usada en el logo, botones técnicos (`btn--tech`, `btn--sharp`, `btn--editorial`), etiquetas de habilidades (Skills Pills) y metadatos del footer.
+    - **Beneficio:** Claridad entre texto narrativo (Poppins) y datos técnicos (JetBrains Mono), elevando la estética profesional.
+
+[x] FASE 4.3: PULIDO VISUAL GENERAL Y ALINEACIÓN (Skills & Projects & About)
+    - **Skills Section:**
+        - **Grilla:** Líneas de la "hoja cuadriculada" más prominentes en ambos modos (`rgba(255, 255, 255, 0.25)` y `rgba(0, 0, 0, 0.25)`).
+        - **Cards:** Bordes claros y definidos para separación visual en ambos modos.
+        - **Hover (Light Mode):** Íconos de Skills recuperan color completo; texto invierte a "pastilla iluminada" (fondo negro/texto blanco) al hacer hover/active.
+        - **Crosshair:** Opacidad reducida para un efecto más sutil en ambos modos.
+    - **Project Cards:**
+        - **Modo Claro:** Bordes y sombras más fuertes (`rgba(0,0,0,0.2)`, `0 8px 20px rgba(0,0,0,0.1)`) para distinguirse del fondo de papel.
+    - **About Section:**
+        - **Fondo "Sobre Mí":** Opacidad del texto de fondo aumentada (`0.25`) para mayor visibilidad.
+        - **Palabras Resaltadas:** Colores de fondo y texto ajustados para coincidir con la nueva paleta y asegurar la visibilidad del efecto "Cipher-Text Blocks".
+    - **Idioma Menu:** Añadida sombra (`0 5px 15px`) para mayor profundidad visual.
 
 [ ] FASE 4.5: CRYPTO-PUZZLE & WASM CORE (Ingeniería Avanzada)
     - Concepto: Elevar la barra de seguridad mediante "Criptografía en el Cliente" y "Proof of Work (PoW)".
@@ -163,6 +180,20 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - Área Home: Edición en caliente de textos, links y bio.
         - Área Artefactos: CRUD con campo dual (Upload o URL Externa) para máxima flexibilidad.
         - Seguridad: Ruta oculta, Login real y RLS (Row Level Security).
+
+[ ] FASE 7: THE VOID LABORATORY (Artefactos / El Grimorio Digital)
+    - Concepto: "Void Summoner" (Fantasía Brutalista). Un entorno de alto contraste con el Portfolio.
+    - Narrativa: "La Bóveda Prohibida". Donde la seguridad y la magia negra tecnológica se encuentran.
+    - **Estética (Void Mode):**
+        - Fondo: Void Black (#050505) puro.
+        - Acentos: Violeta Arcano (#bf00ff) y Cian Tóxico (#00f0ff) para estados activos.
+        - UI: Brutalismo Mágico. Bordes afilados (0px radius), líneas de 2px, sin sombras suaves.
+    - **Entidades de Datos:**
+        - "Constructs" (Demos), "Incantations" (Herramientas), "Forbidden Knowledge" (Ensayos).
+        - Status: "Sealed" (Estable), "Volatile" (Experimental), "Unbound" (WIP).
+    - **Implementación Técnica:**
+        - View Switching: `<lab-view>` actúa como un overlay completo que inyecta `body.void-mode`.
+        - Performance: Uso de CSS puro y `will-change` para animaciones de "hechizo" sin layout thrashing.
 
 [ ] OPTIMIZACIONES TÉCNICAS
     - Lazy Loading avanzado de imágenes.

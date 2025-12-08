@@ -45,50 +45,54 @@ html {
 }
 
 :root {
-  /* Dark Mode (Default) - Inversa armónica con acento verde */
-  --clr-bg: #1a1a1a; /* Fondo muy oscuro, casi negro */
-  --clr-fg: #f5f5f5; /* Texto blanco suave */
+  /* Fonts */
+  --font-primary: 'Poppins', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Consolas', monospace;
+
+  /* Dark Mode (Default) - Arcane OS (Midnight Blue & Electric Violet) */
+  --clr-bg: #0B0E14; /* Deep Midnight Blue - Reduces eye strain vs pure black */
+  --clr-fg: #f8fafc; /* Soft White (Slate 50) */
   
   /* Component Variables (Dark) */
-  --clr-card-bg: #2b2b2b; /* Tarjetas gris oscuro (más claras que el fondo) */
-  --clr-heading: #ffffff; /* Títulos blanco puro */
-  --clr-text-secondary: #cccccc; /* Gris claro para texto secundario */
-  --clr-border-light: #444444; /* Borde sutil para definición */
-  --clr-border-btn: #666666; /* Botón border */
-  --clr-btn-bg: #3c3c3c; /* Botón bg */
-  --clr-footer-bg: linear-gradient(145deg, #1a1a1a, rgba(255, 255, 255, 0.03));
-  --clr-footer-border: rgba(255, 255, 255, 0.05);
+  --clr-card-bg: #1e293b; /* Slate 800 - Contrast against midnight bg */
+  --clr-heading: #ffffff; /* Pure White for emphasis */
+  --clr-text-secondary: #94a3b8; /* Slate 400 */
+  --clr-border-light: #334155; /* Slate 700 */
+  --clr-border-btn: #475569; /* Slate 600 */
+  --clr-btn-bg: #1e293b; /* Slate 800 */
+  --clr-footer-bg: linear-gradient(180deg, #0B0E14, #0f172a);
+  --clr-footer-border: #1e293b;
   
-  /* Accents (Mantenemos el verde original) */
-  --clr-accent: #00ff99;
-  --clr-accent-hover: #00e187;
-  --clr-accent-transparent: rgba(0, 255, 153, 0.3); /* Slightly transparent accent */
-  --clr-fg-alt: #b0b0b0; /* General alt text */
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombras profundas */
+  /* Accents (Luminous Arcane Violet) */
+  --clr-accent: #a78bfa; /* Violet 400 - Brighter for better legibility */
+  --clr-accent-hover: #c4b5fd; /* Violet 300 - Even lighter for hover */
+  --clr-accent-transparent: rgba(167, 139, 250, 0.2); /* Subtle glow effect */
+  --clr-fg-alt: #cbd5e1; /* Slate 300 */
+  --shadow: 0 10px 40px -10px rgba(167, 139, 250, 0.25); /* Glowing shadow */
   --radius: 12px;
 }
 
 .light {
-  /* Light Mode - Deep Silver Gray */
-  --clr-bg: #cfd8dc; /* Gris plata más oscuro y profundo */
-  --clr-fg: #000000; /* Texto negro puro */
+  /* Light Mode - Japanese Paper & Liquid Ink (Warm & Organic) */
+  --clr-bg: #fafaf9; /* Stone 50 - Warm, premium paper feel */
+  --clr-fg: #1c1917; /* Stone 900 - Deep warm ink */
   
   /* Component Variables (Light) */
-  --clr-card-bg: #ffffff; /* Tarjetas blancas */
-  --clr-heading: #000000; /* Títulos negro puro */
-  --clr-text-secondary: #333333; /* Gris oscuro para texto secundario */
-  --clr-border-light: #b0bec5; /* Borde más prominente */
-  --clr-border-btn: #90a4ae; /* Button border */
-  --clr-btn-bg: #eceff1; /* Button bg */
-  --clr-footer-bg: #b0bec5; /* Gris oscuro sólido para contraste */
-  --clr-footer-border: #90a4ae;
+  --clr-card-bg: #ffffff; /* Pure White Cards regarding paper bg */
+  --clr-heading: #0c0a09; /* Stone 950 - Absolute Black Ink */
+  --clr-text-secondary: #57534e; /* Stone 500 */
+  --clr-border-light: #e7e5e4; /* Stone 200 - Pencil lines */
+  --clr-border-btn: #d6d3d1; /* Stone 300 */
+  --clr-btn-bg: #f5f5f4; /* Stone 100 */
+  --clr-footer-bg: #f5f5f4; /* Solid structure */
+  --clr-footer-border: #e7e5e4;
   
-  /* Accents */
-  --clr-accent: #0088cc; /* Azul vibrante */
-  --clr-accent-hover: #007bbd;
-  --clr-accent-transparent: rgba(0, 136, 204, 0.3); /* Slightly transparent accent */
-  --clr-fg-alt: #333333; /* General alt text (oscuro) */
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Sombras más profundas */
+  /* Accents (Liquid Ink Focus) */
+  --clr-accent: #1c1917; /* Stone 900 - Warm Black Focus */
+  --clr-accent-hover: #44403c; /* Stone 700 */
+  --clr-accent-transparent: rgba(28, 25, 23, 0.08); /* Ink wash */
+  --clr-fg-alt: #44403c; /* Stone 700 */
+  --shadow: 0 10px 30px -5px rgba(28, 25, 23, 0.08); /* Soft warm shadow */
 }
 
 body {
@@ -281,10 +285,10 @@ button {
 
 /* Logo Refinement */
 .logo {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace; 
+  font-family: var(--font-mono); 
   font-size: 24px;
   font-weight: 700;
-  letter-spacing: 1px;
+  letter-spacing: -1px; /* Tighter for modern look */
   transition: color 0.3s ease;
   background: none;
 }
@@ -307,11 +311,11 @@ button {
 /* Shared behavior for Menu Text (Tech Toggles) */
 .hover-brackets {
   color: var(--clr-fg);
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 13px; 
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding: 5px 0;
   transition: color 0.2s ease;
   background: none;
@@ -411,9 +415,9 @@ button {
 
 /* Tech Buttons (Sys/Lang/Menu) - NOW WITH LASER EFFECT */
 .btn--tech {
-  font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+  font-family: var(--font-mono);
   font-size: 12px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--clr-fg-alt); 
   background: transparent; 
   border: none; 
@@ -421,7 +425,7 @@ button {
   border-radius: 0 !important; /* Ensure perfectly sharp corners */
   overflow: hidden; /* Ensure content doesn't bleed out of sharp corners */
   transition: color 0.3s ease;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   height: auto; 
   position: relative;
   display: inline-flex;
@@ -571,16 +575,16 @@ button {
     color: var(--clr-accent);
     border: 1px solid var(--clr-accent);
     border-radius: 0; /* SHARP CORNERS */
-    font-family: 'Consolas', 'Monaco', monospace;
-    font-size: 16px;
-    font-weight: 600;
-    letter-spacing: 2px;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    letter-spacing: 1px;
     padding: 12px 32px;
     text-transform: uppercase;
     position: relative;
     overflow: hidden;
     height: auto;
-    box-shadow: 0 0 10px rgba(0, 255, 153, 0.1);
+    box-shadow: 0 0 10px rgba(139, 92, 246, 0.1);
 }
 
 @media (hover: hover) {
@@ -602,9 +606,9 @@ button {
   color: var(--clr-accent);
   background: transparent;
   text-decoration: none;
-  font-family: 'Space Mono', monospace; /* Ensure this font is loaded or fall back */
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  letter-spacing: 0.5px;
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
@@ -698,13 +702,18 @@ button {
   right: 10px;
   background-color: var(--clr-bg);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  /* Stronger shadow for dropdown */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); /* Darker, more pronounced shadow */
   padding: 10px 0;
   min-width: 120px;
   z-index: 1000;
   opacity: 0;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.light .lang-menu {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Lighter but still noticeable shadow for light theme */
 }
 
 .lang-menu.active {
@@ -804,24 +813,26 @@ main {
 }
 
 .skills__list-item {
-  font-family: 'Poppins', sans-serif;
-  font-size: 15px;
+  font-family: var(--font-mono);
+  font-size: 13px; /* Smaller for tech look */
   background-color: var(--clr-accent);
-  color: var(--clr-bg);
-  padding: 10px 20px;
-  border-radius: 9999px;
+  color: var(--clr-bg); /* Use bg color for text on accent */
+  padding: 8px 18px;
+  border-radius: 4px; /* Slightly squarer for tech feel */
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: flex;
   align-items: center;
   gap: 8px;
   cursor: pointer;
   border: none;
+  font-weight: 500;
 }
 
 @media (hover: hover) {
   .skills__list-item:hover {
     background-color: var(--clr-accent-hover);
-    transform: scale(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--clr-accent-transparent);
   }
 }
 
@@ -947,11 +958,11 @@ main {
 .footer__title {
   margin-bottom: 24px;
   color: var(--clr-accent);
-  font-family: 'Space Mono', monospace;
-  font-size: 14px;
+  font-family: var(--font-mono);
+  font-size: 13px;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  font-weight: bold;
+  letter-spacing: 1.5px;
+  font-weight: 700;
 }
 
 .footer__desc {
@@ -976,8 +987,8 @@ main {
 }
 
 .footer__copyright p {
-  font-family: 'Space Mono', monospace;
-  font-size: 12px;
+  font-family: var(--font-mono);
+  font-size: 11px;
   color: var(--clr-fg-alt);
   margin-bottom: 20px;
 }

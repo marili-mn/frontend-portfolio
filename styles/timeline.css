@@ -18,8 +18,13 @@
   z-index: 2;
 }
 
+/* Specific styling for the root node (ORÍGENES) to give it more space */
+.timeline-container .timeline-node:last-of-type {
+  margin-top: 40px; /* Adjust as needed */
+}
+
 .node-label {
-  font-family: 'Consolas', 'Monaco', monospace;
+  font-family: var(--font-mono);
   font-size: 0.9rem;
   color: var(--clr-accent);
   letter-spacing: 1px;
@@ -87,53 +92,96 @@
 
 /* Responsive Logic */
 @media (max-width: 768px) {
-  /* On mobile, the line goes to the left */
+  /* On mobile, the line goes to the left of the cards */
   .timeline-line {
-    left: 8px; /* Consistent line position relative to viewport */
+    /* Remove the main vertical line entirely */
+    display: none; 
+  }
+  
+  /* Solid line for light mode visibility in mobile */
+  .light .timeline-line {
+      display: none; /* Ensure it's hidden */
   }
   
   .timeline-stack {
     display: flex;
     flex-direction: column;
-    padding-left: 15px; /* Further reduced space for line to give more width to card */
-    padding-right: 5px; /* Further reduced right padding */
-    gap: 60px; /* Optimized mobile gap */
+    padding-left: 5px; /* Adjust padding as line is gone */
+    padding-right: 5px; 
+    gap: 60px;
   }
 
+  /* Nodes (ACTUALIDAD, ORÍGENES) - CENTERED AND CLEANED */
   .timeline-node {
-    align-items: flex-start;
-    padding-left: 2px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%; /* Occupy full width for centering */
+    margin: 0 auto; /* Center the node itself */
+    
+    position: relative; /* Keep for z-index if needed */
+    left: auto;
+    transform: none;
+    
+    margin-bottom: 40px; 
+    margin-top: 20px; 
+    z-index: 5;
   }
   
-  /* Adjust indicators to align with line */
+  /* Connector Line: REMOVED */
+  .timeline-node::before {
+    display: none;
+  }
+
+  /* Head Node Specifics (Actualidad) */
+  .head-node {
+    margin-top: 20px;
+  }
+  
+  /* Root Node Specifics (Orígenes) */
+  .timeline-container .timeline-node:last-of-type {
+      margin-top: 40px;
+  }
+
+  /* Node indicator (the small dot) - Keep it centered under label */
   .node-indicator {
-    margin-left: 2px;
-  }
-  
-  .timeline-item::before {
-    /* Horizontal connector from line to card */
-    content: '';
-    position: absolute;
-    top: 30px;
-    left: -7px; /* Distance to line */
-    width: 7px;
-    height: 2px;
-    background: var(--clr-border-light);
-  }
-  
-  .timeline-item::after {
-    /* Dot on the line */
-    content: '';
-    position: absolute;
-    top: 26px;
-    left: -12px; /* Centered on the end of connector/line */
-    width: 10px;
-    height: 10px;
-    background: var(--clr-bg);
-    border: 2px solid var(--clr-accent);
-    border-radius: 50%;
+    margin: 10px 0 0 0; /* Space below label, above dot */
+    position: static; /* Keep it in flow */
+    transform: none;
     z-index: 2;
   }
+  
+  /* REMOVE Vertical Drop Connector */
+  .node-indicator::before {
+      display: none;
+  }
+  
+  /* Light mode override for connector lines color - NO LONGER NEEDED FOR LINES */
+  .light .timeline-node::before,
+  .light .node-indicator::before,
+  .light .timeline-item::before,
+  .light .timeline-item::after { 
+      background: none; /* Ensure no residual background */
+      border-color: transparent; /* Ensure no residual border */
+      display: none; /* Hide any remaining elements */
+  }
+
+  /* Timeline Item Connector to Main Line - REMOVED */
+  .timeline-item::before {
+    display: none;
+  }
+  
+  /* Dot on the timeline line - REMOVED */
+  .timeline-item::after {
+    display: none;
+  }
+}
+
+/* Also remove lines for desktop if they were too subtle and caused issues */
+@media (min-width: 769px) {
+    .timeline-line {
+        display: none; /* Hide for desktop too */
+    }
 }
 
 @media (min-width: 769px) {
