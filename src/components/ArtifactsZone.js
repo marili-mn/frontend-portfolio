@@ -10,14 +10,14 @@ export class ArtifactsZone extends HTMLElement {
     this.render();
     this.initListeners();
     
-    // Inicializar estado
+    // Initial State
     const currentTheme = themeService.getTheme();
     this.applyThemeClass(currentTheme);
     this.updateTexts();
     this.updateThemeIndicator(currentTheme);
     this.updateLangIndicator(translationService.currentLang);
 
-    // Listeners Globales
+    // Global Listeners
     window.addEventListener('language-changed', (e) => {
         this.updateTexts();
         this.updateLangIndicator(e.detail.language);
@@ -107,302 +107,203 @@ export class ArtifactsZone extends HTMLElement {
     this.innerHTML = `
       <style>
         /* 
-           R&D LAB - HYPER GLITCH THEME
-           Prevent FOUC: visibility hidden by default
+           R&D LAB - RESPONSIVE HYPER GLITCH THEME
         */
         artifacts-zone {
-            /* DARK MODE (Default) - "Dark Ops" */
+            /* DARK MODE (Default) */
             --z-bg: #050505;       
             --z-grid: #1a1a1a;     
             --z-text: #d4d4d4;     
-            --z-accent: #ff3300;   /* Safety Orange */
-            --z-sec: #333333;      /* Secondary borders */
+            --z-accent: #ff3300;
+            --z-sec: #333333;
             --z-mono: 'JetBrains Mono', 'Consolas', monospace;
             
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            z-index: 9000;
+            top: 0; left: 0; width: 100vw; height: 100dvh; 
+            z-index: -1; /* Hide behind everything by default */
             pointer-events: none;
+            visibility: hidden;
             display: block;
             font-family: var(--z-mono);
+            font-size: 14px;
+        }
+        
+        artifacts-zone.active {
+            z-index: 9000; /* Bring to front when active */
+            visibility: visible;
+            pointer-events: auto;
+        }
+        
+        artifacts-zone.closing {
+            z-index: 9000; /* Keep on top while closing */
+            visibility: visible;
+            pointer-events: none;
         }
 
-        /* LIGHT MODE - "Clean Room / Blueprint" */
+        /* LIGHT MODE */
         artifacts-zone.light {
-            --z-bg: #e5e5e5;        /* Concrete White */
-            --z-grid: #d1d1d1;      /* Pencil lines */
-            --z-text: #171717;      /* Ink Black */
-            --z-accent: #ff4400;    /* Vibrant Orange */
+            --z-bg: #e5e5e5;
+            --z-grid: #d1d1d1;
+            --z-text: #171717;
+            --z-accent: #ff4400;
             --z-sec: #999999;
         }
 
-        /* --- CINEMATIC SHUTTER (Double Layer) --- */
-        .shutter-layer {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none;
-            transform: translateY(100%);
-            z-index: 9020;
-        }
+        /* --- ANIMATIONS (Same as before) --- */
+        .shutter-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; transform: translateY(100%); z-index: 9020; }
+        .shutter-accent { background-color: var(--z-accent); z-index: 9025; }
+        .shutter-base { background-color: var(--z-bg); z-index: 9020; }
+        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 5px; background-color: var(--z-accent); opacity: 0.8; box-shadow: 0 0 10px var(--z-accent); z-index: 9030; display: none; }
 
-        /* Layer 1: The Accent Flash */
-        .shutter-accent {
-            background-color: var(--z-accent);
-            z-index: 9025;
-        }
+        artifacts-zone.active .shutter-accent { animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
+        artifacts-zone.active .shutter-base { animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards; }
+        artifacts-zone.active .scanline { display: block; animation: scan-down 0.8s linear forwards; }
+        artifacts-zone.closing .shutter-accent { animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards; }
+        artifacts-zone.closing .shutter-base { animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
 
-        /* Layer 2: The Base Cover */
-        .shutter-base {
-            background-color: var(--z-bg); /* Matches theme bg */
-            z-index: 9020;
-        }
+        @keyframes slash-in { 0% { transform: translateY(100%); clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%); } 40% { transform: translateY(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } 100% { transform: translateY(-100%); clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); } }
+        @keyframes slash-out { 0% { transform: translateY(-100%); } 60% { transform: translateY(0); } 100% { transform: translateY(100%); } }
+        @keyframes scan-down { 0% { top: 0; opacity: 1; } 90% { top: 100%; opacity: 0; } 100% { top: 100%; opacity: 0; } }
 
-        /* Scanline Overlay (Always active but hidden) */
-        .scanline {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 5px;
-            background-color: var(--z-accent);
-            opacity: 0.8;
-            box-shadow: 0 0 10px var(--z-accent);
-            z-index: 9030;
-            display: none;
-        }
-
-        /* --- ANIMATIONS --- */
-
-        /* ENTRY SEQUENCE */
-        artifacts-zone.active .shutter-accent {
-            animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-        }
-        artifacts-zone.active .shutter-base {
-            animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards; /* 0.1s delay */
-        }
-        artifacts-zone.active .scanline {
-            display: block;
-            animation: scan-down 0.8s linear forwards;
-        }
-
-        /* EXIT SEQUENCE */
-        artifacts-zone.closing .shutter-accent {
-            animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards;
-        }
-        artifacts-zone.closing .shutter-base {
-            animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
-        }
-
-        @keyframes slash-in {
-            0% { transform: translateY(100%); clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%); }
-            40% { transform: translateY(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); }
-            100% { transform: translateY(-100%); clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-        }
-
-        @keyframes slash-out {
-            0% { transform: translateY(-100%); }
-            60% { transform: translateY(0); }
-            100% { transform: translateY(100%); }
-        }
-
-        @keyframes scan-down {
-            0% { top: 0; opacity: 1; }
-            90% { top: 100%; opacity: 0; }
-            100% { top: 100%; opacity: 0; }
-        }
-
-        /* --- CONTAINER & CONTENT --- */
+        /* --- CONTAINER --- */
         .zone-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background-color: var(--z-bg);
             opacity: 0; visibility: hidden;
             overflow-y: auto;
-            
-            /* Industrial Grid Pattern */
-            background-image: 
-                linear-gradient(var(--z-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--z-grid) 1px, transparent 1px);
+            -webkit-overflow-scrolling: touch; /* Smooth scroll mobile */
+            background-image: linear-gradient(var(--z-grid) 1px, transparent 1px), linear-gradient(90deg, var(--z-grid) 1px, transparent 1px);
             background-size: 40px 40px;
         }
 
-        /* Content Reveal with Chromatic Shake */
-        artifacts-zone.active .zone-container {
-            animation: content-snap 0.1s linear 0.4s forwards, chromatic-shake 0.5s linear 0.4s;
-            pointer-events: auto;
-        }
-
-        artifacts-zone.closing .zone-container {
-            animation: content-hide 0.1s linear 0.4s forwards;
-            pointer-events: none;
-        }
-
+        artifacts-zone.active .zone-container { animation: content-snap 0.1s linear 0.4s forwards, chromatic-shake 0.5s linear 0.4s; pointer-events: auto; }
+        artifacts-zone.closing .zone-container { animation: content-hide 0.1s linear 0.4s forwards; pointer-events: none; }
         @keyframes content-snap { to { opacity: 1; visibility: visible; } }
         @keyframes content-hide { to { opacity: 0; visibility: hidden; } }
+        @keyframes chromatic-shake { 0% { transform: translate(0,0); filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.5)) drop-shadow(2px 0 0 rgba(0,0,255,0.5)); } 40% { transform: translate(2px, -2px); filter: none; } 100% { transform: translate(0,0); } }
 
-        @keyframes chromatic-shake {
-            0% { transform: translate(0,0); filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.5)) drop-shadow(2px 0 0 rgba(0,0,255,0.5)); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(2px, -2px); filter: none; }
-            60% { transform: translate(-1px, 0); }
-            100% { transform: translate(0,0); }
-        }
-
-        /* --- UI ELEMENTS --- */
+        /* --- RESPONSIVE HEADER --- */
         .zone-header {
             display: flex; justify-content: space-between; align-items: center;
             padding: 20px 40px;
             background-color: var(--z-bg);
             border-bottom: 2px solid var(--z-accent);
             position: sticky; top: 0; z-index: 100;
-            flex-wrap: wrap; gap: 20px;
+            gap: 20px;
         }
 
         .zone-brand { display: flex; align-items: center; gap: 15px; }
-
-        .status-dot {
-            width: 10px; height: 10px;
-            background-color: var(--z-accent);
-            animation: pulse-fast 0.5s infinite alternate;
-        }
-
-        .zone-brand h1 {
-            font-size: 1.5rem; color: var(--z-text); margin: 0;
-            letter-spacing: 2px;
-        }
+        .status-dot { width: 10px; height: 10px; background-color: var(--z-accent); animation: pulse-fast 0.5s infinite alternate; }
+        .zone-brand h1 { font-size: 1.5rem; color: var(--z-text); margin: 0; letter-spacing: 2px; white-space: nowrap; }
 
         .zone-controls { display: flex; align-items: center; gap: 15px; }
 
-        /* TECH BUTTONS */
+        /* Mobile Header Adjustments */
+        @media (max-width: 768px) {
+            .zone-header {
+                padding: 15px;
+                flex-direction: column; /* Stack on mobile */
+                align-items: stretch;
+                gap: 15px;
+            }
+            
+            .zone-brand {
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .zone-brand h1 { font-size: 1.2rem; }
+            
+            .zone-controls {
+                justify-content: space-between;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            /* Hide tech readout on mobile to save space */
+            .tech-readout { display: none; }
+        }
+
+        /* --- BUTTONS --- */
         .lab-btn {
-            background: transparent;
-            border: 1px solid var(--z-sec);
-            color: var(--z-text);
-            padding: 8px 12px;
-            font-family: var(--z-mono);
-            font-size: 0.75rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-transform: uppercase;
+            background: transparent; border: 1px solid var(--z-sec); color: var(--z-text);
+            padding: 8px 12px; font-family: var(--z-mono); font-size: 0.75rem;
+            cursor: pointer; transition: all 0.2s; text-transform: uppercase;
+            white-space: nowrap;
+            flex: 1; /* Grow buttons on mobile */
+            display: flex; justify-content: center; align-items: center;
+        }
+        
+        .lab-btn:hover, .lab-btn:active {
+            border-color: var(--z-accent); color: var(--z-accent); background-color: rgba(255, 51, 0, 0.05);
         }
 
-        .lab-btn:hover {
-            border-color: var(--z-accent);
-            color: var(--z-accent);
-            background-color: rgba(255, 51, 0, 0.05);
-        }
+        .lab-btn-exit { border: 1px solid var(--z-accent); color: var(--z-accent); font-weight: 700; }
+        .lab-btn-exit:hover, .lab-btn-exit:active { background-color: var(--z-accent); color: var(--z-bg); }
 
-        .lab-btn-exit {
-            border: 1px solid var(--z-accent);
-            color: var(--z-accent);
-            font-weight: 700;
-        }
-
-        .lab-btn-exit:hover {
-            background-color: var(--z-accent);
-            color: var(--z-bg); /* Invert contrast */
-        }
-
-        /* --- GRID CONTENT --- */
+        /* --- RESPONSIVE GRID --- */
         .zone-grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1px; /* Gap for grid borders */
-            background-color: var(--z-sec); /* Border color essentially */
-            border: 1px solid var(--z-sec);
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px; background-color: var(--z-sec); border: 1px solid var(--z-sec);
             margin: 40px;
         }
 
+        @media (max-width: 768px) {
+            .zone-grid-layout {
+                margin: 15px; /* Less margin on mobile */
+                grid-template-columns: 1fr; /* Single column force */
+                display: flex;
+                flex-direction: column;
+                gap: 15px; /* Use gap instead of borders for cleaner mobile look */
+                background-color: transparent;
+                border: none;
+            }
+            
+            .zone-item {
+                border: 1px solid var(--z-sec); /* Individual borders on mobile */
+            }
+        }
+
+        /* --- ITEM CONTENT --- */
         .zone-item {
-            background-color: var(--z-bg);
-            padding: 0;
-            display: flex; flex-direction: column;
-            position: relative;
+            background-color: var(--z-bg); padding: 0; display: flex; flex-direction: column; position: relative;
             transition: background-color 0.3s;
         }
+        .zone-item:hover { background-color: rgba(128,128,128, 0.03); }
         
-        .zone-item:hover {
-            /* Subtle highlight on hover */
-            background-color: rgba(128,128,128, 0.03); 
-        }
-
-        /* Corner accents on hover */
-        .zone-item::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            border: 1px solid transparent;
-            pointer-events: none;
-            transition: border-color 0.3s;
-        }
-        .zone-item:hover::before { border-color: var(--z-accent); }
-
         .item-large { grid-column: span 2; }
         .item-wide { grid-column: 1 / -1; }
 
+        /* Reset spans on mobile */
         @media (max-width: 900px) {
-            .item-large, .item-wide { grid-column: 1; }
-            .zone-grid-layout { margin: 20px; }
-            .zone-header { padding: 15px 20px; }
+            .item-large, .item-wide { grid-column: span 1; }
         }
 
-        /* --- ITEM INTERNALS --- */
-        .item-header {
-            display: flex; justify-content: space-between;
-            padding: 8px 12px;
-            border-bottom: 1px solid var(--z-sec);
-            color: var(--z-text); opacity: 0.7;
-            font-size: 0.7rem; letter-spacing: 1px;
+        .item-header { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid var(--z-sec); color: var(--z-text); opacity: 0.7; font-size: 0.7rem; letter-spacing: 1px; }
+        .item-content { padding: 20px; color: var(--z-text); flex-grow: 1; }
+        .item-content h2 { margin-top: 0; color: var(--z-accent); text-transform: uppercase; font-size: 1.8rem; line-height: 1.1; margin-bottom: 10px; }
+        .item-content h3 { margin-top: 0; color: var(--z-accent); text-transform: uppercase; font-size: 1.2rem; margin-bottom: 10px; }
+        .item-content p { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; margin-bottom: 20px; }
+
+        @media (max-width: 400px) {
+            .item-content h2 { font-size: 1.5rem; }
+            .item-content { padding: 15px; }
         }
 
-        .item-content { padding: 25px; color: var(--z-text); flex-grow: 1; }
+        .code-block { background-color: rgba(0,0,0,0.2); font-family: monospace; font-size: 0.75rem; color: var(--z-text); padding: 15px; overflow-x: auto; border-left: 2px solid var(--z-accent); }
+        artifacts-zone.light .code-block { background-color: #f0f0f0; color: #333; }
 
-        .item-content h2, .item-content h3 {
-            margin-top: 0; color: var(--z-accent);
-            text-transform: uppercase;
-        }
+        .tech-stat { border-top: 1px solid var(--z-sec); padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.75rem; }
+        .item-footer { padding: 10px 15px; border-top: 1px solid var(--z-sec); font-size: 0.7rem; text-align: right; color: var(--z-accent); }
 
-        .item-content p {
-            font-size: 0.9rem; line-height: 1.6; opacity: 0.8;
-            margin-bottom: 20px;
-        }
+        .zone-watermark { position: fixed; bottom: 20px; right: 20px; font-size: 5rem; color: var(--z-text); opacity: 0.03; font-weight: 900; pointer-events: none; }
+        @media (max-width: 768px) { .zone-watermark { font-size: 3rem; bottom: 10px; right: 10px; } }
 
-        .code-block {
-            background-color: rgba(0,0,0,0.2); /* Slightly darker than bg */
-            font-family: monospace; font-size: 0.8rem;
-            color: var(--z-text);
-            padding: 15px;
-            overflow-x: auto;
-            border-left: 2px solid var(--z-accent);
-        }
-        /* Light mode adjustment for code block legibility */
-        artifacts-zone.light .code-block {
-            background-color: #f0f0f0;
-            color: #333;
-        }
-
-        .tech-stat {
-            border-top: 1px solid var(--z-sec);
-            padding-top: 10px;
-            display: flex; justify-content: space-between;
-            font-size: 0.75rem;
-        }
-
-        .item-footer {
-            padding: 10px 15px;
-            border-top: 1px solid var(--z-sec);
-            font-size: 0.7rem; text-align: right;
-            color: var(--z-accent);
-        }
-
-        .zone-watermark {
-            position: fixed; bottom: 20px; right: 20px;
-            font-size: 5rem; color: var(--z-text);
-            opacity: 0.03; font-weight: 900;
-            pointer-events: none;
-        }
-        
-        /* Bar Chart */
+        /* Charts */
+        .visual-block { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 0; }
         .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 50px; }
-        .bar { 
-            width: 12px; background-color: var(--z-accent); 
-            opacity: 0.3; transition: all 0.3s;
-        }
+        .bar { width: 12px; background-color: var(--z-accent); opacity: 0.3; transition: all 0.3s; }
         .zone-item:hover .bar { opacity: 1; }
 
         @keyframes pulse-fast { from { opacity: 1; } to { opacity: 0.4; } }
@@ -421,6 +322,9 @@ export class ArtifactsZone extends HTMLElement {
             </div>
             
             <div class="zone-controls">
+                <!-- Readout hidden on mobile -->
+                <span class="tech-readout" data-t="lab_sec_level">SEC_LEVEL: MAX</span>
+                
                 <button id="lab-theme-btn" class="lab-btn">
                     <span id="lab-theme-indicator">SYS:LGT</span>
                 </button>
@@ -428,7 +332,7 @@ export class ArtifactsZone extends HTMLElement {
                     <span id="lab-lang-indicator">LNG:ES</span>
                 </button>
                 <button id="close-artifacts" class="lab-btn lab-btn-exit" data-t="lab_btn_exit">
-                    [ TERMINATE ]
+                    [ EXIT ]
                 </button>
             </div>
         </header>

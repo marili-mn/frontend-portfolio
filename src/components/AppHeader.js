@@ -152,6 +152,10 @@ export class AppHeader extends HTMLElement {
             .nav__hamburger {
                 display: none !important;
             }
+            
+            .mobile-lab-btn {
+                display: none;
+            }
 
             .nav__menu-overlay {
                 display: block; 
@@ -166,11 +170,21 @@ export class AppHeader extends HTMLElement {
             }
         }
 
-        /* --- TABLET & MOBILE (<= 1024px) --- 
-           We treat Tablets (iPad Air/Mini) as "Mobile" navigation wise 
-           because the links often don't fit comfortably. 
-        */
+        /* --- TABLET & MOBILE (<= 1024px) --- */
         @media screen and (max-width: 1024px) {
+            .desktop-lab-btn {
+                display: none !important;
+            }
+            
+            .mobile-lab-btn {
+                display: block;
+                margin-top: 20px;
+            }
+            
+            .mobile-lab-btn .btn--tech {
+                font-size: 1.5rem; /* Match nav links size */
+            }
+
             .nav-grid {
                 grid-template-columns: 1fr 1fr; /* Logo, Actions */
             }
@@ -293,6 +307,12 @@ export class AppHeader extends HTMLElement {
                   <li class="nav__item">
                     <a href="#contact" class="nav__link link--nav" data-translate="nav_contact">Contacto</a>
                   </li>
+                  <!-- Mobile Only Lab Button -->
+                  <li class="nav__item mobile-lab-btn">
+                    <button class="btn--tech" aria-label="Access Lab Zone" id="artifacts-btn-mobile">
+                        <span class="hover-brackets">LAB_ZONE</span>
+                    </button>
+                  </li>
                 </ul>
               </div>
           </div>
@@ -305,8 +325,8 @@ export class AppHeader extends HTMLElement {
                 <span id="theme-indicator" class="hover-brackets">SYS:LGT</span>
             </button>
 
-            <!-- Lab Zone Button (Industrial Access) -->
-            <button class="btn--tech" aria-label="Access Lab Zone" id="artifacts-btn">
+            <!-- Lab Zone Button (Desktop Only) -->
+            <button class="btn--tech desktop-lab-btn" aria-label="Access Lab Zone" id="artifacts-btn">
                 <span class="hover-brackets">LAB_ZONE</span>
             </button>
 
@@ -340,11 +360,22 @@ export class AppHeader extends HTMLElement {
         // Theme
         this.querySelector('#theme-toggle-btn')?.addEventListener('click', () => themeService.toggleTheme());
         
-        // Lab Zone Access
-        this.querySelector('#artifacts-btn')?.addEventListener('click', () => {
+        // Lab Zone Access (Desktop & Mobile)
+        const openLab = () => {
             const zone = document.querySelector('artifacts-zone');
             if(zone) zone.open();
-        });
+            
+            // Close mobile menu if open
+            const navMenu = this.querySelector('#nav-menu');
+            const hamburgerText = this.querySelector('#menu-text');
+            if(navMenu) navMenu.classList.remove('show-menu');
+            
+            const navList = this.querySelector('.nav__list');
+            if(navList) navList.classList.remove('display-nav-list');
+        };
+
+        this.querySelector('#artifacts-btn')?.addEventListener('click', openLab);
+        this.querySelector('#artifacts-btn-mobile')?.addEventListener('click', openLab);
 
         // --- DIRTY SOLUTION FOR LANG MENU (Re-applying) ---
         const langBtn = this.querySelector('#lang-btn');
