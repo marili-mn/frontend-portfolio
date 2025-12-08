@@ -12,28 +12,32 @@ export class ScrollTopBtn extends HTMLElement {
     this.btn.addEventListener('click', (e) => {
       e.preventDefault();
       
-      // Check if GSAP and ScrollToPlugin are available
-      if (window.gsap && window.ScrollToPlugin) {
+      // Simple check for mobile/tablet
+      const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+      if (isMobile) {
+          // Native robust scroll for mobile
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else if (window.gsap && window.ScrollToPlugin) {
         
         // Function to stop scrolling if user interacts
         const killScroll = () => {
             gsap.killTweensOf(window);
             window.removeEventListener('wheel', killScroll);
-            window.removeEventListener('touchmove', killScroll);
+            window.removeEventListener('touchmove', killScroll); // Fallback for touch laptops
             window.removeEventListener('touchstart', killScroll);
         };
 
-        // Add listeners with a delay to avoid catching the initial click/tap
-        // This prevents the animation from being killed instantly on mobile
+        // Add listeners with a delay
         setTimeout(() => {
             window.addEventListener('wheel', killScroll, { passive: true });
             window.addEventListener('touchmove', killScroll, { passive: true });
             window.addEventListener('touchstart', killScroll, { passive: true });
-        }, 500);
+        }, 100); // Short delay for desktop is fine
 
         gsap.to(window, { 
           duration: 1.5, 
-          scrollTo: { y: 0, autoKill: false }, // autoKill false because we handle it manually
+          scrollTo: { y: 0, autoKill: false },
           ease: "power4.out",
           onComplete: () => {
             window.removeEventListener('wheel', killScroll);
