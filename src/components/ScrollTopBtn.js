@@ -16,8 +16,12 @@ export class ScrollTopBtn extends HTMLElement {
       const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
       if (isMobile) {
-          // Native robust scroll for mobile
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          // MOBILE OPTIMIZATION:
+          // We call scrollTo(0,0) (instant). 
+          // Because 'html { scroll-behavior: smooth; }' exists in CSS, 
+          // the BROWSER NATIVELY animates this. 
+          // This decouples the animation from the JS thread, making it immune to touch interruptions.
+          window.scrollTo(0, 0);
       } else if (window.gsap && window.ScrollToPlugin) {
         
         // Function to stop scrolling if user interacts
