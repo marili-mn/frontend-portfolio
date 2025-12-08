@@ -1143,14 +1143,14 @@ main {
     margin-right: 0;
     z-index: 999; /* Below header */
     
-    /* Ensure blurred effect on mobile too */
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    background-color: rgba(26, 26, 26, 0.95); /* Less transparent on mobile for readability */
+    /* Performance Optimization: Removed backdrop-filter on mobile */
+    /* backdrop-filter: blur(15px); */
+    /* -webkit-backdrop-filter: blur(15px); */
+    background-color: rgba(20, 20, 23, 0.98); /* Almost solid for performance & legibility */
   }
   
   .light .nav__list {
-      background-color: rgba(236, 239, 241, 0.95);
+      background-color: rgba(245, 245, 245, 0.98);
   }
 
   .nav__list.display-nav-list {

@@ -7,7 +7,17 @@ export class ScrollTopBtn extends HTMLElement {
     this.render();
     this.btn = this.querySelector('.scroll-top');
     
-    window.addEventListener('scroll', () => this.handleScroll());
+    // Throttled scroll handler using requestAnimationFrame
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                this.handleScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    }, { passive: true });
 
     this.btn.addEventListener('click', (e) => {
       e.preventDefault();
