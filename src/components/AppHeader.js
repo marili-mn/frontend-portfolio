@@ -363,7 +363,9 @@ export class AppHeader extends HTMLElement {
         // Lab Zone Access (Desktop & Mobile)
         const openLab = () => {
             const zone = document.querySelector('artifacts-zone');
-            if(zone) zone.open();
+            if(zone) {
+                zone.open();
+            }
             
             // Close mobile menu if open
             const navMenu = this.querySelector('#nav-menu');

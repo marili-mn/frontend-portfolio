@@ -4,6 +4,7 @@ import { translationService } from '../services/TranslationService.js';
 export class ArtifactsZone extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({ mode: 'open' });
   }
 
   connectedCallback() {
@@ -13,9 +14,15 @@ export class ArtifactsZone extends HTMLElement {
     // Initial State
     const currentTheme = themeService.getTheme();
     this.applyThemeClass(currentTheme);
-    this.updateTexts();
     this.updateThemeIndicator(currentTheme);
     this.updateLangIndicator(translationService.currentLang);
+
+    // Defer text rendering until translations are loaded
+    if (translationService.loaded) {
+        this.updateTexts();
+    } else {
+        window.addEventListener('translations-loaded', () => this.updateTexts(), { once: true });
+    }
 
     // Global Listeners
     window.addEventListener('language-changed', (e) => {
@@ -40,8 +47,8 @@ export class ArtifactsZone extends HTMLElement {
   updateTexts() {
     const t = (k) => translationService.t(k);
     const set = (sel, k) => {
-        const el = this.querySelector(sel);
-        if(el) el.textContent = t(k);
+        const el = this.shadowRoot.querySelector(sel);
+        if(el) el.innerHTML = t(k);
     };
 
     set('[data-t="lab_title"]', 'lab_title');
@@ -51,34 +58,94 @@ export class ArtifactsZone extends HTMLElement {
     set('[data-t="lab_manifesto_title"]', 'lab_manifesto_title');
     set('[data-t="lab_manifesto_desc"]', 'lab_manifesto_desc');
     
-    const statusLabel = this.querySelector('[data-t="lab_status"]');
+    const statusLabel = this.shadowRoot.querySelector('[data-t="lab_status"]');
     if(statusLabel) statusLabel.textContent = t('lab_status');
-    const statusVal = this.querySelector('[data-t="lab_status_val"]');
+    const statusVal = this.shadowRoot.querySelector('[data-t="lab_status_val"]');
     if(statusVal) statusVal.textContent = t('lab_status_val');
 
-    set('[data-t="lab_algo_title"]', 'lab_algo_title');
-    set('[data-t="lab_metrics_title"]', 'lab_metrics_title');
-    set('[data-t="lab_proto_title"]', 'lab_proto_title');
-    set('[data-t="lab_next_gen"]', 'lab_next_gen');
-    set('[data-t="lab_next_gen_desc"]', 'lab_next_gen_desc');
-    set('[data-t="lab_awaiting"]', 'lab_awaiting');
     set('[data-t="lab_classified"]', 'lab_classified');
+
+    // New Artifacts Zone Translations
+    set('[data-t="lab_visual_engine"]', 'lab_visual_engine');
+    set('[data-t="lab_system_core"]', 'lab_system_core');
+    set('[data-t="lab_comp_theory"]', 'lab_comp_theory');
+
+    set('[data-t="lab_css_print_engine_title"]', 'lab_css_print_engine_title');
+    set('[data-t="lab_css_print_engine_desc"]', 'lab_css_print_engine_desc');
+    set('[data-t="lab_css_print_engine_type"]', 'lab_css_print_engine_type');
+
+    set('[data-t="lab_grid_layout_sys_hk_title"]', 'lab_grid_layout_sys_hk_title');
+    set('[data-t="lab_grid_layout_sys_hk_desc"]', 'lab_grid_layout_sys_hk_desc');
+    set('[data-t="lab_grid_layout_sys_hk_type"]', 'lab_grid_layout_sys_hk_type');
+
+    set('[data-t="lab_ui_proto_archviz_title"]', 'lab_ui_proto_archviz_title');
+    set('[data-t="lab_ui_proto_archviz_desc"]', 'lab_ui_proto_archviz_desc');
+    set('[data-t="lab_ui_proto_archviz_type"]', 'lab_ui_proto_archviz_type');
+
+    set('[data-t="lab_ubuntu_svr_deploy_title"]', 'lab_ubuntu_svr_deploy_title');
+    set('[data-t="lab_ubuntu_svr_deploy_desc"]', 'lab_ubuntu_svr_deploy_desc');
+    set('[data-t="lab_ubuntu_svr_deploy_type"]', 'lab_ubuntu_svr_deploy_type');
+
+    set('[data-t="lab_proc_scheduling_title"]', 'lab_proc_scheduling_title');
+    set('[data-t="lab_proc_scheduling_desc"]', 'lab_proc_scheduling_desc');
+    set('[data-t="lab_proc_scheduling_type"]', 'lab_proc_scheduling_type');
+
+    set('[data-t="lab_win32_sys_manual_title"]', 'lab_win32_sys_manual_title');
+    set('[data-t="lab_win32_sys_manual_desc"]', 'lab_win32_sys_manual_desc');
+    set('[data-t="lab_win32_sys_manual_type"]', 'lab_win32_sys_manual_type');
+
+    set('[data-t="lab_bootloader_rec_title"]', 'lab_bootloader_rec_title');
+    set('[data-t="lab_bootloader_rec_desc"]', 'lab_bootloader_rec_desc');
+    set('[data-t="lab_bootloader_rec_type"]', 'lab_bootloader_rec_type');
+
+    set('[data-t="lab_js_math_engine_title"]', 'lab_js_math_engine_title');
+    set('[data-t="lab_js_math_engine_desc"]', 'lab_js_math_engine_desc');
+    set('[data-t="lab_js_math_engine_type"]', 'lab_js_math_engine_type');
+
+    set('[data-t="lab_data_struct_ref_title"]', 'lab_data_struct_ref_title');
+    set('[data-t="lab_data_struct_ref_desc"]', 'lab_data_struct_ref_desc');
+    set('[data-t="lab_data_struct_ref_type"]', 'lab_data_struct_ref_type');
+
+    set('[data-t="lab_lang_theory_docs_title"]', 'lab_lang_theory_docs_title');
+    set('[data-t="lab_lang_theory_docs_desc"]', 'lab_lang_theory_docs_desc');
+    set('[data-t="lab_lang_theory_docs_type"]', 'lab_lang_theory_docs_type');
+
+    set('[data-t="lab_root_repo_title"]', 'lab_root_repo_title');
+    set('[data-t="lab_root_repo_desc"]', 'lab_root_repo_desc');
+    set('[data-t="lab_root_repo_type"]', 'lab_root_repo_type');
+    
+    // Buttons
+    this.shadowRoot.querySelectorAll('[data-t="lab_btn_src"]').forEach(el => el.textContent = t('lab_btn_src'));
+    this.shadowRoot.querySelectorAll('[data-t="lab_btn_demo"]').forEach(el => el.textContent = t('lab_btn_demo'));
+
+    // Joyitas (New Artifacts)
+    set('[data-t="lab_massoluciones_title"]', 'lab_massoluciones_title');
+    set('[data-t="lab_massoluciones_desc"]', 'lab_massoluciones_desc');
+    set('[data-t="lab_massoluciones_type"]', 'lab_massoluciones_type');
+
+    set('[data-t="lab_apuntes_title"]', 'lab_apuntes_title');
+    set('[data-t="lab_apuntes_desc"]', 'lab_apuntes_desc');
+    set('[data-t="lab_apuntes_type"]', 'lab_apuntes_type');
+
+    set('[data-t="lab_karting_title"]', 'lab_karting_title');
+    set('[data-t="lab_karting_desc"]', 'lab_karting_desc');
+    set('[data-t="lab_karting_type"]', 'lab_karting_type');
   }
   
   updateThemeIndicator(theme) {
-      const indicator = this.querySelector('#lab-theme-indicator');
+      const indicator = this.shadowRoot.querySelector('#lab-theme-indicator');
       if(indicator) indicator.textContent = theme === 'dark' ? 'SYS:DRK' : 'SYS:LGT';
   }
 
   updateLangIndicator(lang) {
-      const indicator = this.querySelector('#lab-lang-indicator');
+      const indicator = this.shadowRoot.querySelector('#lab-lang-indicator');
       if(indicator) indicator.textContent = `LNG:${lang.toUpperCase()}`;
   }
 
   initListeners() {
-    this.querySelector('#close-artifacts')?.addEventListener('click', () => this.close());
-    this.querySelector('#lab-theme-btn')?.addEventListener('click', () => themeService.toggleTheme());
-    this.querySelector('#lab-lang-btn')?.addEventListener('click', () => {
+    this.shadowRoot.querySelector('#close-artifacts')?.addEventListener('click', () => this.close());
+    this.shadowRoot.querySelector('#lab-theme-btn')?.addEventListener('click', () => themeService.toggleTheme());
+    this.shadowRoot.querySelector('#lab-lang-btn')?.addEventListener('click', () => {
         const langs = ['es', 'en', 'pt', 'de'];
         const next = langs[(langs.indexOf(translationService.currentLang) + 1) % langs.length];
         translationService.setLanguage(next);
@@ -91,12 +158,29 @@ export class ArtifactsZone extends HTMLElement {
 
   open() {
     this.classList.add('active');
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
+
+    // Hide main content
+    document.querySelector('main').style.display = 'none';
+    document.querySelector('app-footer').style.display = 'none';
+    
+    // Hide scroll btn to prevent overlay bleed-through
+    const scrollBtn = document.querySelector('scroll-top-btn');
+    if(scrollBtn) scrollBtn.style.display = 'none';
   }
 
   close() {
     this.classList.remove('active');
     this.classList.add('closing');
+
+    // Restore main content
+    document.querySelector('main').style.display = '';
+    document.querySelector('app-footer').style.display = '';
+
+    // Restore scroll btn
+    const scrollBtn = document.querySelector('scroll-top-btn');
+    if(scrollBtn) scrollBtn.style.display = '';
+
     setTimeout(() => {
         this.classList.remove('closing');
         document.body.style.overflow = '';
@@ -104,211 +188,373 @@ export class ArtifactsZone extends HTMLElement {
   }
 
   render() {
-    this.innerHTML = `
+    // Helper function for translations
+    const t = (k) => translationService.t(k);
+
+    this.shadowRoot.innerHTML = `
       <style>
-        /* 
-           R&D LAB - RESPONSIVE HYPER GLITCH THEME
-        */
-        artifacts-zone {
-            /* DARK MODE (Default) */
-            --z-bg: #050505;       
-            --z-grid: #1a1a1a;     
-            --z-text: #d4d4d4;     
-            --z-accent: #ff3300;
-            --z-sec: #333333;
+        :host {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100dvh !important;
+            pointer-events: none !important;
+            visibility: hidden !important;
+            display: block !important;
+            font-family: var(--z-mono) !important;
+            font-size: 14px !important;
+            background-color: var(--z-bg) !important;
+        }
+        
+        :host(.active) {
+            z-index: 9000 !important;
+            visibility: visible !important;
+            pointer-events: auto !important;
+        }
+        
+        :host(.closing) {
+            z-index: 9000 !important;
+            visibility: visible !important;
+            pointer-events: none !important;
+        }
+
+        :host {
+            --z-bg: #050505;
+            --z-grid: #1a1a1a;
+            --z-text: #f8fafc; /* Brighter text */
+            --z-accent: #a78bfa;
+            --z-accent-rgb-value: 167, 139, 250;
+            --z-sec: #94a3b8; /* Better contrast */
             --z-mono: 'JetBrains Mono', 'Consolas', monospace;
-            
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100dvh; 
-            z-index: -1; /* Hide behind everything by default */
-            pointer-events: none;
-            visibility: hidden;
-            display: block;
-            font-family: var(--z-mono);
-            font-size: 14px;
         }
         
-        artifacts-zone.active {
-            z-index: 9000; /* Bring to front when active */
-            visibility: visible;
-            pointer-events: auto;
+        :host(.light) {
+            --z-bg: #fafaf9;
+            --z-grid: #e7e5e4;
+            --z-text: #1c1917;
+            --z-accent: #ea580c;
+            --z-accent-rgb-value: 234, 88, 12;
+            --z-sec: #57534e; /* Better contrast */
+        }
+
+        @keyframes shutter-open-1 {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+        @keyframes shutter-open-2 {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(0); }
+            100% { transform: translateY(-100%); }
+        }
+        @keyframes fade-in {
+            0% { opacity: 0; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        :host(.active) .shutter-base {
+            animation: shutter-open-1 0.8s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
+        }
+        :host(.active) .shutter-accent {
+            animation: shutter-open-2 0.9s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
+        }
+        :host(.active) .zone-container {
+            animation: fade-in 1s ease-in-out forwards !important;
+        }
+
+        @keyframes shutter-close-1 {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
+        }
+        @keyframes shutter-close-2 {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(0); }
+        }
+        :host(.closing) .shutter-base {
+            animation: shutter-close-1 0.6s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
+        }
+        :host(.closing) .shutter-accent {
+            animation: shutter-close-2 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
         }
         
-        artifacts-zone.closing {
-            z-index: 9000; /* Keep on top while closing */
-            visibility: visible;
-            pointer-events: none;
+        .shutter-layer {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
         }
-
-        /* LIGHT MODE */
-        artifacts-zone.light {
-            --z-bg: #e5e5e5;
-            --z-grid: #d1d1d1;
-            --z-text: #171717;
-            --z-accent: #ff4400;
-            --z-sec: #999999;
+        .shutter-base {
+            background-color: var(--z-bg) !important;
+            z-index: 8998 !important;
         }
-
-        /* --- ANIMATIONS (Same as before) --- */
-        .shutter-layer { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; transform: translateY(100%); z-index: 9020; }
-        .shutter-accent { background-color: var(--z-accent); z-index: 9025; }
-        .shutter-base { background-color: var(--z-bg); z-index: 9020; }
-        .scanline { position: fixed; top: 0; left: 0; width: 100%; height: 5px; background-color: var(--z-accent); opacity: 0.8; box-shadow: 0 0 10px var(--z-accent); z-index: 9030; display: none; }
-
-        artifacts-zone.active .shutter-accent { animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
-        artifacts-zone.active .shutter-base { animation: slash-in 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards; }
-        artifacts-zone.active .scanline { display: block; animation: scan-down 0.8s linear forwards; }
-        artifacts-zone.closing .shutter-accent { animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) 0.1s forwards; }
-        artifacts-zone.closing .shutter-base { animation: slash-out 0.6s cubic-bezier(0.8, 0, 0.2, 1) forwards; }
-
-        @keyframes slash-in { 0% { transform: translateY(100%); clip-path: polygon(0 0, 100% 15%, 100% 100%, 0 100%); } 40% { transform: translateY(0); clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); } 100% { transform: translateY(-100%); clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); } }
-        @keyframes slash-out { 0% { transform: translateY(-100%); } 60% { transform: translateY(0); } 100% { transform: translateY(100%); } }
-        @keyframes scan-down { 0% { top: 0; opacity: 1; } 90% { top: 100%; opacity: 0; } 100% { top: 100%; opacity: 0; } }
-
-        /* --- CONTAINER --- */
+        .shutter-accent {
+            background-color: var(--z-accent) !important;
+            z-index: 8999 !important;
+        }
+        .scanline {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            pointer-events: none !important;
+            background: linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0) 100%) !important;
+            background-size: 100% 4px !important;
+            animation: scanline-anim 15s linear infinite !important;
+            opacity: 0.2 !important;
+            z-index: 9001 !important;
+        }
+        @keyframes scanline-anim {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 100vh; }
+        }
+        
         .zone-container {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background-color: var(--z-bg);
-            opacity: 0; visibility: hidden;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch; /* Smooth scroll mobile */
-            background-image: linear-gradient(var(--z-grid) 1px, transparent 1px), linear-gradient(90deg, var(--z-grid) 1px, transparent 1px);
-            background-size: 40px 40px;
+            position: relative !important;
+            width: 100% !important;
+            height: 100% !important;
+            overflow-y: auto !important;
+            padding: 20px !important;
+            color: var(--z-text) !important;
+            background: 
+                linear-gradient(var(--z-grid) 1px, transparent 1px),
+                linear-gradient(90deg, var(--z-grid) 1px, transparent 1px) !important;
+            background-size: 30px 30px !important;
         }
 
-        artifacts-zone.active .zone-container { animation: content-snap 0.1s linear 0.4s forwards, chromatic-shake 0.5s linear 0.4s; pointer-events: auto; }
-        artifacts-zone.closing .zone-container { animation: content-hide 0.1s linear 0.4s forwards; pointer-events: none; }
-        @keyframes content-snap { to { opacity: 1; visibility: visible; } }
-        @keyframes content-hide { to { opacity: 0; visibility: hidden; } }
-        @keyframes chromatic-shake { 0% { transform: translate(0,0); filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.5)) drop-shadow(2px 0 0 rgba(0,0,255,0.5)); } 40% { transform: translate(2px, -2px); filter: none; } 100% { transform: translate(0,0); } }
-
-        /* --- RESPONSIVE HEADER --- */
         .zone-header {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 20px 40px;
-            background-color: var(--z-bg);
-            border-bottom: 2px solid var(--z-accent);
-            position: sticky; top: 0; z-index: 100;
-            gap: 20px;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 10px 20px !important;
+            background: rgba(var(--z-accent-rgb-value), 0.05) !important;
+            border: 1px solid var(--z-grid) !important;
+            position: sticky !important;
+            top: 0 !important;
+            z-index: 100 !important;
+        }
+        
+        .zone-brand {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
         }
 
-        .zone-brand { display: flex; align-items: center; gap: 15px; }
-        .status-dot { width: 10px; height: 10px; background-color: var(--z-accent); animation: pulse-fast 0.5s infinite alternate; }
-        .zone-brand h1 { font-size: 1.5rem; color: var(--z-text); margin: 0; letter-spacing: 2px; white-space: nowrap; }
-
-        .zone-controls { display: flex; align-items: center; gap: 15px; }
-
-        /* Mobile Header Adjustments */
-        @media (max-width: 768px) {
-            .zone-header {
-                padding: 15px;
-                flex-direction: column; /* Stack on mobile */
-                align-items: stretch;
-                gap: 15px;
-            }
-            
-            .zone-brand {
-                justify-content: space-between;
-                width: 100%;
-            }
-            
-            .zone-brand h1 { font-size: 1.2rem; }
-            
-            .zone-controls {
-                justify-content: space-between;
-                width: 100%;
-                gap: 10px;
-            }
-            
-            /* Hide tech readout on mobile to save space */
-            .tech-readout { display: none; }
+        .zone-brand h1 {
+            font-size: 1.2rem !important;
+            font-weight: 700 !important;
+            margin: 0 !important;
+            color: var(--z-text) !important;
         }
 
-        /* --- BUTTONS --- */
+        .status-dot {
+            width: 10px !important;
+            height: 10px !important;
+            border-radius: 50% !important;
+            background-color: var(--z-accent) !important;
+            animation: pulse-fast 1.5s ease-in-out infinite alternate !important;
+        }
+
+        .zone-controls {
+            display: flex !important;
+            align-items: center !important;
+            gap: 15px !important;
+        }
+
+        .tech-readout, .lab-btn {
+            font-size: 0.8rem !important;
+            font-weight: 500 !important;
+        }
+
         .lab-btn {
-            background: transparent; border: 1px solid var(--z-sec); color: var(--z-text);
-            padding: 8px 12px; font-family: var(--z-mono); font-size: 0.75rem;
-            cursor: pointer; transition: all 0.2s; text-transform: uppercase;
-            white-space: nowrap;
-            flex: 1; /* Grow buttons on mobile */
-            display: flex; justify-content: center; align-items: center;
+            background: transparent !important;
+            border: 1px solid var(--z-sec) !important;
+            color: var(--z-text) !important;
+            padding: 5px 10px !important;
+            cursor: pointer !important;
+            transition: all 0.2s !important;
+        }
+
+        .lab-btn:hover {
+            background: var(--z-accent) !important;
+            color: var(--z-bg) !important;
+            border-color: var(--z-accent) !important;
         }
         
-        .lab-btn:hover, .lab-btn:active {
-            border-color: var(--z-accent); color: var(--z-accent); background-color: rgba(255, 51, 0, 0.05);
+        .lab-btn-exit {
+            color: var(--z-accent) !important;
+            border-color: var(--z-accent) !important;
         }
 
-        .lab-btn-exit { border: 1px solid var(--z-accent); color: var(--z-accent); font-weight: 700; }
-        .lab-btn-exit:hover, .lab-btn-exit:active { background-color: var(--z-accent); color: var(--z-bg); }
-
-        /* --- RESPONSIVE GRID --- */
         .zone-grid-layout {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1px; background-color: var(--z-sec); border: 1px solid var(--z-sec);
-            margin: 40px;
+            display: grid !important;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            gap: 20px !important;
+            padding: 20px 0 !important;
         }
-
-        @media (max-width: 768px) {
-            .zone-grid-layout {
-                margin: 15px; /* Less margin on mobile */
-                grid-template-columns: 1fr; /* Single column force */
-                display: flex;
-                flex-direction: column;
-                gap: 15px; /* Use gap instead of borders for cleaner mobile look */
-                background-color: transparent;
-                border: none;
-            }
-            
-            .zone-item {
-                border: 1px solid var(--z-sec); /* Individual borders on mobile */
-            }
-        }
-
-        /* --- ITEM CONTENT --- */
-        .zone-item {
-            background-color: var(--z-bg); padding: 0; display: flex; flex-direction: column; position: relative;
-            transition: background-color 0.3s;
-        }
-        .zone-item:hover { background-color: rgba(128,128,128, 0.03); }
         
-        .item-large { grid-column: span 2; }
-        .item-wide { grid-column: 1 / -1; }
-
-        /* Reset spans on mobile */
-        @media (max-width: 900px) {
-            .item-large, .item-wide { grid-column: span 1; }
+        .zone-item {
+            background: var(--z-bg) !important;
+            border: 1px solid var(--z-grid) !important;
+            text-decoration: none !important;
+            color: var(--z-text) !important;
+            transition: all 0.2s !important;
+            display: flex !important;
+            flex-direction: column !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
         }
 
-        .item-header { display: flex; justify-content: space-between; padding: 10px 15px; border-bottom: 1px solid var(--z-sec); color: var(--z-text); opacity: 0.7; font-size: 0.7rem; letter-spacing: 1px; }
-        .item-content { padding: 20px; color: var(--z-text); flex-grow: 1; }
-        .item-content h2 { margin-top: 0; color: var(--z-accent); text-transform: uppercase; font-size: 1.8rem; line-height: 1.1; margin-bottom: 10px; }
-        .item-content h3 { margin-top: 0; color: var(--z-accent); text-transform: uppercase; font-size: 1.2rem; margin-bottom: 10px; }
-        .item-content p { font-size: 0.9rem; line-height: 1.6; opacity: 0.8; margin-bottom: 20px; }
-
-        @media (max-width: 400px) {
-            .item-content h2 { font-size: 1.5rem; }
-            .item-content { padding: 15px; }
+        .zone-item:hover {
+            border-color: var(--z-accent) !important;
+            transform: translateY(-5px) !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
         }
 
-        .code-block { background-color: rgba(0,0,0,0.2); font-family: monospace; font-size: 0.75rem; color: var(--z-text); padding: 15px; overflow-x: auto; border-left: 2px solid var(--z-accent); }
-        artifacts-zone.light .code-block { background-color: #f0f0f0; color: #333; }
+        .item-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 10px 15px !important;
+            border-bottom: 1px solid var(--z-grid) !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !importan;
+        }
 
-        .tech-stat { border-top: 1px solid var(--z-sec); padding-top: 10px; display: flex; justify-content: space-between; font-size: 0.75rem; }
-        .item-footer { padding: 10px 15px; border-top: 1px solid var(--z-sec); font-size: 0.7rem; text-align: right; color: var(--z-accent); }
+        .item-content {
+            padding: 15px !important;
+            flex-grow: 1 !important;
+        }
 
-        .zone-watermark { position: fixed; bottom: 20px; right: 20px; font-size: 5rem; color: var(--z-text); opacity: 0.03; font-weight: 900; pointer-events: none; }
-        @media (max-width: 768px) { .zone-watermark { font-size: 3rem; bottom: 10px; right: 10px; } }
+        .item-content h2, .item-content h3 {
+            font-size: 1rem !important;
+            margin: 0 0 10px 0 !important;
+            font-weight: 700 !important;
+            color: var(--z-text) !important;
+        }
+        
+        .item-content p {
+            font-size: 0.9rem !important;
+            color: var(--z-sec) !important;
+            line-height: 1.7 !important;
+            margin: 0 !important;
+        }
+        
+        .item-large {
+            grid-column: span 2 !important;
+        }
 
-        /* Charts */
-        .visual-block { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; padding: 20px 0; }
-        .bar-chart { display: flex; align-items: flex-end; gap: 4px; height: 50px; }
-        .bar { width: 12px; background-color: var(--z-accent); opacity: 0.3; transition: all 0.3s; }
-        .zone-item:hover .bar { opacity: 1; }
+        .tech-stat {
+            margin-top: 15px !important;
+            font-size: 0.8rem !important;
+            color: var(--z-sec) !important;
+        }
 
-        @keyframes pulse-fast { from { opacity: 1; } to { opacity: 0.4; } }
+        .featured-artifact {
+            border: 1px solid var(--z-accent) !important;
+            background: linear-gradient(180deg, rgba(var(--z-accent-rgb-value), 0.02), rgba(var(--z-accent-rgb-value), 0.08)) !important;
+            z-index: 2 !important;
+        }
+        
+        .featured-artifact:hover {
+            box-shadow: 0 0 20px rgba(var(--z-accent-rgb-value), 0.2) !important;
+            transform: translateY(-2px) !important;
+            border-color: var(--z-text) !important;
+        }
+        
+        :host(.light) .featured-artifact:hover {
+             box-shadow: 0 0 20px rgba(var(--z-accent-rgb-value), 0.2) !important;
+        }
+
+        .featured-artifact .item-header {
+            background-color: var(--z-accent) !important;
+            color: var(--z-bg) !important;
+            font-weight: 800 !important;
+            border-bottom: none !important;
+        }
+        
+        .featured-artifact .category-label {
+            border-color: rgba(0,0,0,0.3) !important;
+            color: inherit !important;
+            background: rgba(0,0,0,0.1) !important;
+        }
+
+        .item-footer {
+            padding: 12px 15px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 10px !important;
+            flex-wrap: nowrap !important;
+            border-top: 1px solid var(--z-grid) !important;
+        }
+
+        .artifact-actions {
+            display: flex !important;
+            gap: 8px !important;
+            flex-shrink: 0 !important;
+        }
+
+        .artifact-btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-decoration: none !important;
+            font-size: 0.75rem !important;
+            font-weight: 700 !important;
+            color: var(--z-accent) !important;
+            border: 1px solid var(--z-accent) !important;
+            padding: 6px 12px !important;
+            transition: all 0.2s !important;
+            background: transparent !important;
+            white-space: nowrap !important;
+            min-width: 80px !important;
+            line-height: 1 !important;
+        }
+
+        .artifact-btn:hover {
+            background-color: var(--z-accent) !important;
+            color: var(--z-bg) !important;
+            box-shadow: 0 0 10px var(--z-accent) !important;
+        }
+
+        .zone-watermark { 
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            font-size: 5rem !important;
+            color: var(--z-text) !important;
+            opacity: 0.03 !important;
+            font-weight: 900 !important;
+            pointer-events: none !important;
+        }
+        @media (max-width: 768px) {
+            .zone-watermark {
+                font-size: 3rem !important;
+                bottom: 10px !important;
+                right: 10px !important;
+            }
+            .item-large {
+                grid-column: span 1 !important;
+            }
+        }
+
+        .category-label {
+            font-size: 0.6rem !important;
+            padding: 2px 6px !important;
+            border: 1px solid var(--z-accent) !important;
+            border-radius: 2px !important;
+            color: var(--z-accent) !important;
+        }
+
+        @keyframes pulse-fast {
+            from { opacity: 1; }
+            to { opacity: 0.4; }
+        }
       </style>
-
+      
       <!-- CINEMATIC LAYERS -->
       <div class="shutter-layer shutter-accent"></div>
       <div class="shutter-layer shutter-base"></div>
@@ -322,8 +568,7 @@ export class ArtifactsZone extends HTMLElement {
             </div>
             
             <div class="zone-controls">
-                <!-- Readout hidden on mobile -->
-                <span class="tech-readout" data-t="lab_sec_level">SEC_LEVEL: MAX</span>
+                <span class="tech-readout" data-t="lab_sec_level">ACCESS: GRANTED</span>
                 
                 <button id="lab-theme-btn" class="lab-btn">
                     <span id="lab-theme-indicator">SYS:LGT</span>
@@ -332,21 +577,19 @@ export class ArtifactsZone extends HTMLElement {
                     <span id="lab-lang-indicator">LNG:ES</span>
                 </button>
                 <button id="close-artifacts" class="lab-btn lab-btn-exit" data-t="lab_btn_exit">
-                    [ EXIT ]
+                    [ CLOSE ]
                 </button>
             </div>
         </header>
-
         <div class="zone-grid-layout">
             
-            <!-- Manifesto -->
             <div class="zone-item item-large">
                 <div class="item-header">
-                    <span>001</span><span data-t="lab_manifesto_title">MANIFESTO</span>
+                    <span>000</span><span data-t="lab_manifesto_title">MANIFESTO</span>
                 </div>
                 <div class="item-content">
                     <h2 data-t="lab_manifesto_title">ENGINEERING FIRST</h2>
-                    <p data-t="lab_manifesto_desc">Raw architectural experiments. No polish.</p>
+                    <p data-t="lab_manifesto_desc"></p>
                     <div class="tech-stat">
                         <span data-t="lab_status">STATUS:</span> 
                         <span class="status-dot" style="display:inline-block; vertical-align:middle; margin-left:5px;"></span>
@@ -354,56 +597,204 @@ export class ArtifactsZone extends HTMLElement {
                     </div>
                 </div>
             </div>
-
-            <!-- Algorithm -->
-            <div class="zone-item">
+            <div class="zone-item featured-artifact">
                 <div class="item-header">
-                    <span>002</span><span data-t="lab_algo_title">ALGO</span>
-                </div>
-                <div class="item-content code-block">
-                    <code>
-// Shutter Logic
-const trigger = () => {
-  return "GLITCH_EXEC";
-}
-                    </code>
-                </div>
-            </div>
-
-            <!-- Metrics -->
-            <div class="zone-item">
-                <div class="item-header">
-                    <span>003</span><span data-t="lab_metrics_title">DATA</span>
-                </div>
-                <div class="item-content visual-block">
-                    <div class="bar-chart">
-                        <div class="bar" style="height:40%"></div>
-                        <div class="bar" style="height:70%"></div>
-                        <div class="bar" style="height:30%"></div>
-                        <div class="bar" style="height:90%"></div>
-                        <div class="bar" style="height:60%"></div>
-                    </div>
-                </div>
-                <div class="item-footer">OP_LEVEL: 98%</div>
-            </div>
-
-            <!-- Prototype -->
-            <div class="zone-item item-wide">
-                <div class="item-header">
-                    <span>004</span><span data-t="lab_proto_title">PROTO</span>
+                    <span>001</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
                 </div>
                 <div class="item-content">
-                    <h3 data-t="lab_next_gen">NEXT_GEN_UI</h3>
-                    <p data-t="lab_next_gen_desc">WebGL Integration Tests.</p>
+                    <h3 data-t="lab_massoluciones_title"></h3>
+                    <p data-t="lab_massoluciones_desc"></p>
                 </div>
-                <div class="item-footer" data-t="lab_awaiting">
-                   WAITING...
+                <div class="item-footer">
+                    <span data-t="lab_massoluciones_type"></span>
+                    <div class="artifact-actions">
+                        <a href="https://github.com/marili-mn/MasSoluciones" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
+                        <a href="https://mas-soluciones.vercel.app/" target="_blank" class="artifact-btn" data-t="lab_btn_demo">[ DEMO ]</a>
+                    </div>
                 </div>
             </div>
-
+            <div class="zone-item featured-artifact">
+                <div class="item-header">
+                    <span>002</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_apuntes_title"></h3>
+                    <p data-t="lab_apuntes_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_apuntes_type"></span>
+                    <div class="artifact-actions">
+                        <a href="https://github.com/marili-mn/ApuntesDelFondo" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
+                        <a href="https://apuntes-del-fondo.vercel.app/" target="_blank" class="artifact-btn" data-t="lab_btn_demo">[ DEMO ]</a>
+                    </div>
+                </div>
+            </div>
+            <div class="zone-item featured-artifact">
+                <div class="item-header">
+                    <span>003</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_karting_title"></h3>
+                    <p data-t="lab_karting_desc"></p>
+                </div>
+                <div class.item-footer">
+                    <span data-t="lab_karting_type"></span>
+                    <div class="artifact-actions">
+                        <a href="https://github.com/marili-mn/finalIDW" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
+                        <a href="https://final-idw-three.vercel.app/" target="_blank" class="artifact-btn" data-t="lab_btn_demo">[ DEMO ]</a>
+                    </div>
+                </div>
+            </div>
+            <!-- MODULE: ROOT_ACCESS -->
+            <a href="https://graphic-desing-practices.vercel.app/" target="_blank" class="zone-item item-wide" style="border-color: var(--z-accent);">
+                <div class="item-header">
+                    <span>014</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_root_repo_title"></h3>
+                    <p data-t="lab_root_repo_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_root_repo_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/cardVectors/business_card_white_a4_frame_print.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>004</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_css_print_engine_title"></h3>
+                    <p data-t="lab_css_print_engine_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_css_print_engine_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/hakaiLetter/Hakai.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>005</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_grid_layout_sys_hk_title"></h3>
+                    <p data-t="lab_grid_layout_sys_hk_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_grid_layout_sys_hk_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            
+             <a href="https://graphic-desing-practices.vercel.app/hackDesing/arquinteriorNewConcept.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>006</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_ui_proto_archviz_title"></h3>
+                    <p data-t="lab_ui_proto_archviz_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_ui_proto_archviz_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/otherAssets/SO-S13-A1/" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>007</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_ubuntu_svr_deploy_title"></h3>
+                    <p data-t="lab_ubuntu_svr_deploy_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_ubuntu_svr_deploy_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/dokumenterienFadena/" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>008</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_proc_scheduling_title"></h3>
+                    <p data-t="lab_proc_scheduling_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_proc_scheduling_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            
+            <a href="https://graphic-desing-practices.vercel.app/winDoc.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>009</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_win32_sys_manual_title"></h3>
+                    <p data-t="lab_win32_sys_manual_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_win32_sys_manual_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/otherAssets/grubRestoreMap.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>010</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_bootloader_rec_title"></h3>
+                    <p data-t="lab_bootloader_rec_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_bootloader_rec_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+             <a href="https://graphic-desing-practices.vercel.app/otherAssets/%C3%81lgebrajavascript.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>011</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_js_math_engine_title"></h3>
+                    <p data-t="lab_js_math_engine_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_js_math_engine_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            <a href="https://graphic-desing-practices.vercel.app/otherAssets/guia_datos.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>012</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_data_struct_ref_title"></h3>
+                    <p data-t="lab_data_struct_ref_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_data_struct_ref_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
+            
+             <a href="https://graphic-desing-practices.vercel.app/otherAssets/guia_lenguajes.html" target="_blank" class="zone-item">
+                <div class="item-header">
+                    <span>013</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
+                </div>
+                <div class="item-content">
+                    <h3 data-t="lab_lang_theory_docs_title"></h3>
+                    <p data-t="lab_lang_theory_docs_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_lang_theory_docs_type"></span>
+                    <span class="click-hint">↗</span>
+                </div>
+            </a>
         </div>
         
-        <div class="zone-watermark" data-t="lab_classified">CLASSIFIED</div>
+        <div class="zone-watermark" data-t="lab_classified">OPEN ARCHIVE</div>
       </div>
     `;
   }
