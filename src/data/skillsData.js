@@ -44,6 +44,8 @@ export const skills = {
       { name: "Bash", icon: "bash" },
       { name: "VS Code", icon: "vscode" },
       { name: "Linux", icon: "linux" },
-      { name: "Windows", icon: "windows" }
+      { name: "Windows", icon: "windows" },
+      { name: "Ubuntu", icon: "ubuntu" },
+      { name: "Kali", icon: "kali" }
     ]
   };

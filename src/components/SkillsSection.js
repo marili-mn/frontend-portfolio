@@ -345,9 +345,29 @@ export class SkillsSection extends HTMLElement {
                 opacity: 1;
             }
 
-            /* Always colored icons on mobile */
-            .tech-icon { filter: grayscale(0%) opacity(1); transform: scale(1); }
+            /* Mobile: Icons start grayscale (inherited), color on touch */
+            .skill-card:active .tech-icon {
+                filter: grayscale(0%) opacity(1) !important;
+                transform: scale(1.1); /* Slight pop on touch */
+                transition: all 0.1s;
+            }
+            
             .tech-icon-text { color: var(--text-main); transform: scale(1); }
+            
+            /* Text Icon Active State on Mobile */
+            .skill-card:active .tech-icon-text {
+                color: var(--accent-color);
+                text-shadow: 0 0 8px var(--accent-color);
+            }
+            
+            /* Specific override for light mode mobile active if needed */
+            :host(.light) .skill-card:active .tech-icon-text {
+                color: var(--bg-main);
+                background-color: var(--accent-color);
+                box-shadow: 0 0 5px rgba(0,0,0,0.2);
+                border-radius: 3px;
+                padding: 0 4px;
+            }
             
             /* Static centered crosshair for mobile aesthetic */
             .skill-card { --local-x: 50% !important; --local-y: 50% !important; }
