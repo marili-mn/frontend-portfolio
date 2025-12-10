@@ -130,6 +130,10 @@ export class ArtifactsZone extends HTMLElement {
     set('[data-t="lab_karting_title"]', 'lab_karting_title');
     set('[data-t="lab_karting_desc"]', 'lab_karting_desc');
     set('[data-t="lab_karting_type"]', 'lab_karting_type');
+
+    set('[data-t="lab_grupow_title"]', 'lab_grupow_title');
+    set('[data-t="lab_grupow_desc"]', 'lab_grupow_desc');
+    set('[data-t="lab_grupow_type"]', 'lab_grupow_type');
   }
   
   updateThemeIndicator(theme) {
@@ -682,42 +686,54 @@ export class ArtifactsZone extends HTMLElement {
                     <span>001</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
                 </div>
                 <div class="item-content">
-                    <h3 data-t="lab_massoluciones_title"></h3>
-                    <p data-t="lab_massoluciones_desc"></p>
+                    <h3 data-t="lab_grupow_title"></h3>
+                    <p data-t="lab_grupow_desc"></p>
+                </div>
+                <div class="item-footer">
+                    <span data-t="lab_grupow_type"></span>
+                    <div class="artifact-actions">
+                        <a href="https://github.com/DeniLescano/GrupoW-TUDW" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="zone-item featured-artifact">
+                                            <div class="item-header">
+                                                <span>002</span><span class="category-label" data-t="lab_system_core">SYSTEM_CORE</span>
+                                            </div>
+                                            <div class="item-content">
+                                                <h3 data-t="lab_massoluciones_title"></h3>                    <p data-t="lab_massoluciones_desc"></p>
                 </div>
                 <div class="item-footer">
                     <span data-t="lab_massoluciones_type"></span>
                     <div class="artifact-actions">
                         <a href="https://github.com/marili-mn/MasSoluciones" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
                         <a href="https://mas-soluciones.vercel.app/" target="_blank" class="artifact-btn" data-t="lab_btn_demo">[ DEMO ]</a>
-                    </div>
-                </div>
-            </div>
-            <div class="zone-item featured-artifact">
-                <div class="item-header">
-                    <span>002</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
-                </div>
-                <div class="item-content">
-                    <h3 data-t="lab_apuntes_title"></h3>
-                    <p data-t="lab_apuntes_desc"></p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="zone-item featured-artifact">
+                                            <div class="item-header">
+                                                <span>003</span><span class="category-label" data-t="lab_visual_engine">VISUAL_ENGINE</span>
+                                            </div>
+                                            <div class="item-content">
+                                                <h3 data-t="lab_apuntes_title"></h3>                    <p data-t="lab_apuntes_desc"></p>
                 </div>
                 <div class="item-footer">
                     <span data-t="lab_apuntes_type"></span>
                     <div class="artifact-actions">
                         <a href="https://github.com/marili-mn/ApuntesDelFondo" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>
                         <a href="https://apuntes-del-fondo.vercel.app/" target="_blank" class="artifact-btn" data-t="lab_btn_demo">[ DEMO ]</a>
-                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="zone-item featured-artifact">
+                                            <div class="item-header">
+                                                <span>004</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
+                                            </div>
+                                            <div class="item-content">
+                                                <h3 data-t="lab_karting_title"></h3>                    <p data-t="lab_karting_desc"></p>
                 </div>
-            </div>
-            <div class="zone-item featured-artifact">
-                <div class="item-header">
-                    <span>003</span><span class="category-label" data-t="lab_comp_theory">COMP_THEORY</span>
-                </div>
-                <div class="item-content">
-                    <h3 data-t="lab_karting_title"></h3>
-                    <p data-t="lab_karting_desc"></p>
-                </div>
-                <div class.item-footer">
+                <div class="item-footer">
                     <span data-t="lab_karting_type"></span>
                     <div class="artifact-actions">
                         <a href="https://github.com/marili-mn/finalIDW" target="_blank" class="artifact-btn" data-t="lab_btn_src">[ SRC ]</a>

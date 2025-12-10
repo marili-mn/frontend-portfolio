@@ -28,12 +28,14 @@ export class ProjectCard extends HTMLElement {
   updateTexts() {
     // Efficiently update only text nodes without full re-render
     const descEl = this.shadowRoot.querySelector('.project__description');
-    const sourceBtn = this.shadowRoot.querySelector('[data-key="source_code"] span');
-    const demoBtn = this.shadowRoot.querySelector('[data-key="live_demo"] span');
-    
     if (descEl) descEl.innerHTML = translationService.t(this.projectData.descriptionKey);
-    if (sourceBtn) sourceBtn.textContent = translationService.t('source_code');
-    if (demoBtn) demoBtn.textContent = translationService.t('live_demo');
+
+    // Update dynamic links
+    const linkBtns = this.shadowRoot.querySelectorAll('.project__links .btn span');
+    linkBtns.forEach(span => {
+        const key = span.parentElement.getAttribute('data-key');
+        if (key) span.textContent = translationService.t(key);
+    });
   }
 
   getTechIcons(stack) {
@@ -54,8 +56,17 @@ export class ProjectCard extends HTMLElement {
 
     container.addEventListener('mouseenter', () => {
       timeoutId = setTimeout(() => {
-        if (iframe.src !== this.projectData.demoUrl) {
-          iframe.src = this.projectData.demoUrl;
+        // Use demoUrl from the first link of type 'demo' if available, or the root demoUrl property
+        let previewUrl = this.projectData.demoUrl;
+        
+        // If demoUrl is not directly set but we have links, try to find a demo link
+        if (!previewUrl && this.projectData.links) {
+            const demoLink = this.projectData.links.find(l => l.type === 'demo');
+            if (demoLink) previewUrl = demoLink.url;
+        }
+
+        if (previewUrl && iframe.src !== previewUrl) {
+          iframe.src = previewUrl;
         }
       }, 200);
     });
@@ -66,7 +77,33 @@ export class ProjectCard extends HTMLElement {
   }
 
   render() {
-    const { title, descriptionKey, techStack, repoUrl, demoUrl, dateRange } = this.projectData;
+    const { title, descriptionKey, techStack, repoUrl, demoUrl, dateRange, links } = this.projectData;
+    
+    // Generate Links HTML
+    let linksHtml = '';
+    if (links && links.length > 0) {
+        linksHtml = links.map(link => {
+            const iconClass = link.type === 'repo' ? 'fab fa-github' : 'fas fa-external-link-alt';
+            return `
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="btn" data-key="${link.labelKey}">
+              <i class="${iconClass}"></i> <span>${translationService.t(link.labelKey)}</span>
+            </a>`;
+        }).join('');
+    } else {
+        // Fallback to legacy structure
+        if (repoUrl) {
+            linksHtml += `
+            <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="btn" data-key="source_code">
+              <i class="fab fa-github"></i> <span>${translationService.t('source_code')}</span>
+            </a>`;
+        }
+        if (demoUrl) {
+            linksHtml += `
+            <a href="${demoUrl}" target="_blank" rel="noopener noreferrer" class="btn" data-key="live_demo">
+              <i class="fas fa-external-link-alt"></i> <span>${translationService.t('live_demo')}</span>
+            </a>`;
+        }
+    }
     
     // We import FontAwesome logic into shadow DOM or use external stylesheet link
     const styles = `
@@ -206,23 +243,35 @@ export class ProjectCard extends HTMLElement {
         }
 
         @media (max-width: 576px) {
+            .project {
+                padding: 1.2rem; /* Reduce padding slightly */
+            }
+
+            .project__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
             .project__date {
                 margin-left: 0;
-                margin-top: 0.5rem;
-                display: inline-block; /* Ensure it behaves nicely */
+                margin-top: 0;
+                font-size: 0.7rem;
             }
             
             .project__links {
-                flex-direction: column;
-                gap: 12px;
+                display: grid; /* Use grid for buttons */
+                grid-template-columns: 1fr 1fr; /* 2 columns */
+                gap: 10px;
+                width: 100%;
             }
             
             .btn {
                 width: 100%;
                 justify-content: center;
-                white-space: nowrap; /* Prevent text wrapping */
-                font-size: 0.7rem; /* Even smaller font for mobile */
-                padding: 0.2em 0.4em; /* Even more compact padding for mobile */
+                font-size: 0.75rem; 
+                padding: 0.6em 0.4em; 
+                height: 100%; /* Ensure equal height */
             }
         }
         
@@ -336,12 +385,7 @@ export class ProjectCard extends HTMLElement {
             ${this.getTechIcons(techStack)}
           </div>
           <div class="project__links">
-            <a href="${repoUrl}" target="_blank" rel="noopener noreferrer" class="btn" data-key="source_code">
-              <i class="fab fa-github"></i> <span>${translationService.t('source_code')}</span>
-            </a>
-            <a href="${demoUrl}" target="_blank" rel="noopener noreferrer" class="btn" data-key="live_demo">
-              <i class="fas fa-external-link-alt"></i> <span>${translationService.t('live_demo')}</span>
-            </a>
+            ${linksHtml}
           </div>
         </div>
         <div class="project-preview">

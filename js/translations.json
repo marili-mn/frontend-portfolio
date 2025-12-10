@@ -64,6 +64,15 @@
     "pt": "Desenvolvimento baseado em padrões web modernos (Web Components). Implementação limpa de internacionalização e temas, demonstrando domínio do idioma sem bibliotecas.",
     "de": "Entwicklung basierend auf modernen Webstandards (Web Components). Saubere Implementierung von Internationalisierung und Themes, die Sprachkenntnisse ohne externe Bibliotheken demonstriert."
   },
+  "project7_desc": {
+    "es": "Plataforma Fintech de onboarding de créditos para PYMES. Desarrollo Full-Stack con metodología SCRUM, integrando FastAPI y Vanilla JS para una solución robusta y ágil.",
+    "en": "Fintech credit onboarding platform for SMEs. Full-Stack development with SCRUM methodology, integrating FastAPI and Vanilla JS for a robust and agile solution.",
+    "pt": "Plataforma Fintech de onboarding de crédito para PMEs. Desenvolvimento Full-Stack com metodologia SCRUM, integrando FastAPI e Vanilla JS para uma solução robusta e ágil.",
+    "de": "Fintech-Kredit-Onboarding-Plattform für KMUs. Full-Stack-Entwicklung mit SCRUM-Methodik, Integration von FastAPI und Vanilla JS für eine robuste und agile Lösung."
+  },
+  "repo_back": { "es": "Repo Back", "en": "Back Repo", "pt": "Repo Back", "de": "Repo Back" },
+  "repo_front": { "es": "Repo Front", "en": "Front Repo", "pt": "Repo Front", "de": "Repo Front" },
+  "deploy_back": { "es": "Docs API", "en": "API Docs", "pt": "Docs API", "de": "API Doks" },
   "source_code": { "es": "Código fuente", "en": "Source code", "pt": "Código fonte", "de": "Quellcode" },
   "live_demo": { "es": "Demo", "en": "Demo", "pt": "Demo", "de": "Demo" },
   "contact_title": { "es": "Contacto", "en": "Contact", "pt": "Contato", "de": "Kontakt" },
@@ -412,6 +421,25 @@
     "en": "TYPE: CS_THEORY",
     "pt": "TIPO: CS_THEORY",
     "de": "TYP: CS_THEORY"
+  },
+
+  "lab_grupow_title": {
+    "es": "FUNDAMENTOS_NODEJS",
+    "en": "NODEJS_FUNDAMENTALS",
+    "pt": "FUNDAMENTOS_NODEJS",
+    "de": "NODEJS_GRUNDLAGEN"
+  },
+  "lab_grupow_desc": {
+    "es": "Gestión de datos con FileSystem, Fetch API y lógica modular en consola.",
+    "en": "Data management with FileSystem, Fetch API, and modular console logic.",
+    "pt": "Gestão de dados com FileSystem, Fetch API e lógica modular em consola.",
+    "de": "Datenmanagement mit FileSystem, Fetch API und modularer Konsolenlogik."
+  },
+  "lab_grupow_type": {
+    "es": "TIPO: BACKEND_CORE",
+    "en": "TYPE: BACKEND_CORE",
+    "pt": "TIPO: BACKEND_CORE",
+    "de": "TYP: BACKEND_CORE"
   },
 
   "lab_root_repo_title": {

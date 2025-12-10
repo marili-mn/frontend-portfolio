@@ -58,9 +58,10 @@
   position: relative;
   width: 100%;
   padding: 40px 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive Grid */
-  gap: 80px; /* Increased gap for more breathing room */
+  display: flex; /* Changed from grid to flex column */
+  flex-direction: column;
+  align-items: center; /* Center items */
+  gap: 80px; /* Generous gap for depth */
 }
 
 /* The Central Line (Background Guide) */
@@ -78,13 +79,16 @@
   );
   transform: translateX(-50%);
   z-index: 0;
-  opacity: 0.3;
+  opacity: 0.2; /* Subtle visibility */
+  display: block !important; /* Force show */
 }
 
 /* Timeline Items */
 .timeline-item {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 800px; /* Restrict width for readability and aesthetic */
 }
 
 /* Connector (Small line from card to center spine - Optional, maybe for single column) */
@@ -92,22 +96,26 @@
 
 /* Responsive Logic */
 @media (max-width: 768px) {
+  .timeline-container {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+
   /* On mobile, the line goes to the left of the cards */
   .timeline-line {
-    /* Remove the main vertical line entirely */
-    display: none; 
+    /* Keep the line on mobile too, but maybe simpler */
+    display: block !important; 
+    opacity: 0.15;
   }
   
   /* Solid line for light mode visibility in mobile */
   .light .timeline-line {
-      display: none; /* Ensure it's hidden */
+      display: block !important;
   }
   
   .timeline-stack {
-    display: flex;
-    flex-direction: column;
-    padding-left: 5px; /* Adjust padding as line is gone */
-    padding-right: 5px; 
+    padding-left: 0; 
+    padding-right: 0; 
     gap: 60px;
   }
 
@@ -179,19 +187,5 @@
 
 /* Also remove lines for desktop if they were too subtle and caused issues */
 @media (min-width: 769px) {
-    .timeline-line {
-        display: none; /* Hide for desktop too */
-    }
-}
-
-@media (min-width: 769px) {
-    /* Desktop Grid tweaks if we want to keep the center line visible */
-    /* If grid fills space, line might be covered. */
-    /* Let's make the line subtle background or just decorative spine */
-    
-    .timeline-line {
-        /* In grid mode, maybe the line isn't physically connecting everything 
-           but stands as a central pillar behind the grid */
-        opacity: 0.1; 
-    }
+    /* Desktop adjustments can go here if needed */
 }

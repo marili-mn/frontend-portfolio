@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nahuel Marcilli - CV Ingeniería</title>
+    <style>
+        :root {
+            --bg-paper: #ffffff;
+            --bg-sidebar: #f8f9fa;
+            --text-main: #111111;
+            --text-sec: #444444;
+            --border-color: #000000;
+            --accent: #222222;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'JetBrains Mono', 'Consolas', monospace;
+            line-height: 1.4;
+            color: var(--text-main);
+            background: var(--bg-paper);
+            font-size: 13.5px;
+        }
+
+        .cv-container {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: var(--bg-paper);
+            display: flex;
+        }
+
+        /* Left Column (Sidebar) */
+        .left-column {
+            background: var(--bg-sidebar);
+            width: 34%;
+            padding: 25px 15px;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid var(--border-color);
+        }
+
+        .header { margin-bottom: 30px; }
+        
+        .name {
+            font-size: 1.8em;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .title {
+            font-size: 0.95em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section { margin-bottom: 25px; }
+
+        .section-title {
+            font-size: 0.9em;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 3px;
+        }
+
+        .contact-info, .skills-list { list-style: none; }
+
+        .contact-info li {
+            margin-bottom: 8px;
+            font-size: 0.85em;
+            word-break: break-all;
+        }
+        
+        .contact-info a {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px dotted var(--text-sec);
+        }
+
+        .skills-list li { margin-bottom: 8px; font-size: 0.85em; }
+        .skill-category { font-weight: 700; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.8em; opacity: 0.8; }
+
+        .languages p { margin-bottom: 5px; font-size: 0.85em; display: flex; justify-content: space-between; }
+        .language-name { font-weight: 700; }
+
+        /* Right Column (Main) */
+        .right-column {
+            width: 66%;
+            padding: 25px 25px;
+        }
+
+        .profile { margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
+        .profile p {
+            text-align: justify;
+            font-size: 0.9em;
+            color: var(--text-sec);
+        }
+
+        .main-title {
+            font-size: 1.1em;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 5px;
+        }
+
+        .job, .education-item {
+            margin-bottom: 20px;
+        }
+
+        .job-header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: baseline;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 2px;
+        }
+
+        .job-title { font-size: 1em; font-weight: 800; }
+        .company-date { font-size: 0.8em; font-weight: 600; color: var(--text-sec); text-align: right; }
+        
+        .job-description { 
+            font-size: 0.9em; 
+            color: var(--text-sec); 
+            margin-bottom: 8px; 
+            line-height: 1.5;
+        }
+
+        .stack-tech { display: flex; flex-wrap: wrap; gap: 6px; }
+        .tech-badge {
+            font-size: 0.7em;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid var(--border-color);
+            padding: 1px 4px;
+            border-radius: 2px;
+        }
+        
+        .degree { font-weight: 800; font-size: 0.95em; }
+        .institution a { color: var(--text-sec); text-decoration: none; font-size: 0.9em; font-style: italic; }
+
+        @media print {
+            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .cv-container { width: 100%; height: auto; box-shadow: none; border: none; }
+            .left-column { background-color: #f8f9fa !important; border-right: 1px solid #000; }
+            @page { margin: 0; size: A4; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <div class="left-column">
+            <div class="header">
+                <h1 class="name">NAHUEL MARCILLI</h1>
+                <p class="title">INGENIERÍA DE SOFTWARE & CIBERSEGURIDAD</p>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Contacto</h3>
+                <ul class="contact-info">
+                    <li><a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a></li>
+                    <li><a href="tel:+5493775402361">+54 9 3775 40-2361</a></li>
+                    <li><a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io/frontend-portfolio</a></li>
+                    <li><a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a></li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Stack Tecnológico</h3>
+                <ul class="skills-list">
+                    <li><span class="skill-category">Core Backend</span> Python (FastAPI/Django), Node.js, Java (Spring), Arquitectura RESTful</li>
+                    <li><span class="skill-category">Frontend & UI</span> JavaScript (ES6+), React, Next.js, HTML5/CSS3 (Diseño Modular)</li>
+                    <li><span class="skill-category">Data & Storage</span> PostgreSQL, MySQL, Hibernate, Modelado de Datos</li>
+                    <li><span class="skill-category">DevSecOps</span> Git, Docker, Pipelines CI/CD, Linux (Hardening)</li>
+                    <li><span class="skill-category">Metodologías</span> SCRUM, Jira, Ingeniería de Requisitos</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Idiomas</h3>
+                <div class="languages">
+                    <p><span class="language-name">Español</span> <span>Nativo</span></p>
+                    <p><span class="language-name">Inglés</span> <span>Avanzado</span></p>
+                    <p><span class="language-name">Portugués</span> <span>Básico</span></p>
+                    <p><span class="language-name">Alemán</span> <span>Básico</span></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="profile">
+                <h2 class="main-title">Perfil Profesional</h2>
+                <p>Ingeniero de Software en formación y especialista en Ciberseguridad. Fusiono la arquitectura de sistemas robustos con un diseño funcional de alto nivel. Mi enfoque se centra en la construcción de soluciones escalables, aplicando principios de ingeniería segura en cada capa del desarrollo, desde la integridad de bases de datos hasta la experiencia de usuario. Busco desafíos técnicos complejos donde la calidad del código y la seguridad sean prioritarios.</p>
+            </div>
+
+            <div class="education">
+                <h2 class="main-title">Formación Académica</h2>
+                <div class="education-item">
+                    <div class="degree">Licenciatura en Ciberdefensa</div>
+                    <div class="institution"><a href="https://www.undef.edu.ar/" target="_blank">Facultad de la Defensa Nacional (FADENA)</a> - En curso</div>
+                </div>
+                <div class="education-item">
+                    <div class="degree">Tecnicatura Universitaria en Desarrollo Web</div>
+                    <div class="institution"><a href="https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/" target="_blank">Universidad Nacional de Entre Ríos (UNER)</a> - Finalizado</div>
+                </div>
+            </div>
+
+            <div class="experience">
+                <h2 class="main-title">Experiencia & Proyectos</h2>
+                
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">CreditBusters (Fintech)</div>
+                        <div class="company-date">Arquitectura Software | Sep 2025 - Oct 2025</div>
+                    </div>
+                    <p class="job-description">Ingeniería de una plataforma de onboarding de créditos PYME. Desarrollo de una arquitectura backend modular con FastAPI (Python) y PostgreSQL, asegurando la integridad transaccional. Implementación de frontend ligero con Vanilla JS. Gestión del ciclo de vida con metodología SCRUM.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Arquitectura</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">UNER E-Commerce</div>
+                        <div class="company-date">Ingeniería Frontend | Abr 2025 - Presente</div>
+                    </div>
+                    <p class="job-description">Desarrollo de componentes modulares de interfaz sin dependencias externas (Vanilla JS). Optimización de renderizado y estructura semántica para máxima compatibilidad y rendimiento.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">DOM Manipulation</span>
+                        <span class="tech-badge">Performance</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Wizard Solutions AI</div>
+                        <div class="company-date">Full-Stack Engineer | Abr 2025 - Presente</div>
+                    </div>
+                    <p class="job-description">Diseño e implementación de microservicios para procesamiento de IA. Integración segura de APIs RESTful y orquestación de contenedores Docker para despliegues consistentes.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Microservicios</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Guau & Miau (ONG)</div>
+                        <div class="company-date">Backend Developer | Feb 2025 - Mar 2025</div>
+                    </div>
+                    <p class="job-description">Construcción de APIs seguras y sistema de gestión de recursos. Optimización de consultas a base de datos y autenticación robusta utilizando el ecosistema Django.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">Security</span>
+                        <span class="tech-badge">REST API</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

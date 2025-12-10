@@ -10,6 +10,21 @@ export const projects = [
     dateRange: "2025 - Present"
   },
   {
+    id: 7,
+    title: "CreditBusters - Fintech PYMES",
+    descriptionKey: "project7_desc",
+    techStack: ["python", "fastapi", "postgresql", "js", "html", "css", "bootstrap"],
+    hasPreview: true,
+    demoUrl: "https://credit-busters-demo-i2d9zoedr-marilis-projects.vercel.app/",
+    dateRange: "Sep 2025 - Oct 2025",
+    links: [
+        { type: 'repo', url: 'https://github.com/Nahuel-a/Equipo-17-Pymes', labelKey: 'repo_back' },
+        { type: 'repo', url: 'https://github.com/marili-mn/CreditBusters', labelKey: 'repo_front' },
+        { type: 'demo', url: 'https://credit-busters-demo-i2d9zoedr-marilis-projects.vercel.app/', labelKey: 'live_demo' },
+        { type: 'demo', url: 'https://creditsbuster.onrender.com/docs', labelKey: 'deploy_back' }
+    ]
+  },
+  {
     id: 5,
     title: "Wizard Solutions IA Web-App",
     descriptionKey: "project5_desc",
