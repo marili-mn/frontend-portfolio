@@ -8,7 +8,7 @@ Este proyecto demuestra cómo construir una aplicación modular, reactiva e inte
 
 *   **Core:** HTML5 Semántico, CSS3 (Variables & Flexbox/Grid), JavaScript (ES Modules).
 *   **Arquitectura:** Web Components (Custom Elements & Shadow DOM).
-*   **Animaciones:** GSAP (GreenSock Animation Platform) + ScrollToPlugin.
+*   **Animaciones:** GSAP (GreenSock Animation Platform) + ScrollToPlugin + RequestAnimationFrame nativo.
 *   **Estilos:** CSS Custom Properties para Theming (Dark/Light Mode) y diseño Responsive.
 *   **Iconografía:** FontAwesome & SkillIcons.
 
@@ -21,9 +21,10 @@ La UI está encapsulada en componentes reutilizables y autónomos ubicados en `s
 *   `<devsec-console>`: Terminal interactiva con sistema de comandos, historial y temas dinámicos.
 *   `<project-card>`: Renderiza proyectos dinámicamente con Shadow DOM para aislamiento de estilos.
 *   `<app-header>`: Maneja la navegación y controles de estado.
-*   `<skills-section>`: Genera la grilla de habilidades desde datos estructurados.
+*   `<skills-section>`: Genera la grilla de habilidades (Engineering Grid) con coordenadas interactivas.
+*   `<artifacts-zone>`: **[Nuevo]** Archivo de experimentos oculto con cinemática de entrada tipo "Typewriter" y layout optimizado para lectura.
 *   `<contact-button>`: Botón inteligente con feedback visual y copiado al portapapeles.
-*   `<contact-form>`: **[Nuevo]** Ventana modal estilo "Terminal Segura" que orquesta el envío de mensajes vía Formspree con una UX inmersiva.
+*   `<contact-form>`: Ventana modal estilo "Terminal Segura" que orquesta el envío de mensajes.
 *   `<toast-notification>`: Sistema de notificaciones no intrusivas.
 
 ### 2. Gestión de Estado & Resiliencia
@@ -46,9 +47,9 @@ frontend-portfolio/
 ├── 📁 src/
 │   ├── 📁 components/    # Web Components (Lógica de UI)
 │   │   ├── DevSecConsole.js
-│   │   ├── ContactButton.js
-│   │   ├── ToastNotification.js
-│   │   ├── AppHeader.js
+│   │   ├── ArtifactsZone.js  # Zona de experimentos
+│   │   ├── SkillsSection.js  # Grilla técnica
+│   │   ├── ContactForm.js
 │   │   └── ...
 │   ├── 📁 services/      # Lógica de Negocio & Estado
 │   │   ├── TranslationService.js
@@ -67,10 +68,11 @@ frontend-portfolio/
 ## ✨ Características Clave
 
 1.  **DevSec Terminal Integration:** Una consola de comandos completa y oculta (`Ctrl + Z` o UI Toggle) que permite explorar el perfil mediante comandos tipo bash (`help`, `projects`, `skills`), totalmente traducida y con temas dinámicos.
-2.  **Secure Contact Workflow:** Sistema de contacto "Sin Fricción". Orquesta una coreografía de UX: Copia al portapapeles -> Feedback Visual -> Pausa -> Apertura de una **Terminal de Contacto Modal** (sin salir de la web).
-3.  **Sistema de Traducción Resiliente:** Cambio de idioma en tiempo real (Español, Inglés, Portugués, Alemán) con arquitectura de "Doble Capa" (JSON + JS Fallback) para asegurar 100% de disponibilidad de textos.
-4.  **Mobile-First Optimization:** Navegación nativa en móviles, menú overlay optimizado, áreas de toque ampliadas y scroll híbrido (Nativo en móvil, GSAP en escritorio) para máximo rendimiento.
-5.  **Theming Avanzado:** Sistema de colores semánticos que adapta toda la interfaz, incluida la terminal y los formularios, al modo Claro/Oscuro.
+2.  **Artifacts Zone (The Archives):** Una sección especial "oculta" para mostrar experimentos y código fuente avanzado. Cuenta con una cinemática de entrada ("Entering Laboratory...") y un diseño responsive tipo "pila de datos".
+3.  **Secure Contact Workflow:** Sistema de contacto "Sin Fricción". Orquesta una coreografía de UX: Copia al portapapeles -> Feedback Visual -> Pausa -> Apertura de una **Terminal de Contacto Modal** (sin salir de la web).
+4.  **Sistema de Traducción Resiliente:** Cambio de idioma en tiempo real (Español, Inglés, Portugués, Alemán) con arquitectura de "Doble Capa" (JSON + JS Fallback) para asegurar 100% de disponibilidad de textos.
+5.  **Mobile-First Optimization:** Navegación nativa en móviles, menús overlay optimizados, áreas de toque ampliadas (44px+) y tipografía ajustada para máxima legibilidad.
+6.  **Theming Avanzado:** Sistema de colores semánticos que adapta toda la interfaz, incluida la terminal, los mapas de coordenadas y las cinemáticas, al modo Claro/Oscuro.
 
 ## 🛠️ Instalación y Uso
 

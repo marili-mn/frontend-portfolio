@@ -6,7 +6,6 @@ export class ToastNotification extends HTMLElement {
 
   connectedCallback() {
     this.render();
-    // Listen for the custom event to show the toast
     window.addEventListener('show-toast', (e) => {
         const message = e.detail?.message || 'Notification';
         this.show(message);
@@ -19,16 +18,12 @@ export class ToastNotification extends HTMLElement {
     
     if (!toast || !textEl) return;
 
-    // Set content
     textEl.textContent = message;
-
-    // Show animation
+    
     toast.classList.add('visible');
 
-    // Clear existing timer if spamming clicks
     if (this.timeoutId) clearTimeout(this.timeoutId);
 
-    // Auto hide after 3 seconds
     this.timeoutId = setTimeout(() => {
         toast.classList.remove('visible');
     }, 3000);
@@ -43,42 +38,44 @@ export class ToastNotification extends HTMLElement {
       <style>
         .toast {
             position: fixed;
-            top: 20px;
+            top: 100px;
             left: 50%;
-            transform: translateX(-50%) translateY(-100px); /* Start hidden above */
-            background-color: var(--clr-bg); /* Use theme bg but darken/lighten via opacity or border */
+            transform: translateX(-50%) translateY(-50px) scale(0.9);
+            
+            /* Professional Theme Styling */
+            background-color: var(--clr-card-bg); 
             color: var(--clr-fg);
             border: 1px solid var(--clr-accent);
-            padding: 12px 24px;
-            border-radius: 50px;
+            border-left: 4px solid var(--clr-accent);
+            
+            padding: 16px 28px;
+            border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            z-index: 10000; /* Top priority */
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            
+            z-index: 11000;
             opacity: 0;
-            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Bouncy effect */
-            font-weight: 500;
-            min-width: 280px;
+            visibility: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            font-weight: 600;
+            font-family: var(--font-primary);
+            min-width: 300px;
             justify-content: center;
-        }
-
-        /* Contrast fix for light mode/dark mode consistency if needed, 
-           or relying on global vars is fine. Let's make it stand out more. */
-        .toast {
-            background: #1a1a1a; /* Always dark for high contrast toast? Or theme adaptive? */
-            color: #fff;
-            border-left: 4px solid var(--clr-accent);
+            pointer-events: none;
         }
 
         .toast.visible {
-            transform: translateX(-50%) translateY(0);
+            transform: translateX(-50%) translateY(0) scale(1);
             opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
         }
 
         .toast__icon {
             color: var(--clr-accent);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
         }
       </style>
     `;

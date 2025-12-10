@@ -1,6 +1,6 @@
 ================================================================================
 ESTADO DEL PROYECTO: PORTFOLIO PROFESIONAL (MARI-DEV)
-FECHA: 08/12/2025
+FECHA: 09/12/2025
 ================================================================================
 
 1. RESUMEN DE SITUACIÓN ACTUAL
@@ -83,6 +83,18 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
         - Feedback Táctil: Las tarjetas reaccionan al toque (`:active`) mostrando sus datos técnicos.
         - Layout limpio y accesible sin bloquear el scroll.
     - Detalle: Implementación de icono de texto "ASM" para Assembler, manteniendo consistencia visual.
+
+[x] FASE 3.6: ARTEFACTOS 2.0 (The Archives) (Completada)
+    - Concepto: Evolución de la zona de experimentos a un "Archivo Clasificado" con alta narrativa.
+    - **Cinemática de Entrada ("The Breach"):** 
+        - Reemplazo de animaciones complejas (persianas) por una secuencia minimalista y performante.
+        - Secuencia: Overlay Sólido -> Typewriter Text (>> ENTERING LABORATORY...) -> Fade Out -> Reveal.
+        - Lógica "Fail-Safe": Timeout de seguridad para garantizar que el contenido nunca quede bloqueado si JS falla.
+    - **UX/UI Mobile-First:**
+        - Rediseño de layout: Flex Column por defecto para lectura vertical fluida en móviles.
+        - Touch Targets: Botones de acción (`[ SRC ]`, `[ DEMO ]`) con áreas de toque expandidas (min-height 44px).
+        - Header Sticky robusto con soporte para pantallas ultra-angostas (wrap).
+    - **Contenido:** Inclusión de "Joyitas" (Proyectos destacados) con tratamiento visual premium.
 
 [x] FASE 3.9: SISTEMA DE CONTACTO "SECURE TERMINAL" (Completada)
     - Objetivo: Eliminar mailto simple y ofrecer una experiencia inmersiva "DevSec".

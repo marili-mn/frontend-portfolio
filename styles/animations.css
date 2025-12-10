@@ -1,36 +1,48 @@
 
 /* Email Highlight Animation */
 .footer__email-text {
-  font-weight: 700; /* Make it bolder by default as requested */
-  color: var(--clr-accent); /* Use accent color for visibility */
+  font-weight: 700;
+  color: var(--clr-accent);
   display: inline-block;
-  transition: color 0.3s ease, transform 0.3s ease;
+  padding: 2px 6px; /* Space for the highlight */
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .highlight-pulse {
-  animation: pulse-green 1.5s ease-in-out;
+  animation: marker-flash 1.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@keyframes pulse-green {
+@keyframes marker-flash {
   0% {
+    background-color: transparent;
+    color: var(--clr-accent);
     transform: scale(1);
-    text-shadow: 0 0 0 rgba(0, 255, 153, 0);
   }
-  50% {
-    transform: scale(1.2);
-    color: #ffffff; /* Flash white or bright */
-    text-shadow: 0 0 20px var(--clr-accent), 0 0 40px var(--clr-accent);
+  15% {
+    background-color: var(--clr-accent);
+    color: var(--clr-bg); /* Inverted text for max contrast */
+    transform: scale(1.1);
+    box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.3); /* Subtle ring instead of blur */
+  }
+  80% {
+    background-color: var(--clr-accent);
+    color: var(--clr-bg);
+    transform: scale(1);
+    box-shadow: none;
   }
   100% {
+    background-color: transparent;
+    color: var(--clr-accent);
     transform: scale(1);
-    text-shadow: 0 0 0 rgba(0, 255, 153, 0);
   }
 }
 
 /* Button Success State */
 .btn--success {
-  background-color: #28a745 !important; /* Green success color */
-  border-color: #28a745 !important;
-  color: #fff !important;
+  background-color: var(--clr-accent) !important; /* Use theme accent */
+  border-color: var(--clr-accent) !important;
+  color: var(--clr-bg) !important;
   transform: scale(1.05);
+  box-shadow: 0 0 15px var(--clr-accent-transparent);
 }

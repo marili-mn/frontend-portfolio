@@ -10,6 +10,7 @@ import './components/ProjectsTimeline.js';
 import './components/AppFooter.js';
 import './components/ContactButton.js';
 import './components/ContactForm.js';
+import './components/ToastNotification.js';
 import './components/ScrollTopBtn.js';
 import './components/DevSecConsole.js';
 import './components/ArtifactsZone.js';

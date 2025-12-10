@@ -156,185 +156,223 @@ export class ArtifactsZone extends HTMLElement {
     });
   }
 
-  open() {
-    this.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Hide main content
-    document.querySelector('main').style.display = 'none';
-    document.querySelector('app-footer').style.display = 'none';
-    
-    // Hide scroll btn to prevent overlay bleed-through
-    const scrollBtn = document.querySelector('scroll-top-btn');
-    if(scrollBtn) scrollBtn.style.display = 'none';
-  }
-
-  close() {
-    this.classList.remove('active');
-    this.classList.add('closing');
-
-    // Restore main content
-    document.querySelector('main').style.display = '';
-    document.querySelector('app-footer').style.display = '';
-
-    // Restore scroll btn
-    const scrollBtn = document.querySelector('scroll-top-btn');
-    if(scrollBtn) scrollBtn.style.display = '';
-
-    setTimeout(() => {
-        this.classList.remove('closing');
-        document.body.style.overflow = '';
-    }, 800); 
-  }
-
-  render() {
-    // Helper function for translations
-    const t = (k) => translationService.t(k);
-
-    this.shadowRoot.innerHTML = `
-      <style>
-        :host {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100dvh !important;
-            pointer-events: none !important;
-            visibility: hidden !important;
-            display: block !important;
-            font-family: var(--z-mono) !important;
-            font-size: 14px !important;
-            background-color: var(--z-bg) !important;
+    open() {
+      this.classList.add('active');
+      document.body.style.overflow = 'hidden';
+  
+      // Hide background elements
+      const main = document.querySelector('main');
+      const footer = document.querySelector('app-footer');
+      const scrollBtn = document.querySelector('scroll-top-btn');
+      
+      if(main) main.style.display = 'none';
+      if(footer) footer.style.display = 'none';
+      if(scrollBtn) scrollBtn.style.display = 'none';
+  
+      // Reset cinematic state
+      const wrapper = this.shadowRoot.querySelector('.cinematic-wrapper');
+      if (wrapper) {
+          wrapper.style.display = 'flex';
+          wrapper.style.opacity = '1';
+      }
+  
+      // Run Cinematic
+      this.typeText(">> ENTERING LABORATORY...", () => {
+          // Fade out cover to reveal content
+          if (wrapper) {
+              wrapper.style.opacity = '0';
+              setTimeout(() => {
+                  wrapper.style.display = 'none';
+              }, 500);
+          }
+      });
+    }
+  
+    close() {
+      this.classList.remove('active');
+      this.classList.add('closing');
+  
+      // Restore background elements
+      const main = document.querySelector('main');
+      const footer = document.querySelector('app-footer');
+      const scrollBtn = document.querySelector('scroll-top-btn');
+  
+      if(main) main.style.display = '';
+      if(footer) footer.style.display = '';
+      if(scrollBtn) scrollBtn.style.display = '';
+  
+      setTimeout(() => {
+          this.classList.remove('closing');
+          document.body.style.overflow = '';
+      }, 500); 
+    }
+  
+    typeText(text, callback) {
+        const textEl = this.shadowRoot.querySelector('.cinematic-text');
+        if(!textEl) { 
+            if(callback) callback(); 
+            return; 
         }
+  
+        textEl.textContent = '';
+        let i = 0;
+        const speed = 35; 
+  
+        const type = () => {
+            if (i < text.length) {
+                textEl.textContent += text.charAt(i);
+                i++;
+                setTimeout(type, speed);
+            } else {
+                setTimeout(callback, 600);
+            }
+        };
         
-        :host(.active) {
-            z-index: 9000 !important;
-            visibility: visible !important;
-            pointer-events: auto !important;
-        }
-        
-        :host(.closing) {
-            z-index: 9000 !important;
-            visibility: visible !important;
-            pointer-events: none !important;
-        }
-
-        :host {
-            --z-bg: #050505;
-            --z-grid: #1a1a1a;
-            --z-text: #f8fafc; /* Brighter text */
-            --z-accent: #a78bfa;
-            --z-accent-rgb-value: 167, 139, 250;
-            --z-sec: #94a3b8; /* Better contrast */
-            --z-mono: 'JetBrains Mono', 'Consolas', monospace;
-        }
-        
-        :host(.light) {
-            --z-bg: #fafaf9;
-            --z-grid: #e7e5e4;
-            --z-text: #1c1917;
-            --z-accent: #ea580c;
-            --z-accent-rgb-value: 234, 88, 12;
-            --z-sec: #57534e; /* Better contrast */
-        }
-
-        @keyframes shutter-open-1 {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
-        }
-        @keyframes shutter-open-2 {
-            0% { transform: translateY(0); }
-            50% { transform: translateY(0); }
-            100% { transform: translateY(-100%); }
-        }
-        @keyframes fade-in {
-            0% { opacity: 0; }
-            50% { opacity: 0; }
-            100% { opacity: 1; }
-        }
-
-        :host(.active) .shutter-base {
-            animation: shutter-open-1 0.8s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
-        }
-        :host(.active) .shutter-accent {
-            animation: shutter-open-2 0.9s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
-        }
-        :host(.active) .zone-container {
-            animation: fade-in 1s ease-in-out forwards !important;
-        }
-
-        @keyframes shutter-close-1 {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(0); }
-        }
-        @keyframes shutter-close-2 {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(0); }
-        }
-        :host(.closing) .shutter-base {
-            animation: shutter-close-1 0.6s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
-        }
-        :host(.closing) .shutter-accent {
-            animation: shutter-close-2 0.7s cubic-bezier(0.86, 0, 0.07, 1) forwards !important;
-        }
-        
-        .shutter-layer {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            pointer-events: none !important;
-        }
-        .shutter-base {
-            background-color: var(--z-bg) !important;
-            z-index: 8998 !important;
-        }
-        .shutter-accent {
-            background-color: var(--z-accent) !important;
-            z-index: 8999 !important;
-        }
-        .scanline {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100% !important;
-            height: 100% !important;
-            pointer-events: none !important;
-            background: linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0) 100%) !important;
-            background-size: 100% 4px !important;
-            animation: scanline-anim 15s linear infinite !important;
-            opacity: 0.2 !important;
-            z-index: 9001 !important;
-        }
-        @keyframes scanline-anim {
-            0% { background-position: 0 0; }
-            100% { background-position: 0 100vh; }
-        }
-        
-        .zone-container {
-            position: relative !important;
-            width: 100% !important;
-            height: 100% !important;
-            overflow-y: auto !important;
-            padding: 20px !important;
-            color: var(--z-text) !important;
-            background: 
-                linear-gradient(var(--z-grid) 1px, transparent 1px),
-                linear-gradient(90deg, var(--z-grid) 1px, transparent 1px) !important;
-            background-size: 30px 30px !important;
-        }
-
+        setTimeout(type, 200);
+    }
+  
+    render() {
+      // Helper function for translations
+      const t = (k) => translationService.t(k);
+  
+      this.shadowRoot.innerHTML = `
+        <style>
+          :host {
+              position: fixed !important;
+              top: 0 !important;
+              left: 0 !important;
+              width: 100vw !important;
+              height: 100dvh !important;
+              pointer-events: none !important;
+              visibility: hidden !important;
+              display: block !important;
+              font-family: var(--z-mono) !important;
+              font-size: 14px !important;
+              background-color: var(--z-bg) !important;
+              opacity: 0 !important;
+              transition: opacity 0.3s ease !important;
+          }
+          
+          :host(.active) {
+              z-index: 9000 !important;
+              visibility: visible !important;
+              pointer-events: auto !important;
+              opacity: 1 !important;
+          }
+          
+          :host(.closing) {
+              z-index: 9000 !important;
+              visibility: visible !important;
+              pointer-events: none !important;
+              opacity: 0 !important;
+          }
+  
+          :host {
+              --z-bg: #050505;
+              --z-grid: #1a1a1a;
+              --z-text: #f8fafc;
+              --z-accent: #a78bfa;
+              --z-accent-rgb-value: 167, 139, 250;
+              --z-sec: #94a3b8;
+              --z-mono: 'JetBrains Mono', 'Consolas', monospace;
+          }
+          
+          :host(.light) {
+              --z-bg: #fafaf9;
+              --z-grid: #e7e5e4;
+              --z-text: #1c1917;
+              --z-accent: #ea580c;
+              --z-accent-rgb-value: 234, 88, 12;
+              --z-sec: #57534e;
+          }
+  
+          /* CINEMATIC LAYER */
+          .cinematic-wrapper {
+              position: fixed !important;
+              top: 0 !important;
+              left: 0 !important;
+              width: 100% !important;
+              height: 100% !important;
+              display: none; 
+              align-items: center !important;
+              justify-content: center !important;
+              z-index: 9005 !important;
+              /* Solid background to cover content */
+              background-color: var(--z-bg) !important;
+              pointer-events: none !important;
+              transition: opacity 0.5s ease !important;
+          }
+          
+          .cinematic-text {
+              font-family: var(--z-mono) !important;
+              font-size: clamp(1.2rem, 5vw, 2.5rem) !important;
+              font-weight: 700 !important;
+              color: var(--z-accent) !important;
+              text-shadow: 0 0 15px rgba(var(--z-accent-rgb-value), 0.8) !important;
+              letter-spacing: 2px !important;
+              text-align: center !important;
+          }
+          
+          .cursor {
+              display: inline-block !important;
+              width: 10px !important;
+              height: 1.2em !important;
+              background-color: var(--z-accent) !important;
+              margin-left: 5px !important;
+              vertical-align: bottom !important;
+              animation: blink 0.8s infinite !important;
+          }
+          
+          @keyframes blink { 
+              0%, 100% { opacity: 1; } 
+              50% { opacity: 0; } 
+          }
+  
+          .scanline {
+              position: fixed !important;
+              top: 0 !important;
+              left: 0 !important;
+              width: 100% !important;
+              height: 100% !important;
+              pointer-events: none !important;
+              background: linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0) 100%) !important;
+              background-size: 100% 4px !important;
+              animation: scanline-anim 15s linear infinite !important;
+              opacity: 0.2 !important;
+              z-index: 9001 !important;
+          }
+          @keyframes scanline-anim {
+              0% { background-position: 0 0; }
+              100% { background-position: 0 100vh; }
+          }
+          
+          .zone-container {
+              position: relative !important;
+              width: 100% !important;
+              height: 100% !important;
+              overflow-y: auto !important;
+              overflow-x: hidden !important; 
+              padding: 15px !important; 
+              color: var(--z-text) !important;
+              background: 
+                  linear-gradient(var(--z-grid) 1px, transparent 1px),
+                  linear-gradient(90deg, var(--z-grid) 1px, transparent 1px) !important;
+              background-size: 30px 30px !important;
+              -webkit-overflow-scrolling: touch !important; 
+          }
         .zone-header {
             display: flex !important;
+            flex-wrap: wrap !important; /* Allow wrapping on small screens */
             justify-content: space-between !important;
             align-items: center !important;
-            padding: 10px 20px !important;
+            gap: 10px !important;
+            padding: 10px 15px !important;
             background: rgba(var(--z-accent-rgb-value), 0.05) !important;
             border: 1px solid var(--z-grid) !important;
             position: sticky !important;
             top: 0 !important;
             z-index: 100 !important;
+            backdrop-filter: blur(5px);
         }
         
         .zone-brand {
@@ -344,10 +382,11 @@ export class ArtifactsZone extends HTMLElement {
         }
 
         .zone-brand h1 {
-            font-size: 1.2rem !important;
+            font-size: 1.1rem !important;
             font-weight: 700 !important;
             margin: 0 !important;
             color: var(--z-text) !important;
+            white-space: nowrap !important;
         }
 
         .status-dot {
@@ -361,21 +400,39 @@ export class ArtifactsZone extends HTMLElement {
         .zone-controls {
             display: flex !important;
             align-items: center !important;
-            gap: 15px !important;
+            gap: 10px !important;
+            flex-grow: 1;
+            justify-content: flex-end;
         }
 
-        .tech-readout, .lab-btn {
-            font-size: 0.8rem !important;
+        .tech-readout {
+            font-size: 0.7rem !important;
             font-weight: 500 !important;
+            display: none !important; /* Hidden on mobile to save space */
+        }
+        
+        @media (min-width: 600px) {
+            .tech-readout { display: inline-block !important; }
         }
 
         .lab-btn {
-            background: transparent !important;
+            font-family: var(--z-mono) !important;
+            font-size: 0.8rem !important;
+            font-weight: 500 !important;
+            background: rgba(0,0,0,0.2) !important;
             border: 1px solid var(--z-sec) !important;
             color: var(--z-text) !important;
-            padding: 5px 10px !important;
+            padding: 8px 12px !important; /* Larger touch target */
             cursor: pointer !important;
             transition: all 0.2s !important;
+            min-height: 40px !important; /* Better for touch */
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+
+        .lab-btn:active {
+             transform: scale(0.95);
         }
 
         .lab-btn:hover {
@@ -387,13 +444,15 @@ export class ArtifactsZone extends HTMLElement {
         .lab-btn-exit {
             color: var(--z-accent) !important;
             border-color: var(--z-accent) !important;
+            font-weight: 700 !important;
         }
 
+        /* MOBILE FIRST LAYOUT: FLEX COLUMN */
         .zone-grid-layout {
-            display: grid !important;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+            display: flex !important;
+            flex-direction: column !important;
             gap: 20px !important;
-            padding: 20px 0 !important;
+            padding: 20px 0 80px 0 !important; /* Bottom padding for easy scroll */
         }
         
         .zone-item {
@@ -407,20 +466,20 @@ export class ArtifactsZone extends HTMLElement {
             box-shadow: 0 5px 15px rgba(0,0,0,0.1) !important;
         }
 
-        .zone-item:hover {
+        .zone-item:hover, .zone-item:active {
             border-color: var(--z-accent) !important;
-            transform: translateY(-5px) !important;
+            transform: translateY(-2px) !important;
             box-shadow: 0 10px 30px rgba(0,0,0,0.3) !important;
         }
 
         .item-header {
             display: flex !important;
             align-items: center !important;
-            gap: 10px !important;
-            padding: 10px 15px !important;
+            justify-content: space-between !important; /* Spread out */
+            padding: 12px 15px !important;
             border-bottom: 1px solid var(--z-grid) !important;
             font-size: 0.75rem !important;
-            font-weight: 700 !importan;
+            font-weight: 700 !important;
         }
 
         .item-content {
@@ -429,21 +488,37 @@ export class ArtifactsZone extends HTMLElement {
         }
 
         .item-content h2, .item-content h3 {
-            font-size: 1rem !important;
+            font-size: 1.1rem !important; /* Slightly larger heading */
             margin: 0 0 10px 0 !important;
             font-weight: 700 !important;
             color: var(--z-text) !important;
         }
         
         .item-content p {
-            font-size: 0.9rem !important;
+            font-size: 0.95rem !important; /* Readable text */
             color: var(--z-sec) !important;
-            line-height: 1.7 !important;
+            line-height: 1.6 !important;
             margin: 0 !important;
         }
         
-        .item-large {
-            grid-column: span 2 !important;
+        /* DESKTOP LAYOUT RESTORATION */
+        @media (min-width: 768px) {
+            .zone-grid-layout {
+                display: grid !important;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important;
+                gap: 20px !important;
+                padding: 20px 0 !important;
+            }
+            .item-large {
+                grid-column: span 2 !important;
+            }
+            .lab-btn {
+                padding: 5px 10px !important;
+                min-height: auto !important;
+            }
+            .zone-header {
+                flex-wrap: nowrap !important;
+            }
         }
 
         .tech-stat {
@@ -473,6 +548,8 @@ export class ArtifactsZone extends HTMLElement {
             color: var(--z-bg) !important;
             font-weight: 800 !important;
             border-bottom: none !important;
+            justify-content: flex-start !important;
+            gap: 10px !important;
         }
         
         .featured-artifact .category-label {
@@ -487,7 +564,7 @@ export class ArtifactsZone extends HTMLElement {
             align-items: center !important;
             justify-content: space-between !important;
             gap: 10px !important;
-            flex-wrap: nowrap !important;
+            flex-wrap: wrap !important; /* Allow wrapping of buttons */
             border-top: 1px solid var(--z-grid) !important;
         }
 
@@ -506,7 +583,7 @@ export class ArtifactsZone extends HTMLElement {
             font-weight: 700 !important;
             color: var(--z-accent) !important;
             border: 1px solid var(--z-accent) !important;
-            padding: 6px 12px !important;
+            padding: 8px 16px !important; /* Larger hit area */
             transition: all 0.2s !important;
             background: transparent !important;
             white-space: nowrap !important;
@@ -529,15 +606,13 @@ export class ArtifactsZone extends HTMLElement {
             opacity: 0.03 !important;
             font-weight: 900 !important;
             pointer-events: none !important;
+            z-index: 0 !important;
         }
         @media (max-width: 768px) {
             .zone-watermark {
                 font-size: 3rem !important;
                 bottom: 10px !important;
                 right: 10px !important;
-            }
-            .item-large {
-                grid-column: span 1 !important;
             }
         }
 
@@ -559,6 +634,11 @@ export class ArtifactsZone extends HTMLElement {
       <div class="shutter-layer shutter-accent"></div>
       <div class="shutter-layer shutter-base"></div>
       <div class="scanline"></div>
+      
+      <!-- NEW TYPEWRITER LAYER -->
+      <div class="cinematic-wrapper">
+         <span class="cinematic-text"></span><span class="cursor"></span>
+      </div>
       
       <div class="zone-container">
         <header class="zone-header">
