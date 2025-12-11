@@ -40,6 +40,18 @@ export const fallbackTranslations = {
     "live_demo": { "es": "Demo", "en": "Demo", "pt": "Demo", "de": "Demo" },
     // Project descriptions fallback
     "project1_desc": { "es": "Plataforma comercial optimizada.", "en": "Optimized commercial platform.", "pt": "Plataforma comercial otimizada.", "de": "Optimierte Handelsplattform." },
+    "project7_desc": {
+        "es": "Plataforma Fintech de onboarding de créditos para PYMES. Desarrollo Full-Stack con metodología SCRUM, integrando FastAPI y Vanilla JS para una solución robusta y ágil.",
+        "en": "Fintech credit onboarding platform for SMEs. Full-Stack development with SCRUM methodology, integrating FastAPI and Vanilla JS para una solución robusta y ágil.",
+        "pt": "Plataforma Fintech de onboarding de crédito para PMEs. Desenvolvimento Full-Stack com metodologia SCRUM, integrando FastAPI e Vanilla JS para uma solução robusta e ágil.",
+        "de": "Fintech-Kredit-Onboarding-Plattform für KMUs. Full-Stack-Entwicklung mit SCRUM-Methodik, Integration von FastAPI und Vanilla JS para uma solução robusta e ágil."
+    },
+    "project8_desc": {
+        "es": "Sistema de gestión académica integral. Arquitectura diseñada para la administración eficiente de datos curriculares y expedientes estudiantiles mediante consumo de APIs REST.",
+        "en": "Comprehensive academic management system. Architecture designed for efficient administration of curricular data and student records via REST API consumption.",
+        "pt": "Sistema de gestão acadêmica abrangente. Arquitetura projetada para administração eficiente de dados curriculares e registros de estudantes via consumo de API REST.",
+        "de": "Umfassendes akademisches Verwaltungssystem. Architektur entworfen für effiziente Verwaltung von Lehrplandaten und Studentenunterlagen durch REST-API-Nutzung."
+    },
     // ... (Others can default to English or generic text if JSON fails)
 
     // --- CONTACT SECTION (Landing) ---

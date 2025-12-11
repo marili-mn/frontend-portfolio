@@ -7,7 +7,7 @@ export const projects = [
     repoUrl: "https://github.com/marili-mn/frontend-portfolio",
     demoUrl: "https://marili-mn.github.io/frontend-portfolio/",
     hasPreview: true,
-    dateRange: "2025 - Present"
+    dateRange: "2021 - Present"
   },
   {
     id: 7,
@@ -25,6 +25,16 @@ export const projects = [
     ]
   },
   {
+    id: 8,
+    title: "Grupo W - Academic Management",
+    descriptionKey: "project8_desc",
+    techStack: ["html", "css", "js", "bootstrap"],
+    repoUrl: "https://github.com/DeniLescano/GrupoW-Proyecto-TUDW",
+    demoUrl: "https://grupo-w-proyecto-tudw-demo.vercel.app/progiii-api/public/index.html",
+    hasPreview: true,
+    dateRange: "Sep 2025 - Oct 2025"
+  },
+  {
     id: 5,
     title: "Wizard Solutions IA Web-App",
     descriptionKey: "project5_desc",
@@ -32,27 +42,7 @@ export const projects = [
     repoUrl: "https://github.com/joseorteha/ClickMail",
     demoUrl: "https://click-mail.netlify.app/",
     hasPreview: true,
-    dateRange: "Oct 2024 - Dic 2024"
-  },
-  {
-    id: 4,
-    title: "Guau & Miau ONG Web",
-    descriptionKey: "project4_desc",
-    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
-    repoUrl: "https://github.com/No-Country-simulation/c24-22-m-webapp",
-    demoUrl: "https://astonishing-hamster-6268c8.netlify.app/",
-    hasPreview: true,
-    dateRange: "Jun 2024 - Ago 2024"
-  },
-  {
-    id: 3,
-    title: "Skill-up E-Learning",
-    descriptionKey: "project3_desc",
-    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
-    repoUrl: "https://github.com/No-Country-simulation/c20-14-m-python-react",
-    demoUrl: "https://skillup-client.vercel.app/",
-    hasPreview: true,
-    dateRange: "Feb 2024 - May 2024"
+    dateRange: "May 2025 - Ago 2025"
   },
   {
     id: 2,
@@ -62,16 +52,36 @@ export const projects = [
     repoUrl: "https://github.com/marili-mn/introDevWebUNER",
     demoUrl: "https://marili-mn.github.io/introDevWebUNER/",
     hasPreview: true,
-    dateRange: "2023 - 2024"
+    dateRange: "Apr 2025 - May 2025"
+  },
+  {
+    id: 4,
+    title: "Guau & Miau ONG Web",
+    descriptionKey: "project4_desc",
+    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
+    repoUrl: "https://github.com/No-Country-simulation/c24-22-m-webapp",
+    demoUrl: "https://astonishing-hamster-6268c8.netlify.app/",
+    hasPreview: true,
+    dateRange: "Feb 2025 - Mar 2025"
+  },
+  {
+    id: 3,
+    title: "Skill-up E-Learning",
+    descriptionKey: "project3_desc",
+    techStack: ["html", "css", "js", "bootstrap", "react", "python", "django", "postgres"],
+    repoUrl: "https://github.com/No-Country-simulation/c20-14-m-python-react",
+    demoUrl: "https://skillup-client.vercel.app/",
+    hasPreview: true,
+    dateRange: "Aug 2024 - Nov 2024"
   },
   {
     id: 1,
     title: "n1Human E-Commerce",
-    descriptionKey: "project1_desc", // Key for translation
+    descriptionKey: "project1_desc",
     techStack: ["html", "css", "js", "bootstrap"],
     repoUrl: "https://github.com/marili-mn/n1human-eCommerce",
     demoUrl: "https://n1human.netlify.app/",
     hasPreview: true,
-    dateRange: "2022 - 2023"
+    dateRange: "Apr 2024 - Jul 2024"
   }
 ];

@@ -26,7 +26,7 @@
 
         .cv-container {
             width: 210mm;
-            min-height: 297mm;
+            min-height: 297mm; 
             margin: 0 auto;
             background: var(--bg-paper);
             display: flex;
@@ -119,6 +119,8 @@
 
         .job, .education-item {
             margin-bottom: 20px;
+            break-inside: avoid;
+            page-break-inside: avoid;
         }
 
         .job-header { 
@@ -156,7 +158,7 @@
         @media print {
             body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
             .cv-container { width: 100%; height: auto; box-shadow: none; border: none; }
-            .left-column { background-color: #f8f9fa !important; border-right: 1px solid #000; }
+            .left-column { background-color: #f8f9fa !important; border-right: 1px solid #000; min-height: 100vh; }
             @page { margin: 0; size: A4; }
         }
     </style>
@@ -174,7 +176,8 @@
                 <ul class="contact-info">
                     <li><a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a></li>
                     <li><a href="tel:+5493775402361">+54 9 3775 40-2361</a></li>
-                    <li>Link: <a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io/frontend-portfolio</a></li>
+                    <li>Web: <a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io</a></li>
+                    <li>GitHub: <a href="https://github.com/marili-mn" target="_blank">github.com/marili-mn</a></li>
                     <li><a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a></li>
                 </ul>
             </div>
@@ -183,8 +186,8 @@
                 <h3 class="section-title">Tech Stack</h3>
                 <ul class="skills-list">
                     <li><span class="skill-category">Core Backend</span> Python (FastAPI/Django), Node.js, Java (Spring), RESTful Architecture</li>
-                    <li><span class="skill-category">Frontend & UI</span> JavaScript (ES6+), React, Next.js, HTML5/CSS3 (Modular Design)</li>
-                    <li><span class="skill-category">Data & Storage</span> PostgreSQL, MySQL, Hibernate, Data Modeling</li>
+                    <li><span class="skill-category">Frontend & UI</span> JavaScript (ES6+), React, Next.js, Bootstrap, HTML5/CSS3</li>
+                    <li><span class="skill-category">Data & Storage</span> PostgreSQL, MySQL, Data Modeling</li>
                     <li><span class="skill-category">DevSecOps</span> Git, Docker, CI/CD Pipelines, Linux Hardening</li>
                     <li><span class="skill-category">Methodologies</span> SCRUM, Jira, Requirements Engineering</li>
                 </ul>
@@ -195,7 +198,7 @@
                 <div class="languages">
                     <p><span class="language-name">Spanish</span> <span>Native</span></p>
                     <p><span class="language-name">English</span> <span>Advanced</span></p>
-                    <p><span class="language-name">Portuguese</span> <span>Basic</span></p>
+                    <p><span class="language-name">Portuguese</span> <span>Intermediate</span></p>
                     <p><span class="language-name">German</span> <span>Basic</span></p>
                 </div>
             </div>
@@ -204,7 +207,7 @@
         <div class="right-column">
             <div class="profile">
                 <h2 class="main-title">Professional Profile</h2>
-                <p>Software Engineer in training and Cybersecurity specialist. I merge robust system architecture with high-level functional design. My focus is on building scalable solutions, applying secure engineering principles at every layer of development, from database integrity to user experience. Seeking complex technical challenges where code quality and security are priorities.</p>
+                <p>Full-Stack Developer trained in Web Engineering and Cyberdefense. I merge secure architecture and functional creativity to build solutions that protect businesses and ensure a user experience that captivates. I apply robust engineering at every layer, integrating IT security with interface design to create applications that are armored inside and intuitive outside.</p>
             </div>
 
             <div class="education">
@@ -225,38 +228,41 @@
                 <div class="job">
                     <div class="job-header">
                         <div class="job-title">CreditBusters (Fintech)</div>
-                        <div class="company-date">Software Architecture | Sep 2025 - Oct 2025</div>
+                        <div class="company-date">Architecture | Sep 2025 - Oct 2025</div>
                     </div>
-                    <p class="job-description">Engineering of an SME credit onboarding platform. Developed a modular backend architecture with FastAPI (Python) and PostgreSQL, ensuring transactional integrity. Implemented lightweight frontend with Vanilla JS. Lifecycle management via SCRUM.</p>
+                    <p class="job-description">Engineering of an SME credit onboarding platform. Developed a modular backend architecture with FastAPI (Python) and PostgreSQL, ensuring transactional integrity. Implemented lightweight frontend with Vanilla JS under strict MVC architecture patterns. Lifecycle management via SCRUM.</p>
                     <div class="stack-tech">
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">FastAPI</span>
+                        <span class="tech-badge">Vanilla JS</span>
+                        <span class="tech-badge">MVC Architecture</span>
                         <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">Architecture</span>
                     </div>
                 </div>
 
                 <div class="job">
                     <div class="job-header">
-                        <div class="job-title">UNER E-Commerce</div>
-                        <div class="company-date">Frontend Engineering | Apr 2025 - Present</div>
+                        <div class="job-title">Grupo W - Academic Management</div>
+                        <div class="company-date">Full-Stack | Sep 2025 - Oct 2025</div>
                     </div>
-                    <p class="job-description">Development of modular interface components without external dependencies (Vanilla JS). Optimization of rendering and semantic structure for maximum compatibility and performance.</p>
+                    <p class="job-description">Comprehensive academic management system with MVC architecture. Designed for efficient administration of curricular data and student records via REST API consumption.</p>
                     <div class="stack-tech">
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">DOM Manipulation</span>
-                        <span class="tech-badge">Performance</span>
+                        <span class="tech-badge">Vanilla JS</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">MVC Architecture</span>
+                        <span class="tech-badge">System Design</span>
                     </div>
                 </div>
 
                 <div class="job">
                     <div class="job-header">
                         <div class="job-title">Wizard Solutions AI</div>
-                        <div class="company-date">Full-Stack Engineer | Apr 2025 - Present</div>
+                        <div class="company-date">Full-Stack Engineer | May 2025 - Aug 2025</div>
                     </div>
-                    <p class="job-description">Design and implementation of microservices for AI processing. Secure integration of RESTful APIs and Docker container orchestration for consistent deployments.</p>
+                    <p class="job-description">Design and implementation of microservices for AI processing. Secure integration of RESTful APIs and Docker container orchestration for consistent deployments. Backend logic optimized with Node.js.</p>
                     <div class="stack-tech">
                         <span class="tech-badge">React</span>
+                        <span class="tech-badge">Node.js</span>
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">Docker</span>
                         <span class="tech-badge">Microservices</span>
@@ -265,14 +271,72 @@
 
                 <div class="job">
                     <div class="job-header">
-                        <div class="job-title">Guau & Miau (NGO)</div>
+                        <div class="job-title">UNER E-Commerce</div>
+                        <div class="company-date">Frontend Engineering | Apr 2025 - May 2025</div>
+                    </div>
+                    <p class="job-description">Development of modular interface components without external dependencies (Vanilla JS). Optimization of rendering and semantic structure for maximum compatibility and performance using Bootstrap.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Bootstrap</span>
+                        <span class="tech-badge">DOM Manipulation</span>
+                        <span class="tech-badge">Performance</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Guau & Miau (ONG)</div>
                         <div class="company-date">Backend Developer | Feb 2025 - Mar 2025</div>
                     </div>
-                    <p class="job-description">Construction of secure APIs and resource management systems. Optimization of database queries and robust authentication using the Django ecosystem.</p>
+                    <p class="job-description">Construction of secure APIs and resource management systems. Optimization of database queries and robust authentication using the Django ecosystem and React frontend.</p>
                     <div class="stack-tech">
+                        <span class="tech-badge">React</span>
                         <span class="tech-badge">Django</span>
                         <span class="tech-badge">Security</span>
                         <span class="tech-badge">REST API</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Skill-up E-Learning</div>
+                        <div class="company-date">Backend | Aug 2024 - Nov 2024</div>
+                    </div>
+                    <p class="job-description">Designed secure RESTful APIs following MVC architecture. Optimized database schemas with Python/Django and React frontend, enhancing performance with query optimization. Delivered scalable solutions.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">React</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Django</span>
+                        <span class="tech-badge">MVC Architecture</span>
+                        <span class="tech-badge">Docker</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">n1Human E-Commerce</div>
+                        <div class="company-date">Frontend | Apr 2024 - Jul 2024</div>
+                    </div>
+                    <p class="job-description">Developed a responsive e-commerce platform with vanilla HTML, CSS, and JavaScript, focusing on seamless product browsing and checkout processes.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">CSS3</span>
+                        <span class="tech-badge">JavaScript</span>
+                    </div>
+                </div>
+
+                <div class="job">
+                    <div class="job-header">
+                        <div class="job-title">Personal Portfolio</div>
+                        <div class="company-date">Full-Stack Engineering | 2021 - Present</div>
+                    </div>
+                    <p class="job-description">Continuous development of a personal brand platform using Web Components and vanilla JavaScript. Implementation of internationalization (i18n), dark/light mode, and terminal-based interactive UI.</p>
+                    <div class="stack-tech">
+                        <span class="tech-badge">JavaScript (Vanilla)</span>
+                        <span class="tech-badge">Web Components</span>
+                        <span class="tech-badge">i18n</span>
+                        <span class="tech-badge">CSS3</span>
                     </div>
                 </div>
             </div>
