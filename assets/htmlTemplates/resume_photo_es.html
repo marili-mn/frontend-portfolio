@@ -3,368 +3,390 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nahuel Marcilli - CV Foto</title>
+    <title>Nahuel Marcilli - CV Ingeniería</title>
     <style>
+        /* 
+           Clean Tech Modern Harvard (Con Foto) - Enlaces Crudos & Monocromático
+           Optimizado para: Parsing ATS, Impresión Física, OCR
+        */
         :root {
+            --font-main: 'Helvetica', 'Arial', sans-serif;
+            --text-primary: #000000;
+            --text-secondary: #000000;
             --bg-paper: #ffffff;
-            --bg-sidebar: #f8f9fa;
-            --text-main: #111111;
-            --text-sec: #444444;
-            --border-color: #000000;
-            --accent: #222222;
+            --spacing-section: 16px;
+            --spacing-item: 14px;
+            --font-size-body: 11pt;
+            --font-size-h1: 22pt;
+            --font-size-h2: 13pt;
+            --line-height: 1.45;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: 'JetBrains Mono', 'Consolas', monospace;
-            line-height: 1.4;
-            color: var(--text-main);
+            font-family: var(--font-main);
+            font-size: var(--font-size-body);
+            line-height: var(--line-height);
+            color: var(--text-primary);
             background: var(--bg-paper);
-            font-size: 13.5px;
-        }
-
-        .cv-container {
-            width: 210mm;
-            min-height: 297mm;
+            max-width: 210mm;
             margin: 0 auto;
-            background: var(--bg-paper);
-            display: flex;
+            padding: 40px 50px;
         }
 
-        /* Left Column (Sidebar) */
-        .left-column {
-            background: var(--bg-sidebar);
-            width: 34%;
-            padding: 25px 15px;
+        a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid #000;
+        }
+
+        /* --- Header & Foto --- */
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #000;
+            padding-bottom: 15px;
             display: flex;
             flex-direction: column;
-            border-right: 1px solid var(--border-color);
+            align-items: center;
         }
 
-        .header { margin-bottom: 30px; text-align: center; }
-        
-        .name {
-            font-size: 1.6em;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: -1px;
-            text-align: left;
-        }
-
-        .title {
-            font-size: 0.95em;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--border-color);
-            text-align: left;
-        }
-
-        /* Engineering Photo Style */
-        .profile-pic {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px auto;
-            border: 2px solid var(--border-color); /* Solid square border */
-            border-radius: 0; /* Square */
+        .profile-pic-container {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
             overflow: hidden;
-            background: #fff;
+            border: 2px solid #000;
+            margin-bottom: 12px;
         }
 
-        .profile-pic img {
+        .profile-pic-container img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 20%;
-            /* Full color */
+            filter: grayscale(100%); /* Opcional: Blanco y negro para estilo serio */
         }
 
-        .section { margin-bottom: 25px; }
-
-        .section-title {
-            font-size: 0.9em;
-            font-weight: 800;
+        h1 {
+            font-size: var(--font-size-h1);
             text-transform: uppercase;
-            margin-bottom: 12px;
             letter-spacing: 1px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 3px;
+            margin-bottom: 5px;
+            font-weight: 700;
         }
 
-        .contact-info, .skills-list { list-style: none; }
-
-        .contact-info li {
+        .job-title-header {
+            font-size: 12pt;
+            text-transform: uppercase;
+            font-weight: 600;
             margin-bottom: 8px;
-            font-size: 0.85em;
-            word-break: break-all;
-        }
-        
-        .contact-info a {
-            color: var(--text-main);
-            text-decoration: none;
-            border-bottom: 1px dotted var(--text-sec);
         }
 
-        .skills-list li { margin-bottom: 8px; font-size: 0.85em; }
-        .skill-category { font-weight: 700; display: block; margin-bottom: 2px; text-transform: uppercase; font-size: 0.8em; opacity: 0.8; }
-
-        .languages p { margin-bottom: 5px; font-size: 0.85em; display: flex; justify-content: space-between; }
-        .language-name { font-weight: 700; }
-
-        /* Right Column (Main) */
-        .right-column {
-            width: 66%;
-            padding: 25px 25px;
+        .contact-info {
+            font-size: 10pt;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
         }
 
-        .profile { margin-bottom: 25px; border-bottom: 1px solid #ddd; padding-bottom: 15px; }
-        .profile p {
-            text-align: justify;
-            font-size: 0.9em;
-            color: var(--text-sec);
-        }
+        .contact-separator { margin: 0 2px; user-select: none; }
 
-        .main-title {
-            font-size: 1.1em;
-            font-weight: 800;
+        /* --- Secciones --- */
+        section { margin-bottom: var(--spacing-section); }
+
+        h2 {
+            font-size: var(--font-size-h2);
             text-transform: uppercase;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 5px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 3px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .job, .education-item {
-            margin-bottom: 20px;
-            break-inside: avoid;
+        p { margin-bottom: 6px; text-align: justify; }
+
+        /* --- Items --- */
+        .job-entry, .education-entry {
+            margin-bottom: var(--spacing-item);
             page-break-inside: avoid;
         }
 
-        .job-header { 
-            display: flex; 
-            justify-content: space-between; 
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
             align-items: baseline;
-            margin-bottom: 5px;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 2px;
+            margin-bottom: 2px;
         }
 
-        .job-title { font-size: 1em; font-weight: 800; }
-        .company-date { font-size: 0.8em; font-weight: 600; color: var(--text-sec); text-align: right; }
-        
-        .job-description { 
-            font-size: 0.9em; 
-            color: var(--text-sec); 
-            margin-bottom: 8px; 
-            line-height: 1.5;
-        }
+        .entry-title { font-weight: 700; font-size: 11.5pt; }
+        .entry-date { font-weight: 600; font-size: 11pt; text-align: right; min-width: 130px; }
 
-        .stack-tech { display: flex; flex-wrap: wrap; gap: 6px; }
-        .tech-badge {
-            font-size: 0.7em;
+        .entry-company {
             font-weight: 600;
-            text-transform: uppercase;
-            border: 1px solid var(--border-color);
-            padding: 1px 4px;
-            border-radius: 2px;
+            font-style: italic;
+            margin-bottom: 4px;
+            font-size: 11pt;
+        }
+
+        .raw-links {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 9.5pt;
+            margin-bottom: 6px;
+            display: block;
         }
         
-        .degree { font-weight: 800; font-size: 0.95em; }
-        .institution a { color: var(--text-sec); text-decoration: none; font-size: 0.9em; font-style: italic; }
+        .raw-links a { border-bottom: 1px dotted #000; }
+
+        ul { list-style-type: square; margin-left: 20px; margin-bottom: 6px; }
+        li { margin-bottom: 2px; }
+
+        /* --- Skills --- */
+        .skills-container { display: flex; flex-direction: column; gap: 4px; }
+        .skill-row { display: flex; align-items: baseline; }
+        .skill-category { font-weight: 700; width: 130px; flex-shrink: 0; font-size: 11pt; }
+        .skill-list { flex-grow: 1; font-size: 11pt; }
+
+        .tech-stack-line { font-size: 10pt; font-weight: 600; font-style: italic; margin-top: 2px; }
 
         @media print {
-            body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-            .cv-container { width: 100%; height: auto; box-shadow: none; border: none; }
-            .left-column { background-color: #f8f9fa !important; border-right: 1px solid #000; min-height: 100vh; }
-            @page { margin: 0; size: A4; }
+            body { width: 100%; margin: 0; padding: 0; }
+            @page { size: A4; margin: 15mm 15mm; }
         }
     </style>
 </head>
 <body>
-    <div class="cv-container">
-        <div class="left-column">
-            <div class="header">
-                <div class="profile-pic">
-                    <img src="../img/5.jpg" alt="Nahuel Marcilli">
-                </div>
-                <h1 class="name">NAHUEL MARCILLI</h1>
-                <p class="title">INGENIERÍA WEB & CIBERSEGURIDAD</p>
-            </div>
 
-            <div class="section">
-                <h3 class="section-title">Contacto</h3>
-                <ul class="contact-info">
-                    <li><a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a></li>
-                    <li><a href="tel:+5493775402361">+54 9 3775 40-2361</a></li>
-                    <li>Web: <a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io</a></li>
-                    <li>GitHub: <a href="https://github.com/marili-mn" target="_blank">github.com/marili-mn</a></li>
-                    <li><a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a></li>
-                </ul>
-            </div>
+    <header>
+        <div class="profile-pic-container">
+            <img src="../img/5.jpg" alt="Nahuel Marcilli">
+        </div>
+        <h1>Nahuel Marcilli</h1>
+        <p class="job-title-header">Ingeniería Web & Ciberseguridad</p>
+        <div class="contact-info">
+            <a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a>
+            <span class="contact-separator">|</span>
+            <a href="tel:+5493775402361">+54 9 3775 40-2361</a>
+            <span class="contact-separator">|</span>
+            <a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a>
+            <span class="contact-separator">|</span>
+            <a href="https://github.com/marili-mn" target="_blank">github.com/marili-mn</a>
+            <span class="contact-separator">|</span>
+            <a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io/frontend-portfolio</a>
+        </div>
+    </header>
 
-            <div class="section">
-                <h3 class="section-title">Stack Tecnológico</h3>
-                <ul class="skills-list">
-                    <li><span class="skill-category">Core Backend</span> Python (FastAPI/Django), Node.js, Java (Spring), Arquitectura RESTful</li>
-                    <li><span class="skill-category">Frontend & UI</span> JavaScript (ES6+), React, Next.js, Bootstrap, HTML5/CSS3</li>
-                    <li><span class="skill-category">Data & Storage</span> PostgreSQL, MySQL, Modelado de Datos</li>
-                    <li><span class="skill-category">DevSecOps</span> Git, Docker, Pipelines CI/CD, Linux (Hardening)</li>
-                    <li><span class="skill-category">Metodologías</span> SCRUM, Jira, Ingeniería de Requisitos</li>
-                </ul>
-            </div>
+    <section id="profile">
+        <h2>Perfil Profesional</h2>
+        <p>
+            Desarrollador Full-Stack formado en Ingeniería Web y Ciberdefensa. Fusiono arquitectura segura y creatividad funcional para construir soluciones que protegen el negocio y garantizan una experiencia de usuario cautivadora. Aplico ingeniería robusta en cada capa, integrando la seguridad informática con el diseño de interfaces para lograr aplicaciones blindadas por dentro e intuitivas por fuera.
+        </p>
+    </section>
 
-            <div class="section">
-                <h3 class="section-title">Idiomas</h3>
-                <div class="languages">
-                    <p><span class="language-name">Español</span> <span>Nativo</span></p>
-                    <p><span class="language-name">Inglés</span> <span>Avanzado</span></p>
-                    <p><span class="language-name">Portugués</span> <span>Intermedio</span></p>
-                    <p><span class="language-name">Alemán</span> <span>Básico</span></p>
-                </div>
+    <section id="skills">
+        <h2>Habilidades Técnicas</h2>
+        <div class="skills-container">
+            <div class="skill-row">
+                <span class="skill-category">Core Backend:</span>
+                <span class="skill-list">Python (FastAPI, Django), Node.js, Java (Spring), Arquitectura RESTful</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Frontend & UI:</span>
+                <span class="skill-list">JavaScript (ES6+), React, Next.js, Bootstrap, HTML5/CSS3</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Data & Storage:</span>
+                <span class="skill-list">PostgreSQL, MySQL, Modelado de Datos</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">DevSecOps:</span>
+                <span class="skill-list">Git, Docker, Pipelines CI/CD, Linux (Hardening)</span>
+            </div>
+            <div class="skill-row">
+                <span class="skill-category">Metodologías:</span>
+                <span class="skill-list">SCRUM, Jira, Ingeniería de Requisitos</span>
+            </div>
+             <div class="skill-row">
+                <span class="skill-category">Idiomas:</span>
+                <span class="skill-list">Español (Nativo), Inglés (Avanzado), Portugués (Intermedio), Alemán (Básico)</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <h2>Experiencia Profesional & Proyectos</h2>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Arquitectura de Software</span>
+                <span class="entry-date">Sep 2025 - Oct 2025</span>
+            </div>
+            <div class="entry-company">CreditBusters (Fintech)</div>
+            <div class="raw-links">
+                Repo Back: <a href="https://github.com/Nahuel-a/Equipo-17-Pymes" target="_blank">github.com/Nahuel-a/Equipo-17-Pymes</a> | 
+                Repo Front: <a href="https://github.com/marili-mn/CreditBusters" target="_blank">github.com/marili-mn/CreditBusters</a><br>
+                Demo Back: <a href="https://creditsbuster.onrender.com/docs" target="_blank">creditsbuster.onrender.com/docs</a> | 
+                Demo Front: <a href="https://credit-busters-demo.vercel.app/" target="_blank">credit-busters-demo.vercel.app</a>
+            </div>
+            <ul>
+                <li>Ingeniería de una plataforma de onboarding de créditos PYME con arquitectura backend modular (FastAPI, PostgreSQL).</li>
+                <li>Aseguramiento de la integridad transaccional y seguridad de datos.</li>
+                <li>Implementación de frontend ligero con Vanilla JS bajo patrones estrictos de arquitectura MVC.</li>
+                <li>Gestión del ciclo de vida con metodología SCRUM.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: Python, FastAPI, Vanilla JS, Arquitectura MVC, PostgreSQL</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Desarrollador Full-Stack</span>
+                <span class="entry-date">Sep 2025 - Oct 2025</span>
+            </div>
+            <div class="entry-company">Grupo W - Gestión Académica</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/DeniLescano/GrupoW-Proyecto-TUDW" target="_blank">github.com/DeniLescano/GrupoW-Proyecto-TUDW</a> | 
+                Demo: <a href="https://grupo-w-proyecto-tudw-demo.vercel.app/" target="_blank">grupo-w-proyecto-tudw-demo.vercel.app</a>
+            </div>
+            <ul>
+                <li>Desarrollo de sistema integral de gestión académica con arquitectura MVC.</li>
+                <li>Diseño para la administración eficiente de datos curriculares y expedientes mediante consumo de APIs REST.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: Vanilla JS, Bootstrap, Arquitectura MVC, Diseño de Sistemas</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Full-Stack Engineer</span>
+                <span class="entry-date">May 2025 - Ago 2025</span>
+            </div>
+            <div class="entry-company">Wizard Solutions AI</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/joseorteha/ClickMail" target="_blank">github.com/joseorteha/ClickMail</a> | 
+                Demo: <a href="https://click-mail.netlify.app/" target="_blank">click-mail.netlify.app</a>
+            </div>
+            <ul>
+                <li>Diseño e implementación de microservicios para procesamiento de IA.</li>
+                <li>Integración segura de APIs RESTful y orquestación de contenedores Docker para despliegues consistentes.</li>
+                <li>Optimización de lógica backend con Node.js.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: React, Node.js, Python, Docker, Microservicios</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Ingeniería Frontend</span>
+                <span class="entry-date">Abr 2025 - May 2025</span>
+            </div>
+            <div class="entry-company">UNER E-Commerce</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/marili-mn/introDevWebUNER" target="_blank">github.com/marili-mn/introDevWebUNER</a> | 
+                Demo: <a href="https://marili-mn.github.io/introDevWebUNER/" target="_blank">marili-mn.github.io/introDevWebUNER</a>
+            </div>
+            <ul>
+                <li>Desarrollo de componentes modulares de interfaz sin dependencias externas (Vanilla JS).</li>
+                <li>Optimización de renderizado y estructura semántica para máxima compatibilidad y rendimiento (Bootstrap).</li>
+            </ul>
+            <div class="tech-stack-line">Tech: JavaScript, Bootstrap, DOM Manipulation, Performance</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Backend Developer</span>
+                <span class="entry-date">Feb 2025 - Mar 2025</span>
+            </div>
+            <div class="entry-company">Guau & Miau (ONG)</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/No-Country-simulation/c24-22-m-webapp" target="_blank">github.com/No-Country-simulation/c24-22-m-webapp</a> | 
+                Demo: <a href="https://guau-and-miau.vercel.app/" target="_blank">guau-and-miau.vercel.app</a>
+            </div>
+            <ul>
+                <li>Construcción de APIs seguras y sistemas de gestión de recursos.</li>
+                <li>Optimización de consultas a base de datos y autenticación robusta utilizando el ecosistema Django.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: React, Django, Seguridad, REST API, Docker</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Backend Developer</span>
+                <span class="entry-date">Ago 2024 - Nov 2024</span>
+            </div>
+            <div class="entry-company">Skill-up E-Learning</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/No-Country-simulation/c20-14-m-python-react" target="_blank">github.com/No-Country-simulation/c20-14-m-python-react</a> | 
+                Demo: <a href="https://skillup-client.vercel.app/" target="_blank">skillup-client.vercel.app</a>
+            </div>
+            <ul>
+                <li>Diseño de APIs RESTful seguras siguiendo arquitectura MVC.</li>
+                <li>Optimización de esquemas de bases de datos con Python/Django y mejora de rendimiento frontend en React.</li>
+                <li>Entrega de soluciones escalables para alta concurrencia.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: React, Python, Django, Arquitectura MVC, Docker</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Frontend Developer</span>
+                <span class="entry-date">Abr 2024 - Jul 2024</span>
+            </div>
+            <div class="entry-company">n1Human E-Commerce</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/marili-mn/n1human-eCommerce" target="_blank">github.com/marili-mn/n1human-eCommerce</a> | 
+                Demo: <a href="https://n1human.netlify.app/" target="_blank">n1human.netlify.app</a>
+            </div>
+            <ul>
+                <li>Desarrollo de plataforma de e-commerce responsiva con HTML, CSS y JavaScript nativos.</li>
+                <li>Enfoque en navegación fluida de productos y procesos de checkout.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: HTML5, CSS3, JavaScript</div>
+        </div>
+
+        <div class="job-entry">
+            <div class="entry-header">
+                <span class="entry-title">Ingeniería Full-Stack (Proyectos Personales)</span>
+                <span class="entry-date">2021 - Presente</span>
+            </div>
+            <div class="entry-company">Portafolio Personal</div>
+            <div class="raw-links">
+                Repositorio: <a href="https://github.com/marili-mn/frontend-portfolio" target="_blank">github.com/marili-mn/frontend-portfolio</a> | 
+                Demo: <a href="https://marili-mn.github.io/frontend-portfolio/" target="_blank">marili-mn.github.io/frontend-portfolio</a>
+            </div>
+            <ul>
+                <li>Desarrollo continuo de plataforma de marca personal usando Web Components y JavaScript nativo.</li>
+                <li>Implementación de i18n, modo oscuro/claro y UI interactiva de terminal.</li>
+            </ul>
+            <div class="tech-stack-line">Tech: JavaScript (Vanilla), Web Components, i18n, CSS3</div>
+        </div>
+    </section>
+
+    <section id="education">
+        <h2>Formación Académica</h2>
+        
+        <div class="education-entry">
+            <div class="entry-header">
+                <span class="entry-title">Licenciatura en Ciberdefensa</span>
+                <span class="entry-date">En curso</span>
+            </div>
+            <div class="entry-company">Facultad de la Defensa Nacional (FADENA)</div>
+            <div class="raw-links">
+                Web: <a href="https://www.undef.edu.ar/" target="_blank">undef.edu.ar</a>
             </div>
         </div>
 
-        <div class="right-column">
-            <div class="profile">
-                <h2 class="main-title">Perfil Profesional</h2>
-                <p>Desarrollador Full-Stack formado en Ingeniería Web y Ciberdefensa. Fusiono arquitectura segura y creatividad funcional para construir soluciones que protegen el negocio y garantizan una experiencia de usuario que cautiva. Aplico ingeniería robusta en cada capa, integrando la seguridad informática con el diseño de interfaces para lograr aplicaciones blindadas por dentro e intuitivas por fuera.</p>
+        <div class="education-entry">
+            <div class="entry-header">
+                <span class="entry-title">Tecnicatura Universitaria en Desarrollo Web</span>
+                <span class="entry-date">Finalizado</span>
             </div>
-
-            <div class="education">
-                <h2 class="main-title">Formación Académica</h2>
-                <div class="education-item">
-                    <div class="degree">Licenciatura en Ciberdefensa</div>
-                    <div class="institution"><a href="https://www.undef.edu.ar/" target="_blank">Facultad de la Defensa Nacional (FADENA)</a> - En curso</div>
-                </div>
-                <div class="education-item">
-                    <div class="degree">Tecnicatura Universitaria en Desarrollo Web</div>
-                    <div class="institution"><a href="https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/" target="_blank">Universidad Nacional de Entre Ríos (UNER)</a> - Finalizado</div>
-                </div>
-            </div>
-
-            <div class="experience">
-                <h2 class="main-title">Experiencia & Proyectos</h2>
-                
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">CreditBusters (Fintech)</div>
-                        <div class="company-date">Arquitectura Software | Sep 2025 - Oct 2025</div>
-                    </div>
-                    <p class="job-description">Ingeniería de una plataforma de onboarding de créditos PYME. Desarrollo de una arquitectura backend modular con FastAPI (Python) y PostgreSQL, asegurando la integridad transaccional. Implementación de frontend ligero con Vanilla JS bajo patrones estrictos de arquitectura MVC. Gestión del ciclo de vida con metodología SCRUM.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">FastAPI</span>
-                        <span class="tech-badge">Vanilla JS</span>
-                        <span class="tech-badge">Arquitectura MVC</span>
-                        <span class="tech-badge">PostgreSQL</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Grupo W - Gestión Académica</div>
-                        <div class="company-date">Full-Stack | Sep 2025 - Oct 2025</div>
-                    </div>
-                    <p class="job-description">Sistema de gestión académica integral con arquitectura MVC. Arquitectura diseñada para la administración eficiente de datos curriculares y expedientes estudiantiles mediante consumo de APIs REST.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">Vanilla JS</span>
-                        <span class="tech-badge">Bootstrap</span>
-                        <span class="tech-badge">Arquitectura MVC</span>
-                        <span class="tech-badge">Diseño de Sistemas</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Wizard Solutions AI</div>
-                        <div class="company-date">Full-Stack Engineer | May 2025 - Ago 2025</div>
-                    </div>
-                    <p class="job-description">Diseño e implementación de microservicios para procesamiento de IA. Integración segura de APIs RESTful y orquestación de contenedores Docker para despliegues consistentes. Lógica de backend optimizada con Node.js.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Node.js</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Docker</span>
-                        <span class="tech-badge">Microservicios</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">UNER E-Commerce</div>
-                        <div class="company-date">Ingeniería Frontend | Abr 2025 - May 2025</div>
-                    </div>
-                    <p class="job-description">Desarrollo de componentes modulares de interfaz sin dependencias externas (Vanilla JS). Optimización de renderizado y estructura semántica para máxima compatibilidad y rendimiento usando Bootstrap.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">JavaScript</span>
-                        <span class="tech-badge">Bootstrap</span>
-                        <span class="tech-badge">DOM Manipulation</span>
-                        <span class="tech-badge">Performance</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Guau & Miau (ONG)</div>
-                        <div class="company-date">Backend Developer | Feb 2025 - Mar 2025</div>
-                    </div>
-                    <p class="job-description">Construcción de APIs seguras y sistema de gestión de recursos. Optimización de consultas a base de datos y autenticación robusta utilizando el ecosistema Django con frontend en React.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Django</span>
-                        <span class="tech-badge">Seguridad</span>
-                        <span class="tech-badge">REST API</span>
-                        <span class="tech-badge">Docker</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Skill-up E-Learning</div>
-                        <div class="company-date">Backend | Ago 2024 - Nov 2024</div>
-                    </div>
-                    <p class="job-description">Diseño de APIs RESTful seguras siguiendo arquitectura MVC. Optimización de esquemas de bases de datos con Python/Django y frontend en React, mejorando el rendimiento mediante la optimización de consultas. Soluciones escalables entregadas.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">React</span>
-                        <span class="tech-badge">Python</span>
-                        <span class="tech-badge">Django</span>
-                        <span class="tech-badge">Arquitectura MVC</span>
-                        <span class="tech-badge">Docker</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">n1Human E-Commerce</div>
-                        <div class="company-date">Frontend | Abr 2024 - Jul 2024</div>
-                    </div>
-                    <p class="job-description">Desarrollo de una plataforma de comercio electrónico responsiva con HTML, CSS y JavaScript nativos, enfocada en la navegación fluida de productos y checkout.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">HTML5</span>
-                        <span class="tech-badge">CSS3</span>
-                        <span class="tech-badge">JavaScript</span>
-                    </div>
-                </div>
-
-                <div class="job">
-                    <div class="job-header">
-                        <div class="job-title">Portafolio Personal</div>
-                        <div class="company-date">Ingeniería Full-Stack | 2021 - Presente</div>
-                    </div>
-                    <p class="job-description">Desarrollo continuo de plataforma de marca personal usando Web Components y JavaScript nativo. Implementación de internacionalización (i18n), modo oscuro/claro y UI interactiva de terminal. Demuestra dominio de estándares web core sin frameworks.</p>
-                    <div class="stack-tech">
-                        <span class="tech-badge">JavaScript (Vanilla)</span>
-                        <span class="tech-badge">Web Components</span>
-                        <span class="tech-badge">i18n</span>
-                        <span class="tech-badge">CSS3</span>
-                    </div>
-                </div>
+            <div class="entry-company">Universidad Nacional de Entre Ríos (UNER)</div>
+            <div class="raw-links">
+                Web: <a href="https://www.fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web/" target="_blank">fcad.uner.edu.ar/tecnicatura-universitaria-en-desarrollo-web</a>
             </div>
         </div>
-    </div>
+    </section>
+
 </body>
 </html>

@@ -74,6 +74,12 @@ frontend-portfolio/
 5.  **Mobile-First Optimization:** Navegación nativa en móviles, menús overlay optimizados, áreas de toque ampliadas (44px+) y tipografía ajustada para máxima legibilidad.
 6.  **Theming Avanzado:** Sistema de colores semánticos que adapta toda la interfaz, incluida la terminal, los mapas de coordenadas y las cinemáticas, al modo Claro/Oscuro.
 
+### 📄 Estrategia de Reclutamiento (ATS Ready)
+El proyecto implementa una capa de "Ingeniería de Candidato" para maximizar la conversión en procesos de selección:
+*   **Formato "Raw Tech Harvard":** Plantillas HTML/PDF diseñadas específicamente para ser parseadas por algoritmos ATS (Applicant Tracking Systems) sin errores.
+*   **Transparencia de Datos:** Uso de "enlaces crudos" (URLs visibles y limpias) en el CV para demostrar competencia técnica y facilitar el acceso desde formatos impresos.
+*   **Entrega Contextual:** El sistema detecta el idioma de la sesión y sirve automáticamente la versión del CV (Inglés/Español) adecuada para el reclutador.
+
 ## 🛠️ Instalación y Uso
 
 Al ser una aplicación basada en estándares nativos, no requiere un proceso de compilación complejo (build step) para desarrollo, aunque se recomienda usar un servidor local para manejar los módulos ES6 correctamente (CORS).

@@ -172,9 +172,9 @@ export class AboutSection extends HTMLElement {
     const currentLang = translationService.currentLang;
     
     if (currentLang === 'es') {
-      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Desarrollador Full-Stack CV.pdf');
+      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - CV Ingeniería Software.pdf');
     } else {
-      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Web Developer Resume ENG.pdf');
+      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Software Engineer Resume.pdf');
     }
   }
 
