@@ -173,6 +173,8 @@ export class AboutSection extends HTMLElement {
     
     if (currentLang === 'es') {
       cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - CV Ingeniería Software.pdf');
+    } else if (currentLang === 'pt') {
+      cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - CV Engenharia Software.pdf');
     } else {
       cvBtn.setAttribute('href', 'assets/pdf/Nahuel Marcilli - Software Engineer Resume.pdf');
     }

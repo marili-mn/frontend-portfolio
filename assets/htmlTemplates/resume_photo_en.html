@@ -33,6 +33,10 @@
             max-width: 210mm;
             margin: 0 auto;
             padding: 40px 50px;
+            /* PDF Optimization */
+            text-rendering: geometricPrecision;
+            font-variant-ligatures: none;
+            -webkit-font-smoothing: antialiased;
         }
 
         a {
@@ -55,7 +59,7 @@
         .profile-pic-container {
             width: 110px;
             height: 110px;
-            border-radius: 50%;
+            border-radius: 4px;
             overflow: hidden;
             border: 2px solid #000;
             margin-bottom: 12px;
@@ -66,7 +70,7 @@
             height: 100%;
             object-fit: cover;
             object-position: center 20%;
-            filter: grayscale(100%); /* Optional: Make photo B&W for full monochrome vibe */
+            /* filter: grayscale(100%); Optional: Make photo B&W for full monochrome vibe */
         }
 
         h1 {
@@ -153,8 +157,22 @@
         .tech-stack-line { font-size: 10pt; font-weight: 600; font-style: italic; margin-top: 2px; }
 
         @media print {
-            body { width: 100%; margin: 0; padding: 0; }
+            body { 
+                width: 100%; 
+                margin: 0; 
+                padding: 0;
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+            }
             @page { size: A4; margin: 15mm 15mm; }
+            
+            /* Fix Link Clickability in PDF */
+            a {
+                position: relative;
+                z-index: 9999;
+                text-decoration: none !important;
+                border-bottom: 1px solid #000 !important;
+            }
         }
     </style>
 </head>
@@ -169,7 +187,7 @@
         <div class="contact-info">
             <a href="mailto:nahuemarcilli@gmail.com">nahuemarcilli@gmail.com</a>
             <span class="contact-separator">|</span>
-            <a href="tel:+5493775402361">+54 9 3775 40-2361</a>
+            <a href="https://wa.me/5493775402361" target="_blank">+54 9 3775 40-2361</a>
             <span class="contact-separator">|</span>
             <a href="https://linkedin.com/in/nahuel-marcilli" target="_blank">linkedin.com/in/nahuel-marcilli</a>
             <span class="contact-separator">|</span>
@@ -191,7 +209,7 @@
         <div class="skills-container">
             <div class="skill-row">
                 <span class="skill-category">Core Backend:</span>
-                <span class="skill-list">Python (FastAPI, Django), Node.js, Java (Spring), RESTful Architecture</span>
+                <span class="skill-list">Python (FastAPI, Django), Node.js, PHP (Laravel), Java (Spring), RESTful Architecture</span>
             </div>
             <div class="skill-row">
                 <span class="skill-category">Frontend & UI:</span>
@@ -207,7 +225,7 @@
             </div>
             <div class="skill-row">
                 <span class="skill-category">Methodologies:</span>
-                <span class="skill-list">SCRUM, Jira, Requirements Engineering</span>
+                <span class="skill-list">SCRUM, Jira, Trello, Requirements Engineering</span>
             </div>
              <div class="skill-row">
                 <span class="skill-category">Languages:</span>
@@ -372,7 +390,7 @@
             </div>
             <div class="entry-company">Faculty of National Defense (FADENA)</div>
             <div class="raw-links">
-                Web: <a href="https://www.undef.edu.ar/" target="_blank">undef.edu.ar</a>
+                Web: <a href="https://undef.edu.ar/fadena/carreras-de-grado/licciberdefensa/" target="_blank">undef.edu.ar/fadena/carreras-de-grado/licciberdefensa</a>
             </div>
         </div>
 
