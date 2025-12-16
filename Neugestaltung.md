@@ -1,14 +1,11 @@
 ================================================================================
 ESTADO DEL PROYECTO: PORTFOLIO PROFESIONAL (MARI-DEV)
-FECHA: 09/12/2025
+FECHA: 15/12/2025
 ================================================================================
 
 1. RESUMEN DE SITUACIÓN ACTUAL
 --------------------------------------------------------------------------------
-El portafolio ha evolucionado de una presentación "junior/estudiante" a un perfil 
-profesional de "Ingeniería de Software & Ciberseguridad". La arquitectura técnica 
-es sólida (Vanilla JS, Web Components), y ahora la narrativa ("Lore") acompaña 
-ese nivel técnico, destacando la fusión entre arquitectura segura y diseño creativo.
+El portafolio ha consolidado su identidad como una plataforma de "Ingeniería de Software & Ciberseguridad". Se ha logrado una madurez técnica notable con la implementación de micro-interacciones avanzadas (Identity Profile) y la optimización crítica de activos profesionales (CVs ATS-Ready). La arquitectura basada en Web Components sigue demostrando su flexibilidad y robustez.
 
 2. FASES COMPLETADAS (Hitos Recientes)
 --------------------------------------------------------------------------------
@@ -23,233 +20,108 @@ ese nivel técnico, destacando la fusión entre arquitectura segura y diseño cr
 
 [x] MEJORAS DE UX/UI EN TEXTOS
     - Enlaces Contextuales: Links directos a UNER y FADENA en la bio.
-    - Estilos Visuales: CSS personalizado para resaltar hipervínculos en la bio
-      (negrita + color de acento + hover animado).
-    - Renderizado HTML: Actualización de componentes (AboutSection, AppFooter, 
-      ProjectCard) para soportar .innerHTML y renderizar estilos enriquecidos.
+    - Estilos Visuales: CSS personalizado para resaltar hipervínculos en la bio.
+    - Renderizado HTML: Actualización de componentes para soportar .innerHTML.
 
 [x] OPTIMIZACIÓN DE EXPERIENCIA MÓVIL (MOBILE-FIRST)
-    - Menú de Navegación: Transformación a Overlay de pantalla completa con animación 
-      de opacidad para mejor usabilidad táctil.
-    - Espaciado y Ritmo: Aumento del gap en grillas (80px) para mejorar la "respiración"
-      visual y legibilidad en pantallas pequeñas.
-    - Integración Nativa: Implementación de meta tags `theme-color` para unificar 
-      la UI del navegador con la app.
+    - Menú de Navegación: Overlay de pantalla completa con animación de opacidad.
+    - Espaciado y Ritmo: Aumento del gap en grillas (80px) para legibilidad.
+    - Integración Nativa: Meta tags `theme-color`.
 
 [x] INGENIERÍA DE CONTACTO & INTERACTIVIDAD
-    - Arquitectura de Servicios: Creación de `ContactService.js` y `ContactButton.js` 
-      para desacoplar lógica de negocio de la vista (Footer).
-    - Micro-interacciones: Implementación de secuencia orquestada (Click -> Copy -> 
-      Toast -> Footer Animation -> Mailto) para feedback robusto.
-    - Feedback Visual: Desarrollo de componente `<toast-notification>` no intrusivo.
+    - Arquitectura de Servicios: `ContactService.js` y `ContactButton.js`.
+    - Micro-interacciones: Click -> Copy -> Toast -> Footer Animation -> Mailto.
+    - Feedback Visual: Componente `<toast-notification>`.
 
 [x] REINGENIERÍA DE PERFIL TÉCNICO (SKILLS)
-    - Jerarquía Estratégica: Reordenamiento de stack para priorizar JavaScript/Node 
-      como dominio principal, seguido de lenguajes estrictos (C++, Assembler).
-    - Limpieza de Datos: Eliminación de tecnologías legadas/no deseadas (Hibernate, Haskell)
-      y adición de competencias clave (Express.js, MongoDB).
+    - Jerarquía Estratégica: Priorización de JavaScript/Node.
+    - Limpieza de Datos: Eliminación de tecnologías legadas.
 
 [x] FASE 2: REFACTORIZACIÓN ARQUITECTÓNICA (Completada)
-    - Objetivo: Desacoplar ThemeService del DOM.
-    - Acción: Implementado patrón de eventos (CustomEvent 'theme-changed') similar
-      al TranslationService. `ThemeService` ahora es un gestor de estado puro.
-    - Beneficio: Código más limpio, sin manipulación directa del DOM desde el servicio.
-      Mejora la testabilidad y alineación con una "arquitectura robusta".
-      (Resolvió un bug de doble toggle silencioso).
+    - Desacoplamiento de ThemeService mediante eventos personalizados.
 
 [x] FASE 3: INTEGRACIÓN "DEVSEC" (La Consola) (Completada)
-    - Objetivo: Conectar la terminal oculta (console.html) con la experiencia principal.
-    - Acciones:
-        - Creación de componente `<devsec-console>` encapsulado con Shadow DOM.
-        - Refactorización de lógica a OOP dentro del componente.
-        - **Internacionalización Total:** Comandos, ayuda, bienvenida y outputs traducidos dinámicamente.
-        - **Theme-Aware:** La terminal responde al tema Claro/Oscuro global.
-        - **Mobile-First:** Layout optimizado, botones táctiles grandes, scroll nativo y teclado virtual safe.
-        - Atajos (`Ctrl+Z`) y Switch visual en footer.
-    - Meta Lograda: Experiencia de "Hacker Mode" pulida y profesional.
+    - Componente `<devsec-console>` encapsulado.
+    - Internacionalización total y soporte de temas.
 
 [x] FASE 3.5: REFINAMIENTO VISUAL (Skills 2.0 - Math Engineering)
-    - Concepto: "Ingeniería de Precisión". Transformar la lista de skills en un plano técnico interactivo.
-    - Estética: Fondo de papel milimetrado (Grid Paper), tipografía Monospace pura, iconos desaturados.
-    - **Interacción Desktop High-End:**
-        - Cursor Crosshair Global (Ejes X/Y infinitos) siguiendo al mouse.
-        - Tarjetas con sistemas de coordenadas locales y ticks de regla.
-        - Feedback en tiempo real de posición (X:120 Y:45) con transición suave desde "READY".
-    - **Optimización (Performance):**
-        - Uso de `requestAnimationFrame` para sincronizar las animaciones con el refresco de pantalla (60fps).
-        - Eliminación de lag mediante segregación de lógica pesada.
-    - **Mobile-First Real:**
-        - Desactivación condicional de efectos de mouse (`@media (hover: none)`).
-        - Feedback Táctil: Las tarjetas reaccionan al toque (`:active`) mostrando sus datos técnicos.
-        - Layout limpio y accesible sin bloquear el scroll.
-    - Detalle: Implementación de icono de texto "ASM" para Assembler, manteniendo consistencia visual.
+    - Estética de plano técnico interactivo (Grid Paper, Crosshair).
+    - Optimización de performance (requestAnimationFrame).
 
 [x] FASE 3.6: ARTEFACTOS 2.0 (The Archives) (Completada)
-    - Concepto: Evolución de la zona de experimentos a un "Archivo Clasificado" con alta narrativa.
-    - **Cinemática de Entrada ("The Breach"):** 
-        - Reemplazo de animaciones complejas (persianas) por una secuencia minimalista y performante.
-        - Secuencia: Overlay Sólido -> Typewriter Text (>> ENTERING LABORATORY...) -> Fade Out -> Reveal.
-        - Lógica "Fail-Safe": Timeout de seguridad para garantizar que el contenido nunca quede bloqueado si JS falla.
-    - **UX/UI Mobile-First:**
-        - Rediseño de layout: Flex Column por defecto para lectura vertical fluida en móviles.
-        - Touch Targets: Botones de acción (`[ SRC ]`, `[ DEMO ]`) con áreas de toque expandidas (min-height 44px).
-        - Header Sticky robusto con soporte para pantallas ultra-angostas (wrap).
-    - **Contenido:** Inclusión de "Joyitas" (Proyectos destacados) con tratamiento visual premium.
+    - Cinemática de entrada "The Breach" minimalista.
+    - Layout Mobile-First y Header Sticky robusto.
 
 [x] FASE 3.9: SISTEMA DE CONTACTO "SECURE TERMINAL" (Completada)
-    - Objetivo: Eliminar mailto simple y ofrecer una experiencia inmersiva "DevSec".
-    - **Coreografía UX:** Clic -> Copia Clipboard -> Toast Feedback -> Highlight Email (Footer) -> Pausa Dramática -> Apertura de Terminal.
-    - **Componente `<contact-form>`:** 
-        - Ventana modal estilo Sistema Operativo/Terminal.
-        - Botones de control reales (Minimizar, Maximizar, Cerrar).
-        - Inputs estilizados como consola de comandos.
-        - Integración con **Formspree** para backend serverless.
-    - **Traducción Resiliente:** Mensajes de sistema en 4 idiomas con fallback automático.
+    - Modal de contacto estilo Terminal con integración Formspree.
+    - Coreografía UX completa.
 
 [x] INFRAESTRUCTURA: RESILIENCIA EN TRADUCCIONES (Completada)
-    - Problema: Fallos en carga de JSON o caché agresivo causaban textos rotos (`lbl_name`).
-    - **Solución Híbrida (Dirty-Robust):** 
-        - Capa 1: `translations.json` con cache-busting (`?v=timestamp`).
-        - Capa 2: `fallbackTranslations.js` embebido en código con el 100% de los textos críticos.
-        - Lógica Waterfall: Si JSON falla -> Usa JS Local -> Usa Inglés.
-    - Resultado: Cero "FOUC" (Flash of Unstyled Content) de textos.
+    - Arquitectura de doble capa (JSON + Fallback JS).
 
 [x] FASE 4: EVOLUCIÓN VISUAL (BitStream Stack Timeline) (Completada)
-    - Concepto: Transformar la grilla de proyectos en una "Pila de Ejecución" visual, manteniendo la consistencia del `grid` responsive.
-    - **Metáfora Técnica:** La trayectoria profesional como un stack LIFO (Last In, First Out).
-    - **Nodos Intuitivos:**
-        - Nodo Superior: **"ACTUALIDAD"** (marca el punto más reciente).
-        - Nodo Inferior: **"ORÍGENES"** (marca el inicio de la pila).
-    - **Implementación:** `ProjectsTimeline` Web Component orquestando la presentación, `ProjectCard` adaptado para fechas, y CSS (`timeline.css`).
-    - **Últimos Ajustes:** Eliminación de todas las líneas de conexión visual del timeline en móvil y desktop para una estética más limpia y enfocada en los nodos y las tarjetas.
+    - Metáfora visual de Stack LIFO para la trayectoria profesional.
+    - Componente `ProjectsTimeline` y estilos refinados.
 
 [x] FASE 4.1: RENOVACIÓN CROMÁTICA (Arcane & Focus)
-    - Concepto: Romper con el cliché "Matrix Green" y adoptar una identidad más madura y mística/técnica.
-    - **Dark Mode (Arcane OS):**
-        - Base: Deep Midnight Blue (#0B0E14) con acento Electric Arcane Violet (#8b5cf6, ahora #a78bfa para mayor legibilidad).
-        - **Refinamiento:** Violeta más claro para el `accent` y sombreado con color del `accent` para un efecto de "glow" sutil.
-    - **Light Mode (Paper & Liquid Ink):**
-        - Base: Papel japonés cálido (#fafaf9) con tinta líquida (#1c1917).
-        - **Refinamiento:** Todos los elementos monocromáticos con contrastes grises, negros y blancos cálidos para máxima legibilidad y estética editorial.
+    - Temas definidos: Arcane OS (Dark) y Paper & Liquid Ink (Light).
 
 [x] FASE 4.2: REFINAMIENTO TIPOGRÁFICO (Humanista & Técnico)
-    - Concepto: Mezclar tipografías para crear una jerarquía semántica y reforzar la identidad "Ingeniero".
-    - **Acción:** Integración de `JetBrains Mono` (Google Fonts).
-    - **Aplicación:** Usada en el logo, botones técnicos (`btn--tech`, `btn--sharp`, `btn--editorial`), etiquetas de habilidades (Skills Pills) y metadatos del footer.
-    - **Beneficio:** Claridad entre texto narrativo (Poppins) y datos técnicos (JetBrains Mono), elevando la estética profesional.
+    - Integración de `JetBrains Mono` para datos técnicos.
 
 [x] FASE 4.3: PULIDO VISUAL GENERAL Y ALINEACIÓN (Skills & Projects & About)
-    - **Skills Section:**
-        - **Grilla:** Líneas de la "hoja cuadriculada" más prominentes en ambos modos (`rgba(255, 255, 255, 0.25)` y `rgba(0, 0, 0, 0.25)`).
-        - **Cards:** Bordes claros y definidos para separación visual en ambos modos.
-        - **Hover (Light Mode):** Íconos de Skills recuperan color completo; texto invierte a "pastilla iluminada" (fondo negro/texto blanco) al hacer hover/active.
-        - **Crosshair:** Opacidad reducida para un efecto más sutil en ambos modos.
-    - **Project Cards:**
-        - **Modo Claro:** Bordes y sombras más fuertes (`rgba(0,0,0,0.2)`, `0 8px 20px rgba(0,0,0,0.1)`) para distinguirse del fondo de papel.
-    - **About Section:**
-        - **Fondo "Sobre Mí":** Opacidad del texto de fondo aumentada (`0.25`) para mayor visibilidad.
-        - **Palabras Resaltadas:** Colores de fondo y texto ajustados para coincidir con la nueva paleta y asegurar la visibilidad del efecto "Cipher-Text Blocks".
-    - **Idioma Menu:** Añadida sombra (`0 5px 15px`) para mayor profundidad visual.
+    - Ajustes finos en bordes, sombras y contrastes para ambos temas.
 
-[ ] FASE 4.5: CRYPTO-PUZZLE & WASM CORE (Ingeniería Avanzada)
-    - Concepto: Elevar la barra de seguridad mediante "Criptografía en el Cliente" y "Proof of Work (PoW)".
-    - **Arquitectura de Seguridad (Backend-less):**
-        - El email no existe en texto plano. Está cifrado con **AES-GCM**.
-        - La llave de desencriptación no está en el código. Es el resultado de un hash que el navegador debe "minar".
-        - Estrategia: Aumentar el "Costo Económico del Ataque" para bots mediante gasto de CPU local.
-    - **Tecnología (El "Hardcore"):**
-        - Módulo **WebAssembly (Wasm)** escrito en **C++ o Rust**.
-        - Responsabilidad del Wasm: Ejecutar la minería (PoW) y la desencriptación en un entorno binario aislado y de alto rendimiento.
-        - Uso de Web Workers para no congelar la UI principal.
-    - **UX/UI: "Slide-to-Decrypt":**
-        - Reemplazo del checkbox por un **Slider Mecánico**.
-        - Metáfora: "Desbloquear una bóveda física".
-        - Feedback: Mientras el usuario desliza (intención humana), el Wasm mina el hash en segundo plano.
-        - Visual: Efecto de "fuerza bruta" visual en el texto censurado hasta que se revela.
+[x] FASE 4.5: ESTRATEGIA ATS & PDF ENGINEERING (Completada)
+    - **Reingeniería de CVs (HTML Templates):**
+        - Creación de versiones específicas para ATS (sin foto) y versiones con foto.
+        - **Traducción Total:** Implementación de versiones en Portugués (PT), además de ES y EN.
+        - **Contenido Actualizado:** Inclusión de PHP (Laravel), Trello y enlace directo a WhatsApp (`wa.me`).
+    - **Ingeniería de PDF (Print CSS):**
+        - **Tipografía Segura:** Migración a `Arial` como fuente principal para garantizar renderizado perfecto en Windows PDF.
+        - **Interactividad Robusta:** Implementación de capas (`z-index`) y comportamiento de bloque (`inline-block`) forzado en enlaces para asegurar que sean clicables en cualquier lector de PDF.
+        - **Limpieza ATS:** Eliminación quirúrgica de contenedores de imagen en versiones de texto plano.
+
+[x] FASE 4.6: REFACTORIZACIÓN "IDENTITY PROFILE" (Completada)
+    - **Objetivo:** Solucionar problemas de superposición y usabilidad en la sección About.
+    - **Nuevo Componente `<identity-profile>`:**
+        - Encapsula foto, nombre, rol y redes sociales.
+        - **Lógica de Interacción de Alta Precisión:**
+            - **Hitbox Quirúrgico (Trigger):** El área de activación (`trigger-zone`) se ha reducido estrictamente a la silueta del texto **Nombre**, eliminando el "aire" interactivo.
+            - **Hitbox de Cierre (Overlay):** Implementación de una capa invisible dedicada (`.click-overlay`) sobre la foto que captura el evento de cierre con precisión absoluta, ignorando bordes decorativos y paddings.
+            - **Experiencia Hover Sticky (Escritorio):** El perfil permanece abierto tras el hover inicial, eliminando glitches y permitiendo una exploración relajada.
+            - **Navegación Social Estática:** Los iconos de redes permanecen inmóviles fuera del flujo de animación, facilitando su clic.
+        - **Sincronización Visual:** Uso de selectores CSS avanzados (`~`) para coordinar la animación de elementos hermanos.
+        - **Responsive Híbrido:** Comportamiento diferenciado para Escritorio (Hover/Click) y Móvil (Click/Tap) con detección de redimensionamiento.
 
 4. FUTURAS EXPANSIONES (BACKLOG)
 --------------------------------------------------------------------------------
 [x] FASE 5: REINGENIERÍA DE IDENTIDAD (Cipher-Text Blocks) (Completada)
-    - Concepto: Transformar el "Sobre Mí" en una impactante Portada Editorial que revela capas de información de forma interactiva y legible.
-    - **Estética: Academic Noir / Ciber-Editorial Minimalista.**
-    - **Estilo Editorial High-Tech:**
-        - **Tipografía Display Gigante:** El título de fondo ("PROFILE" o "SOBRE MÍ") actúa como un elemento gráfico prominente y legible en todos los idiomas y modos (claro/oscuro).
-        - **Layout Asimétrico:** Texto descriptivo en una columna estrecha, elegante, con amplio "aire" alrededor.
-        - **Legibilidad:** El texto principal siempre es claro y legible.
-    - **UX/UI: "Decodificación de Palabras Clave" (Cipher-Text Blocks):**
-        - **Mecanismo:** Palabras clave específicas (marcadas con `<strong>`) dentro de la biografía aparecen inicialmente legibles.
-        - **Interacción:** Al hacer scroll y la sección entra en el viewport, o al pasar el mouse sobre la palabra/bloque, esta se "desencripta" visualmente (efecto glitch), revelando la palabra legible con una animación.
-        - **Metáfora:** La información clasificada se revela bajo escrutinio, reforzando la narrativa "DevSec" sin sacrificar la legibilidad.
+    - Estética Academic Noir y efecto de desencriptado de texto.
 
 [ ] FASE 6: EL CENTRO DE CONTROL (DevSec Admin Panel)
-    - Concepto: CMS Headless "Self-Hosted" con Arquitectura Híbrida.
-    - Stack: Supabase (Postgres + Auth) + Cliente JS Inteligente (Cache-First).
-    - Resiliencia: Estrategia "Fail-Safe". Si el backend cae, el sitio carga desde caché local/backup estático.
-    - Gestión de Assets: Modelo Híbrido.
-        - Metadatos y textos: En Supabase DB.
-        - Assets pesados (Imágenes/Zips/Demos): Referenciados vía URL desde fuentes externas (GitHub/Netlify/CDNs) o Supabase Storage para archivos ligeros.
-    - Funcionalidad:
-        - Área Home: Edición en caliente de textos, links y bio.
-        - Área Artefactos: CRUD con campo dual (Upload o URL Externa) para máxima flexibilidad.
-        - Seguridad: Ruta oculta, Login real y RLS (Row Level Security).
+    - CMS Headless con Supabase.
 
 [ ] FASE 7: THE VOID LABORATORY (Artefactos / El Grimorio Digital)
-    - Concepto: "Void Summoner" (Fantasía Brutalista). Un entorno de alto contraste con el Portfolio.
-    - Narrativa: "La Bóveda Prohibida". Donde la seguridad y la magia negra tecnológica se encuentran.
-    - **Estética (Void Mode):**
-        - Fondo: Void Black (#050505) puro.
-        - Acentos: Violeta Arcano (#bf00ff) y Cian Tóxico (#00f0ff) para estados activos.
-        - UI: Brutalismo Mágico. Bordes afilados (0px radius), líneas de 2px, sin sombras suaves.
-    - **Entidades de Datos:**
-        - "Constructs" (Demos), "Incantations" (Herramientas), "Forbidden Knowledge" (Ensayos).
-        - Status: "Sealed" (Estable), "Volatile" (Experimental), "Unbound" (WIP).
-    - **Implementación Técnica:**
-        - View Switching: `<lab-view>` actúa como un overlay completo que inyecta `body.void-mode`.
-        - Performance: Uso de CSS puro y `will-change` para animaciones de "hechizo" sin layout thrashing.
+    - Estética Brutalista Mágica y gestión de experimentos.
 
 [ ] OPTIMIZACIONES TÉCNICAS
-    - Lazy Loading avanzado de imágenes.
-    - Tests unitarios para los servicios core (Translation/Theme).
+    - Lazy Loading avanzado.
+    - Tests unitarios.
 
 ================================================================================
-FASE FINAL: ESTRATEGIA ATS & CIERRE DE CICLO (11/12/2025)
+ESTADO FINAL DEL SISTEMA (DIAGNÓSTICO)
 ================================================================================
-
-1. IMPLEMENTACIÓN DE INGENIERÍA DE RECLUTAMIENTO (ATS)
---------------------------------------------------------------------------------
-[x] REINGENIERÍA DE HOJAS DE VIDA (CVs)
-    - Objetivo: Maximizar la tasa de éxito en filtros automáticos (ATS) y lectura humana.
-    - **Estándar: "Raw Tech Harvard"**
-        - Diseño: Lineal, 1 columna, sin gráficos complejos ni tablas invisibles.
-        - Tipografía: Helvetica/Arial (Universal Safe) en negro puro (#000).
-        - **Enlaces Crudos:** URLs visibles y limpias (sin `https://`) para facilitar 
-          la impresión física y generar confianza técnica (Transparencia Radical).
-    - **Datos Dinámicos:**
-        - Integración de métricas y stack real de proyectos (CreditBusters, Wizard AI).
-        - Enlaces específicos a Repositorios y Demos.
-
-[x] LÓGICA DE DISTRIBUCIÓN INTELIGENTE
-    - Componente: `AboutSection.js`.
-    - Lógica: Detección del idioma actual de la aplicación (`TranslationService`).
-        - Si App en ES -> Descarga PDF "CV Ingeniería Software.pdf".
-        - Si App en EN/DE/PT -> Descarga PDF "Software Engineer Resume.pdf".
-    - Beneficio: Entrega contextual sin fricción para el reclutador.
-
-2. ESTADO FINAL DEL SISTEMA (DIAGNÓSTICO)
---------------------------------------------------------------------------------
 **TÉCNICO:**
-- **Madurez:** Alta. Arquitectura basada en estándares web (Web Components) sin deuda 
-  técnica de frameworks. Rendimiento cercano a nativo (60fps en animaciones).
-- **Resiliencia:** Sistema de fallbacks en idiomas y temas garantiza 99.9% uptime visual.
+- **Madurez:** Muy Alta. La arquitectura ha demostrado ser capaz de manejar interacciones complejas (Identity Profile) sin perder rendimiento.
+- **Calidad de Activos:** Los entregables (CVs) ahora son productos de ingeniería por derecho propio, optimizados para máquinas (ATS) y humanos.
 
 **DISEÑO (UX/UI):**
-- **Identidad:** "Cyber-Physical". Fusión exitosa entre estética hacker (Terminal, 
-  Glitches) y editorial limpia (Tipografía, Espacios).
-- **Accesibilidad:** Alto contraste en información crítica.
+- **Usabilidad:** La nueva interacción de perfil resuelve fricciones previas, ofreciendo una experiencia "limpia", precisa y predecible.
+- **Coherencia:** La identidad visual se mantiene sólida a través de todos los puntos de contacto (Web, PDF, Terminal).
 
 **FUNCIONAL:**
-- **Flow de Usuario:** Navegación fluida -> Impacto Visual (Hero) -> Validación Técnica 
-  (Console/Skills) -> Conversión (Contact Terminal / CV Download).
+- **Flow de Usuario:** Navegación fluida -> Descubrimiento (Identity Reveal) -> Validación Técnica -> Conversión.
 
 ================================================================================
 FIN DEL INFORME DE DESARROLLO
