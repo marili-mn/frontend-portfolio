@@ -10,6 +10,16 @@ export const projects = [
     dateRange: "2021 - Present"
   },
   {
+    id: 9,
+    title: "CipherCard",
+    descriptionKey: "project9_desc",
+    techStack: ["react", "ts", "css"],
+    repoUrl: "https://github.com/marili-mn/cipher-card",
+    demoUrl: "https://cipher-card.vercel.app/",
+    hasPreview: true,
+    dateRange: "Dec 2025"
+  },
+  {
     id: 7,
     title: "CreditBusters - Fintech PYMES",
     descriptionKey: "project7_desc",

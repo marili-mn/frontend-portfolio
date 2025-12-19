@@ -64,6 +64,12 @@
     "pt": "Desenvolvimento baseado em padrões web modernos (Web Components). Implementação limpa de internacionalização e temas, demonstrando domínio do idioma sem bibliotecas.",
     "de": "Entwicklung basierend auf modernen Webstandards (Web Components). Saubere Implementierung von Internationalisierung und Themes, die Sprachkenntnisse ohne externe Bibliotheken demonstriert."
   },
+  "project9_desc": {
+    "es": "Gestor de tarjetas virtuales de grado militar. <strong>Arquitectura Hexagonal</strong> para máxima seguridad y privacidad, desarrollado con React y TypeScript bajo un enfoque Mobile-First.",
+    "en": "Military-grade virtual card manager. <strong>Hexagonal Architecture</strong> for maximum security and privacy, developed with React and TypeScript using a Mobile-First approach.",
+    "pt": "Gestor de cartões virtuais de nível militar. <strong>Arquitetura Hexagonal</strong> para máxima segurança e privacidad, desenvolvido com React e TypeScript sob uma abordagem Mobile-First.",
+    "de": "Virtueller Kartenmanager auf Militärniveau. <strong>Hexagonale Architektur</strong> für maximale Sicherheit und Privatsphäre, entwickelt mit React und TypeScript nach dem Mobile-First-Ansatz."
+  },
   "project7_desc": {
     "es": "Plataforma Fintech de onboarding de créditos para PYMES. Desarrollo Full-Stack con metodología SCRUM, integrando FastAPI y Vanilla JS para una solución robusta y ágil.",
     "en": "Fintech credit onboarding platform for SMEs. Full-Stack development with SCRUM methodology, integrating FastAPI and Vanilla JS for a robust and agile solution.",

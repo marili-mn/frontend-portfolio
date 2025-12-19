@@ -244,7 +244,7 @@ export class ProjectCard extends HTMLElement {
 
         @media (max-width: 576px) {
             .project {
-                padding: 1.2rem; /* Reduce padding slightly */
+                padding: 1.5rem; 
             }
 
             .project__header {
@@ -256,22 +256,25 @@ export class ProjectCard extends HTMLElement {
             .project__date {
                 margin-left: 0;
                 margin-top: 0;
-                font-size: 0.7rem;
+                font-size: 0.75rem; 
             }
             
+            /* Stacked Buttons for Mobile Clarity */
             .project__links {
-                display: grid; /* Use grid for buttons */
-                grid-template-columns: 1fr 1fr; /* 2 columns */
-                gap: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px; /* Consistent vertical spacing */
                 width: 100%;
+                margin-top: 1.2rem;
             }
             
             .btn {
                 width: 100%;
-                justify-content: center;
-                font-size: 0.75rem; 
-                padding: 0.6em 0.4em; 
-                height: 100%; /* Ensure equal height */
+                justify-content: center; /* Center text/icon */
+                font-size: 0.85rem; 
+                padding: 0.8em 1em; /* Comfortable padding */
+                min-height: 44px; /* Native touch target size */
+                box-sizing: border-box; /* Ensure padding doesn't overflow width */
             }
         }
         

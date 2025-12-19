@@ -3,6 +3,7 @@ export const skills = {
       { name: "HTML", icon: "html" },
       { name: "CSS", icon: "css" },
       { name: "JavaScript", icon: "js" },
+      { name: "TypeScript", icon: "ts" },
       { name: "Bootstrap", icon: "bootstrap" },
       { name: "React", icon: "react" },
       { name: "Next.js", icon: "nextjs" }

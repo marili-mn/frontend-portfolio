@@ -40,6 +40,12 @@ export const fallbackTranslations = {
     "live_demo": { "es": "Demo", "en": "Demo", "pt": "Demo", "de": "Demo" },
     // Project descriptions fallback
     "project1_desc": { "es": "Plataforma comercial optimizada.", "en": "Optimized commercial platform.", "pt": "Plataforma comercial otimizada.", "de": "Optimierte Handelsplattform." },
+    "project9_desc": {
+        "es": "Gestor de tarjetas virtuales de grado militar. Arquitectura Hexagonal para máxima seguridad, desarrollado con React y TypeScript.",
+        "en": "Military-grade virtual card manager. Hexagonal Architecture for maximum security, developed with React and TypeScript.",
+        "pt": "Gestor de cartões virtuais de nível militar. Arquitetura Hexagonal para máxima segurança, desenvolvido com React e TypeScript.",
+        "de": "Virtueller Kartenmanager auf Militärniveau. Hexagonale Architektur für maximale Sicherheit, entwickelt mit React und TypeScript."
+    },
     "project7_desc": {
         "es": "Plataforma Fintech de onboarding de créditos para PYMES. Desarrollo Full-Stack con metodología SCRUM, integrando FastAPI y Vanilla JS para una solución robusta y ágil.",
         "en": "Fintech credit onboarding platform for SMEs. Full-Stack development with SCRUM methodology, integrating FastAPI and Vanilla JS para una solución robusta y ágil.",
