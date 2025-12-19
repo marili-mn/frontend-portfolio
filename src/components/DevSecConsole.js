@@ -340,8 +340,7 @@ export class DevSecConsole extends HTMLElement {
     renderSocials() {
         const socialLinks = [
             { name: "Github", url: "https://github.com/marili-mn" },
-            { name: "LinkedIn", url: "https://www.linkedin.com/in/nahuel-marcilli" },
-            { name: "Twitter", url: "https://twitter.com/marili_mn" }
+            { name: "LinkedIn", url: "https://www.linkedin.com/in/nahuel-marcilli" }
         ];
 
         let socialsHtml = '<div class="list-group">';
