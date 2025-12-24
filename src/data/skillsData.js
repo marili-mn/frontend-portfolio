@@ -32,8 +32,15 @@ export const skills = {
 
       // Herramientas de Desarrollo & DevOps
       { name: "Docker", icon: "docker" },
+      { name: "AWS", icon: "aws" },
+      { name: "Azure", icon: "azure" },
       { name: "Git", icon: "git" },
       { name: "Postman", icon: "postman" },
+      
+      // AI & Agentic Tools
+      { name: "Cursor AI", customImg: "assets/svg/cursor-seeklogo.svg" },
+      { name: "Antigravity", customImg: "assets/svg/Google_Antigravity-logo.svg" },
+      { name: "Google CLI", customImg: "assets/svg/Developer_Tools-512-color.svg" },
       
       // Diseño
       { name: "Figma", icon: "figma" },
