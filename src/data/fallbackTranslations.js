@@ -126,6 +126,18 @@ export const fallbackTranslations = {
     "console_cmd_skills": { "es": "Habilidades", "en": "Skills", "pt": "Habilidades", "de": "Fähigkeiten" },
     "console_cmd_projects": { "es": "Proyectos", "en": "Projects", "pt": "Projetos", "de": "Projekte" },
     "console_cmd_clear": { "es": "Limpiar", "en": "Clear", "pt": "Limpar", "de": "Löschen" },
+    "console_cmd_sysinfo": {
+        "es": "Información técnica del sistema (Perfil de Ingeniería)",
+        "en": "Technical system information (Engineering Profile)",
+        "pt": "Informações técnicas do sistema (Perfil de Engenharia)",
+        "de": "Technische Systeminformationen (Ingenieurprofil)"
+    },
+    "console_cmd_sudo": {
+        "es": "Intentar obtener privilegios de superusuario",
+        "en": "Attempt to gain superuser privileges",
+        "pt": "Tentar obter privilégios de superusuário",
+        "de": "Versuch, Superuser-Privilegien zu erhalten"
+    },
 
     // --- LAB ZONE (R&D ARCHIVE) ---
     "lab_title": { "es": "ARCHIVO_I+D", "en": "R&D_ARCHIVE", "pt": "ARQUIVO_P&D", "de": "F&E_ARCHIV" },

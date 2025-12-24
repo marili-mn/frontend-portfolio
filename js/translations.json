@@ -176,6 +176,18 @@
     "pt": "Limpar histórico do terminal",
     "de": "Terminalverlauf löschen"
   },
+  "console_cmd_sysinfo": {
+    "es": "Información técnica del sistema (Perfil de Ingeniería)",
+    "en": "Technical system information (Engineering Profile)",
+    "pt": "Informações técnicas do sistema (Perfil de Engenharia)",
+    "de": "Technische Systeminformationen (Ingenieurprofil)"
+  },
+  "console_cmd_sudo": {
+    "es": "Intentar obtener privilegios de superusuario",
+    "en": "Attempt to gain superuser privileges",
+    "pt": "Tentar obter privilégios de superusuário",
+    "de": "Versuch, Superuser-Privilegien zu erhalten"
+  },
   "console_about_title": { "es": "Sobre mí:", "en": "About me:", "pt": "Sobre mim:", "de": "Über mich:" },
   "console_about_text": {
     "es": "Soy Nahuel Marcilli, un Ingeniero Full-Stack y Ciberseguridad. Fusiono arquitectura robusta con diseño intuitivo para crear soluciones digitales que protegen y cautivan.",

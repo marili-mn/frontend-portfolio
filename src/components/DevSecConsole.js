@@ -245,6 +245,10 @@ export class DevSecConsole extends HTMLElement {
             case 'projects':
                 element = this.shadowRoot.getElementById('projects-template').cloneNode(true);
                 break;
+            case 'sysinfo':
+                return this.sysInfoCommand();
+            case 'sudo':
+                return this.sudoCommand();
             case 'clear':
                 return this.clearCommand();
             case 'exit':
@@ -254,6 +258,34 @@ export class DevSecConsole extends HTMLElement {
                 return this.notFoundCommand(command);
         }
         element.classList.remove('hidden-template');
+        return element;
+    }
+
+    sudoCommand() {
+        const element = document.createElement('div');
+        element.innerHTML = `
+            <div class="error" style="margin-bottom: 10px;">[SECURITY ALERT] nahuel is not in the sudoers file.</div>
+            <div style="margin-bottom: 10px;">Attempting privilege escalation via <span class="command">TrustedInstaller</span> bypass...</div>
+            <div style="color: #00ff00;">[SUCCESS] Elevation granted. Current context: NT AUTHORITY\\SYSTEM</div>
+            <div style="margin-top: 10px;">Just kidding! I already have root access to my own skills. Try <span class="command">sysinfo</span> instead.</div>
+        `;
+        return element;
+    }
+
+    sysInfoCommand() {
+        const element = document.createElement('div');
+        
+        element.innerHTML = `
+            <div style="color: var(--accent); margin-bottom: 10px;">--- SYSTEM INFORMATION ---</div>
+            <div><span class="command">OS:</span> <a href="https://www.anduinos.com/" target="_blank" style="color: inherit; text-decoration: underline;">Anduin OS</a> (Cybersec Environment)</div>
+            <div><span class="command">Kernel:</span> Python 3.12 / Node.js 20</div>
+            <div><span class="command">Architecture:</span> x86_64 / Cloud Native</div>
+            <div><span class="command">Uptime:</span> 3 Years Active</div>
+            <div><span class="command">Privileges:</span> TrustedInstaller / SYSTEM</div>
+            <div><span class="command">Status:</span> <span style="color: #00ff00;">● Online & Open to Work</span></div>
+            <div><span class="command">Current Load:</span> 100% Focused on Backend Engineering</div>
+            <div style="margin-top: 10px; color: var(--gray);">Use 'skills' to see installed packages.</div>
+        `;
         return element;
     }
 
