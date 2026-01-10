@@ -107,10 +107,10 @@ export const fallbackTranslations = {
     },
     "footer_connect": { "es": "Conectemos", "en": "Let's Connect", "pt": "Vamos conectar-nos", "de": "Verbinden wir uns" },
     "footer_copyright": {
-        "es": "© 2025 mariDev. Todos los derechos reservados.",
-        "en": "© 2025 mariDev. All rights reserved.",
-        "pt": "© 2025 mariDev. Todos os direitos reservados.",
-        "de": "© 2025 mariDev. Alle Rechte vorbehalten."
+        "es": "© 2026 mariDev. Todos los derechos reservados.",
+        "en": "© 2026 mariDev. All rights reserved.",
+        "pt": "© 2026 mariDev. Todos os direitos reservados.",
+        "de": "© 2026 mariDev. Alle Rechte vorbehalten."
     },
     "back_to_top_aria": { "es": "Volver arriba", "en": "Back to top", "pt": "Voltar ao topo", "de": "Nach oben" },
 
