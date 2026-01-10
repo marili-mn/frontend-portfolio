@@ -101,4 +101,4 @@ Al ser una aplicación basada en estándares nativos, no requiere un proceso de 
 3.  **Abrir:** Navega a `http://localhost:8000`.
 
 ---
-Desarrollado por **Nahuel Marcilli** - 2025
+Desarrollado por **Nahuel Marcilli** - 2026
