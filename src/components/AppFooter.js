@@ -78,7 +78,7 @@ export class AppFooter extends HTMLElement {
             </div>
           </div>
           <div class="footer__section footer__copyright">
-            <p data-translate="footer_copyright">© 2025 mariDev. Todos los derechos reservados.</p>
+            <p data-translate="footer_copyright">© 2026 mariDev. Todos los derechos reservados.</p>
             
             <!-- DevSec Access Hint -->
             <div class="devsec-access">
